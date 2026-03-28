@@ -2674,8 +2674,11 @@ function deleteProf(id){
 // ── LOGIN GATE ────────────────────────────────────────────────
 (function(){
   const KEY = 'n2055_auth';
-  const HASH = '7f4a2b1c9e3d8f6a0b5c2e7d4a9f1b3c'; // internal ref
   function check(pwd){ return pwd === atob('S0BOUm8qMjA1NQ=='); }
+  function checkAdmin(){ 
+    const params = new URLSearchParams(window.location.search);
+    return params.get('admin') === atob('Qm9tQE5vbUA=');
+  }
   function unlock(){
     document.getElementById('loginGate').classList.add('hidden');
     localStorage.setItem(KEY,'1');
@@ -2691,10 +2694,17 @@ function deleteProf(id){
       setTimeout(()=>{ e.textContent=''; }, 3000);
     }
   };
-  // Auto-unlock if already authenticated this session
+  // Admin bypass via URL parameter
+  if(checkAdmin()){ 
+    localStorage.setItem(KEY,'1');
+    // Clean the URL so the code isn't visible in the address bar
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+  // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
     document.addEventListener('DOMContentLoaded',()=>{
-      document.getElementById('loginGate').classList.add('hidden');
+      const gate = document.getElementById('loginGate');
+      if(gate) gate.classList.add('hidden');
     });
   }
 })();
