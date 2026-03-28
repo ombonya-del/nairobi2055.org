@@ -2096,7 +2096,7 @@ function mtrHTML(pid,sc,ph,ms){
 }
 
 // ─── UPDATE MILESTONE ─────────────────────────────────────────────────────────
-function updMs(pid,sc,ph,mi,newSt){
+function updMs(pid,sc,ph,mi,newSt){ if(!isAdmin()) return;
   const key=mk(sc,pid,ph,mi);const old=state.prog[key]||'todo';
   if(old===newSt)return;
   state.prog[key]=newSt;svP(state.prog);
@@ -2553,7 +2553,7 @@ function renderPartners(){
     );
 
     html += '<div class="stitle" style="margin-bottom:12px">Local & Regional Professionals Index — Community, Architecture, Finance, Research, Sport</div>';
-    html += '<div id="addProfForm" class="add-prof-form">';
+    if(isAdmin()){ html += '<div id="addProfForm" class="add-prof-form">';
     html += '<div style="font-family:Georgia,serif;font-size:14px;color:var(--text);margin-bottom:12px" id="apfTitle">Add Professional</div>';
     html += '<div class="apf-grid">';
     html += '<div class="apf-field"><label>Name / Organisation</label><input id="apf-name" placeholder="Full name or firm name"/></div>';
@@ -2564,14 +2564,14 @@ function renderPartners(){
     html += '</div>';
     html += '<div class="apf-field" style="margin-bottom:12px"><label>Role in Nairobi 2055</label><textarea id="apf-role" placeholder="Describe the specific role this professional can play in the transformation..."></textarea></div>';
     html += '<div class="apf-btns"><button class="apf-save" onclick="saveProfForm()">✓ Save</button><button class="apf-cancel" onclick="closeProfForm()">✕ Cancel</button></div>';
-    html += '</div>';
+    html += '</div>'; }
 
     html += '<div class="prof-toolbar">';
     html += '<input class="prof-search" placeholder="🔍 Search by name, organisation, or role..." value="'+profState.search+'" oninput="profSearch(this.value)"/>';
     html += '<select class="prof-filter" onchange="profFilter(this.value)">';
     discs.forEach(d=>{html+=`<option${profState.filter===d?' selected':''}>${d}</option>`;});
     html += '</select>';
-    html += '<button class="prof-add-btn" onclick="openProfForm()">+ Add Professional</button>';
+    if(isAdmin()) html += '<button class="prof-add-btn" onclick="openProfForm()">+ Add Professional</button>';
     html += '</div>';
 
     if(filtered.length===0){
@@ -2588,12 +2588,12 @@ function renderPartners(){
         html += `<td class="prof-role-cell">${p.role}</td>`;
         html += `<td class="prof-contact-cell"><a href="mailto:${p.contact}" style="color:var(--gold)">${p.contact}</a></td>`;
         html += `<td><span style="color:${ac};font-weight:700;font-size:9px">${p.avail}</span></td>`;
-        html += `<td><div class="prof-actions"><button class="prof-edit-btn" onclick="editProf(${p.id})">Edit</button><button class="prof-del-btn" onclick="deleteProf(${p.id})">✕</button></div></td>`;
+        html += isAdmin() ? `<td><div class="prof-actions"><button class="prof-edit-btn" onclick="editProf(${p.id})">Edit</button><button class="prof-del-btn" onclick="deleteProf(${p.id})">✕</button></div></td>` : '<td></td>';
         html += '</tr>';
       });
       html += '</tbody></table>';
     }
-    html += `<div style="margin-top:10px;font-size:9px;color:var(--text4)">${filtered.length} of ${profs.length} professionals shown · Data saved in browser · Add your own collaborators and partners</div>`;
+    html += `<div style="margin-top:10px;font-size:9px;color:var(--text4)">${filtered.length} of ${profs.length} professionals shown${isAdmin() ? ' · Add and edit professionals using the button above' : ''}</div>`;
   }
 
   main.innerHTML = html;
@@ -2606,6 +2606,7 @@ function setPTab(t){
     if(b) b.classList.toggle('pt-active', k===t);
   });
   renderPartners();
+  applyAdminMode();
 }
 function profSearch(v){profState.search=v;renderPartners();}
 function profFilter(v){profState.filter=v;renderPartners();}
@@ -2697,6 +2698,7 @@ function deleteProf(id){
   // Admin bypass via URL parameter
   if(checkAdmin()){ 
     localStorage.setItem(KEY,'1');
+    localStorage.setItem('n2055_admin','1');
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
   }
@@ -2709,8 +2711,19 @@ function deleteProf(id){
   }
 })();
 
+
+// ── ADMIN MODE ─────────────────────────────────────────────────
+function isAdmin(){ return localStorage.getItem('n2055_admin')==='1'; }
+function applyAdminMode(){
+  const admin = isAdmin();
+  // Edit Links button in viz modal
+  const editBtn = document.querySelector('.edit-links-btn');
+  if(editBtn) editBtn.style.display = admin ? '' : 'none';
+  // Partners add/edit/delete buttons — handled in renderPartners via isAdmin()
+}
+
 // ─── INIT ────────────────────────────────────────────────────────────────────
-render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();
+render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAdminMode();
 </script>
 <template id="viz-tpl-land_reg-map"><svg viewBox="0 0 544 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="370" fill="#1A1D16" rx="10"/>
