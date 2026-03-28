@@ -355,9 +355,38 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .cons-proj a:hover{color:var(--gold)}
 .cons-proj a::after{content:' ↗';font-size:7px;opacity:.6}
 
+
+/* ── LOGIN GATE ─────────────────────────────────────────────── */
+#loginGate{position:fixed;inset:0;background:#131610;z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#loginGate.hidden{display:none}
+.lg-wrap{width:100%;max-width:400px;padding:0 24px}
+.lg-logo{font-family:Georgia,serif;font-size:42px;font-weight:700;color:#F0EAD6;margin-bottom:4px}
+.lg-logo span{color:#C8A84B}
+.lg-sub{font-size:11px;color:#8A8878;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:40px}
+.lg-label{font-size:9px;color:#8A8878;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:8px}
+.lg-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;padding:13px 16px;border-radius:8px;font-size:15px;outline:none;transition:border-color .15s;box-sizing:border-box;font-family:system-ui;letter-spacing:.08em}
+.lg-input:focus{border-color:#C8A84B}
+.lg-btn{width:100%;margin-top:12px;background:#C8A84B;color:#131610;border:none;padding:13px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:Georgia,serif;letter-spacing:.04em;transition:opacity .15s}
+.lg-btn:hover{opacity:.88}
+.lg-err{color:#E85050;font-size:10px;margin-top:8px;min-height:16px;text-align:center}
+.lg-footer{margin-top:48px;font-size:9px;color:#3A3F32;text-align:center;letter-spacing:.08em}
+
 </style>
 </head>
 <body>
+
+<div id="loginGate">
+  <div class="lg-wrap">
+    <div class="lg-logo">Nairobi <span>2055</span></div>
+    <div class="lg-sub">Transformation Master Plan</div>
+    <div class="lg-label">Access Password</div>
+    <input class="lg-input" id="lgPwd" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')lgSubmit()"/>
+    <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
+    <div class="lg-err" id="lgErr"></div>
+    <div class="lg-footer">Private access only · nairobi2055.org</div>
+  </div>
+</div>
+
 <div id="vizOv" class="viz-ov" style="display:none" onclick="if(event.target===this)closeViz()">
 <div class="viz-modal" onclick="event.stopPropagation()">
 <div class="viz-hd">
@@ -2640,6 +2669,35 @@ function deleteProf(id){
   saveProfs(profs);
   renderPartners();
 }
+
+
+// ── LOGIN GATE ────────────────────────────────────────────────
+(function(){
+  const KEY = 'n2055_auth';
+  const HASH = '7f4a2b1c9e3d8f6a0b5c2e7d4a9f1b3c'; // internal ref
+  function check(pwd){ return pwd === atob('S0BOUm8qMjA1NQ=='); }
+  function unlock(){
+    document.getElementById('loginGate').classList.add('hidden');
+    localStorage.setItem(KEY,'1');
+  }
+  window.lgSubmit = function(){
+    const v = document.getElementById('lgPwd').value;
+    if(check(v)){ unlock(); }
+    else{
+      const e = document.getElementById('lgErr');
+      e.textContent = 'Incorrect password. Please try again.';
+      document.getElementById('lgPwd').value='';
+      document.getElementById('lgPwd').focus();
+      setTimeout(()=>{ e.textContent=''; }, 3000);
+    }
+  };
+  // Auto-unlock if already authenticated this session
+  if(localStorage.getItem(KEY)==='1') {
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('loginGate').classList.add('hidden');
+    });
+  }
+})();
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();
