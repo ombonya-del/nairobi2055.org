@@ -430,10 +430,12 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <input class="lg-input" id="lgPwd" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')lgSubmit()"/>
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
-    <div class="lg-divider"><span>or use a preview code</span></div>
-    <div class="lg-label">Preview Access Code</div>
-    <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="e.g. NRB2055-A1" onkeydown="if(event.key==='Enter')lgSubmitPreview()"/>
-    <button class="lg-btn-preview" onclick="lgSubmitPreview()">Use Preview Code →</button>
+    <div id="previewSection" style="display:none">
+      <div class="lg-divider"><span>or use a preview code</span></div>
+      <div class="lg-label">Preview Access Code</div>
+      <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="e.g. NRB2055-A1" onkeydown="if(event.key==='Enter')lgSubmitPreview()"/>
+      <button class="lg-btn-preview" onclick="lgSubmitPreview()">Use Preview Code →</button>
+    </div>
     <div class="lg-footer">Private access only · nairobi2055.org</div>
   </div>
 </div>
@@ -2458,10 +2460,31 @@ function getVizKey(title){
   // ── Batch C: EV Retirement ───────────────────────────────────
   if(t.includes('DIESEL FLEET')||t.includes('EV TRANSITION ROADMAP')||t.includes('SMART EV BUS NETWORK')||t.includes('DIGITAL MATATU TRANSITION')) return 'EV_RETIRE';
   // ── Flood Resilience ───────────────────────────────────────
-  if(t.includes('FLOOD')||t.includes('RIPARIAN')||t.includes('FLOOD-RESILIENT')||t.includes('FLOOD-SPECIFIC')||t.includes('FLOOD PLAIN')||t.includes('COMMUNITY FLOOD')||t.includes('STORMWATER')||t.includes('DRAINAGE RETROFIT')||t.includes('FLOOD BARRIER')||t.includes('FLOOD MAPPING')||t.includes('10,000 BINS')||t.includes('BIN-FIRST')||t.includes('WASTE INFRASTRUCTURE')) return 'FLOOD_RESILIENCE';
+  // ── Flood sub-types ──────────────────────────────────────────
+  if(t.includes('DRAINAGE RETROFIT')||t.includes('STORMWATER')||t.includes('SMART STORMWATER')) return 'FLOOD_DRAINAGE';
+  if(t.includes('RIPARIAN BUFFER ENFORCEMENT')||t.includes('RIPARIAN BUFFER')) return 'FLOOD_RIPARIAN';
+  if(t.includes('10,000 BINS')||t.includes('BIN-FIRST')||t.includes('WASTE INFRASTRUCTURE — 10')) return 'FLOOD_BINS';
+  if(t.includes('FLOOD BARRIER')||t.includes('EMERGENCY FLOOD BARRIER')) return 'FLOOD_BARRIERS';
+  if(t.includes('FLOOD')||t.includes('RIPARIAN')||t.includes('FLOOD-RESILIENT')||t.includes('FLOOD-SPECIFIC')||t.includes('FLOOD PLAIN')||t.includes('COMMUNITY FLOOD')||t.includes('FLOOD MAPPING')||t.includes('FLOOD RESPONSE')) return 'FLOOD_RESILIENCE';
   return null;
 }
 const VIZ={
+  FLOOD_DRAINAGE:{title:'Priority Drainage Retrofit — 5 Road Corridors',
+    subtitle:'Ngong · Jogoo · Thika · Mombasa · Limuru/Parklands Roads · 50-Year Storm Standard',
+    getMap:()=>document.getElementById('viz-tpl-flood_drainage-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-flood_drainage-panel').innerHTML},
+  FLOOD_RIPARIAN:{title:'Riparian Buffer Enforcement Act — 30m from Every Watercourse',
+    subtitle:'The Law Already Exists — Enforcement Is Zero · Dedicated Unit + Satellite Monitoring',
+    getMap:()=>document.getElementById('viz-tpl-flood_riparian-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-flood_riparian-panel').innerHTML},
+  FLOOD_BINS:{title:'Public Waste Infrastructure — 10,000 Bins Across Nairobi',
+    subtitle:'Bin-First Principle · 1 per 500m · Highest Density at Flood-Prone Roads and Markets',
+    getMap:()=>document.getElementById('viz-tpl-flood_bins-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-flood_bins-panel').innerHTML},
+  FLOOD_BARRIERS:{title:'Crisis Flood Infrastructure — Barriers, Boats & Gates',
+    subtitle:'Automated Flood Gates · Pre-Positioned Rescue Boats · Deployable Barriers · 12 Points',
+    getMap:()=>document.getElementById('viz-tpl-flood_barriers-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-flood_barriers-panel').innerHTML},
   FLOOD_RESILIENCE:{title:'Flood Resilience Programme — Nairobi',
     subtitle:'Riparian Restoration · Drainage Reform · Community Preparedness · 71 Lives Lost March 2026',
     getMap:()=>document.getElementById('viz-tpl-flood_resilience-map').innerHTML,
@@ -2836,11 +2859,21 @@ function deleteProf(id){
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
   }
+  // Show preview section only when URL has ?preview=1
+  if(new URLSearchParams(window.location.search).get('preview')==='1'){
+    document.addEventListener('DOMContentLoaded',()=>{
+      const ps = document.getElementById('previewSection');
+      if(ps) ps.style.display='block';
+    });
+  }
   // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
     document.addEventListener('DOMContentLoaded',()=>{
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
+      // Check if active preview session needs timer resumed
+      const sess = getPreviewSession && getPreviewSession();
+      if(sess && sess.expires > Date.now()) activatePreviewUI(sess);
     });
   }
 })();
@@ -2848,6 +2881,13 @@ function deleteProf(id){
 
 // ── ADMIN MODE ─────────────────────────────────────────────────
 function isAdmin(){ return localStorage.getItem('n2055_admin')==='1'; }
+// On every page load: if no admin URL param, clear admin flag
+(function(){
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('admin') !== atob('Qm9tQE5vbUA=')){
+    localStorage.removeItem('n2055_admin');
+  }
+})();
 function applyAdminMode(){
   const admin = isAdmin();
   // Edit Links button in viz modal
@@ -4882,33 +4922,377 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 </svg></template>
 <template id="viz-tpl-flood_resilience-panel"><div class="vp-section">
 <div class="vp-title">March 2026 — Nairobi's Deadliest Floods in Years</div>
-<div class="vp-sub">71 dead nationally · 36 in Nairobi · 10,000 households affected · Every death preventable</div>
+<div class="vp-sub">71 deaths nationally · 36 in Nairobi alone · 4,845 displaced · 10,000 households affected</div>
 <div class="bench-list">
-<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">Daily Nation — 7 March 2026</div><div class="bi-desc">Death toll reaches 23 in Nairobi overnight. Worst-hit areas: Kenyatta Avenue CBD, Kirinyaga Road, South C, Thika Road, Uhuru Highway, Mombasa Road, Westlands, Parklands, Mbagathi Way. Vehicles swept away. JKIA diverted flights to Mombasa. <a href="https://nation.africa/kenya/counties/nairobi/photos-heavy-rains-flooding-chaos-in-nairobi--5382694" target="_blank" rel="noopener">Read the report ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">The Star — 7 March 2026</div><div class="bi-desc">Globe Roundabout, Kariokor–Ring Road, South B &amp; C, Parklands, Lang'ata, Pipeline among worst-hit. Nairobi River burst banks at Kariokor. 4,000-strong Green Army deployed. Dagoretti, Buruburu, Umoja, Eastleigh, Kahawa West, Kamukunji, Waiyaki Way all affected. <a href="https://www.the-star.co.ke/news/2026-03-07-sakaja-activates-emergency-teams-after-deadly-floods" target="_blank" rel="noopener">Read the report ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">📖</span><div><div class="bi-city">Wikipedia — 2026 Kenya Floods</div><div class="bi-desc">At least 71 dead nationally (36 in Nairobi), 4,845 displaced, 10,000 households affected. Flooding began night of 6–7 March. KDF military rescue unit deployed. KMet had issued warning 10 days earlier. Government said the Nairobi Rivers Regeneration Programme is 30% complete. <a href="https://en.wikipedia.org/wiki/2026_Kenya_floods" target="_blank" rel="noopener">Full Wikipedia entry ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">Daily Nation — 7 March 2026: Death toll rises to 23</div><div class="bi-desc">Worst-hit areas: Kenyatta Avenue CBD, Kirinyaga Road, South C, Thika Road, Uhuru Highway, Mombasa Road, Westlands, Parklands, Mbagathi Way. "South C residents reported water flowing into their homes due to clogged drainage systems." Vehicles swept away. JKIA flights diverted to Mombasa. <a href="https://nation.africa/kenya/counties/nairobi/photos-heavy-rains-flooding-chaos-in-nairobi--5382694" target="_blank" rel="noopener">Read full report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">The Star — 7 March 2026: Globe Roundabout, Parklands, Kariokor flooded</div><div class="bi-desc">Globe Roundabout, Kariokor–Ring Road, South B &amp; C, Parklands avenue, Lang'ata, Pipeline, Buruburu, Umoja, Eastleigh all flooded. Green Army of 4,000 deployed. Nairobi River burst banks at Kariokor. Two deaths reported in Parklands; three bodies recovered in Lang'ata. <a href="https://www.the-star.co.ke/news/2026-03-07-sakaja-activates-emergency-teams-after-deadly-floods" target="_blank" rel="noopener">Read full report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">The Star — 8 March 2026: Death toll rises to 28, electrocution kills</div><div class="bi-desc">Multiple victims died from KPLC power lines brought down by floodwater — people electrocuted walking through standing water. Nairobi police boss George Seda: "We expect to find more bodies." Five vehicles towed at Kariokor–Ring Road roundabout after Nairobi River swamped the area. <a href="https://www.the-star.co.ke/counties/nairobi/2026-03-09-death-toll-rises-to-28-as-floods-ravage-nairobi" target="_blank" rel="noopener">Read electrocution report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">The Star — 15 March 2026: Parklands, Kibera, South C flooded again</div><div class="bi-desc">Second wave: Parklands, CBD, Ngong Road (Ngando area), Lower Kabete, Kibera, Kilimani, South B, Kawangware, Lang'ata, Lavington, Eastleigh, Riruta all affected. Kenya Red Cross Aqua Rescue teams rescued 11 people stranded in a marooned matatu on Bunyala Road. Two children rescued from flooded house in Kilimani. <a href="https://www.the-star.co.ke/news/2026-03-15-rains-wreak-havoc-in-nairobi-again" target="_blank" rel="noopener">Read second-wave report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📖</span><div><div class="bi-city">Wikipedia — 2026 Kenya Floods: Full chronology</div><div class="bi-desc">Official count: 71 dead (36 in Nairobi), 4,845 displaced, 10,000 households affected as of 18 March 2026. Kenya Meteorological Department had issued flood warning 10 days earlier on 25 February. Government noted the Nairobi Rivers Regeneration Programme is only 30% complete. <a href="https://en.wikipedia.org/wiki/2026_Kenya_floods" target="_blank" rel="noopener">Full Wikipedia entry ↗</a></div></div></div>
 </div></div>
 <div class="vp-section">
-<div class="vp-title">Four Compounding Failures — All Solvable</div>
+<div class="vp-title">The Four Compounding Failures — Every One Preventable</div>
 <div class="bench-list">
-<div class="bench-item"><span class="bi-ico">🏚️</span><div><div class="bi-city">1. Illegal construction on river banks and drainage paths</div><div class="bi-desc">Government confirmed most Nairobi deaths occurred in settlements built on riparian corridors of the Nairobi, Ngong and Mathare rivers. 30m riparian buffer zones exist in law. Enforcement is zero. Every structure built in a flood plain is a future death sentence. <a href="https://www.the-star.co.ke/news/2026-03-07-flood-death-toll-rises-to-25-as-raging-rivers-wreak-havoc-in-nairobi" target="_blank" rel="noopener">The Star report ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🛣️</span><div><div class="bi-city">2. Roads designed for traffic, not water</div><div class="bi-desc">Parklands/Limuru Road, Ngong Road, Mombasa Road, Uhuru Highway, Jogoo Road — all flooded because carriageways act as rivers during heavy rain. BRT corridor redesigns must include drainage as mandatory component — this is the intervention that protects middle-class and upmarket Nairobi, not just settlements. <a href="https://www.the-star.co.ke/news/2026-03-15-rains-wreak-havoc-in-nairobi-again" target="_blank" rel="noopener">The Star March 15 ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🚮</span><div><div class="bi-city">3. Blocked drains + inadequate waste infrastructure</div><div class="bi-desc">South C residents reported water flowing into homes through clogged drainage. Nairobi has fewer than 1 public bin per 2,000 residents in informal settlements. Fix the infrastructure first — behaviour change campaigns without bins achieve nothing. <a href="https://www.nema.go.ke/" target="_blank" rel="noopener">NEMA waste standards ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">⚡</span><div><div class="bi-city">4. Electrocution from downed power lines</div><div class="bi-desc">Multiple 2026 flood deaths were from electrocution, not drowning — KPLC power lines brought down by flooding killed people who walked through standing water. Underground cabling in the most flood-prone corridors is a life-safety intervention, not a luxury. <a href="https://www.kplc.co.ke/" target="_blank" rel="noopener">Kenya Power ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🏚️</span><div><div class="bi-city">1. Illegal construction on riparian land — The Star, 7 March 2026</div><div class="bi-desc">Government confirmed most Nairobi deaths occurred in settlements on riparian corridors of the Nairobi, Ngong and Mathare rivers. 30m riparian buffer zones exist in law and are completely unenforced. The Star reported: "Many settlements affected in Nairobi are located along riparian corridors of the Nairobi, Ngong and Mathare rivers, which are highly vulnerable during heavy rainfall." <a href="https://www.the-star.co.ke/news/2026-03-07-flood-death-toll-rises-to-25-as-raging-rivers-wreak-havoc-in-nairobi" target="_blank" rel="noopener">The Star report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🛣️</span><div><div class="bi-city">2. Roads built without drainage — AFP/Euronews, 9 March 2026</div><div class="bi-desc">Parklands, South C, Globe Roundabout, Mombasa Road, Uhuru Highway, Jogoo Road, Ngong Road — all flooded because carriageways act as rivers during heavy rain. AFP reporters saw "heavily damaged roads and infrastructure from the city's vast slums to upmarket areas like Parklands." BRT corridor redesigns must include drainage as mandatory standard. <a href="https://www.euronews.com/2026/03/09/severe-flooding-in-kenya-leaves-dozens-dead-in-nairobi-and-maasai-mara-elephants-wading-in" target="_blank" rel="noopener">AFP/Euronews report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">⚡</span><div><div class="bi-city">3. KPLC power lines kill flood victims — The Star, 8 March 2026</div><div class="bi-desc">Multiple 2026 flood deaths were electrocutions, not drownings — KPLC power lines brought down by flooding killed residents walking through standing water. Police Commander Seda confirmed electrocution deaths separately from drowning deaths. Underground cabling in flood-prone corridors is a life-safety intervention. <a href="https://www.the-star.co.ke/counties/nairobi/2026-03-09-death-toll-rises-to-28-as-floods-ravage-nairobi" target="_blank" rel="noopener">Electrocution deaths report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚮</span><div><div class="bi-city">4. Blocked drains + no bins — Daily Nation, 7 March 2026</div><div class="bi-desc">"South C residents reported water flowing into their homes due to clogged drainage systems." Nairobi has under 1 public bin per 2,000 settlement residents. Plastic waste blocks stormwater channels within hours of rainfall. Fix infrastructure first — behaviour change campaigns without bins achieve nothing. Fix the bins. Fix the collection. The behaviour follows. <a href="https://nation.africa/kenya/counties/nairobi/photos-heavy-rains-flooding-chaos-in-nairobi--5382694" target="_blank" rel="noopener">Daily Nation clogged drains report ↗</a></div></div></div>
 </div></div>
 <div class="vp-section">
-<div class="vp-title">Global Benchmarks — Cities That Fixed Their Floods</div>
+<div class="vp-title">Global Benchmarks — Cities That Solved This</div>
 <div class="bench-list">
-<div class="bench-item"><span class="bi-ico">🇨🇴</span><div><div class="bi-city">Medellín — Quebrada Juan Bobo Ravine Upgrade</div><div class="bi-desc">Flood-prone ravine settlement converted into a linear park — 1,200 people upgraded in place, retention ponds built, community stairways installed. Zero forced evictions. Cost: $5M. Directly applicable to Mathare River bank. <a href="https://en.wikipedia.org/wiki/Medell%C3%ADn" target="_blank" rel="noopener">Medellín model ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🇧🇩</span><div><div class="bi-city">Bangladesh — SMS Flood Early Warning System</div><div class="bi-desc">7-day flood forecasts + community volunteers at river gauging stations + automated SMS alerts reaching 90% of at-risk households. Cyclone deaths fell from 500,000 (1970) to under 200 (2007). The M-Pesa infrastructure already makes this possible in Nairobi today. <a href="https://en.wikipedia.org/wiki/Flood_Warning_System_in_Bangladesh" target="_blank" rel="noopener">Bangladesh EWS ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Rotterdam — Water Squares + Sponge City</div><div class="bi-desc">Benthemplein Water Square absorbs 1.7 million litres during heavy rain — a sunken public space that functions as a sports court in dry weather. Rotterdam now has 90 rooftop gardens and 5 water squares that absorbed what previously caused urban flooding. <a href="https://en.wikipedia.org/wiki/Rotterdam" target="_blank" rel="noopener">Rotterdam sponge city ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Durban — eThekwini Informal Settlement Relocation + Linear Parks</div><div class="bi-desc">20,000 households moved from flood zones over 15 years — voluntary, with community negotiation and housing support. Vacated riverbank land converted to linear parks. Flood deaths in relocated areas: zero. <a href="https://en.wikipedia.org/wiki/Durban" target="_blank" rel="noopener">Durban resilience ↗</a></div></div></div>
-</div></div>
-<div class="vp-section">
-<div class="vp-title">Nairobi 2055 Flood Resilience Programme — Phase 1 Targets</div>
+<div class="bench-item"><span class="bi-ico">🇨🇴</span><div><div class="bi-city">Medellín — Quebrada Juan Bobo, 2007</div><div class="bi-desc">Flood-prone ravine settlement: 1,200 people upgraded in place, retention ponds, community stairways. Zero forced evictions. Cost: $5M. Directly applicable to Mathare River banks. Medellin won the Lee Kuan Yew World City Prize 2012 partly for this. <a href="https://en.wikipedia.org/wiki/Medell%C3%ADn" target="_blank" rel="noopener">Medellín urban transformation ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇩</span><div><div class="bi-city">Bangladesh — Cyclone Early Warning, 1970–2007</div><div class="bi-desc">Cyclone Bhola 1970: 500,000 deaths. Cyclone Sidr 2007: 3,500 deaths. Same storm intensity — the difference was an SMS-based community warning system with volunteers at river gauging stations. M-Pesa already makes this possible in Nairobi today at near-zero marginal cost. <a href="https://en.wikipedia.org/wiki/Flood_Warning_System_in_Bangladesh" target="_blank" rel="noopener">Bangladesh EWS ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Rotterdam — Benthemplein Water Square, 2013</div><div class="bi-desc">A sunken sports court that becomes a water retention basin during heavy rain — absorbs 1.7 million litres. Rotterdam now prevents urban flooding that previously required emergency response. The same principle applied to Nairobi's Globe Roundabout and South C areas could retain millions of litres. <a href="https://en.wikipedia.org/wiki/Rotterdam" target="_blank" rel="noopener">Rotterdam water squares ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Durban eThekwini — Voluntary Riparian Relocation, 2000–2015</div><div class="bi-desc">20,000 households moved from flood zones over 15 years — voluntary, with community negotiation and housing support. Vacated riverbank land converted to linear parks. Flood deaths in relocated areas: zero since programme completion. <a href="https://en.wikipedia.org/wiki/Durban" target="_blank" rel="noopener">Durban flood resilience ↗</a></div></div></div>
+</div></div></template>
+
+
+<template id="viz-tpl-flood_drainage-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="440" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Priority Drainage Retrofit — 5 Road Corridors</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Upgrade drainage to 1-in-50-year storm standard · Phase 1 2025–2030 · Est. KES 8–12B</text>
+<rect x="20" y="52" width="504" height="280" fill="#21251C" rx="6"/>
+<!-- RIVERS faint -->
+<path d="M 30 190 Q 130 185 230 200 Q 330 210 430 215 Q 470 218 515 215" stroke="#378ADD" stroke-width="1.5" fill="none" opacity="0.4"/>
+<path d="M 200 60 Q 215 110 225 165 Q 228 185 230 200" stroke="#3FBFB0" stroke-width="1.5" fill="none" opacity="0.35"/>
+<path d="M 30 275 Q 110 255 190 250 Q 260 242 330 210" stroke="#5DBF7A" stroke-width="1.5" fill="none" opacity="0.35"/>
+<!-- CBD -->
+<rect x="255" y="175" width="50" height="35" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
+<text x="280" y="196" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<!-- 5 PRIORITY CORRIDORS as thick colored road lines -->
+<!-- 1: Ngong Road (SW) -->
+<path d="M 100 320 Q 140 290 180 265 Q 220 245 260 230 Q 290 220 310 210" stroke="#E85050" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+<path d="M 100 320 Q 140 290 180 265 Q 220 245 260 230 Q 290 220 310 210" stroke="#E85050" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
+<text x="105" y="338" fill="#E85050" font-size="9" font-weight="700" font-family="system-ui">1 NGONG ROAD</text>
+<text x="105" y="350" fill="#8A8878" font-size="7.5" font-family="system-ui">Culvert upsizing + bioswale + retention basin</text>
+<!-- 2: Jogoo Road (E) -->
+<path d="M 305 188 Q 350 188 390 188 Q 430 188 480 185" stroke="#E8844A" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+<path d="M 305 188 Q 350 188 390 188 Q 430 188 480 185" stroke="#E8844A" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
+<text x="340" y="175" fill="#E8844A" font-size="9" font-weight="700" font-family="system-ui">2 JOGOO ROAD / OUTER RING ROAD</text>
+<text x="340" y="165" fill="#8A8878" font-size="7.5" font-family="system-ui">Raised kerbs + IoT sensors + reed-bed filters</text>
+<!-- 3: Thika Road (N) -->
+<path d="M 265 175 Q 260 145 255 115 Q 250 88 245 60" stroke="#C8A84B" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+<path d="M 265 175 Q 260 145 255 115 Q 250 88 245 60" stroke="#C8A84B" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
+<text x="270" y="115" fill="#C8A84B" font-size="9" font-weight="700" font-family="system-ui">3 THIKA ROAD</text>
+<text x="270" y="127" fill="#8A8878" font-size="7.5" font-family="system-ui">Mathare crossing drainage</text>
+<!-- 4: Mombasa Road (SE) -->
+<path d="M 305 205 Q 350 225 400 248 Q 440 268 490 290" stroke="#8B79E8" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+<path d="M 305 205 Q 350 225 400 248 Q 440 268 490 290" stroke="#8B79E8" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
+<text x="420" y="285" fill="#8B79E8" font-size="9" font-weight="700" font-family="system-ui">4 MOMBASA ROAD</text>
+<text x="420" y="297" fill="#8A8878" font-size="7.5" font-family="system-ui">Industrial area drainage + Mukuru relief</text>
+<!-- 5: Limuru/Parklands Road (NW) -->
+<path d="M 255 175 Q 220 155 180 135 Q 140 115 100 95 Q 70 80 40 68" stroke="#5DBF7A" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
+<path d="M 255 175 Q 220 155 180 135 Q 140 115 100 95 Q 70 80 40 68" stroke="#5DBF7A" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
+<text x="40" y="58" fill="#5DBF7A" font-size="9" font-weight="700" font-family="system-ui">5 LIMURU / PARKLANDS ROAD</text>
+<text x="40" y="68" fill="#8A8878" font-size="7.5" font-family="system-ui">Gitathuru crossing + Parklands avenue retrofit</text>
+<!-- Drainage upgrade icons along corridors -->
+<circle cx="160" cy="280" r="6" fill="#E85050" opacity="0.9"/>
+<text x="160" y="283" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">D</text>
+<circle cx="370" cy="188" r="6" fill="#E8844A" opacity="0.9"/>
+<text x="370" y="191" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">S</text>
+<circle cx="252" cy="100" r="6" fill="#C8A84B" opacity="0.9"/>
+<text x="252" y="103" fill="#131610" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">R</text>
+<circle cx="420" cy="255" r="6" fill="#8B79E8" opacity="0.9"/>
+<text x="420" y="258" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">D</text>
+<circle cx="130" cy="112" r="6" fill="#5DBF7A" opacity="0.9"/>
+<text x="130" y="115" fill="#131610" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">R</text>
+<!-- Legend -->
+<rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
+<text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Drainage Upgrade Standards — Each Corridor</text>
+<text x="32" y="375" fill="#C4BFA8" font-size="8.5" font-family="system-ui">D = Drain upsizing (culverts widened to 50-year storm capacity)</text>
+<text x="32" y="388" fill="#C4BFA8" font-size="8.5" font-family="system-ui">S = IoT sensor nodes (real-time water level monitoring, SMS alert trigger)</text>
+<text x="32" y="401" fill="#C4BFA8" font-size="8.5" font-family="system-ui">R = Reed-bed filter (removes solids before outfall into river)</text>
+<text x="32" y="416" fill="#5C5C4E" font-size="8" font-family="system-ui">Total Phase 1 est.: KES 8–12B · 5 corridors · ~120km of road drainage upgraded · 50-year storm standard</text>
+</svg></template>
+<template id="viz-tpl-flood_drainage-panel"><div class="vp-section">
+<div class="vp-title">Priority Drainage Retrofit — 5 Road Corridors</div>
+<div class="vp-sub">Every major 2026 flood-hit road gets redesigned drainage as standard — not an afterthought</div>
 <div class="bench-list">
-<div class="bench-item"><span class="bi-ico">🎯</span><div><div class="bi-city">Target: Zero flood deaths by 2030</div><div class="bi-desc">71 dead in 2026. 65 dead in 2024. This pattern repeats every rainy season. The interventions exist. The engineering is proven. The only missing ingredient is political will and coordinated implementation across 4 pillars: Urban Design, Environment, Governance, and Emergency Response.</div></div></div>
-<div class="bench-item"><span class="bi-ico">📋</span><div><div class="bi-city">8 Priority Corridors — Phase 1 2025-2030</div><div class="bi-desc">Mathare River banks · Kibera/Ngong River · Mukuru confluence · Parklands/Limuru Road · South B &amp; C drainage · Globe/Kariokor · Ngong Road stormwater · Outering Road/Eastlands sensors. Total estimated cost: KES 12–18B. Lives saved: estimated 50+ per year.</div></div></div>
+<div class="bench-item"><span class="bi-ico">🛣️</span><div><div class="bi-city">Why roads flood — and what the fix looks like</div><div class="bi-desc">Nairobi's existing road drainage was designed for rainfall intensities typical of the 1960s–70s. Climate change has increased peak rainfall by 30–40%. The fix: widen culverts to 50-year storm capacity, add IoT water-level sensors at each river crossing, and plant reed beds to filter solids before outfall. Cost per km: approx. KES 15–25M. Cheaper than flood damage per event. <a href="https://www.kenha.co.ke/" target="_blank" rel="noopener">KENHA road standards ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Rotterdam — Road drainage as flood infrastructure</div><div class="bi-desc">Rotterdam retrofitted all major roads with integrated water management between 2008–2020. Every road redesign includes: permeable surface sections, subsurface storage tanks, and outlet connections to the canal system. Zero major urban flooding since 2013. <a href="https://en.wikipedia.org/wiki/Rotterdam" target="_blank" rel="noopener">Rotterdam water management ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — Cheonggyecheon River restoration + road drainage</div><div class="bi-desc">Seoul removed an elevated highway above a buried river and restored both the river and the surrounding road drainage system simultaneously. Result: 639% increase in biodiversity, 2.5°C temperature reduction, and zero flood events in the restored corridor since 2005. <a href="https://en.wikipedia.org/wiki/Cheonggyecheon" target="_blank" rel="noopener">Cheonggyecheon restoration ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — KENHA road drainage standards update needed</div><div class="bi-desc">Kenya's road drainage design standards (Road Design Manual) have not been updated since 1987. A mandatory update to require 50-year storm capacity drainage on all Class A and B roads — with enforcement by KeRRA and KENHA — is the single regulatory change that would prevent most urban flooding on major roads. <a href="https://www.kenha.co.ke/" target="_blank" rel="noopener">KENHA ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-flood_riparian-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="440" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Riparian Buffer Enforcement — 30m from Every Watercourse</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">The law already exists — enforcement is zero · Every structure in the red zone is a future death</text>
+<rect x="20" y="52" width="504" height="280" fill="#21251C" rx="6"/>
+<!-- RIVERS with 30m buffer zones shown -->
+<!-- Nairobi River + 30m buffer -->
+<path d="M 30 195 Q 130 188 230 202 Q 330 215 430 218 Q 470 222 515 218" stroke="none" fill="none"/>
+<!-- Buffer zone fill (red bands either side of river) -->
+<path d="M 30 175 Q 130 168 230 182 Q 330 195 430 198 Q 470 202 515 198 L 515 238 Q 470 242 430 238 Q 330 235 230 222 Q 130 208 30 215 Z" fill="#E85050" opacity="0.15"/>
+<path d="M 30 195 Q 130 188 230 202 Q 330 215 430 218 Q 470 222 515 218" stroke="#378ADD" stroke-width="3" fill="none"/>
+<text x="55" y="185" fill="#378ADD" font-size="8" font-family="system-ui" font-weight="700">NAIROBI RIVER</text>
+<text x="55" y="175" fill="#E85050" font-size="7" font-family="system-ui">←— 30m buffer —→</text>
+<!-- Mathare River + buffer -->
+<path d="M 200 60 Q 215 110 225 165 Q 228 188 230 202" stroke="none" fill="none"/>
+<path d="M 180 60 Q 195 110 205 165 Q 208 188 210 202 L 250 202 Q 248 188 248 165 Q 245 110 235 60 Z" fill="#E85050" opacity="0.15"/>
+<path d="M 200 60 Q 215 110 225 165 Q 228 188 230 202" stroke="#3FBFB0" stroke-width="2.5" fill="none"/>
+<text x="236" y="78" fill="#3FBFB0" font-size="8" font-family="system-ui" font-weight="700">MATHARE R.</text>
+<!-- Ngong River + buffer -->
+<path d="M 30 285 Q 110 265 190 258 Q 260 250 330 215" stroke="none" fill="none"/>
+<path d="M 30 265 Q 110 245 190 238 Q 260 230 330 195 L 330 235 Q 260 270 190 278 Q 110 285 30 305 Z" fill="#E85050" opacity="0.15"/>
+<path d="M 30 285 Q 110 265 190 258 Q 260 250 330 215" stroke="#5DBF7A" stroke-width="2.5" fill="none"/>
+<text x="35" y="303" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
+<!-- Gitathuru River + buffer -->
+<path d="M 150 60 Q 165 100 175 135 Q 182 162 188 185 Q 192 198 195 210" stroke="none" fill="none"/>
+<path d="M 130 60 Q 145 100 155 135 Q 162 162 168 185 Q 172 198 175 210 L 215 210 Q 212 198 210 185 Q 205 162 198 135 Q 188 100 170 60 Z" fill="#E85050" opacity="0.12"/>
+<path d="M 150 60 Q 165 100 175 135 Q 182 162 188 185 Q 192 198 195 210" stroke="#8B79E8" stroke-width="2" fill="none" opacity="0.7"/>
+<text x="112" y="76" fill="#8B79E8" font-size="7.5" font-family="system-ui">GITATHURU</text>
+<!-- Illegal structures IN buffer zones -->
+<rect x="235" y="170" width="12" height="10" fill="#E85050" opacity="0.85" rx="1"/>
+<rect x="250" y="178" width="10" height="8" fill="#E85050" opacity="0.85" rx="1"/>
+<rect x="158" y="108" width="11" height="9" fill="#E85050" opacity="0.75" rx="1"/>
+<rect x="168" y="118" width="9" height="8" fill="#E85050" opacity="0.75" rx="1"/>
+<rect x="115" y="255" width="12" height="10" fill="#E85050" opacity="0.8" rx="1"/>
+<rect x="100" y="262" width="11" height="9" fill="#E85050" opacity="0.8" rx="1"/>
+<rect x="340" y="200" width="12" height="10" fill="#E85050" opacity="0.75" rx="1"/>
+<!-- 30m measurement arrows -->
+<line x1="230" y1="202" x2="230" y2="182" stroke="#F0EAD6" stroke-width="1" marker-end="url(#arr)"/>
+<text x="233" y="195" fill="#F0EAD6" font-size="7" font-family="system-ui">30m</text>
+<!-- Labels -->
+<text x="260" y="160" fill="#E85050" font-size="8" font-weight="700" font-family="system-ui">ILLEGAL</text>
+<text x="260" y="170" fill="#E85050" font-size="8" font-family="system-ui">STRUCTURES</text>
+<text x="260" y="180" fill="#8A8878" font-size="7.5" font-family="system-ui">→ demolition required</text>
+<!-- CBD -->
+<rect x="258" y="178" width="48" height="34" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
+<text x="282" y="198" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<!-- Legend -->
+<rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
+<text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Riparian Buffer Enforcement Act — What It Mandates</text>
+<rect x="32" y="370" width="12" height="10" fill="#E85050" opacity="0.3" rx="1"/>
+<text x="50" y="379" fill="#C4BFA8" font-size="8.5" font-family="system-ui">30m buffer zone either side of every river, stream and seasonal drainage channel — NO construction</text>
+<rect x="32" y="386" width="12" height="10" fill="#E85050" opacity="0.85" rx="1"/>
+<text x="50" y="395" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Existing illegal structures: demolition with compensation for genuine first occupants (zero for speculation)</text>
+<text x="32" y="412" fill="#5C5C4E" font-size="8" font-family="system-ui">Dedicated Riparian Enforcement Unit · Criminal penalties · Annual satellite-verified compliance mapping</text>
+<text x="32" y="424" fill="#5C5C4E" font-size="8" font-family="system-ui">The 30m buffer law (Water Act 2016) already exists. The missing ingredient is enforcement. This plan funds it.</text>
+</svg></template>
+<template id="viz-tpl-flood_riparian-panel"><div class="vp-section">
+<div class="vp-title">Riparian Buffer Enforcement Act — The Law That Exists But Is Never Enforced</div>
+<div class="vp-sub">Kenya's Water Act 2016 already mandates a 30m riparian reserve. The penalty is a fine. The enforcement is zero.</div>
+<div class="bench-list">
+<div class="bench-item"><span class="bi-ico">⚖️</span><div><div class="bi-city">The current law — Water Act 2016, Section 70</div><div class="bi-desc">Kenya's Water Act 2016 prohibits any development within a riparian reserve — defined as 30m from the edge of any river, stream, lake or seasonal drainage channel. Penalty: a fine. In practice: no Riparian Enforcement Unit exists, no satellite monitoring is done, and construction in riparian reserves continues daily. <a href="https://www.water.go.ke/" target="_blank" rel="noopener">Ministry of Water ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">The Star — March 2026: Government admits riparian failures</div><div class="bi-desc">"Many settlements affected in Nairobi are located along riparian corridors of the Nairobi, Ngong and Mathare rivers, which are highly vulnerable during heavy rainfall." Government noted the Nairobi Rivers Regeneration Programme is only 30% complete after years of implementation. <a href="https://www.the-star.co.ke/news/2026-03-07-flood-death-toll-rises-to-25-as-raging-rivers-wreak-havoc-in-nairobi" target="_blank" rel="noopener">The Star report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇷</span><div><div class="bi-city">Recife, Brazil — Legal City Programme</div><div class="bi-desc">Recife's PREZEIS programme formalised settlement tenure while simultaneously enforcing riparian buffers — using satellite mapping to identify encroachments annually. Residents in buffer zones were relocated with full community participation and housing support. Zero new riparian construction since 2008. <a href="https://en.wikipedia.org/wiki/Recife" target="_blank" rel="noopener">Recife programme ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🛰️</span><div><div class="bi-city">The Technology Fix — Satellite Enforcement</div><div class="bi-desc">Annual satellite imagery from Copernicus or Planet Labs costs under KES 2M/year for full Nairobi coverage. Cross-referenced with the digital land registry (Pillar 2), it creates automatic alerts when new structures appear within riparian buffers. The Riparian Enforcement Unit acts on satellite alerts — not complaints. <a href="https://www.copernicus.eu/en" target="_blank" rel="noopener">Copernicus satellite programme ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-flood_bins-map"><svg viewBox="0 0 544 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="460" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Public Waste Infrastructure — 10,000 Bins Across Nairobi</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">1 bin per 500m — highest density at drainage channels, markets, flood-prone roads</text>
+<rect x="20" y="52" width="504" height="290" fill="#21251C" rx="6"/>
+<!-- Rivers faint -->
+<path d="M 30 200 Q 130 193 230 207 Q 330 220 430 223 Q 470 227 515 223" stroke="#378ADD" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M 200 62 Q 215 115 225 170 Q 228 190 230 207" stroke="#3FBFB0" stroke-width="1.5" fill="none" opacity="0.3"/>
+<path d="M 30 288 Q 110 268 190 262 Q 260 255 330 220" stroke="#5DBF7A" stroke-width="1.5" fill="none" opacity="0.3"/>
+<!-- Major roads faint -->
+<line x1="282" y1="52" x2="268" y2="207" stroke="#3A3F32" stroke-width="1" opacity="0.5"/> <!-- Thika Road -->
+<line x1="100" y1="330" x2="310" y2="210" stroke="#3A3F32" stroke-width="1" opacity="0.5"/> <!-- Ngong Road -->
+<line x1="307" y1="192" x2="515" y2="192" stroke="#3A3F32" stroke-width="1" opacity="0.5"/> <!-- Jogoo/Outer Ring -->
+<line x1="305" y1="210" x2="500" y2="300" stroke="#3A3F32" stroke-width="1" opacity="0.5"/> <!-- Mombasa Road -->
+<line x1="255" y1="182" x2="40" y2="70" stroke="#3A3F32" stroke-width="1" opacity="0.5"/> <!-- Limuru Road -->
+<!-- CBD -->
+<rect x="258" y="180" width="48" height="35" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
+<text x="282" y="200" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<!-- BIN CLUSTERS — using small colored squares, density varies by zone -->
+<!-- High density zones: along flood corridors and markets -->
+<!-- Ngong Road corridor bins (priority) -->
+<g fill="#E85050" opacity="0.85">
+  <rect x="110" y="318" width="5" height="5" rx="1"/>
+  <rect x="130" y="308" width="5" height="5" rx="1"/>
+  <rect x="150" y="298" width="5" height="5" rx="1"/>
+  <rect x="170" y="288" width="5" height="5" rx="1"/>
+  <rect x="190" y="277" width="5" height="5" rx="1"/>
+  <rect x="210" y="268" width="5" height="5" rx="1"/>
+  <rect x="230" y="258" width="5" height="5" rx="1"/>
+  <rect x="250" y="248" width="5" height="5" rx="1"/>
+  <rect x="270" y="238" width="5" height="5" rx="1"/>
+  <rect x="290" y="228" width="5" height="5" rx="1"/>
+</g>
+<!-- Mathare River corridor bins -->
+<g fill="#3FBFB0" opacity="0.85">
+  <rect x="205" y="165" width="5" height="5" rx="1"/>
+  <rect x="210" y="145" width="5" height="5" rx="1"/>
+  <rect x="215" y="125" width="5" height="5" rx="1"/>
+  <rect x="218" y="105" width="5" height="5" rx="1"/>
+  <rect x="220" y="85" width="5" height="5" rx="1"/>
+</g>
+<!-- Parklands corridor bins -->
+<g fill="#5DBF7A" opacity="0.85">
+  <rect x="235" y="168" width="5" height="5" rx="1"/>
+  <rect x="210" y="148" width="5" height="5" rx="1"/>
+  <rect x="185" y="130" width="5" height="5" rx="1"/>
+  <rect x="160" y="112" width="5" height="5" rx="1"/>
+  <rect x="135" y="95" width="5" height="5" rx="1"/>
+  <rect x="110" y="78" width="5" height="5" rx="1"/>
+  <rect x="78" y="65" width="5" height="5" rx="1"/>
+</g>
+<!-- Jogoo/Eastlands corridor bins -->
+<g fill="#C8A84B" opacity="0.85">
+  <rect x="315" y="188" width="5" height="5" rx="1"/>
+  <rect x="340" y="188" width="5" height="5" rx="1"/>
+  <rect x="365" y="188" width="5" height="5" rx="1"/>
+  <rect x="390" y="188" width="5" height="5" rx="1"/>
+  <rect x="415" y="188" width="5" height="5" rx="1"/>
+  <rect x="440" y="188" width="5" height="5" rx="1"/>
+  <rect x="465" y="186" width="5" height="5" rx="1"/>
+</g>
+<!-- Mombasa Road bins -->
+<g fill="#8B79E8" opacity="0.85">
+  <rect x="315" y="215" width="5" height="5" rx="1"/>
+  <rect x="340" y="228" width="5" height="5" rx="1"/>
+  <rect x="365" y="242" width="5" height="5" rx="1"/>
+  <rect x="390" y="255" width="5" height="5" rx="1"/>
+  <rect x="415" y="268" width="5" height="5" rx="1"/>
+  <rect x="440" y="280" width="5" height="5" rx="1"/>
+</g>
+<!-- Market areas (highest density) — Gikomba, Kangemi, Kawangware -->
+<g fill="#F0EAD6" opacity="0.7">
+  <!-- Gikomba market area -->
+  <rect x="312" y="196" width="4" height="4" rx="1"/>
+  <rect x="318" y="200" width="4" height="4" rx="1"/>
+  <rect x="308" y="204" width="4" height="4" rx="1"/>
+  <!-- Mathare market -->
+  <rect x="245" y="136" width="4" height="4" rx="1"/>
+  <rect x="250" y="142" width="4" height="4" rx="1"/>
+  <!-- Kawangware -->
+  <rect x="115" y="240" width="4" height="4" rx="1"/>
+  <rect x="120" y="246" width="4" height="4" rx="1"/>
+  <!-- South C -->
+  <rect x="290" y="285" width="4" height="4" rx="1"/>
+  <rect x="295" y="278" width="4" height="4" rx="1"/>
+  <!-- Globe/Kariokor -->
+  <rect x="305" y="200" width="4" height="4" rx="1"/>
+  <rect x="312" y="205" width="4" height="4" rx="1"/>
+</g>
+<!-- Summary stats -->
+<text x="32" y="265" fill="#8A8878" font-size="8" font-family="system-ui">PHASE 1 TARGET: 10,000 bins · 1 per 500m · Daily collection by NCC + community operators</text>
+<!-- Labels for corridors -->
+<text x="118" y="332" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">NGONG RD CORRIDOR</text>
+<text x="222" y="80" fill="#3FBFB0" font-size="7.5" font-weight="700" font-family="system-ui">MATHARE</text>
+<text x="60" y="60" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">PARKLANDS/LIMURU</text>
+<text x="340" y="178" fill="#C8A84B" font-size="7.5" font-weight="700" font-family="system-ui">JOGOO/OUTER RING</text>
+<text x="445" y="295" fill="#8B79E8" font-size="7.5" font-weight="700" font-family="system-ui">MOMBASA RD</text>
+<!-- Legend -->
+<rect x="20" y="354" width="504" height="96" fill="#21251C" rx="6"/>
+<text x="32" y="370" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Bin Placement Priority Zones — The Bin-First Principle</text>
+<rect x="32" y="379" width="8" height="8" fill="#E85050" rx="1"/>
+<text x="45" y="387" fill="#C4BFA8" font-size="8" font-family="system-ui">Priority 1: Along flood-prone road corridors (Ngong, Jogoo, Mombasa, Parklands, Thika)</text>
+<rect x="32" y="393" width="8" height="8" fill="#3FBFB0" rx="1"/>
+<text x="45" y="401" fill="#C4BFA8" font-size="8" font-family="system-ui">Priority 2: Within 100m of all rivers and seasonal drainage channels</text>
+<rect x="32" y="407" width="8" height="8" fill="#F0EAD6" opacity="0.7" rx="1"/>
+<text x="45" y="415" fill="#C4BFA8" font-size="8" font-family="system-ui">Priority 3: Market areas — Gikomba, Kangemi, Kawangware, Mathare, Kibera, Mukuru</text>
+<text x="32" y="432" fill="#5C5C4E" font-size="8" font-family="system-ui">Bin-First Principle: Infrastructure before behaviour change campaigns · Behaviour follows infrastructure</text>
+<text x="32" y="444" fill="#5C5C4E" font-size="8" font-family="system-ui">Cost: KES 2–4B total · Funded via community waste operator contracts + county budget + diaspora bonds</text>
+</svg></template>
+<template id="viz-tpl-flood_bins-panel"><div class="vp-section">
+<div class="vp-title">Public Waste Infrastructure — The Bin-First Principle</div>
+<div class="vp-sub">Nairobi has under 1 public bin per 2,000 settlement residents. Then wonders why drains are blocked.</div>
+<div class="bench-list">
+<div class="bench-item"><span class="bi-ico">📰</span><div><div class="bi-city">Daily Nation — 7 March 2026: South C drains blocked by plastic waste</div><div class="bi-desc">"South C residents reported water flowing into their homes due to clogged drainage systems." The clogging is caused by plastic waste — bags, bottles, packaging — that accumulates in drainage channels because there are no bins nearby to put it in. Fix the bins. Fix the collection. The drainage stays clear. <a href="https://nation.africa/kenya/counties/nairobi/photos-heavy-rains-flooding-chaos-in-nairobi--5382694" target="_blank" rel="noopener">Daily Nation report ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚮</span><div><div class="bi-city">The Infrastructure Gap — Numbers</div><div class="bi-desc">Nairobi County currently has approximately 3,000 public bins citywide — for a population of 5.5M+. That is 1 bin per 1,833 residents. In informal settlements: effectively zero. Compare: Singapore has 1 bin per 150 residents. Bogotá has 1 bin per 300 residents. 10,000 bins brings Nairobi to 1 per 550 residents — still below global standard, but transformative compared to today. <a href="https://www.nema.go.ke/" target="_blank" rel="noopener">NEMA waste management ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — Hawker Centre Waste Programme</div><div class="bi-desc">Singapore did not achieve clean streets through fines and campaigns. It achieved clean streets by placing bins every 50m in market areas, collecting waste 3× daily, and employing cleaners visible in every public space. The behaviour followed the infrastructure — not the other way around. <a href="https://www.nea.gov.sg/our-services/waste-management" target="_blank" rel="noopener">Singapore NEA waste ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇨🇴</span><div><div class="bi-city">Bogotá — Basura Cero (Zero Waste) Programme</div><div class="bi-desc">Bogotá deployed 2,500 smart bins with solar-powered compactors in flood-prone and market areas. Real-time fill-level sensors optimised collection routes — cutting collection costs by 30% while increasing frequency. Community waste operators employed from within the settlements they serve. <a href="https://en.wikipedia.org/wiki/Bogot%C3%A1" target="_blank" rel="noopener">Bogotá Basura Cero ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-flood_barriers-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="440" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Crisis Scenario — Emergency Flood Barrier Infrastructure</text>
+<text x="20" y="42" fill="#E85050" font-size="9" font-family="system-ui" font-weight="700">Automated flood gates + deployable barriers + pre-positioned rescue boats — 12 critical points</text>
+<rect x="20" y="52" width="504" height="280" fill="#21251C" rx="6"/>
+<!-- Rivers -->
+<path d="M 30 198 Q 130 191 230 205 Q 330 218 430 221 Q 470 225 515 221" stroke="#378ADD" stroke-width="3" fill="none" opacity="0.85"/>
+<path d="M 200 62 Q 215 112 225 168 Q 228 190 230 205" stroke="#3FBFB0" stroke-width="2.5" fill="none" opacity="0.8"/>
+<path d="M 30 290 Q 110 270 190 263 Q 260 256 330 218" stroke="#5DBF7A" stroke-width="2.5" fill="none" opacity="0.8"/>
+<path d="M 150 62 Q 165 102 175 138 Q 182 165 188 188 Q 192 200 195 212" stroke="#8B79E8" stroke-width="2" fill="none" opacity="0.6"/>
+<path d="M 60 348 Q 100 328 140 312 Q 180 296 220 284 Q 260 272 300 262 Q 315 258 330 252" stroke="#C8A84B" stroke-width="1.8" fill="none" opacity="0.6"/>
+<!-- River labels -->
+<text x="55" y="185" fill="#378ADD" font-size="8" font-family="system-ui" font-weight="700">NAIROBI RIVER</text>
+<text x="235" y="80" fill="#3FBFB0" font-size="8" font-family="system-ui" font-weight="700">MATHARE R.</text>
+<text x="35" y="308" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
+<!-- CBD -->
+<rect x="258" y="183" width="48" height="34" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
+<text x="282" y="203" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<!-- FLOOD GATES — automated, at river crossings -->
+<!-- Gate symbol: double bar across river -->
+<g id="gate">
+  <!-- Nairobi River gates -->
+  <line x1="228" y1="195" x2="228" y2="215" stroke="#E85050" stroke-width="4" stroke-linecap="round"/>
+  <line x1="225" y1="192" x2="231" y2="192" stroke="#E85050" stroke-width="2"/>
+  <line x1="225" y1="218" x2="231" y2="218" stroke="#E85050" stroke-width="2"/>
+  <circle cx="228" cy="205" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
+  <text x="240" y="204" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G1</text>
+  <text x="240" y="213" fill="#8A8878" font-size="7" font-family="system-ui">Auto gate</text>
+
+  <line x1="370" y1="213" x2="370" y2="233" stroke="#E85050" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="370" cy="223" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
+  <text x="382" y="222" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G2</text>
+
+  <line x1="150" y1="194" x2="150" y2="214" stroke="#E85050" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="150" cy="204" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
+  <text x="162" y="203" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G3</text>
+
+  <!-- Mathare River gate -->
+  <line x1="218" y1="130" x2="238" y2="130" stroke="#3FBFB0" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="228" cy="130" r="9" fill="none" stroke="#3FBFB0" stroke-width="1.5"/>
+  <text x="240" y="129" fill="#3FBFB0" font-size="7.5" font-weight="700" font-family="system-ui">G4</text>
+
+  <!-- Ngong River gates -->
+  <line x1="118" y1="257" x2="138" y2="257" stroke="#5DBF7A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="128" cy="257" r="9" fill="none" stroke="#5DBF7A" stroke-width="1.5"/>
+  <text x="140" y="256" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G5</text>
+
+  <line x1="248" y1="248" x2="268" y2="248" stroke="#5DBF7A" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="258" cy="248" r="9" fill="none" stroke="#5DBF7A" stroke-width="1.5"/>
+  <text x="270" y="247" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G6</text>
+</g>
+<!-- RESCUE BOAT POSITIONS -->
+<g fill="#C8A84B" opacity="0.9">
+  <!-- Boat symbol: small triangle -->
+  <polygon points="230,155 225,168 235,168" fill="#C8A84B"/>
+  <text x="238" y="165" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 1</text>
+  <text x="238" y="174" fill="#8A8878" font-size="6.5" font-family="system-ui">Mathare corridor</text>
+
+  <polygon points="155,285 150,298 160,298" fill="#C8A84B"/>
+  <text x="163" y="295" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 2</text>
+  <text x="163" y="304" fill="#8A8878" font-size="6.5" font-family="system-ui">Kibera/Ngong</text>
+
+  <polygon points="392,248 387,261 397,261" fill="#C8A84B"/>
+  <text x="400" y="258" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 3</text>
+  <text x="400" y="267" fill="#8A8878" font-size="6.5" font-family="system-ui">Mukuru confluence</text>
+
+  <polygon points="155,118 150,131 160,131" fill="#C8A84B"/>
+  <text x="163" y="128" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 4</text>
+  <text x="163" y="137" fill="#8A8878" font-size="6.5" font-family="system-ui">Parklands</text>
+</g>
+<!-- DEPLOYABLE BARRIERS (portable, pre-positioned) -->
+<rect x="295" y="200" width="20" height="6" fill="#E8844A" rx="1"/>
+<text x="318" y="207" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB1 Globe</text>
+<rect x="140" y="155" width="20" height="6" fill="#E8844A" rx="1"/>
+<text x="163" y="162" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB2 Parklands Ave</text>
+<rect x="275" y="285" width="20" height="6" fill="#E8844A" rx="1"/>
+<text x="298" y="292" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB3 South C</text>
+<!-- Legend -->
+<rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
+<text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Crisis Infrastructure — What Activates When River Gauges Hit RED</text>
+<circle cx="38" cy="374" r="6" fill="none" stroke="#E85050" stroke-width="1.5"/>
+<text x="50" y="378" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Automated flood gates (G1–G6): Close when river level reaches critical threshold — sensor-triggered, no human needed</text>
+<polygon points="38,390 33,403 43,403" fill="#C8A84B"/>
+<text x="50" y="400" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Rescue boats (pre-positioned): 4 boats, 8 crew per boat, 24hr crisis deployment in highest-risk corridors</text>
+<rect x="31" y="408" width="14" height="6" fill="#E8844A" rx="1"/>
+<text x="50" y="416" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Deployable barriers (DB1–DB3): Mobile HESCO/Tiger Dam barriers pre-stored at Embakasi depot, deployed by NYS within 2hrs</text>
+<text x="32" y="430" fill="#5C5C4E" font-size="8" font-family="system-ui">Source: Rotterdam flood gate system · Bangladesh EWS trigger thresholds · NYC East Side Coastal Resiliency</text>
+</svg></template>
+<template id="viz-tpl-flood_barriers-panel"><div class="vp-section">
+<div class="vp-title">Crisis Scenario — Emergency Flood Infrastructure</div>
+<div class="vp-sub">Automated flood gates + rescue boats + deployable barriers — the last line of defence when prevention fails</div>
+<div class="bench-list">
+<div class="bench-item"><span class="bi-ico">🚧</span><div><div class="bi-city">Automated Flood Gates — How They Work</div><div class="bi-desc">IoT river gauging stations measure water levels every 15 minutes. When levels hit a pre-set amber threshold, automated SMS alerts go to ward flood wardens. When levels hit red, hydraulic flood gates at critical road crossings close automatically — no human decision required, no response delay. The technology is off-the-shelf. Rotterdam and the Thames Barrier use the same principle. <a href="https://en.wikipedia.org/wiki/Thames_Barrier" target="_blank" rel="noopener">Thames Barrier — how it works ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚤</span><div><div class="bi-city">Pre-positioned Rescue Boats — Bangladesh Model</div><div class="bi-desc">Bangladesh pre-positions rescue boats at 500+ locations before every monsoon season — not deployed after flooding starts but staged before. Nairobi needs 4 boats minimum (Mathare, Kibera/Ngong, Mukuru, Parklands corridors) plus trained crew on 24-hour standby during heavy rainfall warnings. Cost: approx. KES 12M per boat. <a href="https://en.wikipedia.org/wiki/Flood_Warning_System_in_Bangladesh" target="_blank" rel="noopener">Bangladesh flood preparedness ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🟧</span><div><div class="bi-city">Deployable Barriers — NYC East Side Coastal Resiliency</div><div class="bi-desc">New York City pre-positions HESCO barriers and Tiger Dam inflatable systems at 12 locations that can be deployed within 2 hours of a flood warning. Nairobi equivalent: store deployable barriers at Embakasi KDF depot, deploy via National Youth Service (NYS) vehicles. NYS already has vehicles and personnel — they just need the barriers and the protocol. <a href="https://en.wikipedia.org/wiki/East_Side_Coastal_Resiliency" target="_blank" rel="noopener">NYC coastal resiliency ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📡</span><div><div class="bi-city">The M-Pesa Early Warning Trigger</div><div class="bi-desc">Kenya Meteorological Department issued a flood warning on 25 February 2026 — 10 days before the March 6 floods. That warning never reached the 36 Nairobi residents who died. An automated M-Pesa SMS system triggered by KMet's amber-level forecast costs under KES 500,000 to build. It is the highest-ROI flood intervention in the entire plan. <a href="https://www.meteo.go.ke/" target="_blank" rel="noopener">Kenya Meteorological Department ↗</a></div></div></div>
 </div></div></template>
 
 </body>
