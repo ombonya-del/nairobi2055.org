@@ -371,6 +371,53 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .lg-err{color:#E85050;font-size:10px;margin-top:8px;min-height:16px;text-align:center}
 .lg-footer{margin-top:48px;font-size:9px;color:#3A3F32;text-align:center;letter-spacing:.08em}
 
+
+/* ── PREVIEW SESSION ──────────────────────────────────────── */
+#previewTimer{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+  background:rgba(19,22,16,.92);border:1px solid var(--gold);border-radius:20px;
+  padding:6px 18px;font-size:11px;color:var(--gold);font-weight:700;
+  z-index:8000;display:none;gap:8px;align-items:center;backdrop-filter:blur(6px)}
+#previewTimer.active{display:flex}
+#previewTimer .pt-label{color:var(--text3);font-weight:400;font-size:10px}
+#previewTimer .pt-urgent{color:#E85050}
+.preview-watermark{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:rgba(200,168,75,.25);font-weight:700;letter-spacing:.15em;
+  z-index:7999;pointer-events:none;white-space:nowrap;text-transform:uppercase}
+#sessionExpired{position:fixed;inset:0;background:#131610;z-index:9998;
+  display:none;align-items:center;justify-content:center;flex-direction:column}
+#sessionExpired.active{display:flex}
+.se-icon{font-size:48px;margin-bottom:16px}
+.se-title{font-family:Georgia,serif;font-size:28px;color:#F0EAD6;margin-bottom:8px}
+.se-sub{font-size:12px;color:#8A8878;margin-bottom:24px;text-align:center;max-width:400px;line-height:1.6}
+.se-contact{font-size:11px;color:#C8A84B;font-weight:700}
+/* ── PREVIEW LOGIN ────────────────────────────────────────── */
+.lg-divider{display:flex;align-items:center;gap:10px;margin:14px 0}
+.lg-divider::before,.lg-divider::after{content:'';flex:1;height:1px;background:#3A3F32}
+.lg-divider span{font-size:9px;color:#5C5C4E;text-transform:uppercase;letter-spacing:.1em}
+.preview-code-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;
+  padding:13px 16px;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;
+  box-sizing:border-box;font-family:system-ui;letter-spacing:.12em;text-transform:uppercase}
+.preview-code-input:focus{border-color:#C8A84B}
+.lg-btn-preview{width:100%;margin-top:8px;background:#21251C;color:#C8A84B;
+  border:1px solid #C8A84B;padding:11px;border-radius:8px;font-size:12px;
+  font-weight:700;cursor:pointer;transition:all .15s}
+.lg-btn-preview:hover{background:#C8A84B;color:#131610}
+
+.preview-admin-panel{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:16px;margin-bottom:16px}
+.preview-admin-title{font-family:Georgia,serif;font-size:14px;color:var(--gold);margin-bottom:12px;font-weight:700}
+.preview-code-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border)}
+.preview-code-row:first-of-type{border-top:none}
+.pc-code{font-family:monospace;font-size:11px;color:var(--gold);background:var(--bg3);padding:3px 8px;border-radius:4px;letter-spacing:.1em;font-weight:700;flex-shrink:0}
+.pc-name-input{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 9px;border-radius:5px;font-size:11px;outline:none}
+.pc-name-input:focus{border-color:var(--gold)}
+.pc-status{font-size:9px;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0}
+.pc-active{background:#5DBF7A22;color:#5DBF7A;border:1px solid #5DBF7A44}
+.pc-unused{background:var(--bg3);color:var(--text4);border:1px solid var(--border)}
+.pc-expired{background:#E8505022;color:#E85050;border:1px solid #E8505044}
+.save-codes-btn{background:var(--gold);color:#131610;border:none;padding:8px 16px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer;margin-top:10px}
+.copy-code-btn{background:transparent;border:1px solid var(--border);color:var(--text4);padding:3px 8px;border-radius:4px;font-size:8px;cursor:pointer;transition:all .12s;flex-shrink:0}
+.copy-code-btn:hover{border-color:var(--gold);color:var(--gold)}
+
 </style>
 </head>
 <body>
@@ -383,9 +430,28 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <input class="lg-input" id="lgPwd" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')lgSubmit()"/>
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
+    <div class="lg-divider"><span>or use a preview code</span></div>
+    <div class="lg-label">Preview Access Code</div>
+    <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="e.g. NRB2055-A1" onkeydown="if(event.key==='Enter')lgSubmitPreview()"/>
+    <button class="lg-btn-preview" onclick="lgSubmitPreview()">Use Preview Code →</button>
     <div class="lg-footer">Private access only · nairobi2055.org</div>
   </div>
 </div>
+
+
+<div id="sessionExpired">
+  <div class="se-icon">⏱️</div>
+  <div class="se-title">Preview Session Expired</div>
+  <div class="se-sub">Your 25-minute preview window for the Nairobi 2055 Transformation Master Plan has ended.<br>To request continued access or provide feedback, please contact the project team directly.</div>
+  <div class="se-contact">nairobi2055.org · Confidential Preview</div>
+</div>
+
+<div id="previewTimer">
+  <span class="pt-label">Preview</span>
+  <span id="ptCount">25:00</span>
+  <span class="pt-label">remaining</span>
+</div>
+<div class="preview-watermark" id="previewWatermark"></div>
 
 <div id="vizOv" class="viz-ov" style="display:none" onclick="if(event.target===this)closeViz()">
 <div class="viz-modal" onclick="event.stopPropagation()">
@@ -2533,6 +2599,35 @@ function renderPartners(){
   const t = profState.tab;
 
   let html = '<div class="stitle">Partners, Investors & Professionals · Nairobi 2055</div>';
+  // Admin preview codes panel
+  if(isAdmin() && t==='local'){
+    const codes = {"NRB2055-A1":"Peer Reviewer A","NRB2055-B2":"Peer Reviewer B","NRB2055-C3":"Peer Reviewer C","NRB2055-D4":"Peer Reviewer D","NRB2055-E5":"Peer Reviewer E","NRB2055-F6":"Peer Reviewer F","NRB2055-G7":"Peer Reviewer G","NRB2055-H8":"Peer Reviewer H","NRB2055-J9":"Peer Reviewer J","NRB2055-K0":"Peer Reviewer K"};
+    const sessions = Object.keys(codes).map(code => {
+      try {
+        const s = JSON.parse(localStorage.getItem('n2055_ps_'+code)||'null');
+        return {code, name:codes[code], session:s};
+      } catch { return {code, name:codes[code], session:null}; }
+    });
+    html += '<div class="preview-admin-panel">';
+    html += '<div class="preview-admin-title">🔑 Preview Access Codes — 10 Personal Codes · 25 Min Sessions</div>';
+    html += '<div style="font-size:9px;color:var(--text3);margin-bottom:10px">Assign each code to a specific person by editing the name. Share the code with them privately. They enter it on the login screen.</div>';
+    const PCODES = {"NRB2055-A1": "Peer Reviewer A", "NRB2055-B2": "Peer Reviewer B", "NRB2055-C3": "Peer Reviewer C", "NRB2055-D4": "Peer Reviewer D", "NRB2055-E5": "Peer Reviewer E", "NRB2055-F6": "Peer Reviewer F", "NRB2055-G7": "Peer Reviewer G", "NRB2055-H8": "Peer Reviewer H", "NRB2055-J9": "Peer Reviewer J", "NRB2055-K0": "Peer Reviewer K"};
+    Object.entries(PCODES).forEach(([code, name]) => {
+      const stored = (() => { try { return JSON.parse(localStorage.getItem('n2055_preview')||'null'); } catch { return null; } })();
+      const isActive = stored && stored.code === code && stored.expires > Date.now();
+      const isExpired = stored && stored.code === code && stored.expires <= Date.now();
+      const status = isActive ? '<span class="pc-status pc-active">● Active</span>' : isExpired ? '<span class="pc-status pc-expired">✕ Expired</span>' : '<span class="pc-status pc-unused">○ Unused</span>';
+      html += '<div class="preview-code-row">';
+      html += '<span class="pc-code">'+code+'</span>';
+      html += '<input class="pc-name-input" value="'+name+'" placeholder="Assign person name" id="pcn-'+code+'"/>';
+      html += status;
+      html += '<button class="copy-code-btn" onclick="copyCode(this,&quot;'+code+'&quot;)">Copy</button>';
+      html += '</div>';
+    });
+    html += '<button class="save-codes-btn" onclick="savePreviewNames()">✓ Save Names</button>';
+    html += '<div style="font-size:9px;color:var(--text4);margin-top:8px">Names are stored locally. To reset a used code, clear browser data for this site.</div>';
+    html += '</div>';
+  }
   // sub-tab bar rendered by #partners-bar element
 
   if(t==='consultants'){
@@ -2722,6 +2817,138 @@ function applyAdminMode(){
   const editBtn = document.querySelector('.edit-links-btn');
   if(editBtn) editBtn.style.display = admin ? '' : 'none';
   // Partners add/edit/delete buttons — handled in renderPartners via isAdmin()
+}
+
+
+// ── PREVIEW ACCESS SYSTEM ───────────────────────────────────
+const PREVIEW_CODES = {"NRB2055-A1": "Peer Reviewer A", "NRB2055-B2": "Peer Reviewer B", "NRB2055-C3": "Peer Reviewer C", "NRB2055-D4": "Peer Reviewer D", "NRB2055-E5": "Peer Reviewer E", "NRB2055-F6": "Peer Reviewer F", "NRB2055-G7": "Peer Reviewer G", "NRB2055-H8": "Peer Reviewer H", "NRB2055-J9": "Peer Reviewer J", "NRB2055-K0": "Peer Reviewer K"};
+const PREVIEW_DURATION = 25 * 60 * 1000; // 25 minutes in ms
+const PREVIEW_KEY = 'n2055_preview';
+let previewTimer = null;
+
+function getPreviewSession(){
+  try{ return JSON.parse(localStorage.getItem(PREVIEW_KEY)||'null'); }catch{return null;}
+}
+function savePreviewSession(data){
+  try{ localStorage.setItem(PREVIEW_KEY, JSON.stringify(data)); }catch{}
+}
+
+function startPreviewSession(code, name){
+  const now = Date.now();
+  const session = { code, name, startTime: now, expires: now + PREVIEW_DURATION };
+  savePreviewSession(session);
+  activatePreviewUI(session);
+}
+
+function activatePreviewUI(session){
+  // Watermark
+  const wm = document.getElementById('previewWatermark');
+  if(wm) wm.textContent = 'CONFIDENTIAL PREVIEW · ' + session.name + ' · NAIROBI 2055';
+  
+  // Timer
+  const timerEl = document.getElementById('previewTimer');
+  const countEl = document.getElementById('ptCount');
+  if(timerEl) timerEl.classList.add('active');
+  
+  function tick(){
+    const remaining = session.expires - Date.now();
+    if(remaining <= 0){
+      clearInterval(previewTimer);
+      expireSession();
+      return;
+    }
+    const mins = Math.floor(remaining/60000);
+    const secs = Math.floor((remaining%60000)/1000);
+    const label = mins + ':' + String(secs).padStart(2,'0');
+    if(countEl){
+      countEl.textContent = label;
+      countEl.className = remaining < 5*60000 ? 'pt-urgent' : '';
+    }
+  }
+  tick();
+  previewTimer = setInterval(tick, 1000);
+}
+
+function expireSession(){
+  // Clear session
+  localStorage.removeItem(PREVIEW_KEY);
+  localStorage.removeItem('n2055_auth');
+  // Show expired screen
+  const exp = document.getElementById('sessionExpired');
+  if(exp) exp.classList.add('active');
+  // Hide dashboard
+  document.getElementById('main').style.display='none';
+}
+
+function checkPreviewCode(code){
+  const upper = code.toUpperCase().trim();
+  return PREVIEW_CODES[upper] || null;
+}
+
+window.lgSubmitPreview = function(){
+  const v = document.getElementById('lgPreviewCode').value;
+  const name = checkPreviewCode(v);
+  if(name){
+    // Valid code — check if already used/expired
+    const existing = getPreviewSession();
+    if(existing && existing.code === v.toUpperCase().trim() && existing.expires > Date.now()){
+      // Resume existing session
+      document.getElementById('loginGate').classList.add('hidden');
+      localStorage.setItem('n2055_auth','1');
+      activatePreviewUI(existing);
+    } else {
+      // Fresh session
+      document.getElementById('loginGate').classList.add('hidden');
+      localStorage.setItem('n2055_auth','1');
+      startPreviewSession(v.toUpperCase().trim(), name);
+    }
+  } else {
+    const e = document.getElementById('lgErr');
+    e.textContent = 'Invalid preview code. Please check and try again.';
+    setTimeout(()=>e.textContent='', 3000);
+  }
+};
+
+// On page load — check for active preview session
+(function(){
+  const session = getPreviewSession();
+  if(session && session.expires > Date.now()){
+    document.addEventListener('DOMContentLoaded',()=>{
+      const gate = document.getElementById('loginGate');
+      if(gate) gate.classList.add('hidden');
+      activatePreviewUI(session);
+    });
+  } else if(session && session.expires <= Date.now()){
+    localStorage.removeItem(PREVIEW_KEY);
+    localStorage.removeItem('n2055_auth');
+  }
+})();
+
+
+function savePreviewNames(){
+  // Names are display-only in this version — stored in localStorage
+  const updates = {};
+  Object.keys({"NRB2055-A1": "Peer Reviewer A", "NRB2055-B2": "Peer Reviewer B", "NRB2055-C3": "Peer Reviewer C", "NRB2055-D4": "Peer Reviewer D", "NRB2055-E5": "Peer Reviewer E", "NRB2055-F6": "Peer Reviewer F", "NRB2055-G7": "Peer Reviewer G", "NRB2055-H8": "Peer Reviewer H", "NRB2055-J9": "Peer Reviewer J", "NRB2055-K0": "Peer Reviewer K"}).forEach(code => {
+    const inp = document.getElementById('pcn-'+code);
+    if(inp) updates[code] = inp.value;
+  });
+  localStorage.setItem('n2055_preview_names', JSON.stringify(updates));
+  // Show confirmation
+  const btn = document.querySelector('.save-codes-btn');
+  if(btn){ btn.textContent='✓ Saved!'; setTimeout(()=>btn.textContent='✓ Save Names',1500); }
+}
+
+
+function copyCode(btn, code){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(code).then(()=>{
+      btn.textContent='Copied!';
+      setTimeout(()=>btn.textContent='Copy',1500);
+    });
+  } else {
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy',1500);
+  }
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
