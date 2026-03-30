@@ -454,6 +454,11 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   color:var(--text)
 }
 
+
+/* Preview code section — hidden unless ?preview=1 in URL */
+.preview-section-hidden{display:none!important}
+.preview-section-visible{display:block!important}
+
 </style>
 </head>
 <body>
@@ -466,7 +471,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <input class="lg-input" id="lgPwd" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')lgSubmit()"/>
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
-    <div id="previewSection" style="display:none">
+    <div id="previewSection" class="preview-section-hidden">
       <div class="lg-divider"><span>or use a preview code</span></div>
       <div class="lg-label">Preview Access Code</div>
       <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="e.g. NRB2055-A1" onkeydown="if(event.key==='Enter')lgSubmitPreview()"/>
@@ -597,7 +602,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   <span>10 Pillars · 4 Scenarios · 3 Phases</span>
 </div>
 <div id="toast" style="display:none" class="toast"><div class="tdt" id="tdt"></div><span id="tmsg"></span></div>
-<template id="viz-tpl-brt-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<template id="viz-tpl-brt-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="388" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Nairobi BRT — 4 Corridor Network</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Phase 1 · 2025–2035 · 200km total · EV fleet · Integrated smart ticketing</text>
@@ -630,7 +635,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <text x="186" y="227" fill="#8A8878" font-size="8.5" font-family="system-ui">Upperhill</text>
 <text x="146" y="267" fill="#8A8878" font-size="8.5" font-family="system-ui">Adams Arc.</text>
 <text x="108" y="306" fill="#8A8878" font-size="8.5" font-family="system-ui">Karen</text>
-<text x="52" y="372" fill="#8B79E8" font-size="10" font-weight="700" font-family="system-ui">← Ngong</text>
+<text x="52" y="382" fill="#8B79E8" font-size="10" font-weight="700" font-family="system-ui">← Ngong</text>
 <!-- Jogoo Road: gold, going east -->
 <line x1="272" y1="192" x2="468" y2="192" stroke="#C8A84B" stroke-width="6.5" stroke-linecap="round"/>
 <circle cx="322" cy="192" r="5" fill="#1A1D16" stroke="#C8A84B" stroke-width="2.5"/>
@@ -651,11 +656,11 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <rect x="30" y="326" width="12" height="4" fill="#E8844A" rx="1"/>
 <text x="47" y="344" fill="#C4BFA8" font-size="8" font-family="system-ui">Thika Road</text>
 <rect x="30" y="339" width="12" height="4" fill="#3DBF78" rx="1"/>
-<text x="47" y="372" fill="#C4BFA8" font-size="8" font-family="system-ui">Mombasa Road</text>
+<text x="47" y="406" fill="#C4BFA8" font-size="8" font-family="system-ui">Mombasa Road</text>
 <rect x="30" y="372" width="12" height="4" fill="#8B79E8" rx="1"/>
-<text x="47" y="372" fill="#C4BFA8" font-size="8" font-family="system-ui">Ngong Road</text>
+<text x="47" y="393" fill="#C4BFA8" font-size="8" font-family="system-ui">Ngong Road</text>
 <rect x="30" y="365" width="12" height="4" fill="#C8A84B" rx="1"/>
-<text x="47" y="371" fill="#C4BFA8" font-size="8" font-family="system-ui">Jogoo Road</text>
+<text x="47" y="368" fill="#C4BFA8" font-size="8" font-family="system-ui">Jogoo Road</text>
 <!-- Stats -->
 <text x="220" y="330" fill="#C8A84B" font-size="14" font-weight="700" font-family="Georgia,serif">200km</text>
 <text x="220" y="344" fill="#5C5C4E" font-size="8" font-family="system-ui">BRT network</text>
@@ -791,27 +796,27 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <!-- University of Nairobi / Museum Hill -->
 <rect cx="105" cy="195" width="12" height="12" fill="#21251C" stroke="#C8A84B" stroke-width="1.2" rx="2" x="99" y="189"/>
 <text x="115" y="188" fill="#C4BFA8" font-size="8.5" font-weight="600" font-family="system-ui">Museum Hill</text>
-<text x="115" y="210" fill="#5C5C4E" font-size="7.5" font-family="system-ui">National Museum · UoN campus</text>
+<text x="115" y="226" fill="#5C5C4E" font-size="7.5" font-family="system-ui">National Museum · UoN campus</text>
 
 <!-- Nairobi Arboretum nearby -->
 <circle cx="155" cy="200" r="5" fill="#2D6B2D" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="164" y="198" fill="#5DBF7A" font-size="7.5" font-family="system-ui">Arboretum</text>
+<text x="164" y="192" fill="#5DBF7A" font-size="7.5" font-family="system-ui">Arboretum</text>
 
 <!-- Ngara / Pangani area -->
 <rect x="200" y="202" width="12" height="12" fill="#21251C" stroke="#8A8878" stroke-width="1.2" rx="2"/>
-<text x="216" y="209" fill="#8A8878" font-size="8" font-family="system-ui">Ngara</text>
+<text x="216" y="217" fill="#8A8878" font-size="8" font-family="system-ui">Ngara</text>
 
 <!-- Mathare River Confluence -->
 <circle cx="292" cy="205" r="6" fill="#378ADD" stroke="#F0EAD6" stroke-width="1.5"/>
-<text x="300" y="202" fill="#378ADD" font-size="8.5" font-weight="600" font-family="system-ui">Mathare R.</text>
+<text x="300" y="224" fill="#378ADD" font-size="8.5" font-weight="600" font-family="system-ui">Mathare R.</text>
 <text x="300" y="213" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Confluence</text>
 <!-- Phase divider line -->
 <line x1="292" y1="192" x2="292" y2="245" stroke="#C8A84B" stroke-width="1.5" stroke-dasharray="3,2"/>
-<text x="286" y="257" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700" font-family="system-ui">Phase 1 end</text>
+<text x="286" y="264" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700" font-family="system-ui">Phase 1 end</text>
 
 <!-- Eastleigh -->
 <rect x="388" y="202" width="12" height="12" fill="#21251C" stroke="#8A8878" stroke-width="1.2" rx="2"/>
-<text x="404" y="210" fill="#8A8878" font-size="8" font-family="system-ui">Eastleigh</text>
+<text x="404" y="218" fill="#8A8878" font-size="8" font-family="system-ui">Eastleigh</text>
 
 <!-- EASTERN END — Eastlands -->
 <circle cx="540" cy="224" r="7" fill="#8B79E8" stroke="#F0EAD6" stroke-width="1.5"/>
@@ -838,7 +843,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <circle cx="272" cy="250" r="10" fill="rgba(200,168,75,0.15)"/>
 <circle cx="272" cy="250" r="7" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/>
 <text x="272" y="253" text-anchor="middle" fill="#131610" font-size="6" font-weight="bold">CBD</text>
-<text x="282" y="262" fill="#8A8878" font-size="7" font-family="system-ui">Nairobi CBD</text>
+<text x="282" y="272" fill="#8A8878" font-size="7" font-family="system-ui">Nairobi CBD</text>
 
 <!-- ═══ SEWAGE OUTFALLS (before) ═══ -->
 <circle cx="110" cy="222" r="4" fill="#4A2010" stroke="#3A1A08" stroke-width="1" opacity="0.8"/>
@@ -853,7 +858,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <!-- ═══ PROPOSED CYCLING PATH ═══ -->
 <path d="M 30,205  C 55,201  80,195  105,197  C 125,199  140,205  158,209  C 175,213  190,215  210,215  C 228,215  240,213  255,211  C 268,209  278,207  292,205"
       fill="none" stroke="#C8A84B" stroke-width="2" stroke-dasharray="6,3" opacity="0.8"/>
-<text x="160" y="202" fill="#C8A84B" font-size="7" font-family="system-ui">proposed cycling path</text>
+<text x="160" y="204" fill="#C8A84B" font-size="7" font-family="system-ui">proposed cycling path</text>
 
 <!-- ═══ NORTH ARROW & SCALE ═══ -->
 <g transform="translate(504,68)">
@@ -1307,7 +1312,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <text x="433" y="180" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">Standard-gauge</text>
 <!-- Node 5: Rail (below, centered) -->
 <rect x="206" y="248" width="132" height="72" fill="#21251C" rx="10" stroke="#5DBF7A" stroke-width="2.5"/>
-<text x="272" y="276" text-anchor="middle" fill="#5DBF7A" font-size="26">🛤️</text>
+<text x="272" y="270" text-anchor="middle" fill="#5DBF7A" font-size="26">🛤️</text>
 <text x="272" y="298" text-anchor="middle" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Nairobi Rail Tracks</text>
 <text x="272" y="312" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="600" font-family="system-ui">8,000km of track</text>
 <!-- Arrows down from node 1 and 4 to node 5 -->
@@ -2899,7 +2904,7 @@ function deleteProf(id){
   if(new URLSearchParams(window.location.search).get('preview')==='1'){
     document.addEventListener('DOMContentLoaded',()=>{
       const ps = document.getElementById('previewSection');
-      if(ps) ps.style.display='block';
+      if(ps){ ps.classList.remove('preview-section-hidden'); ps.classList.add('preview-section-visible'); }
     });
   }
   // Auto-unlock if already authenticated
@@ -3477,7 +3482,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- 400m running track (oval) -->
 <ellipse cx="196" cy="210" rx="120" ry="95" fill="none" stroke="#E8844A" stroke-width="10" opacity="0.7"/>
 <ellipse cx="196" cy="210" rx="120" ry="95" fill="none" stroke="#E86A38" stroke-width="2" stroke-dasharray="0"/>
-<text x="196" y="214" text-anchor="middle" fill="#E86A38" font-size="8" font-weight="700" font-family="system-ui">400m RUNNING TRACK</text>
+<text x="196" y="224" text-anchor="middle" fill="#E86A38" font-size="8" font-weight="700" font-family="system-ui">400m RUNNING TRACK</text>
 
 <!-- Central grass / play area -->
 <ellipse cx="196" cy="210" rx="100" ry="78" fill="#1E3A12" opacity="0.8"/>
@@ -3497,21 +3502,21 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="70" y="115" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">12 stations · free</text>
 <!-- Gym equipment icons -->
 <text x="35" y="102" font-size="9">🦾</text>
-<text x="51" y="116" font-size="8">🚴</text>
-<text x="87" y="116" font-size="8">🏃</text>
+<text x="51" y="124" font-size="8">🚴</text>
+<text x="87" y="124" font-size="8">🏃</text>
 
 <!-- Community centre + library (NE) -->
 <rect x="278" y="70" width="92" height="64" fill="#21251C" rx="6" stroke="#E85888" stroke-width="1.5"/>
 <text x="324" y="91" text-anchor="middle" fill="#E85888" font-size="9" font-weight="700" font-family="system-ui">📚 Community</text>
 <text x="324" y="103" text-anchor="middle" fill="#E85888" font-size="9" font-weight="700" font-family="system-ui">Centre</text>
 <text x="324" y="116" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Library · meetings</text>
-<text x="324" y="127" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Wi-Fi · skills hub</text>
+<text x="324" y="121" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Wi-Fi · skills hub</text>
 
 <!-- Playground (SE) -->
 <rect x="278" y="282" width="92" height="52" fill="#21251C" rx="6" stroke="#3FBFB0" stroke-width="1.5"/>
 <text x="324" y="302" text-anchor="middle" fill="#3FBFB0" font-size="9" font-weight="700" font-family="system-ui">🎠 Playground</text>
-<text x="324" y="315" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">All-weather surface</text>
-<text x="324" y="326" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Ages 2–14</text>
+<text x="324" y="322" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">All-weather surface</text>
+<text x="324" y="334" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Ages 2–14</text>
 
 <!-- Market / food (SW) -->
 <rect x="30" y="288" width="80" height="52" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1.2" stroke-dasharray="5,2"/>
@@ -3577,16 +3582,16 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
   <text x="0" y="-2" text-anchor="middle" fill="#F0EAD6" font-size="6.5" font-weight="700" font-family="system-ui">N</text>
 </g>
 <rect x="360" y="100" width="60" height="2.5" fill="#5C5C4E"/>
-<text x="390" y="112" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">~120m</text>
+<text x="390" y="152" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">~120m</text>
 
 <!-- Right panel: spec list -->
 <rect x="385" y="56" width="151" height="310" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="460" y="74" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">Ward Park Spec</text>
-<text x="460" y="86" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Minimum standard · all 85</text><rect x="393" y="98" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="111" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ 400m running track</text><rect x="393" y="118" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="131" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Cycling path (perimeter)</text><rect x="393" y="138" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="151" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Walking path (inner)</text><rect x="393" y="158" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="171" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Outdoor gym — 12 free stations</text><rect x="393" y="178" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="191" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Community centre + library</text><rect x="393" y="198" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="211" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ All-weather playground</text><rect x="393" y="218" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="231" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Pond / water feature</text><rect x="393" y="238" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="251" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Weekend market area</text><rect x="393" y="258" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="271" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Shade trees — 30% canopy</text><rect x="393" y="278" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="291" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Benches + seating</text><rect x="393" y="298" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="311" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Solar LED lighting</text><rect x="393" y="318" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="331" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Public toilets + water</text><rect x="393" y="338" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="351" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Free Wi-Fi + power pts</text><rect x="393" y="358" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="371" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ CCTV safety hub</text><rect x="393" y="378" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="391" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Accessible ramps + paths</text>
+<text x="460" y="86" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Minimum standard · all 85</text><rect x="393" y="98" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="111" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ 400m running track</text><rect x="393" y="118" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="133" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Cycling path (perimeter)</text><rect x="393" y="138" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="162" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Walking path (inner)</text><rect x="393" y="158" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="171" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Outdoor gym — 12 free stations</text><rect x="393" y="178" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="191" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Community centre + library</text><rect x="393" y="198" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="211" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ All-weather playground</text><rect x="393" y="218" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="231" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Pond / water feature</text><rect x="393" y="238" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="251" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Weekend market area</text><rect x="393" y="258" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="271" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Shade trees — 30% canopy</text><rect x="393" y="278" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="291" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Benches + seating</text><rect x="393" y="298" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="311" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Solar LED lighting</text><rect x="393" y="318" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="348" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Public toilets + water</text><rect x="393" y="338" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="362" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Free Wi-Fi + power pts</text><rect x="393" y="358" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="371" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ CCTV safety hub</text><rect x="393" y="378" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="391" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Accessible ramps + paths</text>
 
 <!-- Bottom bar -->
 <rect x="16" y="378" width="512" height="110" fill="#21251C" rx="8" stroke="#3A3F32" stroke-width="1"/>
-<text x="272" y="396" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">85 Wards — Phasing + Scale</text>
+<text x="272" y="404" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">85 Wards — Phasing + Scale</text>
 <rect x="28" y="404" width="154" height="48" fill="#1A2A14" rx="6" stroke="#5DBF7A" stroke-width="1"/>
 <text x="105" y="420" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700" font-family="system-ui">Phase 1: 20 wards</text>
 <text x="105" y="433" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">All informal settlement wards</text>
@@ -3628,7 +3633,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <line x1="272" y1="200" x2="80" y2="350" stroke="#E8844A" stroke-width="5" stroke-linecap="round"/>
 <line x1="274" y1="202" x2="82" y2="352" stroke="#5DBF7A" stroke-width="2" stroke-dasharray="6,3" opacity="0.9"/>
 <line x1="270" y1="198" x2="78" y2="348" stroke="#5DBF7A" stroke-width="2" stroke-dasharray="6,3" opacity="0.9"/>
-<text x="165" y="290" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui" transform="rotate(-38 165 290)">NGONG RD — URGENT</text>
+<text x="165" y="302" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui" transform="rotate(-38 165 290)">NGONG RD — URGENT</text>
 
 <!-- Waiyaki Way (W) — HIGH PRIORITY -->
 <line x1="272" y1="200" x2="30" y2="188" stroke="#3A3A2A" stroke-width="12" stroke-linecap="round"/>
@@ -3673,7 +3678,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- Mukuru connector -->
 <line x1="332" y1="228" x2="385" y2="275" stroke="#5DBF7A" stroke-width="4" stroke-dasharray="6,3" stroke-linecap="round"/>
 <ellipse cx="396" cy="284" rx="22" ry="13" fill="rgba(93,191,122,0.2)" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="396" y="288" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">Mukuru</text>
+<text x="396" y="310" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">Mukuru</text>
 
 <!-- CBD node -->
 <circle cx="272" cy="200" r="14" fill="rgba(200,168,75,0.15)"/>
@@ -3760,7 +3765,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <rect width="544" height="370" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mass Rail Transit — 3-Line Network</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Line 1: Thika/Kasarani–CBD · Line 2: JKIA–CBD · Line 3: Kibera/Westlands–CBD</text>
-<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly serves Kibera for the first time · Matatu-sourced steel</text>
+<text x="272" y="80" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly serves Kibera for the first time · Matatu-sourced steel</text>
 <!-- 3-line rail diagram -->
 <!-- Line 1: red/orange — Thika/Kasarani to CBD -->
 <path d="M244,58 L255,90 L262,125 L268,160 L272,183" fill="none" stroke="#E8844A" stroke-width="8" stroke-linecap="round"/>
@@ -3777,7 +3782,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <circle cx="314" cy="224" r="6" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/><text x="324" y="228" fill="#8A8878" font-size="8" font-family="system-ui">Embakasi</text>
 <!-- Line 3: green — Kibera/Westlands -->
 <path d="M118,320 L158,285 L195,250 L232,215 L272,183" fill="none" stroke="#5DBF7A" stroke-width="8" stroke-linecap="round"/>
-<circle cx="120" cy="322" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="110" y="326" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Kibera Terminus</text>
+<circle cx="120" cy="322" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="110" y="320" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Kibera Terminus</text>
 <circle cx="158" cy="287" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="148" y="291" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Langata</text>
 <circle cx="195" cy="252" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="185" y="256" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Adams Arcade</text>
 <circle cx="232" cy="217" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="222" y="221" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Upperhill</text>
@@ -3787,12 +3792,12 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="272" y="187" text-anchor="middle" fill="#131610" font-size="7" font-weight="bold">CBD</text>
 <!-- Matatu steel note -->
 <rect x="20" y="306" width="264" height="38" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1"/>
-<text x="152" y="323" text-anchor="middle" fill="#C8A84B" font-size="8.5" font-weight="600" font-family="system-ui">Track material: matatu-sourced recycled steel</text>
+<text x="152" y="342" text-anchor="middle" fill="#C8A84B" font-size="8.5" font-weight="600" font-family="system-ui">Track material: matatu-sourced recycled steel</text>
 <text x="152" y="337" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Phase 2: 3,000km of rail from bought-back matatus</text>
 <rect x="295" y="306" width="229" height="38" fill="#21251C" rx="6" stroke="#5DBF7A" stroke-width="1"/>
 <text x="409" y="323" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="system-ui">Line 3 direct access to Kibera CBD</text>
 <text x="409" y="337" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">First mass transit connection to Nairobi's largest settlement</text>
-<rect x="20" y="318" width="504" height="44" fill="#21251C" rx="5" stroke="#3A3F32" stroke-width="1"/><text x="83" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">3 lines</text><text x="83" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 2 network</text><text x="209" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">80 stations</text><text x="209" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">City-wide</text><text x="335" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">70%</text><text x="335" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Transit mode share target</text><text x="461" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Kibera</text><text x="461" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Directly connected</text>
+<rect x="20" y="318" width="504" height="44" fill="#21251C" rx="5" stroke="#3A3F32" stroke-width="1"/><text x="83" y="362" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">3 lines</text><text x="83" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 2 network</text><text x="209" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">80 stations</text><text x="209" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">City-wide</text><text x="335" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">70%</text><text x="335" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Transit mode share target</text><text x="461" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Kibera</text><text x="461" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Directly connected</text>
 <text x="272" y="366" text-anchor="middle" fill="#3A3F32" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
 </svg></template>
 <template id="viz-tpl-mass_rail-panel"><div class="vsect">Benchmark City</div>
@@ -3932,7 +3937,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <!-- Zone coverage lines to centre point -->
 <circle cx="181" cy="235" r="8" fill="#E86A38" stroke="#F0EAD6" stroke-width="1.5"/>
-<text x="181" y="239" text-anchor="middle" fill="#F0EAD6" font-size="5.5" font-weight="bold" font-family="system-ui">HUB</text>
+<text x="181" y="246" text-anchor="middle" fill="#F0EAD6" font-size="5.5" font-weight="bold" font-family="system-ui">HUB</text>
 
 <!-- Equipment cache locations -->
 <rect x="26" y="258" width="282" height="48" fill="#21251C" rx="5" stroke="#C8A84B" stroke-width="1" stroke-dasharray="4,2"/>
@@ -4053,8 +4058,8 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
          L 250,118 L 228,112 L 210,110 L 190,112 L 174,120
          L 160,116 L 148,100 L 155,82  Z"
       fill="rgba(55,138,221,0.12)" stroke="#378ADD" stroke-width="1.2" stroke-dasharray="5,3"/>
-<text x="272" y="78" text-anchor="middle" fill="#378ADD" font-size="10" font-weight="700" font-family="system-ui">KIAMBU COUNTY</text>
-<text x="272" y="91" text-anchor="middle" fill="#378ADD" font-size="8" font-family="system-ui">2,543 km² · 2.4M pop · Ruiru, Thika, Kikuyu, Limuru</text>
+<text x="272" y="84" text-anchor="middle" fill="#378ADD" font-size="10" font-weight="700" font-family="system-ui" y="82">KIAMBU COUNTY</text>
+<text x="272" y="108" text-anchor="middle" fill="#378ADD" font-size="8" font-family="system-ui">2,543 km² · 2.4M pop · Ruiru, Thika, Kikuyu, Limuru</text>
 
 <!-- MACHAKOS (east + southeast) -->
 <path d="M 380,118 L 420,115 L 448,130 L 472,155 L 490,185
@@ -4077,7 +4082,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="115" y="230" text-anchor="middle" fill="#5DBF7A" font-size="10" font-weight="700" font-family="system-ui">KAJIADO</text>
 <text x="115" y="243" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">21,901 km²</text>
 <text x="115" y="256" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Ngong, Kitengela</text>
-<text x="115" y="268" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Ongata Rongai</text>
+<text x="115" y="300" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Ongata Rongai</text>
 
 <!-- MURANG'A (far north - smaller sliver) -->
 <path d="M 368,62  L 400,62  L 420,80  L 432,100 L 420,115
@@ -4091,7 +4096,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <circle cx="350" cy="88" r="12" fill="rgba(200,168,75,0.18)" stroke="#C8A84B" stroke-width="1.5"/>
 <circle cx="350" cy="88" r="5" fill="#C8A84B" opacity="0.7"/>
 <text x="350" y="75" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="system-ui">THIKA</text>
-<text x="350" y="110" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-family="system-ui">Industrial hub</text>
+<text x="350" y="122" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-family="system-ui">Industrial hub</text>
 
 <!-- ═══ NAIROBI CITY BOUNDARY ═══ -->
 <!-- Approximate real boundary: roughly oval 696km² -->
@@ -4113,23 +4118,23 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <circle cx="272" cy="218" r="10" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/>
 <text x="272" y="221" text-anchor="middle" fill="#131610" font-size="6.5" font-weight="bold" font-family="system-ui">CBD</text>
 <text x="272" y="238" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="system-ui">NAIROBI</text>
-<text x="272" y="250" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">696 km² · 4.9M pop</text>
+<text x="272" y="260" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">696 km² · 4.9M pop</text>
 
 <!-- ═══ INFORMAL SETTLEMENTS ═══ -->
 <!-- Kibera (SW) -->
 <ellipse cx="230" cy="262" rx="18" ry="11" fill="rgba(93,191,122,0.2)" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="230" y="266" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">Kibera</text>
+<text x="230" y="280" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">Kibera</text>
 <!-- Mathare (NE) -->
 <ellipse cx="310" cy="180" rx="16" ry="10" fill="rgba(93,191,122,0.2)" stroke="#5DBF7A" stroke-width="1.2"/>
 <text x="310" y="184" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">Mathare</text>
 <!-- Mukuru (SE) -->
 <ellipse cx="318" cy="268" rx="18" ry="11" fill="rgba(93,191,122,0.2)" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="318" y="272" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">Mukuru</text>
+<text x="318" y="306" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">Mukuru</text>
 
 <!-- ═══ TRANSPORT CORRIDORS ═══ -->
 <!-- BRT/Rail: Thika Road (NE) -->
 <line x1="272" y1="130" x2="350" y2="88" stroke="#E8844A" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-<text x="326" y="100" fill="#E8844A" font-size="7.5" font-family="system-ui" transform="rotate(-25 326 100)">Thika Rd BRT</text>
+<text x="326" y="134" fill="#E8844A" font-size="7.5" font-family="system-ui" transform="rotate(-25 326 100)">Thika Rd BRT</text>
 
 <!-- BRT: Mombasa Road (SE) -->
 <line x1="272" y1="218" x2="430" y2="290" stroke="#3DBF78" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
@@ -4137,7 +4142,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <!-- BRT: Ngong Road (SW) -->
 <line x1="272" y1="218" x2="130" y2="298" stroke="#8B79E8" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
-<text x="188" y="262" fill="#8B79E8" font-size="7.5" font-family="system-ui" transform="rotate(-30 188 262)">Ngong Rd</text>
+<text x="188" y="318" fill="#8B79E8" font-size="7.5" font-family="system-ui" transform="rotate(-30 188 262)">Ngong Rd</text>
 
 <!-- BRT: Waiyaki Way (W) -->
 <line x1="272" y1="218" x2="80" y2="200" stroke="#378ADD" stroke-width="3.5" stroke-linecap="round" opacity="0.85"/>
@@ -4150,10 +4155,10 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- ═══ SATELLITE / SECONDARY TOWNS ═══ -->
 <!-- Ruiru (N) -->
 <circle cx="300" cy="105" r="8" fill="#21251C" stroke="#C8A84B" stroke-width="1.2"/>
-<text x="300" y="96" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="600" font-family="system-ui">Ruiru</text>
+<text x="300" y="122" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="600" font-family="system-ui">Ruiru</text>
 <!-- Kiambu Town (NW) -->
 <circle cx="210" cy="95" r="7" fill="#21251C" stroke="#C8A84B" stroke-width="1.2"/>
-<text x="196" y="86" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="600" font-family="system-ui">Kiambu</text>
+<text x="196" y="96" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="600" font-family="system-ui">Kiambu</text>
 <!-- Limuru (W) -->
 <circle cx="148" cy="130" r="7" fill="#21251C" stroke="#5DBF7A" stroke-width="1.2"/>
 <text x="133" y="121" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Limuru</text>
@@ -4165,7 +4170,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="300" y="338" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Kitengela</text>
 <!-- Ngong (SW) -->
 <circle cx="168" cy="295" r="7" fill="#21251C" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="148" y="295" text-anchor="end" fill="#5DBF7A" font-size="8" font-family="system-ui">Ngong</text>
+<text x="148" y="288" text-anchor="end" fill="#5DBF7A" font-size="8" font-family="system-ui">Ngong</text>
 <!-- Ongata Rongai (S) -->
 <circle cx="220" cy="320" r="7" fill="#21251C" stroke="#5DBF7A" stroke-width="1.2"/>
 <text x="200" y="338" text-anchor="middle" fill="#5DBF7A" font-size="8" font-family="system-ui">Ongata Rongai</text>
@@ -4181,7 +4186,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <rect x="430" y="98" width="70" height="3" fill="#5C5C4E"/>
 <line x1="430" y1="95" x2="430" y2="104" stroke="#5C5C4E" stroke-width="1.5"/>
 <line x1="500" y1="95" x2="500" y2="104" stroke="#5C5C4E" stroke-width="1.5"/>
-<text x="465" y="112" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">~25 km</text>
+<text x="465" y="134" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">~25 km</text>
 
 <!-- ═══ LEGEND ═══ -->
 <rect x="8" y="395" width="528" height="96" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
@@ -4356,17 +4361,17 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">City Authority Act — Constitutional Amendment Process</text>
 <text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Kenya devolution framework · Article 217 Senate process · County governors assent required</text>
 <line x1="100" y1="62" x2="100" y2="440" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="80" r="13" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="84" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">01</text><rect x="125" y="56" width="400" height="46" fill="rgba(200,168,75,0.1)" rx="7" stroke="#C8A84B" stroke-width="1.2"/><text x="143" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Cabinet Proposal</text><text x="143" y="87" fill="#8A8878" font-size="8.5" font-family="system-ui">Ministry of Devolution drafts City Authority Bill · Public participation required</text><text x="143" y="99" fill="#5C5C4E" font-size="8" font-family="system-ui">6 months · Key actors: CS Devolution, Nairobi Governor, AG</text>
+<circle cx="100" cy="80" r="13" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="84" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">01</text><rect x="125" y="56" width="400" height="46" fill="rgba(200,168,75,0.1)" rx="7" stroke="#C8A84B" stroke-width="1.2"/><text x="143" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Cabinet Proposal</text><text x="143" y="120" fill="#8A8878" font-size="8.5" font-family="system-ui">Ministry of Devolution drafts City Authority Bill · Public participation required</text><text x="143" y="105" fill="#5C5C4E" font-size="8" font-family="system-ui">6 months · Key actors: CS Devolution, Nairobi Governor, AG</text>
 <line x1="100" y1="93" x2="100" y2="123" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="143" r="13" fill="#378ADD" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="147" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">02</text><rect x="125" y="119" width="400" height="46" fill="rgba(55,138,221,0.1)" rx="7" stroke="#378ADD" stroke-width="1.2"/><text x="143" y="136" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">National Assembly Committee</text><text x="143" y="150" fill="#8A8878" font-size="8.5" font-family="system-ui">Justice &amp; Legal Affairs Committee · Clause-by-clause · Public hearings</text><text x="143" y="162" fill="#5C5C4E" font-size="8" font-family="system-ui">3 months · Risk: MP resistance from NMS patronage interests</text>
+<circle cx="100" cy="143" r="13" fill="#378ADD" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="147" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">02</text><rect x="125" y="119" width="400" height="46" fill="rgba(55,138,221,0.1)" rx="7" stroke="#378ADD" stroke-width="1.2"/><text x="143" y="136" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">National Assembly Committee</text><text x="143" y="183" fill="#8A8878" font-size="8.5" font-family="system-ui">Justice &amp; Legal Affairs Committee · Clause-by-clause · Public hearings</text><text x="143" y="168" fill="#5C5C4E" font-size="8" font-family="system-ui">3 months · Risk: MP resistance from NMS patronage interests</text>
 <line x1="100" y1="156" x2="100" y2="186" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="206" r="13" fill="#8B79E8" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="210" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">03</text><rect x="125" y="182" width="400" height="46" fill="rgba(139,121,232,0.1)" rx="7" stroke="#8B79E8" stroke-width="1.2"/><text x="143" y="199" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Senate Special Committee (Art. 110)</text><text x="143" y="213" fill="#8A8878" font-size="8.5" font-family="system-ui">Special majority — 2/3 of Senate (45/67) must approve</text><text x="143" y="225" fill="#5C5C4E" font-size="8" font-family="system-ui">2 months · Governors lobby senators · County-affecting legislation</text>
+<circle cx="100" cy="206" r="13" fill="#8B79E8" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="210" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">03</text><rect x="125" y="182" width="400" height="46" fill="rgba(139,121,232,0.1)" rx="7" stroke="#8B79E8" stroke-width="1.2"/><text x="143" y="199" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Senate Special Committee (Art. 110)</text><text x="143" y="246" fill="#8A8878" font-size="8.5" font-family="system-ui">Special majority — 2/3 of Senate (45/67) must approve</text><text x="143" y="231" fill="#5C5C4E" font-size="8" font-family="system-ui">2 months · Governors lobby senators · County-affecting legislation</text>
 <line x1="100" y1="219" x2="100" y2="249" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="269" r="13" fill="#5DBF7A" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="273" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">04</text><rect x="125" y="245" width="400" height="46" fill="rgba(93,191,122,0.1)" rx="7" stroke="#5DBF7A" stroke-width="1.2"/><text x="143" y="262" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">County Assembly Concurrence</text><text x="143" y="276" fill="#8A8878" font-size="8.5" font-family="system-ui">24 of 47 County Assemblies must pass supporting resolutions</text><text x="143" y="288" fill="#5C5C4E" font-size="8" font-family="system-ui">3 months · Strategy: Nairobi, Kiambu, Machakos, Kajiado first</text>
+<circle cx="100" cy="269" r="13" fill="#5DBF7A" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="273" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">04</text><rect x="125" y="245" width="400" height="46" fill="rgba(93,191,122,0.1)" rx="7" stroke="#5DBF7A" stroke-width="1.2"/><text x="143" y="262" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">County Assembly Concurrence</text><text x="143" y="309" fill="#8A8878" font-size="8.5" font-family="system-ui">24 of 47 County Assemblies must pass supporting resolutions</text><text x="143" y="294" fill="#5C5C4E" font-size="8" font-family="system-ui">3 months · Strategy: Nairobi, Kiambu, Machakos, Kajiado first</text>
 <line x1="100" y1="282" x2="100" y2="312" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="332" r="13" fill="#E8844A" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="336" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">05</text><rect x="125" y="308" width="400" height="46" fill="rgba(232,136,74,0.1)" rx="7" stroke="#E8844A" stroke-width="1.2"/><text x="143" y="325" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Presidential Assent</text><text x="143" y="339" fill="#8A8878" font-size="8.5" font-family="system-ui">President has 14 days to assent or refer to Supreme Court</text><text x="143" y="351" fill="#5C5C4E" font-size="8" font-family="system-ui">1 month · Risk: Supreme Court referral adds 6 months</text>
+<circle cx="100" cy="332" r="13" fill="#E8844A" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="336" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">05</text><rect x="125" y="308" width="400" height="46" fill="rgba(232,136,74,0.1)" rx="7" stroke="#E8844A" stroke-width="1.2"/><text x="143" y="325" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Presidential Assent</text><text x="143" y="365" fill="#8A8878" font-size="8.5" font-family="system-ui">President has 14 days to assent or refer to Supreme Court</text><text x="143" y="351" fill="#5C5C4E" font-size="8" font-family="system-ui">1 month · Risk: Supreme Court referral adds 6 months</text>
 <line x1="100" y1="345" x2="100" y2="375" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="395" r="13" fill="#E85888" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="399" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">06</text><rect x="125" y="371" width="400" height="46" fill="rgba(232,88,136,0.1)" rx="7" stroke="#E85888" stroke-width="1.2"/><text x="143" y="388" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">City Authority Act Commences</text><text x="143" y="402" fill="#8A8878" font-size="8.5" font-family="system-ui">NMS dissolved · City Authority Board appointed · Governor gains full planning + fiscal powers</text><text x="143" y="414" fill="#5C5C4E" font-size="8" font-family="system-ui">6-month transition · First Board: 11 members</text>
+<circle cx="100" cy="395" r="13" fill="#E85888" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="399" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">06</text><rect x="125" y="371" width="400" height="46" fill="rgba(232,88,136,0.1)" rx="7" stroke="#E85888" stroke-width="1.2"/><text x="143" y="388" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">City Authority Act Commences</text><text x="143" y="410" fill="#8A8878" font-size="8.5" font-family="system-ui">NMS dissolved · City Authority Board appointed · Governor gains full planning + fiscal powers</text><text x="143" y="422" fill="#5C5C4E" font-size="8" font-family="system-ui">6-month transition · First Board: 11 members</text>
 
 <rect x="16" y="428" width="512" height="52" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="272" y="447" text-anchor="middle" fill="#C4BFA8" font-size="9.5" font-weight="600" font-family="system-ui">Total minimum timeline: 18–24 months from Cabinet approval to commencement</text>
@@ -4397,10 +4402,10 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Deliberately designed to attract all income levels · Settlement + formal areas · Always free</text>
 <rect x="16" y="56" width="330" height="260" fill="#1E2A14" rx="8" stroke="#5DBF7A" stroke-width="1.5"/>
 <ellipse cx="181" cy="165" rx="44" ry="28" fill="#1A3A5A" stroke="#378ADD" stroke-width="1.5"/>
-<text x="181" y="169" text-anchor="middle" fill="#378ADD" font-size="8" font-family="system-ui">Pond</text>
+<text x="181" y="178" text-anchor="middle" fill="#378ADD" font-size="8" font-family="system-ui">Pond</text>
 <path d="M 55,220 Q 95,200 135,220 L 135,272 Q 95,266 55,272 Z" fill="#2A1A08" stroke="#E8844A" stroke-width="1.2"/>
 <text x="95" y="250" text-anchor="middle" fill="#E8844A" font-size="8" font-family="system-ui">Amphitheatre</text>
-<text x="95" y="262" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">500 cap · free</text>
+<text x="95" y="256" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">500 cap · free</text>
 <ellipse cx="181" cy="165" rx="110" ry="88" fill="none" stroke="#C8A84B" stroke-width="5" opacity="0.55"/>
 <text x="291" y="155" fill="#C8A84B" font-size="8" font-family="system-ui">400m</text>
 <text x="291" y="167" fill="#C8A84B" font-size="8" font-family="system-ui">running</text>
@@ -4413,11 +4418,11 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <rect x="242" y="76" width="96" height="58" fill="#21251C" rx="5" stroke="#E85888" stroke-width="1.2"/>
 <text x="290" y="97" text-anchor="middle" fill="#E85888" font-size="8" font-family="system-ui">Community centre</text>
 <text x="290" y="109" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Library · Wi-Fi</text>
-<text x="290" y="121" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Meeting rooms</text>
+<text x="290" y="130" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Meeting rooms</text>
 <rect x="242" y="218" width="96" height="56" fill="#21251C" rx="5" stroke="#3FBFB0" stroke-width="1.2"/>
 <text x="290" y="241" text-anchor="middle" fill="#3FBFB0" font-size="8" font-family="system-ui">Playground</text>
-<text x="290" y="253" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">All-weather</text>
-<text x="290" y="265" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Ages 2–14</text>
+<text x="290" y="256" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">All-weather</text>
+<text x="290" y="300" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Ages 2–14</text>
 <circle cx="130" cy="92" r="9" fill="#2D6B2D" opacity="0.9"/>
 <circle cx="156" cy="84" r="7" fill="#3A7A3A" opacity="0.9"/>
 <circle cx="218" cy="90" r="9" fill="#2D6B2D" opacity="0.9"/>
@@ -4432,7 +4437,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <rect x="355" y="56" width="181" height="258" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="445" y="74" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">Standard Ward Park</text>
 <text x="445" y="86" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">Minimum specification</text>
-<text x="373" y="104" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ 400m rubberised running track</text><text x="373" y="118" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Outdoor gym — 12 free stations</text><text x="373" y="132" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ All-weather playground (ages 2–14)</text><text x="373" y="146" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Amphitheatre / performance space (500)</text><text x="373" y="160" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Community centre + library + Wi-Fi</text><text x="373" y="174" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Weekend market / food stall area</text><text x="373" y="188" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Water feature / pond</text><text x="373" y="202" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Perimeter cycling path</text><text x="373" y="216" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Shade trees — 30% min canopy</text><text x="373" y="230" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Benches + shaded seating</text><text x="373" y="244" fill="#C8A84B" font-size="9" font-family="system-ui">★ Solar LED lighting (7pm–5am)</text><text x="373" y="258" fill="#C8A84B" font-size="9" font-family="system-ui">★ Public toilets + water point</text><text x="373" y="272" fill="#C8A84B" font-size="9" font-family="system-ui">★ Free Wi-Fi + power points</text><text x="373" y="286" fill="#C8A84B" font-size="9" font-family="system-ui">★ CCTV + community safety hub</text>
+<text x="373" y="122" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ 400m rubberised running track</text><text x="373" y="146" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Outdoor gym — 12 free stations</text><text x="373" y="146" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ All-weather playground (ages 2–14)</text><text x="373" y="146" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Amphitheatre / performance space (500)</text><text x="373" y="178" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Community centre + library + Wi-Fi</text><text x="373" y="200" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Weekend market / food stall area</text><text x="373" y="188" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Water feature / pond</text><text x="373" y="214" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Perimeter cycling path</text><text x="373" y="226" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Shade trees — 30% min canopy</text><text x="373" y="238" fill="#5DBF7A" font-size="9" font-family="system-ui">✓ Benches + shaded seating</text><text x="373" y="254" fill="#C8A84B" font-size="9" font-family="system-ui">★ Solar LED lighting (7pm–5am)</text><text x="373" y="268" fill="#C8A84B" font-size="9" font-family="system-ui">★ Public toilets + water point</text><text x="373" y="278" fill="#C8A84B" font-size="9" font-family="system-ui">★ Free Wi-Fi + power points</text><text x="373" y="290" fill="#C8A84B" font-size="9" font-family="system-ui">★ CCTV + community safety hub</text>
 <rect x="16" y="334" width="512" height="74" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="272" y="352" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">Cross-Class Design Principles</text>
 <text x="36" y="368" fill="#C8A84B" font-size="8.5" font-family="system-ui">Sited at the boundary between formal and informal — not inside either</text>
@@ -4764,10 +4769,10 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <!-- Phase 1 content -->
 <rect x="102" y="80" width="166" height="68" fill="#2A1A1A" rx="5" stroke="#E85050" stroke-width="1"/>
-<text x="118" y="96" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">5,000 matatus bought back</text>
-<text x="118" y="110" fill="#C4BFA8" font-size="8" font-family="system-ui">Oldest + most polluting first</text>
-<text x="118" y="123" fill="#C4BFA8" font-size="8" font-family="system-ui">Fair market value paid</text>
-<text x="118" y="136" fill="#C4BFA8" font-size="8" font-family="system-ui">Steel → rail track programme</text>
+<text x="118" y="106" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">5,000 matatus bought back</text>
+<text x="118" y="120" fill="#C4BFA8" font-size="8" font-family="system-ui">Oldest + most polluting first</text>
+<text x="118" y="132" fill="#C4BFA8" font-size="8" font-family="system-ui">Fair market value paid</text>
+<text x="118" y="144" fill="#C4BFA8" font-size="8" font-family="system-ui">Steel → rail track programme</text>
 
 <rect x="270" y="80" width="166" height="68" fill="#1A2A1A" rx="5" stroke="#5DBF7A" stroke-width="1"/>
 <text x="286" y="96" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">500 EV buses deployed</text>
@@ -4783,11 +4788,11 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <!-- Phase 2 content -->
 <rect x="102" y="166" width="166" height="84" fill="#2A1A1A" rx="5" stroke="#E85050" stroke-width="1"/>
-<text x="118" y="182" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">15,000 matatus bought back</text>
+<text x="118" y="208" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">15,000 matatus bought back</text>
 <text x="118" y="196" fill="#C4BFA8" font-size="8" font-family="system-ui">60% of total fleet retired</text>
-<text x="118" y="210" fill="#C4BFA8" font-size="8" font-family="system-ui">All pre-2010 vehicles gone</text>
-<text x="118" y="224" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel bus fleet 50% retired</text>
-<text x="118" y="238" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel boda fleet phased out</text>
+<text x="118" y="220" fill="#C4BFA8" font-size="8" font-family="system-ui">All pre-2010 vehicles gone</text>
+<text x="118" y="226" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel bus fleet 50% retired</text>
+<text x="118" y="244" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel boda fleet phased out</text>
 
 <rect x="270" y="166" width="166" height="84" fill="#1A2A1A" rx="5" stroke="#5DBF7A" stroke-width="1"/>
 <text x="286" y="182" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">2,000 EV buses operational</text>
@@ -4805,11 +4810,11 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <!-- Phase 3 content -->
 <rect x="102" y="268" width="166" height="80" fill="#2A1A1A" rx="5" stroke="#E85050" stroke-width="1"/>
-<text x="118" y="284" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">25,000 matatus bought back</text>
-<text x="118" y="298" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">FULL FLEET RETIRED ✓</text>
-<text x="118" y="312" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel buses 100% retired</text>
-<text x="118" y="326" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi: zero diesel transit</text>
-<text x="118" y="340" fill="#C4BFA8" font-size="8" font-family="system-ui">8,000km rail from matatu steel</text>
+<text x="118" y="292" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">25,000 matatus bought back</text>
+<text x="118" y="308" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">FULL FLEET RETIRED ✓</text>
+<text x="118" y="324" fill="#C4BFA8" font-size="8" font-family="system-ui">Diesel buses 100% retired</text>
+<text x="118" y="336" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi: zero diesel transit</text>
+<text x="118" y="350" fill="#C4BFA8" font-size="8" font-family="system-ui">8,000km rail from matatu steel</text>
 
 <rect x="270" y="268" width="166" height="80" fill="#1A2A1A" rx="5" stroke="#5DBF7A" stroke-width="1"/>
 <text x="286" y="284" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">100% zero-emission transit</text>
@@ -4833,7 +4838,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 </svg></template>
 <template id="viz-tpl-ev_retire-panel"><div class="vsect">Benchmark</div><a class="bench-link" href="https://www.shenzhen.gov.cn" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇳</div><div><div class="cmp-cn">Shenzhen — World's First 100% EV Bus City</div><div class="cmp-sy">2018 · 16,359 diesel buses retired in 2 years · All drivers retrained · Zero net job losses</div></div><div class="ext-ico">↗</div></a><div class="vsect">Transition Comparison</div><table class="cmp-tbl"><tr><th>Element</th><th>Nairobi (30yr managed)</th><th>Shenzhen (2yr rapid)</th></tr><tr><td>Fleet size</td><td>25,000 matatus + buses</td><td>16,359 buses</td></tr><tr><td>Transition timeline</td><td>30 years (managed)</td><td>2 years (accelerated)</td></tr><tr><td>Worker retraining</td><td>50,000 total</td><td>All 60,000+ drivers retrained</td></tr><tr><td>Compensation model</td><td>Fair market value buyback</td><td>Operators compensated per vehicle</td></tr><tr><td>Circular economy</td><td>Matatu steel → rail tracks</td><td>Batteries → second-life storage</td></tr></table><div class="vsect vsect2">5 Key Implementation Rules</div><div class="lsn"><span class="lsn-n">1</span><span>The MOA must co-own the buyback programme — the Matatu Owners Association represents 30,000+ vehicle owners and 700,000+ workers. If the buyback is imposed on the industry, it will be resisted, delayed, and partially subverted. If the MOA co-designs and co-implements it, with MOA-appointed assessors valuing each vehicle and MOA-run retraining centres, the industry becomes a partner in its own transformation.</span></div><div class="lsn"><span class="lsn-n">2</span><span>The EV taxi loan is the owner retention tool — a matatu owner who receives fair market value (KES 800K–3M depending on vehicle) and a government-backed EV taxi loan at 8% (commercial rate: 18%) has a clear economic pathway: exit the matatu, enter the EV taxi economy. The loan terms must be calibrated so the monthly repayment is less than a matatu owner's current net monthly income.</span></div><div class="lsn"><span class="lsn-n">3</span><span>Retraining must begin 24 months before the buyback offer arrives — a matatu driver who receives a buyback offer with no retraining pathway will reject it. The City Authority must build 10 EV bus driver training centres and 5 EV technician schools before Phase 1 buybacks begin. Retraining is a pre-condition of the buyback programme, not a promise made afterward.</span></div><div class="lsn"><span class="lsn-n">4</span><span>The scrap steel quality control chain must be established in Phase 1 — buying back 5,000 matatus in Phase 1 means processing approximately 12,500 tonnes of scrap steel. The Scrap Metal Council of Kenya must establish licensed, quality-controlled processing depots before Phase 1 buybacks begin. The rail track manufacturer's specifications must be agreed before the first matatu is stripped.</span></div><div class="lsn"><span class="lsn-n">5</span><span>Monitor and publish displacement data monthly — track: number of matatu workers who took the buyback, number who retrained, number who found new employment, number who are unemployed. If retraining absorption rates fall below 80%, the buyback programme must pause until the labour market catches up. Worker welfare is the brake on the transition pace.</span></div><a class="also-link" href="https://www.rag.de/en/" target="_blank" rel="noopener"><span class="also-ico">🇩🇪</span><span><strong>Germany Ruhr — Coal Transition</strong> — 30-year managed transition of 700,000 coal miners. Workers retrained, pensions guaranteed, communities reinvested. The gold standard for managed industry transition. Nairobi's matatu transition follows the same principles.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.gov.uk/government/organisations/department-for-energy-security-and-net-zero" target="_blank" rel="noopener"><span class="also-ico">🇬🇧</span><span><strong>UK — coal mine closure programme</strong> — Structured compensation + retraining over 15 years. Key lesson: transitions that guarantee compensation AND retraining AND community investment succeed. Transitions that only compensate and abandon produce long-term social damage.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><div class="viz-note"><strong>The matatu driver is not the problem — they are the solution:</strong> Nairobi's 700,000+ matatu workers know every route, every shortcut, every passenger pattern, and every traffic pattern in the city. Retrained as EV bus operators, rail conductors, and transport system coordinators, they are the most valuable human resource in Nairobi's transport transition. The EV future does not replace the matatu workforce — it repurposes it.</div></template>
 
-<template id="viz-tpl-flood_resilience-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<template id="viz-tpl-flood_resilience-map"><svg viewBox="0 0 544 530" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Nairobi Flood Risk Map — March 2026</text>
 <text x="20" y="42" fill="#E85050" font-size="9" font-family="system-ui" font-weight="700">71 deaths · 4,845 displaced · 10,000 households affected · 6 March 2026</text>
@@ -4851,7 +4856,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
 <path d="M 30 295 Q 70 278 110 268 Q 150 260 190 258 Q 220 255 260 248 Q 300 240 330 218"
   stroke="#5DBF7A" stroke-width="2.5" fill="none" opacity="0.85"/>
-<text x="35" y="313" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
+<text x="35" y="344" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
 
 <path d="M 150 60 Q 160 92 170 122 Q 178 152 185 178 Q 190 198 195 212"
   stroke="#8B79E8" stroke-width="2" fill="none" opacity="0.7"/>
@@ -4871,14 +4876,14 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- Kibera -->
 <ellipse cx="148" cy="308" rx="36" ry="22" fill="#E85050" opacity="0.2"/>
 <ellipse cx="148" cy="308" rx="36" ry="22" fill="none" stroke="#E85050" stroke-width="1.5" stroke-dasharray="4,3"/>
-<text x="148" y="304" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui" text-anchor="middle">KIBERA</text>
-<text x="148" y="315" fill="#E85050" font-size="7" font-family="system-ui" text-anchor="middle">HIGH RISK</text>
+<text x="148" y="328" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui" text-anchor="middle">KIBERA</text>
+<text x="148" y="316" fill="#E85050" font-size="7" font-family="system-ui" text-anchor="middle">HIGH RISK</text>
 
 <!-- Mukuru kwa Njenga -->
 <ellipse cx="390" cy="262" rx="40" ry="24" fill="#E85050" opacity="0.2"/>
 <ellipse cx="390" cy="262" rx="40" ry="24" fill="none" stroke="#E85050" stroke-width="1.5" stroke-dasharray="4,3"/>
-<text x="390" y="258" fill="#E85050" font-size="8" font-weight="700" font-family="system-ui" text-anchor="middle">MUKURU KWA NJENGA</text>
-<text x="390" y="270" fill="#E85050" font-size="7" font-family="system-ui" text-anchor="middle">HIGH RISK</text>
+<text x="390" y="243" fill="#E85050" font-size="8" font-weight="700" font-family="system-ui" text-anchor="middle">MUKURU KWA NJENGA</text>
+<text x="390" y="263" fill="#E85050" font-size="7" font-family="system-ui" text-anchor="middle">HIGH RISK</text>
 
 <!-- Parklands — NEW -->
 <ellipse cx="155" cy="148" rx="34" ry="22" fill="#E8844A" opacity="0.2"/>
@@ -4889,8 +4894,8 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- South C — NEW -->
 <ellipse cx="285" cy="295" rx="38" ry="22" fill="#E8844A" opacity="0.2"/>
 <ellipse cx="285" cy="295" rx="38" ry="22" fill="none" stroke="#E8844A" stroke-width="1.5" stroke-dasharray="4,3"/>
-<text x="285" y="290" fill="#E8844A" font-size="8.5" font-weight="700" font-family="system-ui" text-anchor="middle">SOUTH B &amp; C</text>
-<text x="285" y="302" fill="#E8844A" font-size="7" font-family="system-ui" text-anchor="middle">Homes flooded · drains blocked</text>
+<text x="285" y="296" fill="#E8844A" font-size="8.5" font-weight="700" font-family="system-ui" text-anchor="middle">SOUTH B &amp; C</text>
+<text x="285" y="308" fill="#E8844A" font-size="7" font-family="system-ui" text-anchor="middle">Homes flooded · drains blocked</text>
 
 <!-- Globe Roundabout / Kariokor — NEW -->
 <ellipse cx="335" cy="172" rx="32" ry="18" fill="#E8844A" opacity="0.2"/>
@@ -4916,39 +4921,49 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <circle cx="155" cy="170" r="8" fill="#E8844A"/>
 <text x="155" y="174" fill="white" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
 
-<circle cx="285" cy="270" r="8" fill="#E8844A"/>
+<circle cx="285" cy="250" r="8" fill="#E8844A"/>
 <text x="285" y="274" fill="white" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
 
 <circle cx="335" cy="150" r="8" fill="#C8A84B"/>
 <text x="335" y="154" fill="#131610" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
 
-<!-- LEGEND -->
-<rect x="20" y="402" width="504" height="88" fill="#21251C" rx="6"/>
-<text x="32" y="418" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">8 Priority Intervention Corridors — March 2026 Floods</text>
+<!-- LEGEND — rebuilt with proper spacing -->
+<rect x="20" y="402" width="504" height="120" fill="#21251C" rx="6"/>
+<text x="32" y="418" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Priority Intervention Corridors — March 2026 Floods</text>
 
-<circle cx="38" cy="430" r="5" fill="#E85050"/><text x="38" y="433" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
-<text x="48" y="434" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Mathare River bank — riparian clearance, drainage, rescue boats</text>
+<!-- Row 1 -->
+<circle cx="38" cy="432" r="5" fill="#E85050"/>
+<text x="38" y="436" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="50" y="436" fill="#C4BFA8" font-size="8" font-family="system-ui">Mathare River — riparian clearance + drainage + rescue boats</text>
 
-<circle cx="38" cy="443" r="5" fill="#E85050"/><text x="38" y="446" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
-<text x="48" y="447" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Kibera/Ngong River — buffer restoration + Motoine drainage retrofit</text>
+<circle cx="282" cy="432" r="5" fill="#E8844A"/>
+<text x="282" y="436" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="294" y="436" fill="#C4BFA8" font-size="8" font-family="system-ui">Parklands/Limuru Rd — Gitathuru drainage retrofit</text>
 
-<circle cx="38" cy="456" r="5" fill="#E85050"/><text x="38" y="459" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
-<text x="48" y="460" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Mukuru kwa Njenga — Ngong/Nairobi confluence flood gates</text>
+<!-- Row 2 -->
+<circle cx="38" cy="451" r="5" fill="#E85050"/>
+<text x="38" y="455" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="50" y="455" fill="#C4BFA8" font-size="8" font-family="system-ui">Kibera/Ngong River — buffer restoration + Motoine retrofit</text>
 
-<circle cx="280" cy="430" r="5" fill="#E8844A"/><text x="280" y="433" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
-<text x="290" y="434" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Parklands/Limuru Rd — Gitathuru drainage + debris clearance programme</text>
+<circle cx="282" cy="451" r="5" fill="#E8844A"/>
+<text x="282" y="455" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="294" y="455" fill="#C4BFA8" font-size="8" font-family="system-ui">South B &amp; C — Ngong Road culvert upsizing + retention</text>
 
-<circle cx="280" cy="443" r="5" fill="#E8844A"/><text x="280" y="446" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
-<text x="290" y="447" fill="#C4BFA8" font-size="7.5" font-family="system-ui">South B &amp; C — Ngong Road culvert upsizing + stormwater retention</text>
+<!-- Row 3 -->
+<circle cx="38" cy="470" r="5" fill="#E85050"/>
+<text x="38" y="474" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="50" y="474" fill="#C4BFA8" font-size="8" font-family="system-ui">Mukuru kwa Njenga — Ngong/Nairobi confluence flood gates</text>
 
-<circle cx="280" cy="456" r="5" fill="#C8A84B"/><text x="280" y="459" fill="#131610" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
-<text x="290" y="460" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Globe/Kariokor — Nairobi River overflow barriers + IoT gauge sensors</text>
+<circle cx="282" cy="470" r="5" fill="#C8A84B"/>
+<text x="282" y="474" fill="#131610" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="294" y="474" fill="#C4BFA8" font-size="8" font-family="system-ui">Globe/Kariokor — River overflow barriers + IoT gauge sensors</text>
 
-<rect x="20" y="472" width="14" height="10" fill="#E85050" opacity="0.5" rx="2"/>
-<text x="38" y="481" fill="#8A8878" font-size="7.5" font-family="system-ui">High risk · deaths 2026</text>
-<rect x="120" y="472" width="14" height="10" fill="#E8844A" opacity="0.5" rx="2"/>
-<text x="138" y="481" fill="#8A8878" font-size="7.5" font-family="system-ui">Medium risk · severe damage</text>
-<text x="280" y="481" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Source: Daily Nation, The Star, Wikipedia — March 2026</text>
+<!-- Risk legend row -->
+<rect x="32" y="486" width="12" height="9" fill="#E85050" opacity="0.5" rx="2"/>
+<text x="48" y="494" fill="#8A8878" font-size="7.5" font-family="system-ui">High risk · deaths 2026</text>
+<rect x="150" y="486" width="12" height="9" fill="#E8844A" opacity="0.5" rx="2"/>
+<text x="166" y="494" fill="#8A8878" font-size="7.5" font-family="system-ui">Medium risk · damage</text>
+<text x="290" y="494" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Source: Daily Nation · The Star · Wikipedia March 2026</text>
 </svg></template>
 <template id="viz-tpl-flood_resilience-panel"><div class="vp-section">
 <div class="vp-title">March 2026 — Nairobi's Deadliest Floods in Years</div>
@@ -4989,7 +5004,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <path d="M 30 275 Q 110 255 190 250 Q 260 242 330 210" stroke="#5DBF7A" stroke-width="1.5" fill="none" opacity="0.35"/>
 <!-- CBD -->
 <rect x="255" y="175" width="50" height="35" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
-<text x="280" y="196" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<text x="280" y="210" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
 <!-- 5 PRIORITY CORRIDORS as thick colored road lines -->
 <!-- 1: Ngong Road (SW) -->
 <path d="M 100 320 Q 140 290 180 265 Q 220 245 260 230 Q 290 220 310 210" stroke="#E85050" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
@@ -5061,7 +5076,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <path d="M 200 60 Q 215 110 225 165 Q 228 188 230 202" stroke="none" fill="none"/>
 <path d="M 180 60 Q 195 110 205 165 Q 208 188 210 202 L 250 202 Q 248 188 248 165 Q 245 110 235 60 Z" fill="#E85050" opacity="0.15"/>
 <path d="M 200 60 Q 215 110 225 165 Q 228 188 230 202" stroke="#3FBFB0" stroke-width="2.5" fill="none"/>
-<text x="236" y="78" fill="#3FBFB0" font-size="8" font-family="system-ui" font-weight="700">MATHARE R.</text>
+<text x="236" y="88" fill="#3FBFB0" font-size="8" font-family="system-ui" font-weight="700">MATHARE R.</text>
 <!-- Ngong River + buffer -->
 <path d="M 30 285 Q 110 265 190 258 Q 260 250 330 215" stroke="none" fill="none"/>
 <path d="M 30 265 Q 110 245 190 238 Q 260 230 330 195 L 330 235 Q 260 270 190 278 Q 110 285 30 305 Z" fill="#E85050" opacity="0.15"/>
@@ -5089,7 +5104,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <text x="260" y="180" fill="#8A8878" font-size="7.5" font-family="system-ui">→ demolition required</text>
 <!-- CBD -->
 <rect x="258" y="178" width="48" height="34" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
-<text x="282" y="198" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<text x="282" y="208" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
 <!-- Legend -->
 <rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
 <text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Riparian Buffer Enforcement Act — What It Mandates</text>
@@ -5241,10 +5256,10 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <!-- River labels -->
 <text x="55" y="185" fill="#378ADD" font-size="8" font-family="system-ui" font-weight="700">NAIROBI RIVER</text>
 <text x="235" y="80" fill="#3FBFB0" font-size="8" font-family="system-ui" font-weight="700">MATHARE R.</text>
-<text x="35" y="308" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
+<text x="35" y="332" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="700">NGONG RIVER</text>
 <!-- CBD -->
-<rect x="258" y="183" width="48" height="34" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
-<text x="282" y="203" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
+<rect x="258" y="158" width="48" height="28" fill="#2F342A" stroke="#3A3F32" stroke-width="1" rx="3"/>
+<text x="282" y="152" fill="#5C5C4E" font-size="8" font-family="system-ui" text-anchor="middle">CBD</text>
 <!-- FLOOD GATES — automated, at river crossings -->
 <!-- Gate symbol: double bar across river -->
 <g id="gate">
@@ -5254,7 +5269,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
   <line x1="225" y1="218" x2="231" y2="218" stroke="#E85050" stroke-width="2"/>
   <circle cx="228" cy="205" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
   <text x="240" y="204" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G1</text>
-  <text x="240" y="213" fill="#8A8878" font-size="7" font-family="system-ui">Auto gate</text>
+  <text x="240" y="244" fill="#8A8878" font-size="7" font-family="system-ui">Auto gate</text>
 
   <line x1="370" y1="213" x2="370" y2="233" stroke="#E85050" stroke-width="4" stroke-linecap="round"/>
   <circle cx="370" cy="223" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
@@ -5262,7 +5277,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 
   <line x1="150" y1="194" x2="150" y2="214" stroke="#E85050" stroke-width="4" stroke-linecap="round"/>
   <circle cx="150" cy="204" r="9" fill="none" stroke="#E85050" stroke-width="1.5"/>
-  <text x="135" y="210" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G3</text>
+  <text x="135" y="268" fill="#E85050" font-size="7.5" font-weight="700" font-family="system-ui">G3</text>
 
   <!-- Mathare River gate -->
   <line x1="218" y1="130" x2="238" y2="130" stroke="#3FBFB0" stroke-width="4" stroke-linecap="round"/>
@@ -5272,11 +5287,11 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
   <!-- Ngong River gates -->
   <line x1="118" y1="257" x2="138" y2="257" stroke="#5DBF7A" stroke-width="4" stroke-linecap="round"/>
   <circle cx="128" cy="257" r="9" fill="none" stroke="#5DBF7A" stroke-width="1.5"/>
-  <text x="140" y="256" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G5</text>
+  <text x="140" y="240" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G5</text>
 
   <line x1="248" y1="248" x2="268" y2="248" stroke="#5DBF7A" stroke-width="4" stroke-linecap="round"/>
   <circle cx="258" cy="248" r="9" fill="none" stroke="#5DBF7A" stroke-width="1.5"/>
-  <text x="270" y="247" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G6</text>
+  <text x="270" y="268" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">G6</text>
 </g>
 <!-- RESCUE BOAT POSITIONS -->
 <g fill="#C8A84B" opacity="0.9">
@@ -5286,8 +5301,8 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
   <text x="238" y="174" fill="#8A8878" font-size="6.5" font-family="system-ui">Mathare corridor</text>
 
   <polygon points="155,285 150,298 160,298" fill="#C8A84B"/>
-  <text x="163" y="295" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 2</text>
-  <text x="163" y="304" fill="#8A8878" font-size="6.5" font-family="system-ui">Kibera/Ngong</text>
+  <text x="163" y="310" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 2</text>
+  <text x="163" y="320" fill="#8A8878" font-size="6.5" font-family="system-ui">Kibera/Ngong</text>
 
   <polygon points="392,248 387,261 397,261" fill="#C8A84B"/>
   <text x="400" y="258" fill="#C8A84B" font-size="7" font-weight="700" font-family="system-ui">🚤 BOAT 3</text>
@@ -5299,7 +5314,7 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 </g>
 <!-- DEPLOYABLE BARRIERS (portable, pre-positioned) -->
 <rect x="295" y="200" width="20" height="6" fill="#E8844A" rx="1"/>
-<text x="318" y="207" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB1 Globe</text>
+<text x="318" y="230" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB1 Globe</text>
 <rect x="80" y="148" width="20" height="6" fill="#E8844A" rx="1"/>
 <text x="103" y="155" fill="#E8844A" font-size="7" font-weight="700" font-family="system-ui">DB2 Parklands Ave</text>
 <rect x="275" y="285" width="20" height="6" fill="#E8844A" rx="1"/>
