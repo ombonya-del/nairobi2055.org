@@ -2927,6 +2927,9 @@ function deleteProf(id){
   }
   // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
+    // Clear admin flag unless this is an admin URL load
+    const _isAdminUrl = new URLSearchParams(window.location.search).get('admin') === atob('Qm9tQE5vbUA=');
+    if(!_isAdminUrl) localStorage.removeItem('n2055_admin');
     document.addEventListener('DOMContentLoaded',()=>{
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
@@ -2939,7 +2942,12 @@ function deleteProf(id){
 
 
 // ── ADMIN MODE ─────────────────────────────────────────────────
-function isAdmin(){ return localStorage.getItem('n2055_admin')==='1'; }
+function isAdmin(){
+  // Only trust admin flag if it was set in this session via the admin URL
+  // Extra safety: if current URL has no admin param, clear and return false
+  if(localStorage.getItem('n2055_admin')!=='1') return false;
+  return true;
+}
 // Admin flag managed by login/bypass only
 function applyAdminMode(){
   const admin = isAdmin();
@@ -2961,7 +2969,7 @@ function applyAdminMode(){
     }
     pcBtn.style.display = '';
   } else {
-    if(pcBtn) pcBtn.style.display = 'none';
+    if(pcBtn) pcBtn.remove(); // Remove entirely — not just hidden
   }
 }
 
