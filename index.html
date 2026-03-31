@@ -2506,6 +2506,42 @@ function getVizKey(title){
   // ── Batch C: EV Retirement ───────────────────────────────────
   if(t.includes('DIESEL FLEET')||t.includes('EV TRANSITION ROADMAP')||t.includes('SMART EV BUS NETWORK')||t.includes('DIGITAL MATATU TRANSITION')) return 'EV_RETIRE';
   // ── Flood Resilience ───────────────────────────────────────
+  // ── GovTech & Digital Government ──────────────────────────────
+  if(t.includes('DIGITAL TWIN')||t.includes('GOVERNMENT API')||t.includes('OPEN GOVERNMENT')||t.includes('GOVTECH')||t.includes('SMART CONTRACT PROCUREMENT')||t.includes('RADICAL TRANSPARENCY')||t.includes('CIVIC TECH')||t.includes('DIGITAL ADDRESSING')||t.includes('AI-POWERED PERMIT')||t.includes('E-GOVERNANCE')||t.includes('DATA SOVEREIGNTY')||t.includes('DECENTRALIZED IDENTITY')||t.includes('OFFLINE-FIRST')||t.includes('AI CITY MANAGER')||t.includes('PARTICIPATORY BUDGETING')||t.includes('ALGORITHMIC ACCOUNTABILITY')||t.includes('DIGITAL EMERGENCY TWIN')||t.includes('OPEN SOURCE GOVERNMENT')) return 'GOVTECH';
+  // ── Climate Resilience ──────────────────────────────────────
+  if(t.includes('CLIMATE RISK')||t.includes('CLIMATE-RESILIENT URBAN')||t.includes('ECOSYSTEM-BASED ADAPTATION')||t.includes('SETTLEMENT CLIMATE')||t.includes('INFRASTRUCTURE DISASTER')||t.includes('DISASTER-RESILIENT')||t.includes('CLIMATE DISPLACEMENT')||t.includes('CLIMATE REFUGEE')||t.includes('HEAT-RESILIENT')||t.includes('HEAT ISLAND')||t.includes('CLIMATE-RESILIENT VALUE')||t.includes('NEAR-ZERO EMISSIONS')||t.includes('CARBON-NEGATIVE')||t.includes('NET-ZERO BUILT')||t.includes('GLOBAL GREEN CITY')||t.includes('POST-CLIMATE')||t.includes('NEAR-ZERO-EMISSION PUBLIC')||t.includes('INFORMAL SETTLEMENT CLIMATE')||t.includes('EMERGENCY INFRASTRUCTURE CLIMATE')) return 'CLIMATE_RESILIENCE';
+  // ── AI & Deep Tech ───────────────────────────────────────────
+  if(t.includes('AI RESEARCH')||t.includes('AI EVERYTHING')||t.includes('AI-OPTIMIZED')||t.includes('NAIROBI AI SUPERCOMPUTER')||t.includes('QUANTUM COMPUTING')||t.includes('SPATIAL COMPUTING')||t.includes('WEB3 CITY')||t.includes('NAIROBI SINGULARITY')||t.includes('SYNTHETIC BIOLOGY')||t.includes('AI CLIMATE ADAPTATION')||t.includes('CLIMATE-AI')||t.includes('LIVING LABORATORY')||t.includes('5G ROLLOUT')||t.includes('5G/6G')||t.includes('UNIVERSAL BROADBAND')||t.includes('RESILIENT DIGITAL')||t.includes('DIGITAL INFRASTRUCTURE INVESTMENT')||t.includes('NAIROBI AS GLOBAL TECH')||t.includes('GLOBAL CLIMATE TECH')||t.includes('DIGITAL SKILLS FOR ALL')) return 'AI_TECH';
+  // ── FinTech & Economic Hub ───────────────────────────────────
+  if(t.includes('NAIROBI FINANCIAL')||t.includes('TOP 3 AFRICA TECH')||t.includes('TOP 5 AFRICA')||t.includes('TOP-10 AFRICA')||t.includes('CRYPTO')||t.includes('DEFI')||t.includes('TOKENIZED REAL ESTATE')||t.includes('AI-POWERED SME FINANCE')||t.includes('STARTUP ECOSYSTEM')||t.includes('MAKER ECONOMY')||t.includes('PLATFORM ECONOMY')||t.includes('HEALTHTECH')||t.includes('CLIMATECH EXPORT')||t.includes('KNOWLEDGE ECONOMY')||t.includes('AFRICA CLIMATE ECONOMY')||t.includes('CLIMATE FINANCE MOBILIZ')||t.includes('CLIMATE INSURANCE MARKET')||t.includes('LIGHT MANUFACTURING SEZ')||t.includes('MANUFACTURING RENAISSANCE')||t.includes('AGRITECH')||t.includes('NAIROBI AS GLOBAL FINTECH')||t.includes('$10B NAIROBI GREEN')||t.includes('ANCHOR INSTITUTION')) return 'FINTECH_HUB';
+  // ── Social Services & Safety Net ────────────────────────────
+  if(t.includes('UNIVERSAL HEALTHCARE')||t.includes('NHIF REFORM')||t.includes('MENTAL HEALTH SYSTEM')||t.includes('UNIVERSAL BASIC INCOME')||t.includes('FOOD SECURITY SOCIAL')||t.includes('INFORMAL SECTOR SAFETY')||t.includes('AI-POWERED SOCIAL SAFETY')||t.includes('POST-SCARCITY SOCIAL')||t.includes('INTERGENERATIONAL SOCIAL')||t.includes('INFORMAL SECTOR CLIMATE RESILIENCE')||t.includes('NAIROBI HUMAN FLOURISHING')||t.includes('CLIMATE JUSTICE SOCIAL')||t.includes('SUSTAINED SOCIAL')||t.includes('INCLUSIVE SPORT FOR ALL')) return 'SOCIAL_SERVICES';
+  // ── Digital Health ───────────────────────────────────────────
+  if(t.includes('TELEMEDICINE')||t.includes('VIRTUAL HEALTHCARE')||t.includes('ACTIVE TRANSPORT HEALTH')||t.includes('URBAN GREENING FOR HEALTH')||t.includes('HEALTHY LIVING DISTRICT')||t.includes('GLOBAL CLIMATE HEALTHY')||t.includes('REGENERATIVE HEALTHY')||t.includes('WEARABLE EMERGENCY')||t.includes('AIR QUALITY PROGRAMME')) return 'HEALTH_DIGITAL';
+  // ── Education & Skills ───────────────────────────────────────
+  if(t.includes('PUBLIC SCHOOL QUALITY')||t.includes('QUALITY PUBLIC SECONDARY')||t.includes('EDTECH')||t.includes('SKILLS PASSPORT')||t.includes('YOUTH APPRENTICESHIP')||t.includes('RESILIENCE EDUCATION')||t.includes('CREATIVE AI ETHICS')||t.includes('AI CREATIVE TOOLS')||t.includes('AI-GENERATED SWAHILI')||t.includes('NAIROBI CULTURAL HERITAGE MAP')) return 'EDUCATION_SKILLS';
+  // ── Culture & Creative City ──────────────────────────────────
+  if(t.includes('CULTURAL IDENTITY')||t.includes('CULTURAL EXPORT')||t.includes('GLOBAL CREATIVE CITY')||t.includes('AFRICAN CREATIVE INDUSTRIES')||t.includes('CREATIVE ECONOMY')||t.includes('MOBILE CREATIVE')||t.includes('ESTABLISHED CREATIVE')||t.includes('CREATIVE CITY LEGACY')||t.includes('CULTURAL INFRASTRUCTURE')||t.includes('CULTURAL HERITAGE CLIMATE')||t.includes('CULTURAL TECH')||t.includes('CULTURE AS COMMUNITY')||t.includes('DOCUMENTING ENDANGERED')||t.includes('POST-ADVERSITY CULTURAL')||t.includes('CIVIC IDENTITY')||t.includes('LIVING CITY MANIFESTO')||t.includes('VIRTUAL REALITY NAIROBI')||t.includes('CLIMATE STORYTELLING')||t.includes('CLIMATE PROSPERITY REFRAME')||t.includes('NAIROBI AS GLOBAL CREATIVE')||t.includes('NAIROBI AS GLOBAL CLIMATE CULTURE')) return 'CULTURE_CREATIVE';
+  // ── Future Transport ─────────────────────────────────────────
+  if(t.includes('AUTONOMOUS VEHICLE')||t.includes('AUTONOMOUS BUS')||t.includes('AUTONOMOUS BIKE')||t.includes('FULLY AUTONOMOUS TRANSPORT')||t.includes('HYPERLOOP')||t.includes('AIR TAXI')||t.includes('MICRO-MOBILITY')||t.includes('GAMIFIED ACTIVE TRANSPORT')||t.includes('RAIL NETWORK EXPANSION')||t.includes('COMMUTER RAIL')||t.includes('EMERGENCY CLIMATE TRANSIT')||t.includes('TRANSIT AS CLIMATE EVACUATION')||t.includes('TRANSIT AS PLATFORM')||t.includes('ZERO-EMISSION MASS TRANSIT')||t.includes('ZERO-EMISSION CLIMATE-RESILIENT')||t.includes('GREEN JOBS IN TRANSIT')||t.includes('50,000 E-BODA')||t.includes('SOLAR-POWERED BUS DEPOTS')) return 'TRANSPORT_FUTURE';
+  // ── Green Building & Circular City ──────────────────────────
+  if(t.includes('GREEN BUILDING CODE')||t.includes('GREEN BUILDING STANDARD')||t.includes('GREEN BUILDING INCENTIVE')||t.includes('SOLAR MICROGRID')||t.includes('VIRTUAL POWER PLANT')||t.includes('URBAN AGRICULTURE MANDATE')||t.includes('URBAN BIODIVERSITY CORRIDORS')||t.includes('TARGETED URBAN GREENING')||t.includes('GREEN CORRIDORS AS CLIMATE')||t.includes('CIRCULAR ECONOMY CITY MODEL')||t.includes('FULL CIRCULAR ECONOMY')||t.includes('CLOSED-LOOP ECOLOGY')||t.includes('WASTE TECH ECOSYSTEM')) return 'GREEN_BUILDING';
+  // ── Advanced Emergency Response ──────────────────────────────
+  if(t.includes('DRONE EMERGENCY')||t.includes('ROBOTIC SEARCH')||t.includes('URBAN SEARCH AND RESCUE')||t.includes('USAR')||t.includes('MASS CASUALTY')||t.includes('PREDICTIVE EMERGENCY')||t.includes('AI-POWERED EMERGENCY DISPATCH')||t.includes('SMS EMERGENCY ALERT')||t.includes('ZERO EMERGENCY RESPONSE')||t.includes('WORLD-CLASS CLIMATE EMERGENCY')||t.includes('NAIROBI CLIMATE EMERGENCY RESPONSE ACADEMY')||t.includes('NAIROBI AS GLOBAL EMERGENCY')||t.includes('REGIONAL EMERGENCY LEADERSHIP')||t.includes('MULTI-HAZARD COMMUNITY')||t.includes('COMMUNITY RESILIENCE COMMITTEE')||t.includes('COMMUNITY SOLIDARITY')||t.includes('CONSOLIDATED EMERGENCY')||t.includes('CLIMATE EMERGENCY SPECIALIZATION')||t.includes('CLIMATE TECH EMERGENCY')||t.includes('EMERGENCY LOGISTICS')||t.includes('ZERO PREVENTABLE DEATH')||t.includes('ZERO PREVENTABLE CLIMATE')) return 'EMERGENCY_ADVANCED';
+  // ── Governance Reform ────────────────────────────────────────
+  if(t.includes('NMS/COUNTY INTEGRATION')||t.includes('INCREMENTAL DEVOLUTION')||t.includes('FISCAL DEVOLUTION')||t.includes('PROPERTY TAX MODERNIZATION')||t.includes('AUTONOMOUS REGULATORY')||t.includes('CITY OMBUDSMAN')||t.includes('CLIMATE JUSTICE OMBUDSMAN')||t.includes('CONSOLIDATED CITY GOVERNANCE')||t.includes('WARD-LEVEL SERVICE GUARANTEES')||t.includes('ROBUST CIVIL SOCIETY')||t.includes('CONTRACTOR ACCOUNTABILITY FRAMEWORK')||t.includes('EMERGENCY GOVERNANCE')||t.includes('POST-CRISIS GOVERNANCE')||t.includes('NAIROBI AS AFRICAN GOVERNANCE')||t.includes('NAIROBI AS AFRICAN SOCIAL RESILIENCE')) return 'GOVERNANCE_REFORM';
+  // ── Housing & Urban Form ─────────────────────────────────────
+  if(t.includes('3D-PRINTED HOUSING')||t.includes('SOCIAL HOUSING AS COMMUNITY')||t.includes('MIXED-USE ZONING')||t.includes('15-MINUTE CITY')||t.includes('20-MINUTE CITY')||t.includes('5 SECONDARY URBAN CENTRES')||t.includes('PARTIAL INFORMAL FORMALIZATION')||t.includes('INFORMAL ECONOMY FORMALIZATION')||t.includes('NAIROBI INNOVATION DISTRICT')||t.includes('NAIROBI TECH HUB NETWORK')||t.includes('DECENTRALIZED WATER AND SANITATION')) return 'HOUSING_URBAN';
+  // ── Social Fabric Programmes ─────────────────────────────────
+  if(t.includes('RUNNING TRACKS AND PLAYGROUNDS')||t.includes('SMART PLAYGROUNDS')||t.includes('50 PLAYGROUNDS')||t.includes('UNIVERSAL ACCESSIBILITY')||t.includes('GREEN JOBS PROGRAMME')||t.includes('POST-ADVERSITY SOCIAL CAPITAL')||t.includes('NAIROBI AS EQUITABLE')||t.includes('SUSTAINED GROWTH ECONOMY')||t.includes('ABUNDANCE ECONOMY')||t.includes('POST-SCARCITY CITY INFRASTRUCTURE')||t.includes('AFRICAN CLIMATE GOVERNANCE HUB')) return 'SOCIAL_FABRIC_PROG';
+  // ── Advanced Environment ─────────────────────────────────────
+  if(t.includes('DANDORA LANDFILL')||t.includes('DANDORA PHASE-OUT')||t.includes('IOT ENVIRONMENTAL')||t.includes('OPEN CLIMATE DATA')||t.includes('CLIMATE ECONOMY PIVOT')||t.includes('GLOBAL CLIMATE ADAPTATION SHOWCASE')||t.includes('NAIROBI RIVER CLEANUP')||t.includes('NAIROBI RIVER ECOLOGICAL')||t.includes('NAIROBI RIVER PHASE 1')) return 'ENVIRONMENT_ADV';
+  // ── Fire & Safety ────────────────────────────────────────────
+  if(t.includes('PROFESSIONAL FIRE SERVICE')||t.includes('FIRE STATION EXPANSION')) return 'FIRE_SAFETY';
+  // ── Emergency Shelter ────────────────────────────────────────
+  if(t.includes('EMERGENCY TRANSITIONAL SHELTER')||t.includes('EMERGENCY RESPONSE IN INFORMAL SETTLEMENTS')||t.includes('EMERGENCY COOLING CENTRES')) return 'EMERGENCY_SHELTER';
+  // ── Catch-all for remaining ──────────────────────────────────
+  if(t.includes('POST-CRISIS PROSPERITY')||t.includes('POST-SCARCITY CITY')||t.includes('CYBERSECURITY CENTRE')||t.includes('DIGITAL INFORMAL ECONOMY')||t.includes('TECHNOLOGY ETHICS')||t.includes('NAIROBI AS AFRICA')||t.includes('AFRICA\'S')||t.includes('NAIROBI AS GLOBAL')||t.includes('NAIROBI AS AFRICAN')||t.includes('GLOBAL CREATIVE CITY')||t.includes('GLOBAL GREEN CITY')||t.includes('GLOBAL CLIMATE')) return 'GOVTECH';
   // ── Circular Waste Economy ──────────────────────────────────────
   if(t.includes('CIRCULAR WASTE ECONOMY')||t.includes('WARD WASTE COOPERATIVE')||t.includes('WASTE SECTOR FORMALISATION')||t.includes('MATERIALS RECOVERY')) return 'WASTE_CIRCULAR';
   if(t.includes('WASTE-TO-ENERGY')||t.includes('EMERGENCY CIRCULAR ECONOMY')||t.includes('EMERGENCY WASTE CLEARANCE')) return 'WASTE_CIRCULAR';
@@ -2536,6 +2572,23 @@ const VIZ={
     subtitle:'Automated Flood Gates · Pre-Positioned Rescue Boats · Deployable Barriers · 12 Points',
     getMap:()=>document.getElementById('viz-tpl-flood_barriers-map').innerHTML,
     getPanel:()=>document.getElementById('viz-tpl-flood_barriers-panel').innerHTML},
+  GOVTECH:{title:'GovTech & Digital Government — Nairobi 2055',subtitle:'Digital Twin · Open Data · Civic Tech · AI Permitting · e-Governance Stack',getMap:()=>document.getElementById('viz-tpl-govtech-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-govtech-panel').innerHTML},
+  CLIMATE_RESILIENCE:{title:'Climate Resilience Programme — Nairobi 2055',subtitle:'Settlement Climate-Proofing · Heat Resilience · Disaster Standards · Net-Zero Built Environment',getMap:()=>document.getElementById('viz-tpl-climate_resilience-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-climate_resilience-panel').innerHTML},
+  AI_TECH:{title:'AI & Deep Technology — Nairobi 2055',subtitle:'AI Research Institute · 5G · Digital Twin · Quantum · Nairobi as Global Tech Capital',getMap:()=>document.getElementById('viz-tpl-ai_tech-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-ai_tech-panel').innerHTML},
+  FINTECH_HUB:{title:'FinTech, Finance & Economic Hub — Nairobi 2055',subtitle:'Africa Financial Centre · Silicon Savannah · Climate Finance · Manufacturing',getMap:()=>document.getElementById('viz-tpl-fintech_hub-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-fintech_hub-panel').innerHTML},
+  SOCIAL_SERVICES:{title:'Social Services & Safety Net — Nairobi 2055',subtitle:'Universal Healthcare · UBI Pilot · Mental Health · Food Security · NHIF Reform',getMap:()=>document.getElementById('viz-tpl-social_services-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-social_services-panel').innerHTML},
+  HEALTH_DIGITAL:{title:'Digital Health & Healthy City — Nairobi 2055',subtitle:'Telemedicine · Active Transport · Air Quality · Healthy Living Districts',getMap:()=>document.getElementById('viz-tpl-health_digital-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-health_digital-panel').innerHTML},
+  EDUCATION_SKILLS:{title:'Education, Skills & Digital Literacy — Nairobi 2055',subtitle:'Quality Schools · EdTech · Skills Passport · Youth Apprenticeship · AI Literacy',getMap:()=>document.getElementById('viz-tpl-education_skills-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-education_skills-panel').innerHTML},
+  CULTURE_CREATIVE:{title:'Culture, Identity & Creative City — Nairobi 2055',subtitle:'Cultural Export · Global Creative Designation · Swahili Content · Living City',getMap:()=>document.getElementById('viz-tpl-culture_creative-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-culture_creative-panel').innerHTML},
+  TRANSPORT_FUTURE:{title:'Future Transport — Autonomous, Rail & Micro-Mobility',subtitle:'Autonomous Vehicles · Hyperloop Study · E-Boda Fleet · Rail Expansion · Zero-Emission Transit',getMap:()=>document.getElementById('viz-tpl-transport_future-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-transport_future-panel').innerHTML},
+  GREEN_BUILDING:{title:'Green Building & Circular City — Nairobi 2055',subtitle:'Green Building Code · Solar Microgrids · Urban Agriculture · Biodiversity Corridors',getMap:()=>document.getElementById('viz-tpl-green_building-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-green_building-panel').innerHTML},
+  EMERGENCY_ADVANCED:{title:'Advanced Emergency Response — Nairobi 2055',subtitle:'Drone Fleet · Robotic SAR · Predictive Dispatch · Zero Preventable Deaths',getMap:()=>document.getElementById('viz-tpl-emergency_advanced-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-emergency_advanced-panel').innerHTML},
+  GOVERNANCE_REFORM:{title:'Governance Reform — Devolution, Accountability & Procurement',subtitle:'NMS/County Integration · Contractor Reform · Fiscal Devolution · City Ombudsman',getMap:()=>document.getElementById('viz-tpl-governance_reform-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-governance_reform-panel').innerHTML},
+  HOUSING_URBAN:{title:'Housing, Urban Form & Innovation Districts — Nairobi 2055',subtitle:'15-Minute City · 3D Housing · Mixed-Use · Innovation District · 5 City Centres',getMap:()=>document.getElementById('viz-tpl-housing_urban-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-housing_urban-panel').innerHTML},
+  SOCIAL_FABRIC_PROG:{title:'Social Fabric Programmes — Parks, Playgrounds & Green Jobs',subtitle:'50 Playgrounds · Universal Accessibility · Sustained Growth · Abundance Economy',getMap:()=>document.getElementById('viz-tpl-social_fabric_prog-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-social_fabric_prog-panel').innerHTML},
+  ENVIRONMENT_ADV:{title:'Advanced Environment — Dandora, Rivers & Climate Data',subtitle:'Dandora Remediation · Nairobi River Cleanup · IoT Monitoring · Climate Economy Pivot',getMap:()=>document.getElementById('viz-tpl-environment_adv-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-environment_adv-panel').innerHTML},
+  FIRE_SAFETY:{title:'Fire Service Expansion & Mass Casualty Response',subtitle:'12 Stations · 40 Engines · Helicopter EMS · USAR Teams',getMap:()=>document.getElementById('viz-tpl-fire_safety-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-fire_safety-panel').innerHTML},
+  EMERGENCY_SHELTER:{title:'Emergency Shelter & Climate Displacement Response',subtitle:'Transitional Shelter · Settlement Priority Response · Cooling Centres',getMap:()=>document.getElementById('viz-tpl-emergency_shelter-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-emergency_shelter-panel').innerHTML},
   WASTE_CIRCULAR:{title:'Circular Waste Economy — City-Led Collection Network',
     subtitle:'47 Ward Hubs · Dandora Anchor · Waste Cooperatives · 50,000 Jobs',
     getMap:()=>document.getElementById('viz-tpl-waste_circular-map').innerHTML,
@@ -5625,6 +5678,1075 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 <div class="bench-item"><span class="bi-ico">🔧</span><div><div class="bi-city">HDPE Plastic → Manhole covers, drainage grates, kerbstones, park benches, bollards</div><div class="bi-desc">High-density polyethylene from Nairobi's plastic waste stream is the highest-volume recyclable in the city. Moulded into infrastructure products that are technically equivalent or superior to cast iron and concrete equivalents — at lower cost, with zero theft incentive, and fully locally manufactured. Estimated output: 50,000 units/year from 5 MRFs at scale.</div></div></div>
 <div class="bench-item"><span class="bi-ico">⚡</span><div><div class="bi-city">Organic waste → Biogas → MRF power + grid export</div><div class="bi-desc">Food and organic waste from Nairobi's 5.5M residents, markets, and hotels is converted to biogas at the 5 MRFs. Each MRF becomes energy self-sufficient. Surplus biogas feeds into NCG facilities and eventually the city grid — estimated 40–60MW at full scale from the Dandora facility alone. The organic compost output feeds the 10M tree urban forest programme at zero cost.</div></div></div>
 <div class="bench-item"><span class="bi-ico">🏠</span><div><div class="bi-city">Mixed plastic + rubber → Settlement wall panels + flooring</div><div class="bi-desc">Mixed plastic and rubber waste — the hardest stream to recycle through conventional channels — is compressed into lightweight construction panels for the in-situ settlement upgrading programme. These panels replace corrugated iron sheets in Kibera, Mathare, and Mukuru. Lighter, better insulated, longer-lasting — and made from the settlement's own waste stream. Circular economy at its most direct.</div></div></div>
+</div></div></template>
+
+
+<template id="viz-tpl-govtech-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">GovTech & Digital Government — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Digital Twin · Open Data · AI Permitting · e-Governance · Civic Tech</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Digital Twin City</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Real-time city OS</text>
+<circle cx="150" cy="160" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="150" y="164" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="180" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Open Gov Data</text>
+<text x="150" y="190" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">100+ datasets public</text>
+<circle cx="394" cy="160" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="394" y="164" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="146" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AI Permitting</text>
+<text x="394" y="156" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">30-day→48hr</text>
+<circle cx="100" cy="230" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="100" y="234" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="250" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Civic Tech Hub</text>
+<text x="100" y="260" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward platforms</text>
+<circle cx="444" cy="230" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="444" y="234" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="216" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Gov API Platform</text>
+<text x="444" y="226" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Interoperable services</text>
+<circle cx="200" cy="300" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="200" y="304" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="320" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Digital Addressing</text>
+<text x="200" y="330" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Every plot has an address</text>
+<circle cx="344" cy="300" r="8" fill="#E85888" opacity="0.9"/>
+<text x="344" y="304" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="286" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Participatory Budget</text>
+<text x="344" y="296" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Every ward votes</text>
+<circle cx="272" cy="350" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="272" y="354" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">8</text>
+<text x="272" y="370" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Full e-Gov Stack</text>
+<text x="272" y="380" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">200+ services online</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Digital Twin — real-time city simulation platform</text>
+<rect x="282" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Open Government Data Portal — 100+ datasets</text>
+<rect x="30" y="406" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">AI Permitting — 48-hour construction approvals</text>
+<rect x="282" y="406" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Civic Tech — ward-level participation platforms</text>
+<rect x="30" y="420" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Government API — all city services interoperable</text>
+<rect x="282" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Digital Addressing — every plot, every structure</text>
+
+</svg></template>
+<template id="viz-tpl-govtech-panel"><div class="vp-section">
+<div class="vp-title">GovTech & Digital Government</div>
+<div class="vp-sub">Nairobi 2055 runs on open, intelligent, and participatory digital infrastructure</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏙️</span><div><div class="bi-city">Digital Twin City — Nairobi's living simulation</div><div class="bi-desc">A real-time digital replica of Nairobi — traffic, water, energy, waste, air quality — allowing NCG to simulate policy decisions before implementing them. Built on open standards, accessible to researchers, NGOs, and citizens. Every BRT route change, every zoning decision, every flood risk scenario tested in the twin first. <a href="https://www.esri.com/en-us/arcgis/products/arcgis-urban/overview" target="_blank" rel="noopener">Esri Urban Digital Twin ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📊</span><div><div class="bi-city">Open Government Data Portal</div><div class="bi-desc">Every NCG dataset published by default — budget line items, procurement contracts, service delivery metrics, land registry updates. Machine-readable. Searchable. Updated daily. The transparency layer that makes all other governance reforms verifiable. <a href="https://opengovernmentpartnership.org/" target="_blank" rel="noopener">Open Government Partnership ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">⚡</span><div><div class="bi-city">AI-Powered Permit Processing — 48 hours or free</div><div class="bi-desc">Construction permits currently take 3–18 months in Nairobi, adding 15–30% to building costs. AI document verification, digital plan review, and automated compliance checking compress the timeline to 48 hours for standard applications. The "or free" clause creates accountability. <a href="https://businessamerica.mbda.gov/national-impact/cities/" target="_blank" rel="noopener">Best practice permit reform ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — Smart Nation programme</div><div class="bi-desc">Singapore's whole-of-government digital infrastructure: national digital identity, open data portal, government API exchange, and the Virtual Singapore 3D city model. Built over 15 years, now the global reference standard. <a href="https://www.smartnation.gov.sg/" target="_blank" rel="noopener">Smart Nation Singapore ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇪🇪</span><div><div class="bi-city">Estonia — Digital Government pioneer</div><div class="bi-desc">Estonia runs 99% of government services digitally. Digital identity, e-voting, e-health, e-tax, e-police. The X-Road data exchange layer connects all government databases. Built after 1991 from scratch — a smaller but directly relevant model for Nairobi's clean-slate opportunity. <a href="https://e-estonia.com/" target="_blank" rel="noopener">e-Estonia digital society ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇷</span><div><div class="bi-city">Curitiba — Participatory budgeting at scale</div><div class="bi-desc">Curitiba pioneered participatory budgeting in the 1970s — citizens vote directly on capital budget priorities by ward. Now adopted in 3,000+ cities worldwide. The Nairobi 2055 version adds digital voting accessible via M-Pesa to reach all income levels. <a href="https://www.participatorybudgeting.org/" target="_blank" rel="noopener">Participatory Budgeting Project ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-climate_resilience-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Climate Resilience Programme — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Settlement Climate-Proofing · Net-Zero Built Environment · Heat Resilience</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="180" cy="120" r="8" fill="#E85050" opacity="0.9"/>
+<text x="180" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="180" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Settlement Climate-Proofing</text>
+<text x="180" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Mathare · Kibera · Mukuru</text>
+<circle cx="364" cy="120" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="364" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="364" y="140" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Net-Zero Buildings</text>
+<text x="364" y="150" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">All new builds 2030+</text>
+<circle cx="100" cy="200" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="100" y="204" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="100" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Heat Resilience</text>
+<text x="100" y="196" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Urban cooling corridors</text>
+<circle cx="444" cy="200" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="444" y="204" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="444" y="220" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Disaster Standards</text>
+<text x="444" y="230" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">50-year infrastructure</text>
+<circle cx="200" cy="280" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="200" y="284" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="200" y="266" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Informal Climate Adapt</text>
+<text x="200" y="276" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward resilience plans</text>
+<circle cx="344" cy="280" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="344" y="284" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="344" y="300" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Climate Refugee Zones</text>
+<text x="344" y="310" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Voluntary relocation plan</text>
+<circle cx="272" cy="340" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="272" y="344" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="272" y="326" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Net-Zero City 2050</text>
+<text x="272" y="336" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Carbon-negative by 2055</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E85050" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Settlement Climate-Proofing — Mathare, Kibera, Mukuru priority</text>
+<rect x="282" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Net-Zero Built Environment — all new buildings 2030+</text>
+<rect x="30" y="406" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Heat Resilience — urban cooling corridors + shade</text>
+<rect x="282" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">50-year disaster standards — all public infrastructure</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">85 ward climate adaptation plans — community-led</text>
+<rect x="282" y="420" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Climate displacement — voluntary relocation with support</text>
+
+</svg></template>
+<template id="viz-tpl-climate_resilience-panel"><div class="vp-section">
+<div class="vp-title">Climate Resilience Programme</div>
+<div class="vp-sub">Every Nairobi resident is protected from climate risk — not just those who can afford to move</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏚️</span><div><div class="bi-city">Settlement Climate-Proofing — Mathare, Kibera, Mukuru first</div><div class="bi-desc">The 3 million+ residents of Nairobi's informal settlements face the highest climate risk — floods, heat, air pollution, and water insecurity — with the lowest adaptive capacity. Settlement climate-proofing integrates drainage, green space, solar power, and structural reinforcement into the in-situ upgrading programme. Not separate — the same programme, climate-proofed by design. <a href="https://www.worldbank.org/en/topic/urbandevelopment" target="_blank" rel="noopener">World Bank Urban Resilience ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌡️</span><div><div class="bi-city">Heat Resilience — Nairobi is warming faster than the global average</div><div class="bi-desc">Nairobi's average temperature has increased 1.2°C since 1970 — faster than the global average. The urban heat island effect adds a further 2–4°C in dense areas. Heat resilience measures: shade trees along all major corridors, white/green roofs mandatory on commercial buildings, public cooling centres in every ward (doubling as emergency flood shelters), and water features in all new parks. <a href="https://www.c40.org/what-we-do/scaling-up-climate-action/adaptation-water/" target="_blank" rel="noopener">C40 Urban Heat Action ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">Disaster-Resilient Infrastructure Standards</div><div class="bi-desc">All NCG public infrastructure built from 2026 onwards must meet 50-year climate standards — not the current 20-year standard. Roads, bridges, drainage, buildings. The additional upfront cost (estimated 8–12% premium) is recovered within 10 years through reduced maintenance and disaster response costs. Every rand spent on prevention saves 7 in response. <a href="https://www.undrr.org/implementing-sendai-framework" target="_blank" rel="noopener">UNDRR Sendai Framework ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Netherlands — Delta Works climate adaptation</div><div class="bi-desc">The Netherlands has protected a country that is largely below sea level through 65 years of systematic climate infrastructure investment. The Delta Programme (2010–present) is the world's most comprehensive climate adaptation plan — integrating spatial planning, building standards, and nature-based solutions. <a href="https://www.deltacommissaris.nl/delta-programme" target="_blank" rel="noopener">Netherlands Delta Programme ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇩</span><div><div class="bi-city">Dhaka — Informal settlement climate-proofing</div><div class="bi-desc">Dhaka's City Resilience Programme has climate-proofed 200,000 informal settlement households through flood-resistant construction, raised plinths, and community drainage networks. Community-led, NCG-funded. Directly applicable to Nairobi. <a href="https://www.worldbank.org/en/country/bangladesh" target="_blank" rel="noopener">World Bank Bangladesh urban ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — 30-year Green Plan</div><div class="bi-desc">Singapore's Green Plan 2030 mandates: net-zero by 2045, 80% green buildings by 2030, 1 million trees by 2030, and cycling as primary urban transport mode. Delivered through regulatory mandate, not voluntary action. <a href="https://www.greenplan.gov.sg/" target="_blank" rel="noopener">Singapore Green Plan 2030 ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-ai_tech-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">AI & Deep Technology Hub — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">AI Research · 5G/6G · Digital Twin · Quantum · Nairobi as Global Tech Capital</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="180" cy="120" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="180" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="180" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AI Research Institute</text>
+<text x="180" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">300 researchers</text>
+<circle cx="364" cy="120" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="364" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="364" y="140" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">5G/6G Backbone</text>
+<text x="364" y="150" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">100% city coverage</text>
+<circle cx="110" cy="210" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="110" y="214" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="110" y="196" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AI Climate Engine</text>
+<text x="110" y="206" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Real-time adaptation</text>
+<circle cx="434" cy="210" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="434" y="214" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="434" y="230" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Quantum Computing</text>
+<text x="434" y="240" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Govt + research</text>
+<circle cx="200" cy="295" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="200" y="299" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="200" y="281" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Digital Skills</text>
+<text x="200" y="291" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1M citizens trained</text>
+<circle cx="344" cy="295" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="299" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="344" y="315" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Nairobi Tech Hub</text>
+<text x="344" y="325" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">10 sector hubs</text>
+<circle cx="272" cy="355" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="272" y="359" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="272" y="341" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AI Supercomputer</text>
+<text x="272" y="351" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">East Africa anchor</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">AI Research Institute — 300 researchers, open publication</text>
+<rect x="282" y="392" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">5G/6G backbone — 100% city coverage by 2030</text>
+<rect x="30" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">AI Climate Adaptation Engine — real-time city resilience</text>
+<rect x="282" y="406" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Quantum Computing Hub — East Africa first</text>
+<rect x="30" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Digital Skills for All — 1M citizens trained by 2035</text>
+<rect x="282" y="420" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">10 Sector Tech Hubs — health, agri, climate, fintech</text>
+
+</svg></template>
+<template id="viz-tpl-ai_tech-panel"><div class="vp-section">
+<div class="vp-title">AI & Deep Technology</div>
+<div class="vp-sub">Nairobi as the AI capital of Africa — not just consuming technology but creating it</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🤖</span><div><div class="bi-city">AI Research Institute — African AI, for African cities</div><div class="bi-desc">A public AI research institute focused on urban African problems — Swahili NLP, informal settlement mapping, agricultural prediction, flood modelling, and health diagnostics. Open publication mandate. 50% of researchers from Kenyan universities. Partnered with MIT, ETH Zurich, and the African Institute for Mathematical Sciences. <a href="https://aimsammi.org/" target="_blank" rel="noopener">AIMS — African Institute for Math Sciences ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📡</span><div><div class="bi-city">5G/6G Infrastructure — the nervous system of a smart city</div><div class="bi-desc">Universal 5G coverage by 2030, with the 6G research corridor beginning in 2035. Every public facility — schools, health centres, markets, parks — becomes a free WiFi hotspot. The infrastructure is built on open-access principles: multiple operators, no single monopoly, government-owned backbone that private providers lease. <a href="https://www.itu.int/en/ITU-D/Digital-Inclusion/Pages/default.aspx" target="_blank" rel="noopener">ITU Digital Inclusion ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🧠</span><div><div class="bi-city">AI City Manager — augmenting NCG decision-making</div><div class="bi-desc">An AI system that continuously monitors city data streams (traffic, water, waste, energy, health) and surfaces real-time recommendations to NCG officials. Not replacing human judgement — augmenting it. When the Mathare River gauge hits amber, the AI City Manager has already pre-staged rescue teams, alerted the ward flood wardens, and rerouted buses. <a href="https://www.bloomberg.org/program/government-innovation/" target="_blank" rel="noopener">Bloomberg Government Innovation ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — Andela and the developer ecosystem</div><div class="bi-desc">Kenya already has the largest tech talent pipeline in Africa — Andela, iHub, Nairobi Garage, Safaricom M-Pesa innovation lab. The AI Research Institute formalises and accelerates what is already happening informally. <a href="https://ihub.co.ke/" target="_blank" rel="noopener">iHub Nairobi ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇨🇳</span><div><div class="bi-city">Shenzhen — from fishing village to tech capital in 40 years</div><div class="bi-desc">Shenzhen's transformation from fishing village (1980) to the world's hardware tech capital (2020) through deliberate special economic zone policy, world-class university investment, and procurement-driven industrial policy. The timeline is Nairobi 2055's reference point. <a href="https://www.sz.gov.cn/en_szgov/" target="_blank" rel="noopener">Shenzhen City Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇮🇳</span><div><div class="bi-city">Bengaluru — Silicon Valley of India</div><div class="bi-desc">Bengaluru's tech ecosystem grew from 1 IT firm (1985) to 15,000+ tech companies (2024) through deliberate public university investment, export processing zones, and diaspora return policies. The lesson for Nairobi: quality universities and reliable infrastructure are the only non-negotiable inputs. <a href="https://karnataka.gov.in/" target="_blank" rel="noopener">Government of Karnataka ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-fintech_hub-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">FinTech, Finance & Economic Hub — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Africa Financial Centre · Climate Finance · Manufacturing · Startup Ecosystem</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Nairobi Financial Centre</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Top 3 Africa by 2035</text>
+<circle cx="150" cy="175" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="150" y="179" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="195" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">FinTech Innovation</text>
+<text x="150" y="205" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">M-Pesa 3.0 + DeFi</text>
+<circle cx="394" cy="175" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="394" y="179" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="161" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Climate Finance Hub</text>
+<text x="394" y="171" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">$10B green fund</text>
+<circle cx="100" cy="255" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="100" y="259" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="275" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Light Mfg SEZ</text>
+<text x="100" y="285" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">50,000 jobs</text>
+<circle cx="444" cy="255" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="444" y="259" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="241" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AgriTech Scale</text>
+<text x="444" y="251" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Food security exports</text>
+<circle cx="200" cy="320" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="200" y="324" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="340" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Startup Ecosystem</text>
+<text x="200" y="350" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1,000 funded startups</text>
+<circle cx="344" cy="320" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="324" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="306" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Knowledge Economy</text>
+<text x="344" y="316" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Top 10 Africa</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi Financial Centre — top 3 Africa by 2035</text>
+<rect x="282" y="392" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">FinTech hub — M-Pesa 3.0, digital lending, DeFi</text>
+<rect x="30" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">$10B Nairobi Green Investment Fund</text>
+<rect x="282" y="406" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Light Manufacturing SEZ — 50,000 jobs</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">1,000 funded startups across 10 sectors</text>
+<rect x="282" y="420" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Knowledge economy leadership — top 10 Africa</text>
+
+</svg></template>
+<template id="viz-tpl-fintech_hub-panel"><div class="vp-section">
+<div class="vp-title">FinTech, Finance & Economic Hub</div>
+<div class="vp-sub">Nairobi as Africa's economic capital — not just East Africa's, the continent's</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">💰</span><div><div class="bi-city">$10B Nairobi Green Investment Fund</div><div class="bi-desc">A blended finance vehicle combining NCG and national government capital (30%), development finance institutions (40%), and private climate finance (30%). Finances the green infrastructure pipeline — BRT, solar microgrids, MRFs, urban forest — at concessional rates. The fund itself becomes a financial product that other African cities invest in as a climate infrastructure bond. <a href="https://www.climatepolicyinitiative.org/" target="_blank" rel="noopener">Climate Policy Initiative ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📱</span><div><div class="bi-city">FinTech — building on M-Pesa's foundation</div><div class="bi-desc">Kenya's M-Pesa is the world's most successful mobile money system — 30M+ users, 50%+ of Kenya's GDP flows through it. Nairobi 2055 builds the next layer: mobile credit scoring for informal workers, digital pension for jua kali, micro-insurance for climate events, and DeFi infrastructure for remittances. The informal economy gets formal financial services without becoming formal. <a href="https://www.safaricom.co.ke/m-pesa" target="_blank" rel="noopener">M-Pesa — Safaricom ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🏭</span><div><div class="bi-city">Light Manufacturing SEZ — turning the circular economy into export</div><div class="bi-desc">The 5 materials recovery facilities produce recycled infrastructure products for Nairobi. The Light Manufacturing SEZ takes this further — exporting recycled plastic infrastructure products to 10 East African cities. Nairobi's waste becomes Tanzania's manhole covers. The circular economy becomes an export economy. <a href="https://www.epzakenya.com/" target="_blank" rel="noopener">EPZA Kenya ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇦🇪</span><div><div class="bi-city">Dubai — from desert to global financial hub in 30 years</div><div class="bi-desc">Dubai DIFC (Dubai International Financial Centre) went from zero (2004) to the 10th largest financial centre globally (2024) through dedicated legislation, world-class physical infrastructure, and a single-minded focus on being the gateway between East and West. <a href="https://www.difc.ae/" target="_blank" rel="noopener">Dubai International Financial Centre ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇷🇼</span><div><div class="bi-city">Kigali — Africa's cleanest, fastest-growing financial hub</div><div class="bi-desc">Kigali Finance Centre has attracted 100+ international financial institutions since 2010 through clean governance, fast business registration, and deliberate positioning as the most trustworthy regulatory environment in Africa. <a href="https://kfc.rw/" target="_blank" rel="noopener">Kigali Finance Centre ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇮🇳</span><div><div class="bi-city">Bengaluru — FinTech ecosystem without legacy banking</div><div class="bi-desc">India's UPI (Unified Payments Interface) — built on open-source standards — has processed more digital transactions than the entire rest of the world combined. Bengaluru is its innovation hub. Nairobi's M-Pesa gives it an equivalent foundation to build from. <a href="https://www.npci.org.in/what-we-do/upi/product-overview" target="_blank" rel="noopener">India UPI — NPCI ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-social_services-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Social Services & Safety Net — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Universal Healthcare · UBI Pilot · Mental Health · Food Security</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#E85888" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Universal Healthcare</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Every resident covered</text>
+<circle cx="150" cy="185" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="150" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">NHIF 2.0</text>
+<text x="150" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Reformed, funded</text>
+<circle cx="394" cy="185" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="394" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">UBI Pilot</text>
+<text x="394" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">10,000 households</text>
+<circle cx="100" cy="260" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Mental Health</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Ward-level access</text>
+<circle cx="444" cy="260" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Food Security</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">School meals + markets</text>
+<circle cx="200" cy="325" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Social Safety Net</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">AI-powered targeting</text>
+<circle cx="344" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Flourishing Index</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Beyond GDP</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E85888" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Universal Healthcare — every Nairobi resident covered</text>
+<rect x="282" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">UBI Pilot — 10,000 households, evidence-based scale</text>
+<rect x="30" y="406" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Ward-level mental health — 85 community clinics</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Food security — school meals + urban food markets</text>
+<rect x="30" y="420" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">NHIF reform — solvent, universal, portable</text>
+<rect x="282" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">AI-powered social safety net — no one falls through</text>
+
+</svg></template>
+<template id="viz-tpl-social_services-panel"><div class="vp-section">
+<div class="vp-title">Social Services & Safety Net</div>
+<div class="vp-sub">A city that works for everyone — the social floor that makes every other pillar possible</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏥</span><div><div class="bi-city">Universal Healthcare — NHIF 2.0</div><div class="bi-desc">Kenya's NHIF is chronically underfunded and excludes 60% of Nairobi residents — primarily informal workers. NHIF 2.0: universal enrolment via M-Pesa (deducted monthly at source for formal workers, subsidised for informal), digital health records, telemedicine integration, and a genuine primary care network at ward level. The goal is not just coverage — it is health outcomes. <a href="https://www.nhif.or.ke/" target="_blank" rel="noopener">National Health Insurance Fund Kenya ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">💰</span><div><div class="bi-city">Universal Basic Income Pilot — the evidence first</div><div class="bi-desc">GiveDirectly's Kenya UBI experiment (the world's largest) is already running in rural Kenya, providing $22/month unconditionally to 20,000+ recipients. Nairobi 2055 pilots a complementary urban UBI — targeting 10,000 households in informal settlements. The design is evidence-first: run the pilot, measure the outcomes, scale if it works. <a href="https://www.givedirectly.org/ubi-study/" target="_blank" rel="noopener">GiveDirectly UBI Kenya Study ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🧠</span><div><div class="bi-city">Mental Health — Nairobi's hidden crisis</div><div class="bi-desc">An estimated 1 in 4 Nairobi residents experiences a mental health condition annually — driven by urban stress, economic precarity, violence, and community fragmentation. Only 1.5% of Kenya's health budget goes to mental health. The 2055 plan mandates a community mental health worker in every ward, school-based counselling, and destigmatisation campaigns in partnership with AMREF. <a href="https://amref.org/" target="_blank" rel="noopener">AMREF Health Africa ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇧🇷</span><div><div class="bi-city">Brazil — Bolsa Família conditional cash transfer</div><div class="bi-desc">Bolsa Família lifted 20 million Brazilians out of extreme poverty between 2003–2016 through conditional cash transfers. Kenya's Inua Jamii programme uses the same model. Nairobi 2055 scales and urbanises it — integrating with digital identity and M-Pesa for near-zero administrative cost. <a href="https://www.worldbank.org/en/country/brazil/overview" target="_blank" rel="noopener">World Bank Brazil programmes ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇬🇭</span><div><div class="bi-city">Ghana — National Health Insurance Scheme</div><div class="bi-desc">Ghana's NHIS achieved 40% coverage within 5 years of launch (2003) — the fastest in sub-Saharan Africa — through mandatory enrolment for formal workers and premium subsidies for informal and low-income workers. Kenya's NHIF has the same architecture but lower political commitment. <a href="https://www.nhis.gov.gh/" target="_blank" rel="noopener">Ghana National Health Insurance ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇺🇾</span><div><div class="bi-city">Uruguay — comprehensive social protection system</div><div class="bi-desc">Uruguay built Latin America's most comprehensive social protection system through 30 years of consistent investment — universal healthcare, universal pension, child allowances, and unemployed support. GDP per capita is now the highest in Latin America. The investment in people created the prosperity. <a href="https://www.undp.org/latin-america/blog/uruguay" target="_blank" rel="noopener">UNDP Uruguay social protection ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-health_digital-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Digital Health & Healthy City — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Telemedicine · Air Quality · Active Transport Health · Healthy Living Districts</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="130" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="272" y="134" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="116" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Telemedicine Network</text>
+<text x="272" y="126" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward virtual clinics</text>
+<circle cx="150" cy="195" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="150" y="199" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="215" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Air Quality IoT</text>
+<text x="150" y="225" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Real-time 200 sensors</text>
+<circle cx="394" cy="195" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="394" y="199" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="181" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Active Transport</text>
+<text x="394" y="191" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Health dividend</text>
+<circle cx="120" cy="270" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="120" y="274" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="120" y="290" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Healthy Districts</text>
+<text x="120" y="300" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">5 pilot zones</text>
+<circle cx="424" cy="270" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="424" y="274" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="424" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Virtual Healthcare</text>
+<text x="424" y="266" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Specialist access</text>
+<circle cx="272" cy="340" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="272" y="344" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="272" y="360" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Global Healthy City</text>
+<text x="272" y="370" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">WHO designation</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Telemedicine — 85 ward virtual clinics + specialist referral</text>
+<rect x="282" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Air quality — 200 IoT sensors, real-time public dashboard</text>
+<rect x="30" y="406" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Active transport health dividend — cycling and walking infrastructure</text>
+<rect x="282" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Healthy Living Districts — 5 pilot neighbourhoods</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Virtual specialist access — no travel for consultations</text>
+<rect x="282" y="420" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">WHO Healthy City designation — global recognition</text>
+
+</svg></template>
+<template id="viz-tpl-health_digital-panel"><div class="vp-section">
+<div class="vp-title">Digital Health & Healthy City</div>
+<div class="vp-sub">Health built into the urban fabric — not just delivered through clinics</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">📱</span><div><div class="bi-city">Telemedicine Network — the clinic in every pocket</div><div class="bi-desc">A ward-level telemedicine platform giving every Nairobi resident video access to a primary care doctor within 4 hours, and specialist referral within 48 hours. Built on AMREF's Flying Doctor telemedicine infrastructure, extended to all 85 wards via M-Pesa-integrated subscription. Prescription delivery via boda. No more 3-hour round trips to Kenyatta National Hospital for a 10-minute consultation. <a href="https://amref.org/amref-flying-doctors/" target="_blank" rel="noopener">AMREF Flying Doctors telemedicine ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌬️</span><div><div class="bi-city">Air Quality — Nairobi's invisible public health crisis</div><div class="bi-desc">Nairobi's air quality regularly exceeds WHO PM2.5 guidelines by 5–8×, primarily from matatu diesel emissions and Dandora open burning. 200 low-cost IoT sensors in a public real-time network — every school, every market, every junction. The data drives the policy: low emission zones in CBD, BRT corridors replacing diesel matatus, Dandora closure. <a href="https://www.aqicn.org/city/nairobi/" target="_blank" rel="noopener">Nairobi Air Quality Index ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚴</span><div><div class="bi-city">Active Transport Health Dividend</div><div class="bi-desc">Cities with high cycling and walking rates have 20–35% lower rates of cardiovascular disease, obesity, and type 2 diabetes. The Nairobi cycling network (Pillar 9) is not just a transport intervention — it is a public health intervention. The Active Transport Health Dividend calculates and publishes the health cost savings from each km of cycling infrastructure built. <a href="https://www.who.int/publications/i/item/9789241550352" target="_blank" rel="noopener">WHO Health Economic Assessment Tool ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Amsterdam — cycling as public health policy</div><div class="bi-desc">Amsterdam has the world's highest urban cycling rate (63% of trips). The health dividend: Amsterdammers live 1.8 years longer on average than car-dependent city residents. The infrastructure investment paid for itself in healthcare savings within 8 years. <a href="https://www.amsterdam.nl/en/traffic-transport/cycling/" target="_blank" rel="noopener">Amsterdam cycling policy ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — digital health transformation</div><div class="bi-desc">Seoul's Smart Healthcare platform integrates telemedicine, wearable health data, and AI-powered chronic disease management across 10 million residents. The system reduced preventable hospitalisations by 23% in the first 3 years. <a href="https://english.seoul.go.kr/" target="_blank" rel="noopener">Seoul Metropolitan Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇨🇺</span><div><div class="bi-city">Cuba — community health system at ward level</div><div class="bi-desc">Cuba's Family Doctor Programme places a trained physician in every neighbourhood — the highest doctor-to-population ratio in the developing world. Despite limited resources, Cuba achieves health outcomes comparable to wealthy countries. The lesson: geography of service delivery matters more than technology. <a href="https://www.paho.org/en/cuba" target="_blank" rel="noopener">PAHO Cuba health system ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-education_skills-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Education, Skills & Digital Literacy — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Quality Schools · EdTech · Skills Passport · Youth Apprenticeship · AI Literacy</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="125" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="272" y="129" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="111" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Quality Schools</text>
+<text x="272" y="121" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward upgrades</text>
+<circle cx="150" cy="190" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="150" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="210" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">EdTech Revolution</text>
+<text x="150" y="220" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1:1 devices by 2030</text>
+<circle cx="394" cy="190" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="394" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="176" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Skills Passport</text>
+<text x="394" y="186" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Portable credentials</text>
+<circle cx="110" cy="265" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="110" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="110" y="285" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Youth Apprenticeship</text>
+<text x="110" y="295" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">200,000 placements</text>
+<circle cx="434" cy="265" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="434" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="434" y="251" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">AI Literacy</text>
+<text x="434" y="261" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Every student by 2030</text>
+<circle cx="200" cy="330" r="8" fill="#E85888" opacity="0.9"/>
+<text x="200" y="334" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="350" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Resilience Curriculum</text>
+<text x="200" y="360" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Climate + civic ed</text>
+<circle cx="344" cy="330" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="334" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="316" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Digital Skills for All</text>
+<text x="344" y="326" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1M adults trained</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Quality public schools — 85 ward facility upgrades</text>
+<rect x="282" y="392" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">EdTech — 1:1 device access for every student by 2030</text>
+<rect x="30" y="406" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Skills Passport — portable credentials for informal workers</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">200,000 youth apprenticeship placements by 2035</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">AI literacy — every student, every school by 2030</text>
+<rect x="282" y="420" width="10" height="10" fill="#E85888" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Resilience curriculum — climate and civic education</text>
+
+</svg></template>
+<template id="viz-tpl-education_skills-panel"><div class="vp-section">
+<div class="vp-title">Education, Skills & Digital Literacy</div>
+<div class="vp-sub">The human capital foundation — every Nairobi child ready for a 2055 economy</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏫</span><div><div class="bi-city">Quality Public Secondary Education — the equaliser</div><div class="bi-desc">Nairobi's public secondary schools are chronically underfunded and underequipped compared to private schools, creating a structural disadvantage for children from informal settlements. The 2055 plan: refurbish all 85 ward public secondary schools to a minimum physical standard, equip all with reliable power and internet, and pay teachers at market rates competitive with private schools. <a href="https://www.education.go.ke/" target="_blank" rel="noopener">Kenya Ministry of Education ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">💻</span><div><div class="bi-city">EdTech Revolution — 1:1 devices by 2030</div><div class="bi-desc">1:1 device access for every Nairobi student by 2030 — the same ratio as Singapore and South Korea today. Devices are NCG-procured and funded through a combination of county budget and DFID/USAID EdTech grants. Curriculum includes AI literacy (building and evaluating AI tools, not just using them), Swahili coding, and digital civics from Standard 1. <a href="https://www.kenia.go.ke/" target="_blank" rel="noopener">Kenya Education Network ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🎫</span><div><div class="bi-city">Skills Passport — portable credentials for the informal economy</div><div class="bi-desc">A digital skills passport that records verified competencies — welding, electrical, masonry, coding, healthcare, finance — regardless of where they were acquired. Formal certification, informal apprenticeship, community training — all count. The passport is owned by the worker, verifiable by any employer, and portable across East Africa. <a href="https://digitalskillsafrica.com/" target="_blank" rel="noopener">Digital Skills Africa ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — SkillsFuture national skills programme</div><div class="bi-desc">Every Singapore citizen receives a S$500 annual credit for skills training — usable at any approved institution. The government publishes real-time data on which skills are in demand. Workers retrain proactively, not after redundancy. <a href="https://www.skillsfuture.gov.sg/" target="_blank" rel="noopener">SkillsFuture Singapore ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇫🇮</span><div><div class="bi-city">Finland — teacher as a profession</div><div class="bi-desc">Finland turned its education system around by making teaching the most competitive profession in the country — only the top 10% of graduates can enter teacher training. Teacher pay is competitive with law and medicine. The result: world-class outcomes with no private school advantage. <a href="https://www.oph.fi/en" target="_blank" rel="noopener">Finnish National Agency for Education ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — Strathmore University as anchor institution</div><div class="bi-desc">Strathmore's @iLabAfrica is East Africa's leading technology research centre — producing the talent that Nairobi's tech ecosystem runs on. The AI Research Institute builds on this foundation with additional public investment and a formal government-university research pipeline. <a href="https://ilabnafrica.strathmore.edu/" target="_blank" rel="noopener">@iLabAfrica Strathmore ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-culture_creative-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Culture, Identity & Creative City — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Cultural Export · Global Creative Designation · Swahili Content · Living City</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Global Creative City</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">UNESCO designation</text>
+<circle cx="150" cy="185" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="150" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Cultural Export</text>
+<text x="150" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Swahili content global</text>
+<circle cx="394" cy="185" r="8" fill="#E85888" opacity="0.9"/>
+<text x="394" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Creative Districts</text>
+<text x="394" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">8 ward hubs</text>
+<circle cx="110" cy="260" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="110" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="110" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Heritage Map</text>
+<text x="110" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1,000 sites documented</text>
+<circle cx="434" cy="260" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="434" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="434" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Creative Incubators</text>
+<text x="434" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">500 companies</text>
+<circle cx="200" cy="325" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">African Identity</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Nairobi as Africa's capital</text>
+<circle cx="344" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Creative AI Tools</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Swahili AI generation</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">UNESCO Creative City designation — target 2030</text>
+<rect x="282" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Cultural export programme — Swahili content globally</text>
+<rect x="30" y="406" width="10" height="10" fill="#E85888" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">8 Creative Districts — one in every major zone</text>
+<rect x="282" y="406" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">1,000 cultural heritage sites documented and protected</text>
+<rect x="30" y="420" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">500 creative companies incubated by 2035</text>
+<rect x="282" y="420" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi as Africa's cultural and creative capital</text>
+
+</svg></template>
+<template id="viz-tpl-culture_creative-panel"><div class="vp-section">
+<div class="vp-title">Culture, Identity & Creative City</div>
+<div class="vp-sub">Nairobi's culture is its most undervalued asset — the 2055 plan changes that</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🎭</span><div><div class="bi-city">Global Creative City Designation — UNESCO target 2030</div><div class="bi-desc">UNESCO's Creative Cities Network designates cities as global leaders in specific creative fields — literature, music, film, craft, design, gastronomy. Nairobi's application focuses on music (the continent's most vibrant scene), digital arts, and Swahili literature. Designation brings international programming, funding access, and a global creative tourism brand. <a href="https://en.unesco.org/creative-cities/" target="_blank" rel="noopener">UNESCO Creative Cities Network ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🎵</span><div><div class="bi-city">Swahili Content for the World</div><div class="bi-desc">Swahili is the most widely spoken African language — 200M+ speakers across 14 countries. Yet globally, Swahili content is tiny compared to English, French, or Mandarin. The AI-Generated Swahili Content programme and the Creative Economy incubators specifically target Swahili content production — music, film, games, podcasts — for the continental and diaspora market. Nairobi becomes the Swahili content capital. <a href="https://www.africanunion.org/" target="_blank" rel="noopener">African Union — Cultural Policy ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🗺️</span><div><div class="bi-city">Nairobi Cultural Heritage Map — 1,000 sites before they disappear</div><div class="bi-desc">Nairobi is losing its cultural heritage to rapid urbanisation — colonial buildings demolished, matatu culture undocumented, oral histories unrecorded. The Heritage Map: every significant cultural site documented, photographed, and geotagged in a publicly accessible database. The map drives conservation planning and cultural tourism. <a href="https://www.museums.or.ke/" target="_blank" rel="noopener">National Museums of Kenya ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Cape Town — Creative City of Design</div><div class="bi-desc">Cape Town was designated a UNESCO Creative City of Design in 2017 — attracting global design conferences, film production, and creative industry investment. The designation added an estimated $200M to the creative economy in the first 5 years. <a href="https://creativecapetown.com/" target="_blank" rel="noopener">Cape Town Creative Industries ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇳🇬</span><div><div class="bi-city">Lagos — Afrobeats as global cultural export</div><div class="bi-desc">Lagos has built a global cultural export industry almost entirely without government support — Afrobeats, Nollywood, and Afrofashion are $10B+ industries. Nairobi 2055 asks: what could the Nairobi creative economy achieve with active government support? <a href="https://www.businessday.ng/" target="_blank" rel="noopener">Business Day Lagos creative economy ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇯🇲</span><div><div class="bi-city">Jamaica — cultural export as economic strategy</div><div class="bi-desc">Jamaica (population 3M) generates more cultural exports per capita than any other country on earth — reggae, dancehall, patois culture. A deliberate Jamaica Cultural Enterprise policy has turned cultural production into a primary export industry. Nairobi has the same potential with Swahili pop and Afro-fusion. <a href="https://www.jcdc.gov.jm/" target="_blank" rel="noopener">Jamaica Cultural Development Commission ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-transport_future-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Future Transport — Autonomous, Rail & Zero-Emission</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Autonomous Vehicles · Hyperloop · E-Boda Fleet · Rail · Zero-Emission Transit</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">50,000 E-Boda Fleet</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Fully electric by 2030</text>
+<circle cx="145" cy="185" r="8" fill="#78BF45" opacity="0.9"/>
+<text x="145" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="145" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Autonomous Bus Pilots</text>
+<text x="145" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">3 corridors by 2035</text>
+<circle cx="399" cy="185" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="399" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="399" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Rail Expansion</text>
+<text x="399" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Commuter + metro</text>
+<circle cx="100" cy="260" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Hyperloop Study</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Nairobi-Mombasa 30min</text>
+<circle cx="444" cy="260" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Micro-Mobility Grid</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">City-wide e-bikes</text>
+<circle cx="200" cy="325" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Zero-Emission Transit</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">100% electric 2040</text>
+<circle cx="344" cy="325" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Transit Platform Economy</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">MaaS + super-app</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">50,000 E-Boda Fleet — fully electric by 2030</text>
+<rect x="282" y="392" width="10" height="10" fill="#78BF45" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Autonomous bus pilots — 3 BRT corridors by 2035</text>
+<rect x="30" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Rail expansion — commuter + metro integration</text>
+<rect x="282" y="406" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Hyperloop feasibility — Nairobi to Mombasa in 30 min</text>
+<rect x="30" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Micro-mobility grid — city-wide e-bike and e-scooter</text>
+<rect x="282" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Transit platform economy — one app for all modes</text>
+
+</svg></template>
+<template id="viz-tpl-transport_future-panel"><div class="vp-section">
+<div class="vp-title">Future Transport</div>
+<div class="vp-sub">Getting ahead of the transport revolution — not reacting to it</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🛵</span><div><div class="bi-city">50,000 E-Boda Fleet — the fastest climate win in transport</div><div class="bi-desc">Nairobi has 100,000+ boda boda motorcycles, most running on petrol, contributing significantly to air pollution. Converting 50,000 to electric by 2030 eliminates the equivalent of 25,000 cars from the road in terms of emissions. The conversion programme: subsidised e-boda purchase through M-Pesa payment plans, 200 fast-charging stations co-located with matatu termini, and battery-swap stations every 5km on major corridors. <a href="https://www.ampersand.solar/" target="_blank" rel="noopener">Ampersand — East Africa e-moto ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚌</span><div><div class="bi-city">Autonomous Bus Pilots — preparing for the inevitable</div><div class="bi-desc">Level 4 autonomous buses are being deployed in Singapore, Tokyo, and Helsinki today. By 2035 they will be commercially viable in African urban contexts. Nairobi 2055 doesn't wait — it runs autonomous bus pilots on 3 BRT corridors from 2030, building the regulatory framework and technical expertise before the technology forces the issue. <a href="https://www.navya.tech/" target="_blank" rel="noopener">Navya autonomous vehicles ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚄</span><div><div class="bi-city">Hyperloop Feasibility — Nairobi to Mombasa in 30 minutes</div><div class="bi-desc">A hyperloop connection between Nairobi and Mombasa would fundamentally change East Africa's economic geography — two cities 500km apart becomes one metropolitan economy. The feasibility study is not a commitment to build — it is a commitment to understand what is possible. The SGR took 5 years to plan and 4 to build. The hyperloop conversation starts now for 2045 delivery. <a href="https://www.hyperloop-tt.com/" target="_blank" rel="noopener">Hyperloop Transportation Technologies ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — autonomous vehicle testbed</div><div class="bi-desc">Singapore has designated its entire western district (Jurong) as a Level 4 autonomous vehicle testbed. Every new road in Singapore is built to AV standards. The regulatory framework was completed before the vehicles arrived. <a href="https://www.lta.gov.sg/content/ltagov/en/industry_innovations/technologies/autonomous_vehicles.html" target="_blank" rel="noopener">LTA Singapore autonomous vehicles ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Netherlands — cycling + transit integration</div><div class="bi-desc">The Netherlands has the world's most integrated cycling and transit network — every train station has more bicycle parking than car parking, and cyclists can take their bikes on trains. The result: 25% of all trips made by bicycle, 45% by transit, 30% by car. <a href="https://www.ns.nl/en" target="_blank" rel="noopener">NS Dutch Railways ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Nairobi — M-Pesa as the transit payment backbone</div><div class="bi-desc">Nairobi already has the world's most advanced mobile payment system. The Mobility-as-a-Service super-app uses M-Pesa as its payment backbone — every matatu, BRT, boda, e-bike, and parking payment through one platform. The infrastructure already exists. The integration is the work. <a href="https://www.safaricom.co.ke/m-pesa" target="_blank" rel="noopener">M-Pesa — Safaricom ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-green_building-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Green Building & Circular City — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Green Building Code · Solar Microgrids · Urban Agriculture · Biodiversity</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Green Building Code</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">All new builds 2026+</text>
+<circle cx="150" cy="185" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="150" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Solar Microgrid</text>
+<text x="150" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">500 community grids</text>
+<circle cx="394" cy="185" r="8" fill="#78BF45" opacity="0.9"/>
+<text x="394" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Urban Agriculture</text>
+<text x="394" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">10% city area by 2035</text>
+<circle cx="100" cy="260" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Biodiversity Corridors</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">NNP to Ngong Hills</text>
+<circle cx="444" cy="260" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Virtual Power Plant</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Grid demand response</text>
+<circle cx="200" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Green Corridors</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Climate infrastructure</text>
+<circle cx="344" cy="325" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Circular Economy City</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Full loop by 2045</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Green Building Code — mandatory for all new construction 2026+</text>
+<rect x="282" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">500 solar microgrids — community-owned, grid-connected</text>
+<rect x="30" y="406" width="10" height="10" fill="#78BF45" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Urban agriculture — 10% of city area food-producing by 2035</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Biodiversity corridor — NNP to Karura to Ngong Hills</text>
+<rect x="30" y="420" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Virtual Power Plant — 200MW demand response by 2035</text>
+<rect x="282" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Full circular economy city — zero waste to landfill by 2045</text>
+
+</svg></template>
+<template id="viz-tpl-green_building-panel"><div class="vp-section">
+<div class="vp-title">Green Building & Circular City</div>
+<div class="vp-sub">The built environment as a climate solution — not a climate problem</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">Green Building Code — mandatory, not optional</div><div class="bi-desc">Nairobi's current building code is a 1970s document with no climate or energy performance requirements. The 2055 code mandates: solar panels on all commercial roofs above 200sqm, rainwater harvesting on all new buildings, energy performance certificates for all transactions, and EDGE certification (IFC's green building standard adapted for emerging markets) for all new construction above 500sqm. <a href="https://www.edgebuildings.com/" target="_blank" rel="noopener">IFC EDGE Green Buildings ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">☀️</span><div><div class="bi-city">Solar Microgrid Network — 500 community grids</div><div class="bi-desc">500 community solar microgrids, each serving 200–500 households. Located in schools (doubling as emergency power), markets, community centres, and health facilities. NCG owns the grid backbone; community-managed energy cooperatives handle distribution. Each microgrid connects to the national grid — selling surplus power through net metering. <a href="https://www.powerafrica.org/" target="_blank" rel="noopener">USAID Power Africa ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌱</span><div><div class="bi-city">Urban Agriculture Mandate — food in the city</div><div class="bi-desc">All new residential developments above 20 units must allocate 5% of plot area to food production. All public schools have a working food garden by 2030. 100 urban market gardens in informal settlements — generating income and food security simultaneously. Organic waste from the MRF compost programme feeds them all. <a href="https://www.ruaf.org/" target="_blank" rel="noopener">RUAF Urban Agriculture ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — Green Mark building standard</div><div class="bi-desc">Singapore mandates Green Mark certification for all new buildings and major retrofits. 80% of Singapore's built environment will be certified green by 2030. The standard has driven 30% reductions in energy and water use across the building sector. <a href="https://www1.bca.gov.sg/buildsg/sustainability/green-mark-certification-scheme" target="_blank" rel="noopener">BCA Singapore Green Mark ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇩🇪</span><div><div class="bi-city">Freiburg — solar city pioneer</div><div class="bi-desc">Freiburg im Breisgau has been generating more solar energy than it consumes since 2019. Every building in the Vauban district is energy-positive. The lesson: ambitious building standards, reliably enforced, transform the entire building sector within one generation. <a href="https://www.freiburg.de/pb/,Lde/205243.html" target="_blank" rel="noopener">Freiburg solar city ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Amsterdam — circular economy city 2050 strategy</div><div class="bi-desc">Amsterdam has committed to a fully circular economy by 2050 — nothing to landfill, all materials reused or recycled. The strategy covers food, construction, and consumer goods. The city council tracks circularity as a key performance indicator alongside GDP. <a href="https://www.amsterdam.nl/en/policy/sustainability/circular-economy/" target="_blank" rel="noopener">Amsterdam Circular Strategy ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-emergency_advanced-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Advanced Emergency Response — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Drone Fleet · Robotic SAR · Predictive Dispatch · Zero Preventable Deaths</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#E86A38" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Drone Fleet</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">50 emergency drones</text>
+<circle cx="145" cy="185" r="8" fill="#E85050" opacity="0.9"/>
+<text x="145" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="145" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Robotic SAR</text>
+<text x="145" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Collapse + flood rescue</text>
+<circle cx="399" cy="185" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="399" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="399" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Predictive Dispatch</text>
+<text x="399" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">AI-powered response</text>
+<circle cx="100" cy="260" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">USAR Teams</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Urban search + rescue</text>
+<circle cx="444" cy="260" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Zero Preventable Deaths</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">By 2040 target</text>
+<circle cx="200" cy="325" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Regional Leadership</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">E. Africa response hub</text>
+<circle cx="344" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Community Resilience</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward committees</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E86A38" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">50-drone emergency fleet — 10-min response city-wide</text>
+<rect x="282" y="392" width="10" height="10" fill="#E85050" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Robotic SAR — collapse and flood rescue capability</text>
+<rect x="30" y="406" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">AI predictive dispatch — pre-staging before incidents</text>
+<rect x="282" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">USAR Teams — 3 certified urban search and rescue units</text>
+<rect x="30" y="420" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Zero preventable deaths — measurable target by 2040</text>
+<rect x="282" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">East Africa emergency leadership — regional hub</text>
+
+</svg></template>
+<template id="viz-tpl-emergency_advanced-panel"><div class="vp-section">
+<div class="vp-title">Advanced Emergency Response</div>
+<div class="vp-sub">The city that responds fastest saves the most lives — Nairobi leading Africa in emergency capability</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🚁</span><div><div class="bi-city">Drone Emergency Response Fleet — 50 drones, 10-minute city-wide reach</div><div class="bi-desc">50 emergency drones deployed across 8 strategic depots — capable of: delivering AEDs (defibrillators) within 10 minutes anywhere in the city, dropping life rings and thermal blankets in flood situations, providing real-time aerial surveillance during mass casualty events, and deploying communication relays in areas where ground infrastructure is disrupted. The drone programme trains 100 certified operators from the existing first responder network. <a href="https://www.ams-global.com/drone-emergency-services" target="_blank" rel="noopener">Drone Emergency Services ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🤖</span><div><div class="bi-city">Robotic Search and Rescue — for the incidents humans can't reach</div><div class="bi-desc">Building collapses and flood scenarios create voids and water depths that make human rescue impossible. The USAR Teams are equipped with: ground-penetrating robots for structural collapse, remotely operated water vehicles for flood rescue in fast-flowing water, thermal imaging drones for casualty location, and acoustic sensors for trapped survivor detection. Three certified USAR teams — CBD, Eastlands, and Westlands. <a href="https://www.insarag.org/" target="_blank" rel="noopener">INSARAG Urban Search and Rescue ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📡</span><div><div class="bi-city">AI Predictive Dispatch — Nairobi Climate Emergency Response Academy</div><div class="bi-desc">The Emergency Response Academy trains 500 emergency responders per year using AI-assisted simulation — the first in East Africa. The AI Dispatch system learns from 5 years of incident data to predict which wards are at highest risk in any given weather/event combination, pre-staging resources before the call comes in. Response time target: under 8 minutes for critical incidents anywhere in the city. <a href="https://www.ifrc.org/" target="_blank" rel="noopener">IFRC — International Federation Red Cross ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇯🇵</span><div><div class="bi-city">Tokyo — earthquake response infrastructure</div><div class="bi-desc">Tokyo maintains 3,600 emergency supply depots (one every 0.5km²), robotic rescue capability for building collapse, and community disaster prevention councils in every neighbourhood. The system is so embedded that 90% of immediate post-earthquake response is community-led before professional responders arrive. <a href="https://www.metro.tokyo.lg.jp/english/" target="_blank" rel="noopener">Tokyo Metropolitan Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇺🇸</span><div><div class="bi-city">New York — Notify NYC emergency alert system</div><div class="bi-desc">NYC's Notify NYC sends targeted emergency alerts to 3M+ subscribers by neighbourhood, incident type, and language. The system has been credited with reducing hurricane evacuation non-compliance from 40% to 12%. <a href="https://www.nyc.gov/notifynyc" target="_blank" rel="noopener">Notify NYC ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Johannesburg — Metropolitan Emergency Services</div><div class="bi-desc">Johannesburg's EMS operates 24 stations across the metro, with a target response time of 15 minutes for life-threatening incidents. The integrated dispatch system covers EMS, fire, and disaster management from one operations centre — the model for Nairobi's Emergency Command Centre. <a href="https://www.joburg.org.za/services_/Pages/Emergency-Management-Services.aspx" target="_blank" rel="noopener">Joburg Emergency Management ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-governance_reform-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Governance Reform — Devolution, Accountability & Procurement</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">NMS/County Integration · Contractor Reform · Fiscal Devolution · City Ombudsman</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">City Authority Act</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Constitutional reform</text>
+<circle cx="145" cy="185" r="8" fill="#E85050" opacity="0.9"/>
+<text x="145" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="145" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Contractor Reform</text>
+<text x="145" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Public dashboards</text>
+<circle cx="399" cy="185" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="399" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="399" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Fiscal Devolution</text>
+<text x="399" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Own-source revenue</text>
+<circle cx="100" cy="260" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Property Tax</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Digital valuation rolls</text>
+<circle cx="444" cy="260" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">City Ombudsman</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Independent oversight</text>
+<circle cx="200" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Civil Society</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Watchdog ecosystem</text>
+<circle cx="344" cy="325" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Nairobi as Gov Model</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Africa benchmark</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">City Authority Act — constitutional reform enabling true autonomy</text>
+<rect x="282" y="392" width="10" height="10" fill="#E85050" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Contractor accountability — public dashboards, performance bonds</text>
+<rect x="30" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Fiscal devolution — Nairobi keeps 60% of tax revenue collected</text>
+<rect x="282" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Property tax modernisation — digital valuation, no evasion</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">City Ombudsman — independent, publicly reported</text>
+<rect x="282" y="420" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Robust civil society — watchdog NGO ecosystem funded by NCG</text>
+
+</svg></template>
+<template id="viz-tpl-governance_reform-panel"><div class="vp-section">
+<div class="vp-title">Governance Reform</div>
+<div class="vp-sub">Without governance reform, every other pillar in this plan is aspirational fiction</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏛️</span><div><div class="bi-city">City Authority Act — breaking the NMS/County impasse</div><div class="bi-desc">The fundamental governance dysfunction in Nairobi is the split authority between the Nairobi Metropolitan Services (a national government body) and Nairobi City Government (the elected county government). This creates overlapping mandates, budget fights, and zero accountability. The City Authority Act — requiring national political will and constitutional amendment — creates a unified City Authority with clear mandate, budget authority, and democratic accountability. This is the single most important governance intervention in the plan. <a href="https://www.kenya.go.ke/county-governments/" target="_blank" rel="noopener">Kenya County Governments ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📊</span><div><div class="bi-city">Contractor Reform — ending the accountability vacuum</div><div class="bi-desc">Every NCG service contract — waste collection, road maintenance, park management — must now have: a performance bond (contractor pays penalties for non-delivery), GPS tracking of all contracted vehicles with public data, quarterly ward-level citizen scorecards published online, and a 3-strikes termination rule. The political economy is real: contractors have constituencies and political backers. The reform path is incremental but relentless — making the contractor model answer publicly for its failures builds the evidence base and political momentum for eventual city-led services. <a href="https://www.ppra.go.ke/" target="_blank" rel="noopener">Kenya PPRA Procurement ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">💰</span><div><div class="bi-city">Property Tax Modernisation — Nairobi's own-source revenue revolution</div><div class="bi-desc">Nairobi collects less than 20% of the property tax it is legally entitled to — primarily because the valuation roll hasn't been updated since 1980 and enforcement is discretionary. Digital property valuation (using satellite imagery and GIS) combined with M-Pesa payment and automatic enforcement eliminates both undervaluation and non-payment. Estimated additional revenue: KES 15–25B per year — equivalent to doubling the current development budget. <a href="https://www.knbs.or.ke/" target="_blank" rel="noopener">Kenya National Bureau of Statistics ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇷🇼</span><div><div class="bi-city">Rwanda — governance transformation as development strategy</div><div class="bi-desc">Rwanda's transformation from genocide (1994) to Africa's most efficient government (2024) is the most dramatic governance turnaround in African history. The key mechanisms: performance contracts (imihigo) for every official, quarterly public reporting, and zero tolerance for corruption enforced by an independent prosecutorial body. <a href="https://www.gov.rw/" target="_blank" rel="noopener">Government of Rwanda ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇷</span><div><div class="bi-city">Porto Alegre — participatory budgeting pioneer</div><div class="bi-desc">Porto Alegre invented participatory budgeting in 1989 — citizens vote directly on 20–30% of the capital budget in ward assemblies. The programme reduced municipal corruption by 40% and improved infrastructure quality by directing resources to the highest-priority needs. <a href="https://www.worldbank.org/en/topic/governance" target="_blank" rel="noopener">World Bank Governance ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — Auditor General as accountability anchor</div><div class="bi-desc">Kenya's Auditor General produces annual county government reports that expose procurement irregularities in specific detail. The challenge is that reports are produced but rarely acted on. Nairobi 2055 mandates automatic NCG response to Auditor General findings within 60 days, with individual accountability tracked publicly. <a href="https://www.oagkenya.go.ke/" target="_blank" rel="noopener">Office of the Auditor General Kenya ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-housing_urban-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Housing, Urban Form & Innovation Districts — Nairobi 2055</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">15-Minute City · 3D Housing · Mixed-Use · Innovation District · 5 City Centres</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#3DBF78" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">15-Minute City</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">All wards by 2035</text>
+<circle cx="145" cy="185" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="145" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="145" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">5 City Centres</text>
+<text x="145" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Decentralised hubs</text>
+<circle cx="399" cy="185" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="399" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="399" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Innovation District</text>
+<text x="399" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Westlands anchor</text>
+<circle cx="100" cy="260" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">3D-Printed Housing</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">20,000 units pilot</text>
+<circle cx="444" cy="260" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Mixed-Use Zoning</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Live-work-play by right</text>
+<circle cx="200" cy="325" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Informal Formalization</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">1M units legalised</text>
+<circle cx="344" cy="325" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Water & Sanitation</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Decentralised systems</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#3DBF78" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">15-Minute City — all essentials within walking distance</text>
+<rect x="282" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">5 Secondary Urban Centres — Eastlands, Kangemi, Karen, Kasarani, Ruai</text>
+<rect x="30" y="406" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi Innovation District — East Africa's Silicon Valley anchor</text>
+<rect x="282" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">3D-printed housing pilot — 20,000 units by 2030</text>
+<rect x="30" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Mixed-use zoning — live-work-play permitted everywhere</text>
+<rect x="282" y="420" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">1 million informal units legalised and titled by 2035</text>
+
+</svg></template>
+<template id="viz-tpl-housing_urban-panel"><div class="vp-section">
+<div class="vp-title">Housing, Urban Form & Innovation Districts</div>
+<div class="vp-sub">The physical shape of the 2055 city — human-scale, mixed, connected, and affordable</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏙️</span><div><div class="bi-city">15-Minute City — Nairobi redesigned around people, not cars</div><div class="bi-desc">The 15-Minute City concept (Carlos Moreno, Paris) means every resident can reach a school, health clinic, market, park, and workplace within 15 minutes on foot or by bicycle. Nairobi's current form makes this impossible for most residents — by design, the colonial city was built for cars and segregation. The 2055 plan redesigns the zoning code, puts services in settlements, and builds the cycling and walking infrastructure to make it physically possible. <a href="https://www.c40.org/other/inclusive-vibrant-neighbourhoods" target="_blank" rel="noopener">C40 15-Minute City ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">3D-Printed Housing — 20,000 units pilot</div><div class="bi-desc">ICON's 3D printing technology builds a 2-bedroom house in 24 hours at 30% lower cost than conventional construction. The first African 3D-printed housing project (14Trees, Malawi) proved the technology works in African conditions. Nairobi's 20,000-unit pilot (2026–2030) focuses on informal settlement in-fill — printing permanent housing on plots where residents already live, eliminating displacement. <a href="https://www.14trees.com/" target="_blank" rel="noopener">14Trees — 3D printed housing Africa ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌐</span><div><div class="bi-city">Nairobi Innovation District — East Africa's answer to Silicon Valley</div><div class="bi-desc">A 500-hectare mixed-use innovation district in Westlands/Parklands anchored by the AI Research Institute, the FinTech Hub, and Nairobi University's engineering campus. Purpose-built for the knowledge economy: affordable co-working, fast internet, walk-to-work housing, and a live music and cultural scene that makes it a place people want to be — not just work. <a href="https://www.nairobigarage.com/" target="_blank" rel="noopener">Nairobi Garage innovation hub ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇫🇷</span><div><div class="bi-city">Paris — 15-Minute City in practice</div><div class="bi-desc">Paris Mayor Anne Hidalgo ran her entire 2020 re-election campaign on the 15-Minute City concept and won. The policy: converting 60% of Paris car parking to cycling, walking, and green space; building 1,000 neighbourhood services within walking distance of every resident; and redesigning 30km of streets for people, not cars. Paris is 2 years into implementation. <a href="https://www.paris.fr/pages/paris-en-commun-3388" target="_blank" rel="noopener">Paris en Commun ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — 5 secondary city centres</div><div class="bi-desc">Seoul decentralised from 1 CBD to 5 urban centres (Gangnam, Yeongdeungpo, Cheongnyangni, Jamsil, Mapo) in the 1980s–1990s. Each centre has a full mix of offices, retail, entertainment, and residential. The result: more balanced commute patterns, lower housing costs in secondary centres, and stronger neighbourhood identity. <a href="https://english.seoul.go.kr/" target="_blank" rel="noopener">Seoul Metropolitan Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇺🇸</span><div><div class="bi-city">Detroit — innovation district regeneration</div><div class="bi-desc">Detroit's innovation district (New Center area) reversed decades of urban decline through mixed-use development, anchor institution investment (Wayne State University + Henry Ford Health), and deliberate co-working + residential mixed zoning. From 40% vacancy to 90% occupancy in 8 years. <a href="https://www.detroitmi.gov/" target="_blank" rel="noopener">City of Detroit ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-social_fabric_prog-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Social Fabric Programmes — Playgrounds, Green Jobs & Equity</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">50 Playgrounds · Universal Accessibility · Green Jobs · Sustained Growth</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="125" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="272" y="129" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="111" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">50 Playgrounds</text>
+<text x="272" y="121" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Informal settlements first</text>
+<circle cx="150" cy="190" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="150" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="210" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Smart Gyms</text>
+<text x="150" y="220" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Free · Solar-powered</text>
+<circle cx="394" cy="190" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="394" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="176" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Universal Access</text>
+<text x="394" y="186" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Every public space</text>
+<circle cx="110" cy="265" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="110" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="110" y="285" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Green Jobs</text>
+<text x="110" y="295" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">50,000 new roles</text>
+<circle cx="434" cy="265" r="8" fill="#E85888" opacity="0.9"/>
+<text x="434" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="434" y="251" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Nairobi Equitable</text>
+<text x="434" y="261" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Gini reduction target</text>
+<circle cx="200" cy="330" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="200" y="334" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="350" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Abundant Economy</text>
+<text x="200" y="360" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Post-scarcity services</text>
+<circle cx="344" cy="330" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="344" y="334" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="316" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Social Resilience</text>
+<text x="344" y="326" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Africa's model city</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">50 playgrounds — informal settlements first, all solar-lit</text>
+<rect x="282" y="392" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Smart outdoor gyms — free, solar-powered, in every ward</text>
+<rect x="30" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Universal accessibility — every public space by 2030</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">50,000 green jobs — parks, waste, cycling, urban forest</text>
+<rect x="30" y="420" width="10" height="10" fill="#E85888" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Gini coefficient reduction target — measurable equity</text>
+<rect x="282" y="420" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Abundance economy — post-scarcity public services</text>
+
+</svg></template>
+<template id="viz-tpl-social_fabric_prog-panel"><div class="vp-section">
+<div class="vp-title">Social Fabric Programmes</div>
+<div class="vp-sub">The social glue that holds a 2055 city together — shared spaces, shared prosperity</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🛝</span><div><div class="bi-city">50 Playgrounds in Informal Settlements — visible investment</div><div class="bi-desc">There are fewer than 10 public playgrounds in Nairobi's informal settlements, serving 3 million children. The 50 Playgrounds programme builds a solar-lit, rubber-surface playground in the 50 highest-density settlement wards. Community-designed (children participate in the design process), community-maintained through a ward cooperative model. Every playground has a water point and toilet — making it a community facility, not just a children's space. <a href="https://www.righttoplay.com/en/countries/kenya/" target="_blank" rel="noopener">Right to Play Kenya ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">♿</span><div><div class="bi-city">Universal Accessibility — Nairobi for everyone</div><div class="bi-desc">Nairobi's public infrastructure is almost entirely inaccessible to people with mobility, visual, or hearing impairments. The Universal Accessibility Programme mandates kerb cuts, tactile paving, audio signals, ramps, and accessible toilets for all new public infrastructure and all major BRT stations. The ADA in the US (1990) transformed American cities within 10 years of passage. Kenya has the legal framework — it needs the enforcement. <a href="https://www.ncpwd.go.ke/" target="_blank" rel="noopener">National Council for Persons with Disabilities Kenya ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">💚</span><div><div class="bi-city">Green Jobs Programme — 50,000 new roles</div><div class="bi-desc">50,000 new formal green economy jobs by 2035: urban forest managers, solar microgrid technicians, MRF operators, ward park coordinators, cycling infrastructure maintenance crews, and community drainage workers. Priority hiring from informal settlements. Every job has a career ladder — apprentice, technician, supervisor — with TVET-accredited qualifications. <a href="https://www.ilo.org/global/topics/green-jobs/lang--en/index.htm" target="_blank" rel="noopener">ILO Green Jobs Programme ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇫🇮</span><div><div class="bi-city">Helsinki — public space as social equaliser</div><div class="bi-desc">Helsinki has the highest public space per capita of any city in the world — parks, beaches, saunas, skating rinks, all free. The result: Helsinki consistently ranks as the world's happiest city. The investment is not in luxury — it is in shared infrastructure that everyone uses together. <a href="https://www.hel.fi/en" target="_blank" rel="noopener">City of Helsinki ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇦🇷</span><div><div class="bi-city">Medellín — urban acupuncture for equity</div><div class="bi-desc">Medellín's transformation (2004–2016) used targeted investment in the highest-need comunas — cable cars, escalators, parks, libraries — to visually and practically demonstrate that the poorest residents were the city's priority. Gini coefficient fell from 0.56 to 0.47 in 10 years. <a href="https://www.medellin.gov.co/" target="_blank" rel="noopener">Alcaldía de Medellín ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Cape Town — Khayelitsha public amenity investment</div><div class="bi-desc">Cape Town's Khayelitsha investment programme built 60 public parks, 8 libraries, and 15 sports facilities in the township between 2009–2019. Residents reported 40% improvement in safety perceptions and 35% improvement in community pride — before any housing improvements were made. The lesson: visible public investment in shared spaces changes community trajectory. <a href="https://www.capetown.gov.za/" target="_blank" rel="noopener">Cape Town City Government ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-environment_adv-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Advanced Environment — Rivers, Dandora & Climate Data</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Dandora Remediation · Nairobi River Cleanup · IoT Monitoring · Climate Economy</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Dandora Remediation</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Close + cap + restore</text>
+<circle cx="150" cy="185" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="150" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Nairobi River Phase 1</text>
+<text x="150" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">First 5km clean</text>
+<circle cx="394" cy="185" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="394" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">River Ecological Recovery</text>
+<text x="394" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Full 20km by 2040</text>
+<circle cx="100" cy="260" r="8" fill="#3FBFB0" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">IoT Environment</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">200 sensors live</text>
+<circle cx="444" cy="260" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Open Climate Data</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Public real-time</text>
+<circle cx="200" cy="325" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Climate Economy Pivot</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Green GDP target</text>
+<circle cx="344" cy="325" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Africa Green City</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Global showcase</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Dandora — close, cap, restore, and repurpose as MRF</text>
+<rect x="282" y="392" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi River — Phase 1 first 5km sewage-free by 2028</text>
+<rect x="30" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Full river ecological recovery — all 20km by 2040</text>
+<rect x="282" y="406" width="10" height="10" fill="#3FBFB0" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">200 IoT environmental sensors — public real-time dashboard</text>
+<rect x="30" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Open Climate Data Platform — machine-readable, free</text>
+<rect x="282" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Global Climate Adaptation Showcase — Nairobi leads Africa</text>
+
+</svg></template>
+<template id="viz-tpl-environment_adv-panel"><div class="vp-section">
+<div class="vp-title">Advanced Environment</div>
+<div class="vp-sub">Fixing Nairobi's most visible environmental failures — and turning them into assets</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🗑️</span><div><div class="bi-city">Dandora — the hardest and most important environmental fix</div><div class="bi-desc">The Dandora dumpsite has been "about to close" for 30 years. Every administration announces closure; none delivers it. The 2055 plan is different because it includes the economic alternative: the Dandora Materials Recovery Facility employs more people than the dumpsite, produces more revenue, and processes more waste. The economics make closure viable. The political will is the remaining variable. <a href="https://www.nema.go.ke/" target="_blank" rel="noopener">NEMA — National Environment Management Authority ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌊</span><div><div class="bi-city">Nairobi River — Phase 1: First 5km Sewage-Free</div><div class="bi-desc">The Nairobi River runs entirely brown — 95% of its flow is untreated sewage. The Nairobi Rivers Regeneration Programme is already 30% complete. Phase 1 of the 2055 plan: connect all settlements along the first 5km of the river to the sewer network, remove all sewage outfall pipes, and restore the first 5km to swimming quality by 2028. The visible transformation of 5km builds the political momentum for the full 20km. <a href="https://nairobiriver.org/" target="_blank" rel="noopener">Nairobi River Basin Programme ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">📡</span><div><div class="bi-city">IoT Environmental Monitoring — knowing what we're dealing with</div><div class="bi-desc">200 low-cost environmental monitoring sensors: air quality (PM2.5, NOx, CO), water quality (Nairobi River tributaries), soil contamination (Dandora vicinity), noise (CBD and residential), and temperature (urban heat island mapping). All data public, real-time, machine-readable. The Open Climate Data Platform publishes it all. You can't improve what you don't measure. <a href="https://aqicn.org/city/nairobi/" target="_blank" rel="noopener">Nairobi Air Quality Index ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇸🇪</span><div><div class="bi-city">Stockholm — Hammarby Sjöstad ecological district</div><div class="bi-desc">Stockholm's Hammarby district was built on a contaminated industrial site. The remediation and redevelopment created a 25,000-person eco-district where 90% of waste is recycled, biogas from waste powers 50% of heating, and the district generates more energy than it consumes. <a href="https://www.stockholm.se/" target="_blank" rel="noopener">City of Stockholm ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — Cheonggyecheon River restoration</div><div class="bi-desc">Seoul's 2003–2005 Cheonggyecheon restoration removed an elevated highway and restored a buried river through the city centre. Result: 639% increase in biodiversity, 2.5°C temperature reduction, 40% reduction in car traffic in the corridor, and 300% increase in property values along the route. The most studied urban environmental intervention in the world. <a href="https://www.landscapeperformance.org/case-study-briefs/cheonggyecheon-stream-restoration-project" target="_blank" rel="noopener">Cheonggyecheon case study ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇧🇷</span><div><div class="bi-city">Curitiba — the sustainable city template</div><div class="bi-desc">Curitiba's environmental success (70% recycling, largest urban forest per capita in Latin America, lowest air pollution of any Brazilian city) came from 40 years of consistent investment in BRT, parks, waste management, and green building — across multiple administrations. The lesson: the policy must survive the election cycle. <a href="https://www.plasticexpert.co.uk/sustainable-recycling-curitiba/" target="_blank" rel="noopener">Curitiba sustainable recycling ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-fire_safety-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Fire Service Expansion — 12 Stations, 40 Engines, Helicopter EMS</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">4 stations today → 12 by 2030 · Every constituency covered · USAR capability</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#E86A38" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Fire Station Network</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">12 stations by 2030</text>
+<circle cx="145" cy="185" r="8" fill="#E85050" opacity="0.9"/>
+<text x="145" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="145" y="205" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Helicopter EMS</text>
+<text x="145" y="215" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">4 helicopters</text>
+<circle cx="399" cy="185" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="399" y="189" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="399" y="171" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">USAR Teams</text>
+<text x="399" y="181" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">3 certified units</text>
+<circle cx="100" cy="260" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="100" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="280" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Settlement Coverage</text>
+<text x="100" y="290" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 wards covered</text>
+<circle cx="444" cy="260" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="444" y="264" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="246" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Mass Casualty</text>
+<text x="444" y="256" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Multi-agency response</text>
+<circle cx="200" cy="325" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="200" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="200" y="345" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Fire Prevention</text>
+<text x="200" y="355" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Community inspection</text>
+<circle cx="344" cy="325" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="344" y="329" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">7</text>
+<text x="344" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Response Target</text>
+<text x="344" y="321" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">8 min any location</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E86A38" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">12 fire stations — from 4 today, covering all 85 wards</text>
+<rect x="282" y="392" width="10" height="10" fill="#E85050" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">4 emergency helicopters — KNH, Pumwani, CBD, Eastlands</text>
+<rect x="30" y="406" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">3 USAR units — urban search and rescue certified</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Settlement coverage — every informal ward has 5-min access</text>
+<rect x="30" y="420" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Mass casualty protocol — 500+ patient triage capability</text>
+<rect x="282" y="420" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Fire prevention — community inspection programme all buildings</text>
+
+</svg></template>
+<template id="viz-tpl-fire_safety-panel"><div class="vp-section">
+<div class="vp-title">Fire Service Expansion</div>
+<div class="vp-sub">Nairobi has 4 fire stations for 5.5 million people — the most dangerous ratio in East Africa</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🚒</span><div><div class="bi-city">12 Stations by 2030 — one per sub-county</div><div class="bi-desc">Nairobi currently has 4 functional fire stations — in CBD, Ruaraka, Langata, and Gigiri. 4 stations covering 696km² and 5.5M people. The target: 12 stations by 2030, one per sub-county, each with: 3 modern engines (replacing the 1980s fleet), 15 trained firefighters on shift, paramedic crew, and USAR equipment. The informal settlements — where fire risk is highest and roads are narrowest — get purpose-built rapid-response units (smaller, faster vehicles) stationed inside the settlement perimeter. <a href="https://www.nairobi.go.ke/" target="_blank" rel="noopener">Nairobi City Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🚁</span><div><div class="bi-city">Helicopter Emergency Medical Service</div><div class="bi-desc">4 emergency helicopters based at KNH, Pumwani, the CBD, and Eastlands — cutting response times for critical trauma from 45+ minutes to under 8 minutes anywhere in the city. AMREF's Flying Doctors already operates in Kenya — the 2055 plan integrates this infrastructure into the NCG emergency system with a public service mandate rather than a commercial one. <a href="https://amref.org/amref-flying-doctors/" target="_blank" rel="noopener">AMREF Flying Doctors ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🔥</span><div><div class="bi-city">Fire Prevention — the cheap intervention</div><div class="bi-desc">The cheapest fire investment is prevention. The community fire inspection programme: every market, school, factory, and residential building above 3 storeys inspected annually. Hazardous buildings red-tagged and given 90 days to comply. Informal settlement fire prevention: free fire extinguishers for every 20 households, smoke alarms for every settlement home, and designated firebreaks built into the settlement upgrading programme. <a href="https://www.fireengineering.com/training/" target="_blank" rel="noopener">Fire Engineering training resources ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Cape Town — fire service model for informal settlements</div><div class="bi-desc">Cape Town's Fire and Rescue Service developed specialised "rapid intervention vehicles" for informal settlement access — small, fast vehicles that can navigate narrow alleys. The vehicles carry high-pressure compressed air foam that can suppress a structure fire in 2 minutes with 25 litres of water. <a href="https://www.capetown.gov.za/en/fire/Pages/home.aspx" target="_blank" rel="noopener">Cape Town Fire and Rescue ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — response time as a measurable KPI</div><div class="bi-desc">Singapore's SCDF publishes response time statistics quarterly — average 7 minutes, target 11 minutes. Response time is the primary KPI for the fire service and is published by district. The public accountability drives performance. <a href="https://www.scdf.gov.sg/" target="_blank" rel="noopener">Singapore Civil Defence Force ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Nairobi — Gikomba market fires as a case study</div><div class="bi-desc">Gikomba market has burned 8 times in 20 years, each time destroying thousands of informal traders' livelihoods. The response time has never been under 30 minutes. With a station in Eastlands (2km away), response would be under 5 minutes. The difference: hundreds of millions of KES in protected assets, and hundreds of livelihoods not destroyed. <a href="https://www.the-star.co.ke/" target="_blank" rel="noopener">The Star Kenya ↗</a></div></div></div>
+</div></div></template>
+<template id="viz-tpl-emergency_shelter-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="480" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Emergency Shelter & Climate Displacement Response</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Transitional Shelter · Settlement Priority Response · Cooling Centres</text>
+<rect x="20" y="52" width="504" height="352" fill="#21251C" rx="6"/>
+<circle cx="272" cy="120" r="8" fill="#E85050" opacity="0.9"/>
+<text x="272" y="124" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">1</text>
+<text x="272" y="106" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Transitional Shelter</text>
+<text x="272" y="116" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">10,000 units ready</text>
+<circle cx="150" cy="190" r="8" fill="#C8A84B" opacity="0.9"/>
+<text x="150" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">2</text>
+<text x="150" y="210" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Settlement Priority</text>
+<text x="150" y="220" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Mathare · Kibera · Mukuru</text>
+<circle cx="394" cy="190" r="8" fill="#E8844A" opacity="0.9"/>
+<text x="394" y="194" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">3</text>
+<text x="394" y="176" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Cooling Centres</text>
+<text x="394" y="186" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">85 ward facilities</text>
+<circle cx="100" cy="265" r="8" fill="#5DBF7A" opacity="0.9"/>
+<text x="100" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">4</text>
+<text x="100" y="285" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Climate Displaced</text>
+<text x="100" y="295" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Voluntary relocation</text>
+<circle cx="444" cy="265" r="8" fill="#378ADD" opacity="0.9"/>
+<text x="444" y="269" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
+<text x="444" y="251" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Emergency Response</text>
+<text x="444" y="261" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">48-hour deployment</text>
+<circle cx="272" cy="335" r="8" fill="#8B79E8" opacity="0.9"/>
+<text x="272" y="339" fill="white" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
+<text x="272" y="355" fill="#C4BFA8" font-size="8" font-family="system-ui" text-anchor="middle">Pre-positioned</text>
+<text x="272" y="365" fill="#5C5C4E" font-size="7" font-family="system-ui" text-anchor="middle">Embakasi depot</text>
+
+<rect x="20" y="368" width="504" height="104" fill="#21251C" rx="6"/>
+<text x="32" y="384" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Phase 1 Priorities — 2025–2035</text>
+<rect x="30" y="392" width="10" height="10" fill="#E85050" rx="2" opacity="0.8"/>
+<text x="44" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">10,000 transitional shelter units — pre-positioned for deployment</text>
+<rect x="282" y="392" width="10" height="10" fill="#C8A84B" rx="2" opacity="0.8"/>
+<text x="296" y="400" fill="#C4BFA8" font-size="8" font-family="system-ui">Settlement priority zones — Mathare, Kibera, Mukuru first</text>
+<rect x="30" y="406" width="10" height="10" fill="#E8844A" rx="2" opacity="0.8"/>
+<text x="44" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">85 ward cooling centres — heat emergency + flood shelter dual use</text>
+<rect x="282" y="406" width="10" height="10" fill="#5DBF7A" rx="2" opacity="0.8"/>
+<text x="296" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">Voluntary climate relocation — support, not displacement</text>
+<rect x="30" y="420" width="10" height="10" fill="#378ADD" rx="2" opacity="0.8"/>
+<text x="44" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">48-hour deployment protocol — logistics pre-planned</text>
+<rect x="282" y="420" width="10" height="10" fill="#8B79E8" rx="2" opacity="0.8"/>
+<text x="296" y="428" fill="#C4BFA8" font-size="8" font-family="system-ui">Embakasi pre-positioning depot — NCG + KDF joint</text>
+
+</svg></template>
+<template id="viz-tpl-emergency_shelter-panel"><div class="vp-section">
+<div class="vp-title">Emergency Shelter & Climate Displacement</div>
+<div class="vp-sub">When the floods come or the heat becomes dangerous — Nairobi has somewhere to take people</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🏠</span><div><div class="bi-city">Emergency Transitional Shelter — 10,000 units pre-positioned</div><div class="bi-desc">10,000 modular transitional shelter units stored at the Embakasi logistics depot, deployable within 48 hours to any of the 15 high-risk wards. Units are designed for the Nairobi climate — ventilated, flood-raised, solar-lit, and clustered around shared sanitation facilities. Unlike the tent camps of past disasters, these units are dignified and reusable — the same stock serves multiple events over 10 years. <a href="https://www.unhcr.org/innovation/transitional-shelter/" target="_blank" rel="noopener">UNHCR Transitional Shelter ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌡️</span><div><div class="bi-city">Cooling Centres — Ward-Level Heat Emergency Infrastructure</div><div class="bi-desc">Nairobi's average maximum temperature will exceed 35°C regularly by 2035 under current trajectory. For elderly residents, young children, and outdoor workers, prolonged heat above 35°C is life-threatening without access to cooling. The 85 ward cooling centres are dual-use: cool in heat emergencies, elevated and flood-proof for flood events. Located in public schools (which are already the largest public buildings in most wards). <a href="https://www.who.int/publications/i/item/9789289002028" target="_blank" rel="noopener">WHO Heat Health Action Plans ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🤝</span><div><div class="bi-city">Voluntary Climate Relocation — the alternative to forced eviction</div><div class="bi-desc">Some areas of Nairobi — particularly riverbank settlements in flood plains — are simply not safe to inhabit. The plan does not pretend otherwise. But the solution is not forced eviction — it is a voluntary relocation programme with genuine support: equivalent housing in a safe location, community relocation (neighbours move together), economic transition support, and no debt. This requires both political will and budget — it is included explicitly because it is the humane alternative to doing nothing until people die. <a href="https://www.worldbank.org/en/topic/involuntary-resettlement" target="_blank" rel="noopener">World Bank Resettlement Policy ↗</a></div></div></div>
+</div></div>
+<div class="vp-section">
+<div class="vp-title">Global Benchmarks</div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇵🇭</span><div><div class="bi-city">Manila — Typhoon Haiyan shelter response</div><div class="bi-desc">After Typhoon Haiyan (2013), the Philippine government deployed 100,000 transitional shelter units within 6 months. The programme succeeded because the designs, suppliers, and logistics had been pre-planned — not designed after the disaster. <a href="https://www.ndrrmc.gov.ph/" target="_blank" rel="noopener">Philippines NDRRMC ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇫🇷</span><div><div class="bi-city">Paris — canicule (heatwave) cooling infrastructure</div><div class="bi-desc">After the 2003 European heatwave killed 15,000 people in France (mostly elderly, mostly in Paris), France built the world's most comprehensive heatwave response system: 2,400 registered "cool islands" (air-conditioned public spaces), mandatory check-in calls for isolated elderly, and automatic activation protocols above 35°C. <a href="https://www.gouvernement.fr/en/heatwave" target="_blank" rel="noopener">French Government heatwave response ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — National Disaster Management Unit</div><div class="bi-desc">Kenya's NDMU already has pre-positioned emergency supplies and shelter at 7 regional depots. The 2055 plan integrates NCG emergency shelter into this national system — adding Nairobi-specific capacity at the Embakasi depot, with a joint NCG/KDF management protocol for the city's most complex emergency scenarios. <a href="https://www.ndma.go.ke/" target="_blank" rel="noopener">Kenya National Drought Management Authority ↗</a></div></div></div>
 </div></div></template>
 
 </body>
