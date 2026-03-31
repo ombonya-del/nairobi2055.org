@@ -471,12 +471,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <input class="lg-input" id="lgPwd" type="password" placeholder="Enter password" onkeydown="if(event.key==='Enter')lgSubmit()"/>
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
-    <div id="previewSection" class="preview-section-hidden">
-      <div class="lg-divider"><span>or use a preview code</span></div>
-      <div class="lg-label">Preview Access Code</div>
-      <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="e.g. NRB2055-A1" onkeydown="if(event.key==='Enter')lgSubmitPreview()"/>
-      <button class="lg-btn-preview" onclick="lgSubmitPreview()">Use Preview Code →</button>
-    </div>
+    <!-- preview section injected by JS when ?preview=1 -->
     <div class="lg-footer">Private access only · nairobi2055.org</div>
   </div>
 </div>
@@ -2903,8 +2898,31 @@ function deleteProf(id){
   // Show preview section only when URL has ?preview=1
   if(new URLSearchParams(window.location.search).get('preview')==='1'){
     document.addEventListener('DOMContentLoaded',()=>{
-      const ps = document.getElementById('previewSection');
-      if(ps){ ps.classList.remove('preview-section-hidden'); ps.classList.add('preview-section-visible'); }
+      const gate = document.getElementById('loginGate');
+      if(!gate) return;
+      // Preview mode: hide password, show only preview code
+      const sub = gate.querySelector('.lg-sub');
+      if(sub) sub.textContent = 'Confidential Preview Access';
+      const pwdLabel = gate.querySelector('.lg-label');
+      const pwdInput = gate.querySelector('#lgPwd');
+      const pwdBtn   = gate.querySelector('.lg-btn');
+      if(pwdLabel) pwdLabel.style.display = 'none';
+      if(pwdInput) pwdInput.style.display = 'none';
+      if(pwdBtn)   pwdBtn.style.display   = 'none';
+      if(!document.getElementById('previewSection')){
+        const ps = document.createElement('div');
+        ps.id = 'previewSection';
+        ps.innerHTML =
+          '<div class="lg-label">Enter Your Preview Code</div>' +
+          '<input class="preview-code-input" id="lgPreviewCode" type="text" ' +
+            'placeholder="e.g. NRB2055-A1" onkeydown="if(event.key===\'Enter\')lgSubmitPreview()"/>' +
+          '<button class="lg-btn-preview" onclick="lgSubmitPreview()">Enter Preview →</button>';
+        const footer = gate.querySelector('.lg-footer');
+        const wrap   = gate.querySelector('.lg-wrap');
+        if(footer) wrap.insertBefore(ps, footer);
+        else wrap.appendChild(ps);
+        if(footer) footer.textContent = 'Preview access · 25-minute session · nairobi2055.org';
+      }
     });
   }
   // Auto-unlock if already authenticated
