@@ -2889,9 +2889,11 @@ function deleteProf(id){
     }
   };
   // Admin bypass via URL parameter
+  var _adminSetThisLoad = false;
   if(checkAdmin()){ 
     localStorage.setItem(KEY,'1');
     localStorage.setItem('n2055_admin','1');
+    _adminSetThisLoad = true;
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
   }
@@ -2927,9 +2929,8 @@ function deleteProf(id){
   }
   // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
-    // Clear admin flag unless this is an admin URL load
-    const _isAdminUrl = new URLSearchParams(window.location.search).get('admin') === atob('Qm9tQE5vbUA=');
-    if(!_isAdminUrl) localStorage.removeItem('n2055_admin');
+    // Clear admin flag unless admin was set in this exact page load
+    if(!_adminSetThisLoad) localStorage.removeItem('n2055_admin');
     document.addEventListener('DOMContentLoaded',()=>{
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
