@@ -3744,73 +3744,10 @@ function renderVoices() {
     <div class="voices-grid">${cards}</div>
   </div>`;
 
-  // Ensure modal exists in body (persistent — not wiped by re-render)
-  if(!document.getElementById('vc-modal-overlay')) {
-    vcInjectModal();
-  }
+
 }
 
-function vcInjectModal() {
-  const modal = document.createElement('div');
-  modal.innerHTML = `
-  <div id="vc-modal-overlay" class="vc-modal-overlay" style="display:none" onclick="vcOverlayClick(event)">
-    <div class="vc-modal" onclick="event.stopPropagation()">
-      <div class="vc-modal-header">
-        <div id="vc-modal-title" class="vc-modal-title">Import / Add Voice</div>
-        <button class="vc-modal-close" onclick="closeVcModal()">✕</button>
-      </div>
-      <div class="vc-modal-body">
-        <input type="hidden" id="vc-m-id" value=""/>
-        <div id="vc-modal-note" class="vc-modal-note">Paste post text below, or drag-and-drop a screenshot from socials.</div>
-        <div class="vc-drop-zone" id="vc-drop-zone" ondragover="vcDragOver(event)" ondrop="vcDrop(event)" onclick="document.getElementById('vc-file-input').click()">
-          <div id="vc-drop-inner">
-            <div class="vc-drop-icon">📸</div>
-            <div class="vc-drop-text">Drag & drop screenshot here<br><span>or click to upload image</span></div>
-          </div>
-          <img id="vc-preview-img" class="vc-preview-img" style="display:none"/>
-          <button id="vc-clear-img" class="vc-clear-img" style="display:none" onclick="vcClearImage(event)">✕ Remove image</button>
-        </div>
-        <input type="file" id="vc-file-input" accept="image/*" style="display:none" onchange="vcFileSelected(event)"/>
-        <div class="vc-modal-fields">
-          <input id="vc-m-role" class="vc-input" placeholder="Name / Who are they? (e.g. Jane Wanjiru, Mathare resident)"/>
-          <input id="vc-m-handle" class="vc-input" placeholder="Source / Handle (e.g. @username or 'Daily Nation')"/>
-          <input id="vc-m-area" class="vc-input" placeholder="Area / Ward (e.g. Mathare, Ward 17)"/>
-          <input id="vc-m-time" class="vc-input" placeholder="Date / Timestamp"/>
-          <textarea id="vc-m-text" class="vc-input vc-textarea" placeholder="Quote or post text..."></textarea>
-          <div class="vc-modal-row">
-            <select id="vc-m-platform" class="vc-input">
-              <option value="other">◈ News / Documented</option>
-              <option value="twitter">✕ Twitter / X</option>
-              <option value="facebook">f Facebook</option>
-              <option value="whatsapp">● WhatsApp</option>
-              <option value="instagram">◎ Instagram</option>
-            </select>
-            <select id="vc-m-mood" class="vc-input">
-              <option value="frustration">◈ Frustration</option>
-              <option value="mixed">⟳ Complex / Mixed</option>
-              <option value="hope">✦ Hope</option>
-            </select>
-          </div>
-          <select id="vc-m-theme" class="vc-input">
-            ${Object.entries(VOICE_THEMES).map(([k,t])=>`<option value="${k}">${t.icon} ${t.label}</option>`).join('')}
-          </select>
-          <div class="vc-modal-row">
-            <input id="vc-m-likes" class="vc-input" type="number" placeholder="Likes / Reactions"/>
-            <input id="vc-m-retweets" class="vc-input" type="number" placeholder="Reposts"/>
-            <input id="vc-m-views" class="vc-input" type="number" placeholder="Views"/>
-          </div>
-          <input id="vc-m-source" class="vc-input" placeholder="Source URL (optional)"/>
-          <textarea id="vc-m-hope" class="vc-input vc-textarea" placeholder="Their hope for 2055 (optional)..."></textarea>
-        </div>
-      </div>
-      <div class="vc-modal-footer">
-        <button class="vc-cancel-btn" onclick="closeVcModal()">Cancel</button>
-        <button class="vc-save-btn2" id="vc-modal-save-btn" onclick="saveVcModal()">Add to Voices →</button>
-      </div>
-    </div>
-  </div>`;
-  document.body.appendChild(modal.firstElementChild);
-}
+function vcInjectModal() { /* modal is static in DOM */ }
 
 let _vcMode = 'add'; // 'add' or 'edit'
 let _vcEditId = null;
@@ -3873,9 +3810,7 @@ function openEditModal(id) {
   document.getElementById('vc-modal-overlay').style.display = 'flex';
 }
 
-function ensureModal() {
-  if(!document.getElementById('vc-modal-overlay')) vcInjectModal();
-}
+function ensureModal() { /* modal is always in DOM */ }
 
 function clearModalFields() {
   ['vc-m-role','vc-m-handle','vc-m-area','vc-m-time','vc-m-text','vc-m-source','vc-m-hope'].forEach(id=>{
@@ -8688,5 +8623,70 @@ function addVoice() {
 <div class="bench-item"><span class="bi-ico">🇬🇭</span><div><div class="bi-city">Kumasi Central Market — upgrade not relocate</div><div class="bi-desc">Kumasi's central market upgrade programme (2010–2018) improved infrastructure (drainage, canopy, cold storage, sanitation) without relocating a single trader. The programme worked with the Kumasi Metropolitan Assembly and the trader association — the Kumasi Market Women's Association. Result: 40% reduction in produce loss, 60% reduction in flood damage to stock, and a 25% increase in trader income within 3 years. Critically: it was an upgrade, not a replacement. <a href="https://www.citiesalliance.org/resources/publications/case-study/public-markets-ghana-case-kumasi" target="_blank" rel="noopener">Cities Alliance Ghana ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Warwick Junction, Durban — designing with informality</div><div class="bi-desc">Durban's Warwick Junction handles 460,000 people daily at one of Africa's busiest transport interchanges. The eThekwini municipality worked with traders over 20 years to design infrastructure that fits how markets actually work — including the world-famous "muthi" (traditional medicine) market and the herb traders whose stock requires specific sun and shade conditions. The design solution emerged from the trading practice, not the other way around. <a href="https://prizeforcities.org/project/warwick-junction" target="_blank" rel="noopener">Warwick Junction project ↗</a></div></div></div>
 </div></div></template>
+
+<!-- Voices Modal — always in DOM, shown/hidden by JS -->
+<div id="vc-modal-overlay" class="vc-modal-overlay" style="display:none" onclick="vcOverlayClick(event)">
+  <div class="vc-modal" onclick="event.stopPropagation()">
+    <div class="vc-modal-header">
+      <div id="vc-modal-title" class="vc-modal-title">Import / Add Voice</div>
+      <button class="vc-modal-close" onclick="closeVcModal()">✕</button>
+    </div>
+    <div class="vc-modal-body">
+      <input type="hidden" id="vc-m-id" value=""/>
+      <div id="vc-modal-note" class="vc-modal-note">Paste post text below, or drag-and-drop a screenshot from socials.</div>
+      <div class="vc-drop-zone" id="vc-drop-zone" ondragover="vcDragOver(event)" ondrop="vcDrop(event)" onclick="document.getElementById('vc-file-input').click()">
+        <div id="vc-drop-inner" style="display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none">
+          <div class="vc-drop-icon">&#128248;</div>
+          <div class="vc-drop-text">Drag &amp; drop screenshot here<br><span>or click to upload image</span></div>
+        </div>
+        <img id="vc-preview-img" class="vc-preview-img" style="display:none" alt="preview"/>
+        <button id="vc-clear-img" class="vc-clear-img" style="display:none" onclick="vcClearImage(event)">&#10005; Remove image</button>
+      </div>
+      <input type="file" id="vc-file-input" accept="image/*" style="display:none" onchange="vcFileSelected(event)"/>
+      <div class="vc-modal-fields">
+        <input id="vc-m-role" class="vc-input" placeholder="Name / Who are they? (e.g. Jane Wanjiru, Mathare resident)"/>
+        <input id="vc-m-handle" class="vc-input" placeholder="Source / Handle (e.g. @username or 'Daily Nation')"/>
+        <input id="vc-m-area" class="vc-input" placeholder="Area / Ward (e.g. Mathare, Ward 17)"/>
+        <input id="vc-m-time" class="vc-input" placeholder="Date / Timestamp (e.g. Apr 2025)"/>
+        <textarea id="vc-m-text" class="vc-input vc-textarea" placeholder="Quote or post text..."></textarea>
+        <div class="vc-modal-row">
+          <select id="vc-m-platform" class="vc-input">
+            <option value="other">&#9672; News / Documented</option>
+            <option value="twitter">&#10005; Twitter / X</option>
+            <option value="facebook">f Facebook</option>
+            <option value="whatsapp">&#9679; WhatsApp</option>
+            <option value="instagram">&#9678; Instagram</option>
+          </select>
+          <select id="vc-m-mood" class="vc-input">
+            <option value="frustration">&#9672; Frustration</option>
+            <option value="mixed">&#10231; Complex / Mixed</option>
+            <option value="hope">&#10022; Hope</option>
+          </select>
+        </div>
+        <select id="vc-m-theme" class="vc-input">
+          <option value="transport">&#128652; Transport &amp; Mobility</option>
+          <option value="flooding">&#127754; Flooding &amp; Climate</option>
+          <option value="livelihoods">&#128717; Markets &amp; Livelihoods</option>
+          <option value="housing">&#127960;&#65039; Housing &amp; Settlements</option>
+          <option value="youth">&#127891; Youth &amp; Opportunity</option>
+          <option value="environment">&#127807; Environment &amp; Services</option>
+          <option value="governance">&#127963; Governance &amp; Services</option>
+          <option value="culture">&#127912; Pride &amp; Culture</option>
+        </select>
+        <div class="vc-modal-row">
+          <input id="vc-m-likes" class="vc-input" type="number" placeholder="Likes / Reactions"/>
+          <input id="vc-m-retweets" class="vc-input" type="number" placeholder="Reposts"/>
+          <input id="vc-m-views" class="vc-input" type="number" placeholder="Views"/>
+        </div>
+        <input id="vc-m-source" class="vc-input" placeholder="Source URL (for attribution — optional)"/>
+        <textarea id="vc-m-hope" class="vc-input vc-textarea" placeholder="Their hope for 2055 (optional)..."></textarea>
+      </div>
+    </div>
+    <div class="vc-modal-footer">
+      <button class="vc-cancel-btn" onclick="closeVcModal()">Cancel</button>
+      <button class="vc-save-btn2" id="vc-modal-save-btn" onclick="saveVcModal()">Add to Voices &#8594;</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
