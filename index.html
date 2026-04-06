@@ -611,6 +611,32 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 #admin-badge .ab-logout{font-size:11px;color:var(--text3);cursor:pointer;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:transparent;transition:all .2s}
 #admin-badge .ab-logout:hover{color:#E85050;border-color:rgba(232,80,80,0.4)}
 
+/* ── Media: multi-photo grid ───────────────────────── */
+.vc-media-grid{display:grid;gap:3px;margin:10px 0;border-radius:8px;overflow:hidden;max-height:400px}
+.vc-media-1{grid-template-columns:1fr}
+.vc-media-2{grid-template-columns:1fr 1fr}
+.vc-media-3{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+.vc-media-3 .vc-media-img:first-child{grid-column:1/-1}
+.vc-media-img{width:100%;height:100%;object-fit:cover;display:block;max-height:300px;cursor:zoom-in;transition:opacity .2s}
+.vc-media-img:hover{opacity:0.9}
+.vc-media-1 .vc-media-img{max-height:380px}
+/* ── Media: video embed ─────────────────────────────── */
+.vc-video-wrap{position:relative;padding-bottom:56.25%;height:0;margin:10px 0;border-radius:8px;overflow:hidden;background:#000}
+.vc-video-frame{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.vc-video-link{display:inline-flex;align-items:center;gap:6px;margin:8px 0;padding:7px 14px;background:rgba(139,121,232,0.12);border:1px solid rgba(139,121,232,0.3);border-radius:16px;color:#8B79E8;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s}
+.vc-video-link:hover{background:rgba(139,121,232,0.25)}
+/* ── Modal: photo previews ──────────────────────────── */
+.vc-media-section{margin-bottom:12px}
+.vc-media-label{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px}
+.vc-media-hint{font-weight:400;color:var(--text3);font-size:11px;margin-left:4px}
+.vc-photo-previews{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0}
+.vc-photo-thumb{position:relative;width:80px;height:80px;border-radius:6px;overflow:hidden;flex-shrink:0}
+.vc-photo-thumb img{width:100%;height:100%;object-fit:cover}
+.vc-thumb-del{position:absolute;top:3px;right:3px;background:rgba(0,0,0,0.6);border:none;color:#fff;width:18px;height:18px;border-radius:50%;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;line-height:1}
+.vc-photo-add{width:80px;height:80px;border:2px dashed rgba(139,121,232,0.4);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:rgba(139,121,232,0.7);cursor:pointer;flex-shrink:0;transition:all .2s}
+.vc-photo-add:hover{border-color:rgba(139,121,232,0.7);color:#8B79E8}
+#vc-drop-zone{min-height:80px}
+
 </style>
 </head>
 <body>
@@ -3620,12 +3646,41 @@ function fmtNum(n) {
   return n.toString();
 }
 
+function vcMediaEmbed(v) {
+  const images = v.media_images && v.media_images.length ? v.media_images : (v.screenshot_b64 ? [v.screenshot_b64] : []);
+  const video = v.video_url || null;
+  let html = '';
+  // Photo grid
+  if(images.length) {
+    const cls = images.length === 1 ? 'vc-media-1' : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
+    html += `<div class="vc-media-grid ${cls}">` +
+      images.map((b64,i) => `<img src="${b64}" class="vc-media-img" alt="photo ${i+1}" loading="lazy"/>`).join('') +
+      `</div>`;
+  }
+  // Video embed
+  if(video) {
+    let embedSrc = '';
+    const ytMatch = video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+    const vimeoMatch = video.match(/vimeo\.com\/(\d+)/);
+    if(ytMatch) embedSrc = `https://www.youtube.com/embed/${ytMatch[1]}?rel=0&modestbranding=1`;
+    else if(vimeoMatch) embedSrc = `https://player.vimeo.com/video/${vimeoMatch[1]}`;
+    if(embedSrc) {
+      html += `<div class="vc-video-wrap"><iframe src="${embedSrc}" class="vc-video-frame" allowfullscreen loading="lazy" frameborder="0"></iframe></div>`;
+    } else {
+      // X/Twitter or other — show as linked badge
+      html += `<a href="${video}" target="_blank" rel="noopener" class="vc-video-link">▶ Watch video ↗</a>`;
+    }
+  }
+  return html;
+}
+
 function renderVoiceCard(v) {
   const admin = isAdmin();
   const pc = PLATFORM_CONFIG[v.platform] || PLATFORM_CONFIG.other;
   const moodColor = v.mood==='hope' ? '#5DBF7A' : v.mood==='mixed' ? '#C8A84B' : '#E85888';
   const moodLabel = v.mood==='hope' ? '✦ Hope' : v.mood==='mixed' ? '⟳ Complex' : '◈ Frustration';
   const themeObj = VOICE_THEMES[v.theme] || {icon:'🗣',label:v.theme};
+  const mediaHtml = vcMediaEmbed(v);
   const adminBtns = admin ? `<div class="vc-admin-btns">
     <button class="vc-edit-btn" onclick="openEditModal('${v.id}')">✎ Edit</button>
     <button class="vc-del-btn" onclick="deleteVoice('${v.id}')">✕</button>
@@ -3633,8 +3688,9 @@ function renderVoiceCard(v) {
 
   const sourceLink = v.source ? `<a href="${v.source}" target="_blank" rel="noopener" class="vc-source-link">↗ Source</a>` : '';
 
-  // Screenshot card
-  if(v.screenshot_b64) {
+  // Screenshot card — now handled by mediaHtml in each platform card
+  // Legacy: if ONLY screenshot_b64 and no other media, render as old screenshot card
+  if(v.screenshot_b64 && !v.media_images && !v.video_url) {
     return `<div class="voice-card vc-screenshot" style="--vc:${moodColor};--pc:${pc.color}">
       ${adminBtns}
       <div class="vc-platform-badge">${pc.icon} ${pc.label}</div>
@@ -3663,6 +3719,7 @@ function renderVoiceCard(v) {
         <div class="vc-tw-x">✕</div>
       </div>
       <div class="vc-tw-body">${v.text}</div>
+      ${mediaHtml}
       <div class="vc-tw-footer">
         <span class="vc-tw-time">🕐 ${v.timestamp||''}</span>
         ${v.views?`<span class="vc-tw-stat">${fmtNum(v.views)} views</span>`:''}
@@ -3689,6 +3746,7 @@ function renderVoiceCard(v) {
         <div class="vc-fb-f">f</div>
       </div>
       <div class="vc-fb-body">${v.text}</div>
+      ${mediaHtml}
       ${v.likes?`<div class="vc-fb-reactions"><span>👍 ❤️ 😮</span><span class="vc-fb-count">${fmtNum(v.likes)} reactions</span></div>`:''}
       <div class="vc-meta-line">📍 ${v.area} · ${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
       ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
@@ -3707,9 +3765,11 @@ function renderVoiceCard(v) {
       <div class="vc-wa-bubble">
         <div class="vc-wa-sender">${v.role} · ${v.area}</div>
         <div class="vc-wa-text">${v.text}</div>
+        ${mediaHtml}
         <div class="vc-wa-time">${v.timestamp||''} ✓✓</div>
       </div>
-      <div class="vc-meta-line">${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
+      ${mediaHtml}
+    <div class="vc-meta-line">${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
       ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
     </div>`;
   }
@@ -3725,6 +3785,7 @@ function renderVoiceCard(v) {
         <div class="vc-ig-icon">◎</div>
       </div>
       <div class="vc-ig-body">${v.text}</div>
+      ${mediaHtml}
       ${v.likes?`<div class="vc-ig-likes">♥ ${fmtNum(v.likes)} likes · ${v.timestamp||''}</div>`:''}
       <div class="vc-meta-line">📍 ${v.area} · ${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
       ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
@@ -3796,7 +3857,7 @@ function vcInjectModal() { /* modal is static in DOM */ }
 
 let _vcMode = 'add'; // 'add' or 'edit'
 let _vcEditId = null;
-let _importImgB64 = null;
+let _importImages = []; // replaces _importImgB64
 let _importPlatform = 'other';
 
 
@@ -3912,7 +3973,7 @@ function openEditModal(id) {
   if(!v) return;
   _vcMode = 'edit';
   _vcEditId = id;
-  _importImgB64 = v.screenshot_b64 || null;
+  _importImages = v.media_images ? [...v.media_images] : (v.screenshot_b64 ? [v.screenshot_b64] : []);
   ensureModal();
   document.getElementById('vc-modal-title').textContent = 'Edit Voice';
   document.getElementById('vc-modal-save-btn').textContent = 'Save Changes';
@@ -3930,6 +3991,7 @@ function openEditModal(id) {
   document.getElementById('vc-m-retweets').value = v.retweets||'';
   document.getElementById('vc-m-views').value = v.views||'';
   document.getElementById('vc-m-source').value = v.source||'';
+  const vidEl2=document.getElementById('vc-m-video'); if(vidEl2) vidEl2.value=v.video_url||'';
   document.getElementById('vc-m-hope').value = v.hope||'';
   // Show existing screenshot if any
   const img = document.getElementById('vc-preview-img');
@@ -3949,6 +4011,9 @@ function ensureModal() { /* modal is always in DOM */ }
 
 function clearModalFields() {
   const urlEl=document.getElementById('vc-url-input'); if(urlEl) urlEl.value='';
+  _importImages = [];
+  vcRenderPhotoPreviews();
+  const vidEl=document.getElementById('vc-m-video'); if(vidEl) vidEl.value='';
   const stEl=document.getElementById('vc-autofill-status'); if(stEl){stEl.className='vc-autofill-status';stEl.textContent='';}
   ['vc-m-role','vc-m-handle','vc-m-area','vc-m-time','vc-m-text','vc-m-source','vc-m-hope'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.value='';
@@ -3977,26 +4042,45 @@ function vcOverlayClick(e) {
 function vcDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('vc-drag-over'); }
 function vcDrop(e) {
   e.preventDefault(); e.currentTarget.classList.remove('vc-drag-over');
-  const f=e.dataTransfer.files[0]; if(f&&f.type.startsWith('image/')) vcLoadImage(f);
+  vcLoadFiles(e.dataTransfer.files);
 }
-function vcFileSelected(e) { const f=e.target.files[0]; if(f) vcLoadImage(f); }
-function vcLoadImage(file) {
-  const r=new FileReader();
-  r.onload=function(e){
-    _importImgB64=e.target.result;
-    const img=document.getElementById('vc-preview-img');
-    img.src=_importImgB64; img.style.display='block';
-    document.getElementById('vc-drop-inner').style.display='none';
-    document.getElementById('vc-clear-img').style.display='block';
-  };
-  r.readAsDataURL(file);
+function vcFileSelected(e) { vcLoadFiles(e.target.files); }
+function vcLoadFiles(files) {
+  const imgs = Array.from(files).filter(f=>f.type.startsWith('image/'));
+  if(!imgs.length) return;
+  const remaining = 3 - _importImages.length;
+  imgs.slice(0, remaining).forEach(file => {
+    const r = new FileReader();
+    r.onload = function(ev) {
+      _importImages.push(ev.target.result);
+      vcRenderPhotoPreviews();
+    };
+    r.readAsDataURL(file);
+  });
 }
-function vcClearImage(e) {
-  e.stopPropagation(); _importImgB64=null;
-  document.getElementById('vc-preview-img').style.display='none';
-  document.getElementById('vc-clear-img').style.display='none';
-  document.getElementById('vc-drop-inner').style.display='flex';
-  document.getElementById('vc-file-input').value='';
+function vcRenderPhotoPreviews() {
+  const wrap = document.getElementById('vc-photo-previews');
+  const inner = document.getElementById('vc-drop-inner');
+  if(!wrap) return;
+  if(_importImages.length === 0) {
+    wrap.innerHTML = '';
+    if(inner) inner.style.display = 'flex';
+    return;
+  }
+  if(inner) inner.style.display = 'none';
+  wrap.innerHTML = _importImages.map((b64, i) =>
+    `<div class="vc-photo-thumb">
+      <img src="${b64}" alt="photo ${i+1}"/>
+      <button class="vc-thumb-del" onclick="vcRemovePhoto(${i},event)">✕</button>
+    </div>`
+  ).join('') + (_importImages.length < 3 ?
+    `<div class="vc-photo-add" onclick="document.getElementById('vc-file-input').click()">+ Add photo</div>` : '');
+}
+function vcRemovePhoto(idx, e) {
+  e.stopPropagation();
+  _importImages.splice(idx, 1);
+  vcRenderPhotoPreviews();
+  document.getElementById('vc-file-input').value = '';
 }
 
 function saveVcModal() {
@@ -4019,7 +4103,9 @@ function saveVcModal() {
     retweets: parseInt(document.getElementById('vc-m-retweets')?.value)||0,
     views: parseInt(document.getElementById('vc-m-views')?.value)||0,
     source: document.getElementById('vc-m-source')?.value?.trim()||null,
-    screenshot_b64: _importImgB64||null,
+    media_images: _importImages.length ? [..._importImages] : null,
+    screenshot_b64: _importImages.length ? _importImages[0] : null, // backward compat
+    video_url: document.getElementById('vc-m-video')?.value?.trim()||null,
   };
 
   if(_vcMode==='edit' && _vcEditId) {
@@ -8763,15 +8849,19 @@ function deleteVoice(id) {
           <button class="vc-autofill-btn" id="vc-autofill-btn" onclick="vcAutoFill()">✨ Auto-fill</button>
         </div>
         <div id="vc-autofill-status" class="vc-autofill-status"></div>
-      <div class="vc-drop-zone" id="vc-drop-zone" ondragover="vcDragOver(event)" ondrop="vcDrop(event)" onclick="document.getElementById('vc-file-input').click()">
-        <div id="vc-drop-inner" style="display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none">
-          <div class="vc-drop-icon">&#128248;</div>
-          <div class="vc-drop-text">Drag &amp; drop screenshot here<br><span>or click to upload image</span></div>
+      <div class="vc-media-section">
+        <div class="vc-media-label">&#128248; Photos <span class="vc-media-hint">up to 3 · drag &amp; drop or click · PNG, JPG, GIF</span></div>
+        <div class="vc-drop-zone" id="vc-drop-zone" ondragover="vcDragOver(event)" ondrop="vcDrop(event)" onclick="document.getElementById('vc-file-input').click()">
+          <div id="vc-drop-inner" style="display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none">
+            <div class="vc-drop-icon">&#128247;</div>
+            <div class="vc-drop-text">Drop photos here or click to browse</div>
+          </div>
+          <div id="vc-photo-previews" class="vc-photo-previews"></div>
         </div>
-        <img id="vc-preview-img" class="vc-preview-img" style="display:none" alt="preview"/>
-        <button id="vc-clear-img" class="vc-clear-img" style="display:none" onclick="vcClearImage(event)">&#10005; Remove image</button>
+        <input type="file" id="vc-file-input" accept="image/*,image/gif" multiple style="display:none" onchange="vcFileSelected(event)"/>
+        <div class="vc-media-label" style="margin-top:10px">&#127916; Video URL <span class="vc-media-hint">YouTube · Vimeo · paste link to embed</span></div>
+        <input id="vc-m-video" class="vc-input" placeholder="https://youtube.com/watch?v=... or https://vimeo.com/..."/>
       </div>
-      <input type="file" id="vc-file-input" accept="image/*" style="display:none" onchange="vcFileSelected(event)"/>
       <div class="vc-modal-fields">
         <input id="vc-m-role" class="vc-input" placeholder="Name / Who are they? (e.g. Jane Wanjiru, Mathare resident)"/>
         <input id="vc-m-handle" class="vc-input" placeholder="Source / Handle (e.g. @username or 'Daily Nation')"/>
