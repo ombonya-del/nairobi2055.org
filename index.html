@@ -3955,7 +3955,7 @@ function openImportModal(platform) {
   _vcMode = 'add';
   _vcEditId = null;
   _importPlatform = platform;
-  _importImgB64 = null;
+  _importImages = [];
   const pc = PLATFORM_CONFIG[platform] || PLATFORM_CONFIG.other;
   ensureModal();
   document.getElementById('vc-modal-title').textContent = `Import from ${pc.label}`;
@@ -3994,16 +3994,7 @@ function openEditModal(id) {
   const vidEl2=document.getElementById('vc-m-video'); if(vidEl2) vidEl2.value=v.video_url||'';
   document.getElementById('vc-m-hope').value = v.hope||'';
   // Show existing screenshot if any
-  const img = document.getElementById('vc-preview-img');
-  if(_importImgB64) {
-    img.src = _importImgB64; img.style.display='block';
-    document.getElementById('vc-drop-inner').style.display='none';
-    document.getElementById('vc-clear-img').style.display='block';
-  } else {
-    img.style.display='none';
-    document.getElementById('vc-drop-inner').style.display='flex';
-    document.getElementById('vc-clear-img').style.display='none';
-  }
+  vcRenderPhotoPreviews();
   document.getElementById('vc-modal-overlay').style.display = 'flex';
 }
 
@@ -4027,7 +4018,7 @@ function clearModalFields() {
   if(di){di.style.display='flex';}
   const ci=document.getElementById('vc-clear-img');
   if(ci){ci.style.display='none';}
-  _importImgB64=null;
+  // _importImages cleared in clearModalFields above
 }
 
 function closeVcModal() {
@@ -4088,7 +4079,7 @@ function saveVcModal() {
   const text = document.getElementById('vc-m-text')?.value?.trim();
   const area = document.getElementById('vc-m-area')?.value?.trim();
   const role = document.getElementById('vc-m-role')?.value?.trim();
-  if(!text && !_importImgB64) { showToast('Please add text or a screenshot'); return; }
+  if(!text && !_importImages.length && !document.getElementById('vc-m-video')?.value?.trim()) { showToast('Please add post text, a photo, or a video URL'); return; }
   if(!area) { showToast('Please add an area / ward'); return; }
   const fields = {
     platform: document.getElementById('vc-m-platform')?.value||'other',
@@ -4135,7 +4126,15 @@ function saveVcModal() {
 
 function deleteVoice(id) {
   if(!isAdmin()) return;
-  if(!confirm('Remove this voice?')) return;
+  // Use inline toast-style confirmation instead of browser confirm() which is blocked on some browsers
+  const btn = document.querySelector(`.vc-del-btn[onclick="deleteVoice('${id}')"]`);
+  if(btn && !btn.dataset.confirmed) {
+    btn.dataset.confirmed = '1';
+    btn.textContent = 'Sure?';
+    btn.style.background = 'rgba(232,80,80,0.4)';
+    setTimeout(() => { if(btn) { btn.dataset.confirmed=''; btn.textContent='✕'; btn.style.background=''; } }, 2500);
+    return;
+  }
   const isSeeded = VOICE_SEED.some(s=>s.id===id);
   if(isSeeded) {
     const edits = JSON.parse(localStorage.getItem(VOICE_EDIT_KEY)||'{}');
