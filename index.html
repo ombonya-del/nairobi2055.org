@@ -594,6 +594,17 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 /* Platform select in modal */
 #vc-m-platform option,#vc-m-mood option,#vc-m-theme option{background:#1A1D16;color:var(--text1)}
 
+.vc-autofill-row{display:flex;gap:8px;margin-bottom:10px;align-items:flex-start}
+.vc-url-input{flex:1;background:rgba(0,0,0,0.3);border:1px solid var(--border);color:var(--text1);padding:9px 12px;border-radius:7px;font-size:13px;font-family:inherit}
+.vc-url-input:focus{outline:none;border-color:rgba(139,121,232,0.5)}
+.vc-autofill-btn{background:linear-gradient(135deg,rgba(139,121,232,0.3),rgba(93,191,122,0.2));border:1px solid rgba(139,121,232,0.5);color:#8B79E8;padding:9px 16px;border-radius:7px;cursor:pointer;font-size:12px;font-weight:700;white-space:nowrap;transition:all .2s;flex-shrink:0}
+.vc-autofill-btn:hover{background:linear-gradient(135deg,rgba(139,121,232,0.45),rgba(93,191,122,0.3))}
+.vc-autofill-btn:disabled{opacity:0.5;cursor:not-allowed}
+.vc-autofill-status{font-size:11px;padding:6px 10px;border-radius:6px;margin-bottom:8px;display:none}
+.vc-autofill-status.loading{display:block;background:rgba(139,121,232,0.1);color:#8B79E8;border:1px solid rgba(139,121,232,0.2)}
+.vc-autofill-status.success{display:block;background:rgba(93,191,122,0.1);color:#5DBF7A;border:1px solid rgba(93,191,122,0.2)}
+.vc-autofill-status.error{display:block;background:rgba(232,80,80,0.1);color:#E85050;border:1px solid rgba(232,80,80,0.2)}
+
 </style>
 </head>
 <body>
@@ -3765,6 +3776,112 @@ let _vcEditId = null;
 let _importImgB64 = null;
 let _importPlatform = 'other';
 
+
+async function vcAutoFill() {
+  if(!isAdmin()) return;
+  const urlInput = document.getElementById('vc-url-input');
+  const textArea = document.getElementById('vc-m-text');
+  const statusEl = document.getElementById('vc-autofill-status');
+  const btn = document.getElementById('vc-autofill-btn');
+
+  const url = urlInput?.value?.trim();
+  const pastedText = textArea?.value?.trim();
+
+  if(!url && !pastedText) {
+    statusEl.className='vc-autofill-status error';
+    statusEl.textContent='Paste a URL or some post text first.';
+    return;
+  }
+
+  btn.disabled = true;
+  statusEl.className='vc-autofill-status loading';
+  statusEl.textContent='✨ Reading and classifying the post...';
+
+  const prompt = url
+    ? `You are helping populate a voice card for the Nairobi 2055 Transformation Master Plan dashboard.
+
+The admin has pasted this X/Twitter post URL: ${url}
+
+Since you cannot fetch the URL directly, analyze it based on any context you have, or ask the admin to also paste the post text below.
+
+If the admin has also pasted text in the post field, use that text to fill in all fields.
+
+Post text (may be empty): "${pastedText}"
+
+Return ONLY a JSON object with these fields (no markdown, no explanation):
+{
+  "handle": "@username of the poster",
+  "role": "short description of who they are e.g. 'Urban planner, Nairobi' or 'Nairobi resident'",
+  "area": "which part of Nairobi or Kenya this relates to e.g. 'CBD Nairobi', 'Mathare', 'Nairobi roads'",
+  "theme": one of: transport|flooding|livelihoods|housing|youth|environment|governance|culture,
+  "mood": one of: frustration|mixed|hope,
+  "text": "the cleaned post text — rephrase any profanity mildly, keep Kiswahili phrases with translations in brackets",
+  "hope": "if the post expresses any hope or aspiration for Nairobi, capture it here — otherwise null",
+  "timestamp": "date if you can infer it, else empty string",
+  "likes": 0,
+  "views": 0,
+  "retweets": 0
+}`
+    : `You are helping populate a voice card for the Nairobi 2055 Transformation Master Plan dashboard.
+
+The admin has pasted this social media post text:
+"${pastedText}"
+
+Analyze it and return ONLY a JSON object with these fields (no markdown, no explanation):
+{
+  "handle": "infer handle if mentioned, else empty string",
+  "role": "short description of who they appear to be",
+  "area": "which part of Nairobi or Kenya this relates to",
+  "theme": one of: transport|flooding|livelihoods|housing|youth|environment|governance|culture,
+  "mood": one of: frustration|mixed|hope,
+  "text": "the cleaned post text — rephrase profanity mildly, keep Kiswahili with translations in brackets",
+  "hope": "any hope or aspiration expressed — otherwise null",
+  "timestamp": "",
+  "likes": 0,
+  "views": 0,
+  "retweets": 0
+}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    const raw = data?.content?.[0]?.text || '';
+    // Strip markdown fences if present
+    const clean = raw.replace(/```json|```/g,'').trim();
+    const parsed = JSON.parse(clean);
+
+    // Populate fields
+    if(parsed.handle) { const el=document.getElementById('vc-m-handle'); if(el) el.value=parsed.handle; }
+    if(parsed.role)   { const el=document.getElementById('vc-m-role');   if(el) el.value=parsed.role; }
+    if(parsed.area)   { const el=document.getElementById('vc-m-area');   if(el) el.value=parsed.area; }
+    if(parsed.text)   { const el=document.getElementById('vc-m-text');   if(el) el.value=parsed.text; }
+    if(parsed.hope)   { const el=document.getElementById('vc-m-hope');   if(el) el.value=parsed.hope; }
+    if(parsed.timestamp){ const el=document.getElementById('vc-m-time'); if(el) el.value=parsed.timestamp; }
+    if(parsed.theme)  { const el=document.getElementById('vc-m-theme');  if(el) el.value=parsed.theme; }
+    if(parsed.mood)   { const el=document.getElementById('vc-m-mood');   if(el) el.value=parsed.mood; }
+    if(parsed.likes)  { const el=document.getElementById('vc-m-likes');  if(el) el.value=parsed.likes; }
+    if(parsed.views)  { const el=document.getElementById('vc-m-views');  if(el) el.value=parsed.views; }
+    if(parsed.retweets){ const el=document.getElementById('vc-m-retweets'); if(el) el.value=parsed.retweets; }
+    if(url)           { const el=document.getElementById('vc-m-source'); if(el) el.value=url; }
+
+    statusEl.className='vc-autofill-status success';
+    statusEl.textContent='✓ Fields filled — review and adjust, then hit Add to Voices.';
+  } catch(err) {
+    statusEl.className='vc-autofill-status error';
+    statusEl.textContent='Could not auto-fill. Check your connection and try again, or fill in manually.';
+    console.error('vcAutoFill error:', err);
+  }
+  btn.disabled=false;
+}
+
 function openImportModal(platform) {
   if(!isAdmin()) return;
   _vcMode = 'add';
@@ -3824,6 +3941,8 @@ function openEditModal(id) {
 function ensureModal() { /* modal is always in DOM */ }
 
 function clearModalFields() {
+  const urlEl=document.getElementById('vc-url-input'); if(urlEl) urlEl.value='';
+  const stEl=document.getElementById('vc-autofill-status'); if(stEl){stEl.className='vc-autofill-status';stEl.textContent='';}
   ['vc-m-role','vc-m-handle','vc-m-area','vc-m-time','vc-m-text','vc-m-source','vc-m-hope'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.value='';
   });
@@ -8644,7 +8763,12 @@ function addVoice() {
     </div>
     <div class="vc-modal-body">
       <input type="hidden" id="vc-m-id" value=""/>
-      <div id="vc-modal-note" class="vc-modal-note">Paste post text below, or drag-and-drop a screenshot from socials.</div>
+      <div id="vc-modal-note" class="vc-modal-note">Paste the post URL or text below. Hit ✨ Auto-fill to let AI classify it — or fill in the fields manually.</div>
+        <div class="vc-autofill-row">
+          <input id="vc-url-input" class="vc-url-input" placeholder="Paste X/Twitter URL or any post link (e.g. https://x.com/user/status/...)"/>
+          <button class="vc-autofill-btn" id="vc-autofill-btn" onclick="vcAutoFill()">✨ Auto-fill</button>
+        </div>
+        <div id="vc-autofill-status" class="vc-autofill-status"></div>
       <div class="vc-drop-zone" id="vc-drop-zone" ondragover="vcDragOver(event)" ondrop="vcDrop(event)" onclick="document.getElementById('vc-file-input').click()">
         <div id="vc-drop-inner" style="display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none">
           <div class="vc-drop-icon">&#128248;</div>
