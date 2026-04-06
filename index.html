@@ -3391,130 +3391,102 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 // All names and quotes are drawn from published news reporting
 
 const VOICE_SEED = [
-  // FLOODING — Mathare 2024
-  {id:'v01',platform:'other',handle:'Dialogue Earth / PreventionWeb',area:'Mathare, Nairobi',role:'Jane Wanjiru — Mathare resident',theme:'flooding',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'Apr–Oct 2024',
-   text:"Last year, the floods destroyed my house. I lost everything: my clothes, my children's school books, even my small business. We had to start from zero.",
-   hope:null,
-   source:'https://dialogue.earth/en/climate/life-after-kenyas-floods-of-2024/'},
+  {id:'v01',platform:'twitter',handle:'@WillieOeba',area:'Nairobi',role:'Willie Oeba',theme:'governance',mood:'frustration',
+   likes:994,retweets:1200,views:25600,timestamp:'Apr 3, 2026',
+   text:"Wewe @SakajaJohnson ni such a disgrace. You are turning Nairobi to look like Mumbai.",
+   hope:null,source:'https://x.com/WillieOeba/status/2039968597603176516'},
 
-  {id:'v02',platform:'other',handle:'Dialogue Earth / PreventionWeb',area:'Mathare displacement camp',role:'Edward Okoth — flood-displaced resident',theme:'flooding',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'May 2024',
-   text:"Life was very difficult. The food was not enough for all of us … we were literally fighting for food.",
-   hope:null,
-   source:'https://dialogue.earth/en/climate/life-after-kenyas-floods-of-2024/'},
+  {id:'v02',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'frustration',
+   likes:75,retweets:48,views:4397,timestamp:'Apr 4, 2026',
+   text:"We have slowly accepted a very low standard as normal. The state of our roads, no proper walkways, no street lights, garbage everywhere, no order, just chaos. There is a broken public transport system, unplanned construction everywhere. We are now celebrating mediocrity. That should never be the benchmark. This is not progress, this is a sign of how far we have lowered the bar — a reflection of broken and failed systems. #ReclaimNairobi",
+   hope:null,source:'https://x.com/Alfayaz11/status/2040498816282230883'},
 
-  // FLOODING — Mukuru kwa Reuben demolitions 2024
-  {id:'v03',platform:'other',handle:'NPR — Emmanuel Igunza report',area:'Mukuru kwa Reuben',role:'Isabella Mogeni — Mukuru resident',theme:'housing',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'May 2024',
-   text:"They never should have done this to us. I don't know where to go. If we had a notice, we would have moved away.",
-   hope:null,
-   source:'https://www.npr.org/sections/goatsandsoda/2024/05/10/1250193947/floods-kenya'},
+  {id:'v03',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi',role:'Alvin Kanindo',theme:'governance',mood:'frustration',
+   likes:65,retweets:1000,views:36600,timestamp:'Apr 5, 2026',
+   text:"Nairobi feels like a city stuck between potential & neglect. Every year, we talk about the same issues — drainage, garbage, and planning. Nothing really changes.",
+   hope:null,source:'https://x.com/Alvin_Kanindo/status/2040654589091860558'},
 
-  // URBAN GEOGRAPHY — Expert voice
-  {id:'v04',platform:'other',handle:'Africa Climate Insights',area:'University of Nairobi',role:'Prof. Samuel Owuor — Urban Geographer, UoN',theme:'flooding',mood:'mixed',
-   likes:0,retweets:0,views:0,timestamp:'2024',
-   text:"Floods don't just destroy homes. They disrupt lives, spread disease, and deepen poverty. The impact is long-lasting. We need to listen to the people living in these areas. They have the knowledge and experience to help find solutions.",
-   hope:"Building sustainable, adaptive, resilient urban water systems is possible — but it requires communities to be included in decision-making, not just consulted after plans are made.",
-   source:'https://africaclimateinsights.org/why-africas-fastest-growing-cities-are-sinking-under-water/'},
+  {id:'v04',platform:'twitter',handle:'@NyakundiReport',area:'Gikomba Market',role:'Nyakundi Report',theme:'livelihoods',mood:'frustration',
+   likes:32,retweets:45,views:3870,timestamp:'Apr 1, 2026',
+   text:"Aftermath of demolitions at Gikomba Market in Nairobi.",
+   hope:null,source:'https://x.com/NyakundiReport/status/2039324900033171646'},
 
-  // TRANSPORT — Matatu operators Kangundo Road 2025
-  {id:'v05',platform:'other',handle:'Kenyans.co.ke',area:'Kangundo Road / Komarock',role:'Matatu operators — Kangundo Road',theme:'transport',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'Apr 8, 2025',
-   text:"We have been using our own resources to patch up the roads. This has emboldened the authorities to neglect their responsibilities. We have written to the police, the transport ministry, and regulators — without success.",
-   hope:null,
-   source:'https://www.kenyans.co.ke/news/110809-section-nairobi-matatu-operators-paralyse-transport-protest-poor-road-conditions'},
+  {id:'v05',platform:'twitter',handle:'@Dreymwangi',area:'Nairobi CBD',role:'Drey, Nairobi commuter',theme:'transport',mood:'frustration',
+   likes:518,retweets:3800,views:64500,timestamp:'Apr 3, 2026',
+   text:"Hadi matatu zinabebea katikati ya Barabara. [Matatus are now loading passengers in the middle of the road.] CBD is such a mess.",
+   hope:null,source:'https://x.com/Dreymwangi/status/2040109948135448806'},
 
-  // TRANSPORT — Matatu regulations 2025
-  {id:'v06',platform:'other',handle:'Daily Nation',area:'Nairobi CBD',role:'Wilfred Bosire — Matatu Association Secretary General',theme:'governance',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'May 2025',
-   text:"We have not been involved at all. Gone are the days when policies were made in boardrooms. We want inclusive participation. Let there be a joint committee with Sacco representatives to draft fair regulations. We feel like that document is ill-intended.",
-   hope:null,
-   source:'https://nation.africa/kenya/counties/nairobi/revealed-new-city-hall-rules-to-limit-number-of-matatus-per-route-bus-fare-5049942'},
+  {id:'v06',platform:'twitter',handle:'@K2grind',area:'Urban rivers, Nairobi',role:'Akan, Nairobi resident',theme:'environment',mood:'frustration',
+   likes:256,retweets:148,views:3921,timestamp:'Apr 3, 2026',
+   text:"All our rivers in urban centres are open sewers.",
+   hope:null,source:'https://x.com/K2grind/status/2040083226815782991'},
 
-  // CHILDREN / SCHOOLS — flooding 2024
-  {id:'v07',platform:'other',handle:'Save the Children / PreventionWeb',area:'Nairobi informal settlements',role:'Irene Wali — Child Protection Specialist, Save the Children',theme:'flooding',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'Jun 2024',
-   text:"You can imagine the kind of negative experiences the children had watching their houses and household items being swept away and being left with nothing. Then having to spend nights — cold nights — without any shelter.",
-   hope:null,
-   source:'https://www.preventionweb.net/news/life-after-kenyas-floods-of-2024'},
+  {id:'v07',platform:'twitter',handle:'@AonjelaPel',area:'Nairobi streets',role:'Nana Wami',theme:'governance',mood:'frustration',
+   likes:88,retweets:427,views:7124,timestamp:'Apr 5, 2026',
+   text:"Hakuna street lights hii city manze. Giza kila mahali. [There are no street lights in this city. Darkness everywhere.]",
+   hope:null,source:'https://x.com/AonjelaPel/status/2040846617843024164'},
 
-  // WASTE / ENVIRONMENT 2025
-  {id:'v08',platform:'other',handle:'Kenyans.co.ke',area:'Nairobi County',role:'Geoffrey Mosiria — Chief Officer of Environment, Nairobi',theme:'environment',mood:'mixed',
-   likes:0,retweets:0,views:0,timestamp:'Jun 2025',
-   text:"Stop illegal dumping. Do not throw garbage from your cars or matatus along road reserves, where it ends up in rivers and clogs our drainage systems. Rwandans do not dump garbage along road reserves like we often do. They do not blame the government for everything; they understand they are the government.",
-   hope:"We, as the county government, are committed to making sure that the city is clean. It is a collective responsibility and not an individual responsibility.",
-   source:'https://www.kenyans.co.ke/news/113422-nairobi-county-government-warns-matatu-users-against-dumping-waste-anywhere'},
+  {id:'v08',platform:'twitter',handle:'@Leonmuigz',area:'Nairobi CBD',role:'Daily Pharmacist',theme:'governance',mood:'frustration',
+   likes:37,retweets:32,views:1275,timestamp:'Apr 5, 2026',
+   text:"This used to be the most prestigious business centre a while back, now it is just an over glorified slum with a few good skyscrapers and a Chinese owned Expressway.",
+   hope:null,source:'https://x.com/Leonmuigz/status/2040817315768422864'},
 
-  // GOVERNANCE / TRANSPORT
-  {id:'v09',platform:'other',handle:'Daily Nation',area:'Nairobi City Hall',role:'Moses Kuiyaki — Director of Mobility, Nairobi City Hall',theme:'governance',mood:'mixed',
-   likes:0,retweets:0,views:0,timestamp:'May 2025',
-   text:"We want to introduce standards and ensure fairness in the issuance of permits. We've had cases where matatus are blocked from operating without clear reasons. We want to restore order and transparency in the sector.",
-   hope:"The county's aim is to restore order in Nairobi's public transport sector — standards that work for operators and passengers alike.",
-   source:'https://nation.africa/kenya/counties/nairobi/revealed-new-city-hall-rules-to-limit-number-of-matatus-per-route-bus-fare-5049942'},
+  {id:'v09',platform:'twitter',handle:'@MaithyaVilivu',area:'Nairobi roads',role:'Maithya wa Vilivuu',theme:'transport',mood:'frustration',
+   likes:74,retweets:310,views:3737,timestamp:'Apr 5, 2026',
+   text:"So many unmarked roads in Kenya at the moment. Both urban and rural tarmac roads. What is the excuse of the lame ducks at KEnHA?",
+   hope:null,source:'https://x.com/MaithyaVilivu/status/2040736779905405053'},
 
-  // FLOODING 2026 — President
-  {id:'v10',platform:'twitter',handle:'@WilliamsRuto',area:'State House, Nairobi',role:'President William Ruto — via X (2026)',theme:'flooding',mood:'mixed',
-   likes:14200,retweets:5800,views:890000,timestamp:'Mar 2026',
-   text:"The ongoing flooding in parts of Nairobi and several other areas of our country has caused immense distress to many families, resulting in the tragic loss of lives, displacement of residents, and damage to homes, property, and livelihoods.",
-   hope:"We recognise that these floods once again highlight the urgent need for lasting solutions to the perennial challenge of flooding in our urban areas.",
-   source:'https://insideclimatenews.org/news/10032026/todays-climate-kenya-floods-climate-whiplash/'},
+  {id:'v10',platform:'twitter',handle:'@Alvin_Kanindo',area:'Kilimani / Westlands / Lavington',role:'Alvin Kanindo',theme:'housing',mood:'frustration',
+   likes:11,retweets:96,views:1858,timestamp:'Apr 4, 2026',
+   text:"Inadequate drainage, nonstop construction, and lax enforcement have thrown once-prime areas into disorder. Nairobi planning is breaking down in real time. Driving around Kilimani, Kileleswa, Lavington, Westlands these days — it is one dusty or flooding shanty town.",
+   hope:null,source:'https://x.com/Alvin_Kanindo/status/2040447342860456146'},
 
-  // HOUSING — Rebuilding 2024
-  {id:'v11',platform:'other',handle:'Dialogue Earth',area:'Mathare, Nairobi',role:'Doreen Achieng — mother of four, Mathare',theme:'housing',mood:'mixed',
-   likes:0,retweets:0,views:0,timestamp:'Oct 2024',
-   text:"Accustomed to occasional flooding, I mopped it up. But this time the water came overnight and did not stop. From my new, one-room house of corrugated sheets, I still look out at where my previous home stood.",
-   hope:"We are still here. We are still building. This community has always found a way.",
-   source:'https://dialogue.earth/en/climate/life-after-kenyas-floods-of-2024/'},
+  {id:'v11',platform:'twitter',handle:'@zablonorina1',area:'Gikomba Market',role:'The Blood Pressure Champion',theme:'livelihoods',mood:'mixed',
+   likes:264,retweets:931,views:13600,timestamp:'Apr 2, 2026',
+   text:"The proposed multi-storey Gikomba Market raises a simple but uncomfortable question: do we really understand how biashara works in Kenya? Markets do not fail because of lack of space, they fail when you fight human behavior. Biashara follows movement, visibility, and convenience. Building upwards may look like modernization, but without considering trader behavior, customer flow, and informal market dynamics, you risk creating empty upper floors and overburdened ground levels.",
+   hope:"We do not need architecture that looks impressive on paper. We need design that understands how Kenyans actually trade, hustle, and survive. Because in markets like Gikomba, height does not equal progress — flow does.",
+   source:'https://x.com/zablonorina1/status/2039740078268805462'},
 
-  // YOUTH — Gen Z 2024 perspective
-  {id:'v12',platform:'other',handle:'BBC Africa / Multiple sources',area:'Nairobi streets',role:'Gen Z protesters — #RejectFinanceBill 2024',theme:'governance',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'Jun–Jul 2024',
-   text:"We are the generation that was promised a better Kenya. We are here to collect. No more business as usual. This is not about the Finance Bill alone — this is about a government that does not hear its people until they take to the streets.",
-   hope:"We proved that young Kenyans can change policy. Now we need to channel that energy into building the city we deserve — not just stopping the one we don't.",
-   source:'https://www.bbc.com/news/world-africa-68836613'},
+  {id:'v12',platform:'twitter',handle:'@farhiyaabass',area:'Nairobi green spaces',role:'Farhiya Abass',theme:'environment',mood:'mixed',
+   likes:33,retweets:23,views:612,timestamp:'Apr 5, 2026',
+   text:"It is not that Nairobi lacks green spaces. We are just busy fighting to protect the ones we already have rather than creating more.",
+   hope:"Rwanda and Ethiopia show what intentional urban leadership produces. Nairobi has the land. We lack the will to protect and expand it.",
+   source:'https://x.com/farhiyaabass/status/2040877574427971924'},
 
-  // MATATU STRIKE 2026
-  {id:'v13',platform:'twitter',handle:'@citizentvkenya',area:'Nairobi CBD and suburbs',role:'Commuters stranded — Matatu strike coverage',theme:'transport',mood:'frustration',
-   likes:2340,retweets:890,views:134000,timestamp:'Feb 2, 2026',
-   text:"Thousands of commuters stranded at bus stops in the CBD and residential estates. Long queues along Tom Mboya Street, Kenyatta Avenue, Jogoo Road and Thika Road. Matatus staying in yards. No clear end in sight.",
-   hope:null,
-   source:'https://thekenyatimes.com/latest-kenya-times-news/massive-traffic-disruption-in-nairobi-as-matatu-strike-kicks-off/'},
+  {id:'v13',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi — identity',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'mixed',
+   likes:7,retweets:197,views:1888,timestamp:'Apr 4, 2026',
+   text:"Do not we all love Nairobi… but it is what it is. A big chaotic slum. We have ruined a once beautiful green city in the sun. Who will save Nairobi? #ReclaimNairobi",
+   hope:"Someone is actively trying to turn this city into a shanty town with zero street lighting, no paint and impassable roads. That someone can be stopped.",
+   source:'https://x.com/Alfayaz11/status/2040418968415109268'},
 
-  // REBUILDING — Climate expert on urban resilience
-  {id:'v14',platform:'other',handle:'Inside Climate News',area:'Imperial College London / Nairobi',role:'Joyce Kimutai — Climate Scientist, Imperial College London',theme:'flooding',mood:'frustration',
-   likes:0,retweets:0,views:0,timestamp:'Mar 2026',
-   text:"It's very clear that Nairobi is not prepared for these events. We see decline in rainfall in the season in general, but punctuated by very strong and intense rainfall. These opposing weather extremes play off each other in dangerous ways.",
-   hope:"Countries in East Africa can prepare — but it requires treating climate adaptation as core infrastructure, not an afterthought.",
-   source:'https://insideclimatenews.org/news/10032026/todays-climate-kenya-floods-climate-whiplash/'},
+  {id:'v14',platform:'twitter',handle:'@dnkariuki',area:"Lang'ata, Nairobi",role:"Duke of Gatanga",theme:'environment',mood:'frustration',
+   likes:117,retweets:35,views:2932,timestamp:'Apr 5, 2026',
+   text:"Mifereji imekauka lakini ukitembea unaona tu clean water ikipotelea mtoni. Langata is cursed. [The taps are dry but as you walk you see clean water leaking away into the river. Langata is cursed.]",
+   hope:null,source:'https://x.com/dnkariuki/status/2040643232699150370'},
 
-  // COMMUNITY RESILIENCE
-  {id:'v15',platform:'other',handle:'WRI — Susan Onyango et al.',area:'Nairobi informal settlements',role:'Susan Onyango — WRI Kenya, post-2024 floods',theme:'housing',mood:'hope',
-   likes:0,retweets:0,views:0,timestamp:'Jul 2024',
-   text:"Community-based organizations were the first responders to the crisis. In Nairobi, these groups organized community members to quickly evacuate and collected data of affected households with speed. Local community groups became the custodians of already-established informal mechanisms of warning dissemination and response.",
-   hope:"Communities must be empowered to co-develop disaster response strategies and plans together with government agencies. These networks exist — they just need to be recognised, funded, and scaled.",
-   source:'https://www.wri.org/insights/rebuilding-kenya-stronger-after-catastrophic-floods'},
+  {id:'v15',platform:'twitter',handle:'@EricKigada',area:'Nairobi streets',role:'Eric Kigada, urban design voice',theme:'governance',mood:'mixed',
+   likes:301,retweets:676,views:41900,timestamp:'Apr 5, 2026',
+   text:"An example of a street with Urban Designers and without Urban Designers.",
+   hope:"The difference between a functional city and a chaotic one is not money. It is whether you involve people who understand how cities work.",
+   source:'https://x.com/EricKigada/status/2040700201120244150'},
 
-  // URBAN PLANNING — Academic
-  {id:'v16',platform:'other',handle:'Urban Planning Journal — Cogitatio',area:'Academic perspective',role:'Researchers — "Our Changes?" Urban Planning 2017',theme:'governance',mood:'mixed',
-   likes:0,retweets:0,views:0,timestamp:'2017 — still resonant in 2025',
-   text:"Nairobians engage with the future promised by urban schemes in dissonant temporal experiences — the future city feels both near at hand and forever out of reach. The spectacle of official planning has generated anticipatory actions without material manifestation.",
-   hope:"The gap between the urban plan and its implementation is where real Nairobi lives. Closing that gap requires not just better plans, but systems that actually execute.",
-   source:'https://www.cogitatiopress.com/urbanplanning/article/view/834'},
+  {id:'v16',platform:'twitter',handle:'@mbithi',area:'Nairobi — transport aspiration',role:'Mbithi Masya',theme:'transport',mood:'hope',
+   likes:377,retweets:286,views:5386,timestamp:'Apr 1, 2026',
+   text:"All buses, trains, and trams are free in this country. For everyone! Luxembourg is unreal. When will your country have this?",
+   hope:"Free public transport is not a fantasy. Vietnam did it for a city of 14 million. If we fix how we collect and spend transport revenue, Nairobi can too.",
+   source:'https://x.com/mbithi/status/2039314328482943105'},
 
-  // FLOODING — Nairobi expressway
-  {id:'v17',platform:'twitter',handle:'@Kenyans',area:'Nairobi Expressway',role:'Kenyans.co.ke — Nairobi Expressway floods',theme:'flooding',mood:'frustration',
-   likes:1890,retweets:760,views:98000,timestamp:'Mar 2024',
-   text:"The Nairobi Expressway — a multi-billion infrastructure project — floods after heavy downpour. The question everyone is asking: how does a brand new road flood?",
-   hope:null,
-   source:'https://twitter.com/Kenyans/status/1772113837568700420'},
+  {id:'v17',platform:'twitter',handle:'@AmbokoJH',area:'Nairobi — EVs',role:'Julians Amboko, economics journalist',theme:'transport',mood:'hope',
+   likes:122,retweets:64,views:15200,timestamp:'Apr 3, 2026',
+   text:"The government of Kenya is sourcing 3,000 Electric Vehicles.",
+   hope:"3,000 EVs is a beginning. Tie that procurement to local assembly, matatu integration and boda boda transition and it changes the whole transport ecosystem.",
+   source:'https://x.com/AmbokoJH/status/2039941534838128700'},
 
-  // HOPE — Business resilience
-  {id:'v18',platform:'other',handle:'Stanford Social Innovation Review',area:'Nairobi informal economy',role:'Researchers Bothello & Weiss — SSIR 2024',theme:'livelihoods',mood:'hope',
-   likes:0,retweets:0,views:0,timestamp:'2024',
-   text:"In Kenya, more than 15 million people are maintaining livelihoods and building opportunities across the entrepreneurial, informal economy. This 'invisible' 83% of the population accounts for 24% of Kenya's GDP, employing five times more workers than the formal economy and creating jobs at a rate ten times as fast.",
-   hope:"Conventional needs-based development policies can be harmful to informal businesses. What's needed is an asset-based approach — identifying how existing collective solutions foster business resilience, then building on them.",
-   source:'https://ssir.org/articles/entry/africa-informal-economies'},
+  {id:'v18',platform:'twitter',handle:'@amenya_nelson',area:'Nairobi — call to action',role:'Nelson Amenya',theme:'governance',mood:'hope',
+   likes:152,retweets:619,views:14000,timestamp:'Apr 5, 2026',
+   text:"We need to form an alliance that will restore Nairobi ASAP.",
+   hope:"The anger on these streets is not despair — it is unspent energy. Rwanda and Ethiopia showed what happens when leadership and citizens align. We are not waiting anymore.",
+   source:'https://x.com/amenya_nelson/status/2040859015840698414'},
 ];
 
 const VOICE_THEMES = {
@@ -3731,8 +3703,8 @@ function renderVoices() {
 
   main.innerHTML = `<div class="voices-wrap">
     <div class="voices-header">
-      <div class="vh-title">🗣 Nairobi's Voices — Real People. Real Words.</div>
-      <div class="vh-sub">Documented quotes from Nairobi residents, researchers, and civic voices — drawn from published news reporting, academic sources, and public testimony. Frustration and hope, side by side.</div>
+      <div class="vh-title">🗣 Nairobi's Voices — Real Nairobians. Real Posts. April 2026.</div>
+      <div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. The city's frustrations, contradictions and hopes — unfiltered and side by side. These are the people this plan is for.</div>
       <div class="vh-legend">
         <span class="vhl-item" style="--lc:#E85888">◈ Frustration</span>
         <span class="vhl-item" style="--lc:#C8A84B">⟳ Complex / Mixed</span>
