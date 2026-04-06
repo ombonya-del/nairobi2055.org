@@ -605,6 +605,12 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-autofill-status.success{display:block;background:rgba(93,191,122,0.1);color:#5DBF7A;border:1px solid rgba(93,191,122,0.2)}
 .vc-autofill-status.error{display:block;background:rgba(232,80,80,0.1);color:#E85050;border:1px solid rgba(232,80,80,0.2)}
 
+/* Admin persistent badge */
+#admin-badge{position:fixed;bottom:16px;right:16px;background:rgba(139,121,232,0.15);border:1px solid rgba(139,121,232,0.4);border-radius:20px;padding:6px 14px;display:flex;align-items:center;gap:10px;z-index:8000;backdrop-filter:blur(8px)}
+#admin-badge .ab-label{font-size:11px;font-weight:700;color:#8B79E8;letter-spacing:0.05em}
+#admin-badge .ab-logout{font-size:11px;color:var(--text3);cursor:pointer;padding:2px 8px;border:1px solid var(--border);border-radius:10px;background:transparent;transition:all .2s}
+#admin-badge .ab-logout:hover{color:#E85050;border-color:rgba(232,80,80,0.4)}
+
 </style>
 </head>
 <body>
@@ -3136,6 +3142,7 @@ function deleteProf(id){
   if(checkAdmin()){ 
     localStorage.setItem(KEY,'1');
     localStorage.setItem('n2055_admin','1');
+    localStorage.setItem('n2055_admin_persist','1');
     _adminSetThisLoad = true;
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
@@ -3173,8 +3180,11 @@ function deleteProf(id){
   // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
     // Clear admin flag unless admin was set in this exact page load
-    if(!_adminSetThisLoad) localStorage.removeItem('n2055_admin');
+    if(!_adminSetThisLoad && localStorage.getItem('n2055_admin_persist')!=='1') localStorage.removeItem('n2055_admin');
     document.addEventListener('DOMContentLoaded',()=>{
+      // Show admin badge if already in admin session
+      const badge = document.getElementById('admin-badge');
+      if(badge && isAdmin()) badge.style.display='flex';
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
       // Check if active preview session needs timer resumed
@@ -3187,13 +3197,27 @@ function deleteProf(id){
 
 // ── ADMIN MODE ─────────────────────────────────────────────────
 function isAdmin(){
-  // Only trust admin flag if it was set in this session via the admin URL
-  // Extra safety: if current URL has no admin param, clear and return false
-  if(localStorage.getItem('n2055_admin')!=='1') return false;
-  return true;
+  if(localStorage.getItem('n2055_admin')==='1') return true;
+  if(localStorage.getItem('n2055_admin_persist')==='1'){
+    localStorage.setItem('n2055_admin','1'); // restore session flag
+    return true;
+  }
+  return false;
+}
+function adminLogout(){
+  localStorage.removeItem('n2055_admin');
+  localStorage.removeItem('n2055_admin_persist');
+  const badge = document.getElementById('admin-badge');
+  if(badge) badge.style.display='none';
+  // Re-render current view to hide admin controls
+  applyAdminMode && applyAdminMode();
+  if(state.view==='voices') renderVoices();
+  showToast('Admin session ended');
 }
 // Admin flag managed by login/bypass only
 function applyAdminMode(){
+  const badge = document.getElementById('admin-badge');
+  if(badge) badge.style.display = isAdmin() ? 'flex' : 'none';
   const admin = isAdmin();
   // Edit Links button in viz modal
   const editBtn = document.querySelector('.edit-links-btn');
@@ -8719,6 +8743,11 @@ function deleteVoice(id) {
 <div class="bench-item"><span class="bi-ico">🇿🇦</span><div><div class="bi-city">Warwick Junction, Durban — designing with informality</div><div class="bi-desc">Durban's Warwick Junction handles 460,000 people daily at one of Africa's busiest transport interchanges. The eThekwini municipality worked with traders over 20 years to design infrastructure that fits how markets actually work — including the world-famous "muthi" (traditional medicine) market and the herb traders whose stock requires specific sun and shade conditions. The design solution emerged from the trading practice, not the other way around. <a href="https://prizeforcities.org/project/warwick-junction" target="_blank" rel="noopener">Warwick Junction project ↗</a></div></div></div>
 </div></div></template>
 
+<!-- Admin session badge -->
+<div id="admin-badge" style="display:none">
+  <span class="ab-label">⬡ Admin</span>
+  <button class="ab-logout" onclick="adminLogout()">Log out</button>
+</div>
 <!-- Voices Modal — always in DOM, shown/hidden by JS -->
 <div id="vc-modal-overlay" class="vc-modal-overlay" style="display:none" onclick="vcOverlayClick(event)">
   <div class="vc-modal" onclick="event.stopPropagation()">
