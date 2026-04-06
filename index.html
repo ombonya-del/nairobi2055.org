@@ -3498,7 +3498,6 @@ const VOICE_SEED = [
    text:"We need to form an alliance that will restore Nairobi ASAP.",
    hope:"The anger on these streets is not despair — it is unspent energy. Rwanda and Ethiopia showed what happens when leadership and citizens align. We are not waiting anymore.",
    source:'https://x.com/amenya_nelson/status/2040859015840698414'},
-,
   {id:'v19',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi drainage',role:'Alvin Kanindo quoting George Tsitati',theme:'environment',mood:'frustration',
    likes:34,retweets:311,views:1887,timestamp:'Apr 4, 2026',
    text:"This is what happens when urban planning is sacrificed for politics and quick deals. [quoting @Tsitati_George: The insufferable stench from the drainage and sewers in Nairobi complements the revolting misery of the city misgovernance.]",
@@ -4060,24 +4059,6 @@ function deleteVoice(id) {
 
 
 
-function addVoice() {
-  if(!isAdmin()) return;
-  const area = document.getElementById('vc-area')?.value?.trim();
-  const role = document.getElementById('vc-role')?.value?.trim();
-  const theme = document.getElementById('vc-theme')?.value;
-  const mood = document.getElementById('vc-mood')?.value;
-  const text = document.getElementById('vc-text')?.value?.trim();
-  const hope = document.getElementById('vc-hope')?.value?.trim();
-  if(!area || !role || !text) { showToast('Please fill in Area, Role, and the Voice text','frustration'); return; }
-  const v = {
-    id: 'vc_'+Date.now(),
-    area, role, theme, mood, text,
-    hope: hope || null
-  };
-  saveVoice(v);
-  showToast('✓ Voice added');
-  renderVoices();
-}
 
 </script>
 <template id="viz-tpl-land_reg-map"><svg viewBox="0 0 544 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
