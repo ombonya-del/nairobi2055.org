@@ -3687,8 +3687,42 @@ function renderVoices() {
       if (byMood.hope[i])        interleaved.push(byMood.hope[i]);
     }
     var cards = interleaved.map(renderVoiceCard).join('');
-    var importBtns = isAdmin() ? '<div class="vc-import-bar"><span class="vc-import-label">Harvest from:</span><button class="vc-import-btn vc-twitter-btn" onclick="openImportModal('twitter')">X Twitter/X</button><button class="vc-import-btn vc-fb-btn" onclick="openImportModal('facebook')">f Facebook</button><button class="vc-import-btn vc-wa-btn" onclick="openImportModal('whatsapp')">WhatsApp</button><button class="vc-import-btn vc-ig-btn" onclick="openImportModal('instagram')">Instagram</button><button class="vc-import-btn vc-other-btn" onclick="openImportModal('other')">News/Other</button></div>' : '';
-    main.innerHTML = '<div class="voices-wrap"><div class="voices-header"><div class="vh-title">Nairobi's Voices - Real Nairobians. Real Issues.</div><div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side. These are the people this plan is for.</div><div class="vh-legend"><span class="vhl-item" style="--lc:#E85888">Frustration</span><span class="vhl-item" style="--lc:#C8A84B">Complex / Mixed</span><span class="vhl-item" style="--lc:#5DBF7A">Hope</span><span class="vhl-note">All quotes sourced. Use Source links to verify.</span></div></div>' + importBtns + '<div class="voices-grid">' + cards + '</div></div>';
+
+    // Build header HTML pieces using separate vars to avoid escaping issues
+    var hdrHtml = '<div class="voices-header">'
+      + '<div class="vh-title">Nairobi&#x2019;s Voices &#x2014; Real Nairobians. Real Issues.</div>'
+      + '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side.</div>'
+      + '<div class="vh-legend">'
+      + '<span class="vhl-item" style="--lc:#E85888">&#9672; Frustration</span>'
+      + '<span class="vhl-item" style="--lc:#C8A84B">&#10231; Complex / Mixed</span>'
+      + '<span class="vhl-item" style="--lc:#5DBF7A">&#10022; Hope</span>'
+      + '<span class="vhl-note">All quotes sourced. Use &#8599; Source links to verify.</span>'
+      + '</div></div>';
+
+    var harvestHtml = isAdmin()
+      ? '<div class="vc-import-bar">'
+        + '<span class="vc-import-label">&#128229; Harvest from:</span>'
+        + '<button class="vc-import-btn vc-twitter-btn" data-platform="twitter">&#10005; Twitter / X</button>'
+        + '<button class="vc-import-btn vc-fb-btn"      data-platform="facebook">f Facebook</button>'
+        + '<button class="vc-import-btn vc-wa-btn"      data-platform="whatsapp">&#9679; WhatsApp</button>'
+        + '<button class="vc-import-btn vc-ig-btn"      data-platform="instagram">&#9678; Instagram</button>'
+        + '<button class="vc-import-btn vc-other-btn"   data-platform="other">&#9672; News / Other</button>'
+        + '</div>'
+      : '';
+
+    main.innerHTML = '<div class="voices-wrap">' + hdrHtml + harvestHtml
+      + '<div class="voices-grid">' + cards + '</div></div>';
+
+    // Wire up harvest buttons after innerHTML (avoids onclick escaping entirely)
+    if (isAdmin()) {
+      var btns = main.querySelectorAll('[data-platform]');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          openImportModal(btn.getAttribute('data-platform'));
+        });
+      });
+    }
+
     var snap = Object.assign({}, _vcImgRegistry);
     document.querySelectorAll('[data-vcimg]').forEach(function(ph) {
       var src = snap[ph.getAttribute('data-vcimg')];
