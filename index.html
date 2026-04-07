@@ -3671,9 +3671,10 @@ function renderVoiceCard(v) {
 
 // ── Voices tab renderer ───────────────────────────────────────────────────────
 function renderVoices() {
+  _vcImgRegistry = {};
+  _vcImgCounter  = 0;
   var main = document.getElementById('main');
   if (!main) return;
-  _vcImgRegistry = {}; _vcImgCounter = 0; // reset BEFORE building cards
   try {
     var voices = getVoices();
     var byMood = {frustration:[], mixed:[], hope:[]};
@@ -3686,44 +3687,22 @@ function renderVoices() {
       if (byMood.hope[i])        interleaved.push(byMood.hope[i]);
     }
     var cards = interleaved.map(renderVoiceCard).join('');
-    var importBtns = isAdmin() ? '<div class="vc-import-bar">' +
-      '<span class="vc-import-label">\uD83D\uDCE5 Harvest from:</span>' +
-      '<button class="vc-import-btn vc-twitter-btn" onclick="openImportModal(\'twitter\')">\u2715 Twitter / X</button>' +
-      '<button class="vc-import-btn vc-fb-btn" onclick="openImportModal(\'facebook\')">f Facebook</button>' +
-      '<button class="vc-import-btn vc-wa-btn" onclick="openImportModal(\'whatsapp\')">\u25cf WhatsApp</button>' +
-      '<button class="vc-import-btn vc-ig-btn" onclick="openImportModal(\'instagram\')">\u25ce Instagram</button>' +
-      '<button class="vc-import-btn vc-other-btn" onclick="openImportModal(\'other\')">\u25c8 News / Other</button>' +
-      '</div>' : '';
-    main.innerHTML = '<div class="voices-wrap">' +
-      '<div class="voices-header">' +
-        '<div class="vh-title">\uD83D\uDDE3 Nairobi\'s Voices \u2014 Real Nairobians. Real Issues.</div>' +
-        '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side. These are the people this plan is for.</div>' +
-        '<div class="vh-legend">' +
-          '<span class="vhl-item" style="--lc:#E85888">\u25c8 Frustration</span>' +
-          '<span class="vhl-item" style="--lc:#C8A84B">\u27f3 Complex / Mixed</span>' +
-          '<span class="vhl-item" style="--lc:#5DBF7A">\u2726 Hope</span>' +
-          '<span class="vhl-note">All quotes are attributed and sourced. Use \u2197 Source links to verify.</span>' +
-        '</div>' +
-      '</div>' +
-      importBtns +
-      '<div class="voices-grid">' + cards + '</div>' +
-    '</div>';
-  // Apply images programmatically to bypass Chrome's innerHTML data-URL limitation
-  document.querySelectorAll('[data-vcimg]').forEach(function(img) {
-    var idx = img.getAttribute('data-vcimg');
-    if (_vcImgRegistry[idx]) {
-      var src = _vcImgRegistry[idx];
-      var newImg = new Image();
-      newImg.className = img.className;
-      newImg.style.cssText = 'display:block;width:100%;max-height:400px;object-fit:contain;border-radius:4px';
-      newImg.alt = img.alt;
-      newImg.onload = function() { img.parentNode && img.parentNode.replaceChild(newImg, img); };
-      newImg.onerror = function() { img.style.display='none'; };
-      newImg.src = src;
-    }
-  });
-  } catch (err) {
-    main.innerHTML = '<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br><br>' + err.message + '</div>';
+    var importBtns = isAdmin() ? '<div class="vc-import-bar"><span class="vc-import-label">Harvest from:</span><button class="vc-import-btn vc-twitter-btn" onclick="openImportModal('twitter')">X Twitter/X</button><button class="vc-import-btn vc-fb-btn" onclick="openImportModal('facebook')">f Facebook</button><button class="vc-import-btn vc-wa-btn" onclick="openImportModal('whatsapp')">WhatsApp</button><button class="vc-import-btn vc-ig-btn" onclick="openImportModal('instagram')">Instagram</button><button class="vc-import-btn vc-other-btn" onclick="openImportModal('other')">News/Other</button></div>' : '';
+    main.innerHTML = '<div class="voices-wrap"><div class="voices-header"><div class="vh-title">Nairobi's Voices - Real Nairobians. Real Issues.</div><div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side. These are the people this plan is for.</div><div class="vh-legend"><span class="vhl-item" style="--lc:#E85888">Frustration</span><span class="vhl-item" style="--lc:#C8A84B">Complex / Mixed</span><span class="vhl-item" style="--lc:#5DBF7A">Hope</span><span class="vhl-note">All quotes sourced. Use Source links to verify.</span></div></div>' + importBtns + '<div class="voices-grid">' + cards + '</div></div>';
+    var snap = Object.assign({}, _vcImgRegistry);
+    document.querySelectorAll('[data-vcimg]').forEach(function(ph) {
+      var src = snap[ph.getAttribute('data-vcimg')];
+      if (!src) return;
+      var img = new Image();
+      img.className = 'vc-media-img';
+      img.style.cssText = 'display:block;width:100%;height:auto;max-height:400px;object-fit:contain;border-radius:4px';
+      img.alt = 'photo';
+      img.onload = function() { if (ph.parentNode) ph.parentNode.replaceChild(img, ph); };
+      img.onerror = function() { ph.style.display='none'; };
+      img.src = src;
+    });
+  } catch(err) {
+    main.innerHTML = '<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br>' + err.message + '</div>';
     console.error('renderVoices crash:', err);
   }
 }
