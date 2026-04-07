@@ -3653,6 +3653,13 @@ function getVoices() {
 }
 
 
+function fmtNum(n) {
+  if(!n) return '';
+  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
+  if(n>=1000) return (n/1000).toFixed(1)+'K';
+  return n.toString();
+}
+
 function renderVoiceCard(v) {
   const admin = isAdmin();
   const pc = PLATFORM_CONFIG[v.platform] || PLATFORM_CONFIG.other;
