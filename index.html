@@ -3452,184 +3452,86 @@ render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAd
 // All names and quotes are drawn from published news reporting
 
 const VOICE_SEED = [
-  {id:'v01',platform:'twitter',handle:'@WillieOeba',area:'Nairobi',role:'Willie Oeba',theme:'governance',mood:'frustration',
-   likes:994,retweets:1200,views:25600,timestamp:'Apr 3, 2026',
-   text:"Wewe @SakajaJohnson ni such a disgrace. You are turning Nairobi to look like Mumbai.",
-   hope:null,source:'https://x.com/WillieOeba/status/2039968597603176516'},
-
-  {id:'v02',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'frustration',
-   likes:75,retweets:48,views:4397,timestamp:'Apr 4, 2026',
-   text:"We have slowly accepted a very low standard as normal. The state of our roads, no proper walkways, no street lights, garbage everywhere, no order, just chaos. There is a broken public transport system, unplanned construction everywhere. We are now celebrating mediocrity. That should never be the benchmark. This is not progress, this is a sign of how far we have lowered the bar — a reflection of broken and failed systems. #ReclaimNairobi",
-   hope:null,source:'https://x.com/Alfayaz11/status/2040498816282230883'},
-
-  {id:'v03',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi',role:'Alvin Kanindo',theme:'governance',mood:'frustration',
-   likes:65,retweets:1000,views:36600,timestamp:'Apr 5, 2026',
-   text:"Nairobi feels like a city stuck between potential & neglect. Every year, we talk about the same issues — drainage, garbage, and planning. Nothing really changes.",
-   hope:null,source:'https://x.com/Alvin_Kanindo/status/2040654589091860558'},
-
-  {id:'v04',platform:'twitter',handle:'@NyakundiReport',area:'Gikomba Market',role:'Nyakundi Report',theme:'livelihoods',mood:'frustration',
-   likes:32,retweets:45,views:3870,timestamp:'Apr 1, 2026',
-   text:"Aftermath of demolitions at Gikomba Market in Nairobi.",
-   hope:null,source:'https://x.com/NyakundiReport/status/2039324900033171646'},
-
-  {id:'v05',platform:'twitter',handle:'@Dreymwangi',area:'Nairobi CBD',role:'Drey, Nairobi commuter',theme:'transport',mood:'frustration',
-   likes:518,retweets:3800,views:64500,timestamp:'Apr 3, 2026',
-   text:"Hadi matatu zinabebea katikati ya Barabara. [Matatus are now loading passengers in the middle of the road.] CBD is such a mess.",
-   hope:null,source:'https://x.com/Dreymwangi/status/2040109948135448806'},
-
-  {id:'v06',platform:'twitter',handle:'@K2grind',area:'Urban rivers, Nairobi',role:'Akan, Nairobi resident',theme:'environment',mood:'frustration',
-   likes:256,retweets:148,views:3921,timestamp:'Apr 3, 2026',
-   text:"All our rivers in urban centres are open sewers.",
-   hope:null,source:'https://x.com/K2grind/status/2040083226815782991'},
-
-  {id:'v07',platform:'twitter',handle:'@AonjelaPel',area:'Nairobi streets',role:'Nana Wami',theme:'governance',mood:'frustration',
-   likes:88,retweets:427,views:7124,timestamp:'Apr 5, 2026',
-   text:"Hakuna street lights hii city manze. Giza kila mahali. [There are no street lights in this city. Darkness everywhere.]",
-   hope:null,source:'https://x.com/AonjelaPel/status/2040846617843024164'},
-
-  {id:'v08',platform:'twitter',handle:'@Leonmuigz',area:'Nairobi CBD',role:'Daily Pharmacist',theme:'governance',mood:'frustration',
-   likes:37,retweets:32,views:1275,timestamp:'Apr 5, 2026',
-   text:"This used to be the most prestigious business centre a while back, now it is just an over glorified slum with a few good skyscrapers and a Chinese owned Expressway.",
-   hope:null,source:'https://x.com/Leonmuigz/status/2040817315768422864'},
-
-  {id:'v09',platform:'twitter',handle:'@MaithyaVilivu',area:'Nairobi roads',role:'Maithya wa Vilivuu',theme:'transport',mood:'frustration',
-   likes:74,retweets:310,views:3737,timestamp:'Apr 5, 2026',
-   text:"So many unmarked roads in Kenya at the moment. Both urban and rural tarmac roads. What is the excuse of the lame ducks at KEnHA?",
-   hope:null,source:'https://x.com/MaithyaVilivu/status/2040736779905405053'},
-
-  {id:'v10',platform:'twitter',handle:'@Alvin_Kanindo',area:'Kilimani / Westlands / Lavington',role:'Alvin Kanindo',theme:'housing',mood:'frustration',
-   likes:11,retweets:96,views:1858,timestamp:'Apr 4, 2026',
-   text:"Inadequate drainage, nonstop construction, and lax enforcement have thrown once-prime areas into disorder. Nairobi planning is breaking down in real time. Driving around Kilimani, Kileleswa, Lavington, Westlands these days — it is one dusty or flooding shanty town.",
-   hope:null,source:'https://x.com/Alvin_Kanindo/status/2040447342860456146'},
-
-  {id:'v11',platform:'twitter',handle:'@zablonorina1',area:'Gikomba Market',role:'The Blood Pressure Champion',theme:'livelihoods',mood:'mixed',
-   likes:264,retweets:931,views:13600,timestamp:'Apr 2, 2026',
-   text:"The proposed multi-storey Gikomba Market raises a simple but uncomfortable question: do we really understand how biashara works in Kenya? Markets do not fail because of lack of space, they fail when you fight human behavior. Biashara follows movement, visibility, and convenience. Building upwards may look like modernization, but without considering trader behavior, customer flow, and informal market dynamics, you risk creating empty upper floors and overburdened ground levels.",
-   hope:"We do not need architecture that looks impressive on paper. We need design that understands how Kenyans actually trade, hustle, and survive. Because in markets like Gikomba, height does not equal progress — flow does.",
-   source:'https://x.com/zablonorina1/status/2039740078268805462'},
-
-  {id:'v12',platform:'twitter',handle:'@farhiyaabass',area:'Nairobi green spaces',role:'Farhiya Abass',theme:'environment',mood:'mixed',
-   likes:33,retweets:23,views:612,timestamp:'Apr 5, 2026',
-   text:"It is not that Nairobi lacks green spaces. We are just busy fighting to protect the ones we already have rather than creating more.",
-   hope:"Rwanda and Ethiopia show what intentional urban leadership produces. Nairobi has the land. We lack the will to protect and expand it.",
-   source:'https://x.com/farhiyaabass/status/2040877574427971924'},
-
-  {id:'v13',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi — identity',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'mixed',
-   likes:7,retweets:197,views:1888,timestamp:'Apr 4, 2026',
-   text:"Do not we all love Nairobi… but it is what it is. A big chaotic slum. We have ruined a once beautiful green city in the sun. Who will save Nairobi? #ReclaimNairobi",
-   hope:"Someone is actively trying to turn this city into a shanty town with zero street lighting, no paint and impassable roads. That someone can be stopped.",
-   source:'https://x.com/Alfayaz11/status/2040418968415109268'},
-
-  {id:'v14',platform:'twitter',handle:'@dnkariuki',area:"Lang'ata, Nairobi",role:"Duke of Gatanga",theme:'environment',mood:'frustration',
-   likes:117,retweets:35,views:2932,timestamp:'Apr 5, 2026',
-   text:"Mifereji imekauka lakini ukitembea unaona tu clean water ikipotelea mtoni. Langata is cursed. [The taps are dry but as you walk you see clean water leaking away into the river. Langata is cursed.]",
-   hope:null,source:'https://x.com/dnkariuki/status/2040643232699150370'},
-
-  {id:'v15',platform:'twitter',handle:'@EricKigada',area:'Nairobi streets',role:'Eric Kigada, urban design voice',theme:'governance',mood:'mixed',
-   likes:301,retweets:676,views:41900,timestamp:'Apr 5, 2026',
-   text:"An example of a street with Urban Designers and without Urban Designers.",
-   hope:"The difference between a functional city and a chaotic one is not money. It is whether you involve people who understand how cities work.",
-   source:'https://x.com/EricKigada/status/2040700201120244150'},
-
-  {id:'v16',platform:'twitter',handle:'@mbithi',area:'Nairobi — transport aspiration',role:'Mbithi Masya',theme:'transport',mood:'hope',
-   likes:377,retweets:286,views:5386,timestamp:'Apr 1, 2026',
-   text:"All buses, trains, and trams are free in this country. For everyone! Luxembourg is unreal. When will your country have this?",
-   hope:"Free public transport is not a fantasy. Vietnam did it for a city of 14 million. If we fix how we collect and spend transport revenue, Nairobi can too.",
-   source:'https://x.com/mbithi/status/2039314328482943105'},
-
-  {id:'v17',platform:'twitter',handle:'@AmbokoJH',area:'Nairobi — EVs',role:'Julians Amboko, economics journalist',theme:'transport',mood:'hope',
-   likes:122,retweets:64,views:15200,timestamp:'Apr 3, 2026',
-   text:"The government of Kenya is sourcing 3,000 Electric Vehicles.",
-   hope:"3,000 EVs is a beginning. Tie that procurement to local assembly, matatu integration and boda boda transition and it changes the whole transport ecosystem.",
-   source:'https://x.com/AmbokoJH/status/2039941534838128700'},
-
-  {id:'v18',platform:'twitter',handle:'@amenya_nelson',area:'Nairobi — call to action',role:'Nelson Amenya',theme:'governance',mood:'hope',
-   likes:152,retweets:619,views:14000,timestamp:'Apr 5, 2026',
-   text:"We need to form an alliance that will restore Nairobi ASAP.",
-   hope:"The anger on these streets is not despair — it is unspent energy. Rwanda and Ethiopia showed what happens when leadership and citizens align. We are not waiting anymore.",
-   source:'https://x.com/amenya_nelson/status/2040859015840698414'},
-  {id:'v19',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi drainage',role:'Alvin Kanindo quoting George Tsitati',theme:'environment',mood:'frustration',
-   likes:34,retweets:311,views:1887,timestamp:'Apr 4, 2026',
-   text:"This is what happens when urban planning is sacrificed for politics and quick deals. [quoting @Tsitati_George: The insufferable stench from the drainage and sewers in Nairobi complements the revolting misery of the city misgovernance.]",
-   hope:null,source:'https://x.com/Alvin_Kanindo/status/2040472930400735248'},
-
-  {id:'v20',platform:'twitter',handle:'@Mbwesaa',area:'Nairobi CBD',role:'Downfall of us All',theme:'governance',mood:'frustration',
-   likes:251,retweets:777,views:18100,timestamp:'Apr 4, 2026',
-   text:"Just look at how much of an eyesore the ground infrastructure looks. What a shithole. [Reacting to aerial rooftop views of Nairobi CBD]",
-   hope:null,source:'https://x.com/Mbwesaa/status/2040516717969801307'},
-
-  {id:'v21',platform:'twitter',handle:'@farhiyaabass',area:'Nairobi green spaces',role:'Farhiya Abass',theme:'environment',mood:'mixed',
-   likes:173,retweets:284,views:8676,timestamp:'Apr 5, 2026',
-   text:"Look at the green spaces... eh Nairobi. Rwanda is not just developing for itself, it is quietly inspiring ideas across the continent. And that is the beauty of African progress.",
-   hope:"Rwanda and Ethiopia made deliberate choices about green space, drainage and public realm. Nairobi can make those same choices.",
-   source:'https://x.com/farhiyaabass/status/2040765111388741761'},
-
-  {id:'v22',platform:'twitter',handle:'@W_Asherah',area:'Nairobi transport economics',role:'Nairobian — transport policy watcher',theme:'transport',mood:'mixed',
-   likes:480,retweets:117,views:2216,timestamp:'Apr 5, 2026',
-   text:"By the way, that is 36 billion KES for free public transport. That is 1/3 of what the SHA system — that is dysfunctional — cost. [Responding to debate on Vietnam free transit for 14 million people]",
-   hope:"We have the money. The question is the political will to spend it on things that work for ordinary people rather than systems that drain them.",
-   source:'https://x.com/W_Asherah/status/2040732633366208851'},
-
-  {id:'v23',platform:'twitter',handle:'@NdunguWainaina',area:'Nairobi — city planning',role:"Ndung'u Wainaina, civic voice",theme:'governance',mood:'mixed',
-   likes:351,retweets:163,views:11300,timestamp:'Apr 4, 2026',
-   text:"Can @SakajaJohnson see how serious city planning and management is done? [Sharing images of Addis Ababa Peacock Park]",
-   hope:"Addis has Peacock Park. Kigali has its wetlands. Nairobi has Uhuru Park and Karura — we just need a governor who understands what world-class urban management actually looks like.",
-   source:'https://x.com/NdunguWainaina/status/2040502831719789056'},
-
-  {id:'v24',platform:'twitter',handle:'@AbiyAhmedAli',area:'Addis Ababa — benchmark',role:'PM Abiy Ahmed Ali, Ethiopia',theme:'livelihoods',mood:'hope',
-   likes:1106,retweets:2300,views:162300,timestamp:'Apr 4, 2026',
-   text:"We inaugurated the Addis Sports Park, a 5.7-hectare project that stands as a testament to our promise of urban renewal and the restoration of our citizens dignity. True development must be centred on the community. This project provides 105 new commercial shops to empower community members relocated during development, with a grand plaza for 3,000 people to gather.",
-   hope:"This is the benchmark Nairobi 2055 must match. Infrastructure that restores dignity, includes displaced traders, and connects to green space.",
-   source:'https://x.com/AbiyAhmedAli/status/2040427118815768879'},
-
-  {id:'v25',platform:'twitter',handle:'@Mbwesaa',area:'Nairobi streets',role:'Downfall of us All',theme:'governance',mood:'frustration',
-   likes:182,retweets:717,views:3886,timestamp:'Apr 5, 2026',
-   text:"Yikes! This country is a filthy war-torn-esque pigsty. Time to call it wraps. Cannot stand this anymore.",
-   hope:null,source:'https://x.com/Mbwesaa/status/2040868212837900713'},
+  {id:'v01',platform:'twitter',handle:'@WillieOeba',area:'Nairobi',role:'Willie Oeba',theme:'governance',mood:'frustration',likes:994,retweets:1200,views:25600,timestamp:'Apr 3, 2026',text:"Wewe @SakajaJohnson ni such a disgrace. You are turning Nairobi to look like Mumbai.",hope:null,source:'https://x.com/WillieOeba/status/2039968597603176516'},
+  {id:'v02',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'frustration',likes:75,retweets:48,views:4397,timestamp:'Apr 4, 2026',text:"We have slowly accepted a very low standard as normal. The state of our roads, no proper walkways, no street lights, garbage everywhere, no order, just chaos. There is a broken public transport system, unplanned construction everywhere. We are now celebrating mediocrity. That should never be the benchmark. This is not progress. #ReclaimNairobi",hope:null,source:'https://x.com/Alfayaz11/status/2040498816282230883'},
+  {id:'v03',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi',role:'Alvin Kanindo',theme:'governance',mood:'frustration',likes:65,retweets:1000,views:36600,timestamp:'Apr 5, 2026',text:"Nairobi feels like a city stuck between potential & neglect. Every year, we talk about the same issues — drainage, garbage, and planning. Nothing really changes.",hope:null,source:'https://x.com/Alvin_Kanindo/status/2040654589091860558'},
+  {id:'v04',platform:'twitter',handle:'@NyakundiReport',area:'Gikomba Market',role:'Nyakundi Report',theme:'livelihoods',mood:'frustration',likes:32,retweets:45,views:3870,timestamp:'Apr 1, 2026',text:"Aftermath of demolitions at Gikomba Market in Nairobi.",hope:null,source:'https://x.com/NyakundiReport/status/2039324900033171646'},
+  {id:'v05',platform:'twitter',handle:'@Dreymwangi',area:'Nairobi CBD',role:'Drey, Nairobi commuter',theme:'transport',mood:'frustration',likes:518,retweets:3800,views:64500,timestamp:'Apr 3, 2026',text:"Hadi matatu zinabebea katikati ya Barabara. [Matatus are now loading passengers in the middle of the road.] CBD is such a mess.",hope:null,source:'https://x.com/Dreymwangi/status/2040109948135448806'},
+  {id:'v06',platform:'twitter',handle:'@K2grind',area:'Urban rivers, Nairobi',role:'Akan, Nairobi resident',theme:'environment',mood:'frustration',likes:256,retweets:148,views:3921,timestamp:'Apr 3, 2026',text:"All our rivers in urban centres are open sewers.",hope:null,source:'https://x.com/K2grind/status/2040083226815782991'},
+  {id:'v07',platform:'twitter',handle:'@AonjelaPel',area:'Nairobi streets',role:'Nana Wami',theme:'governance',mood:'frustration',likes:88,retweets:427,views:7124,timestamp:'Apr 5, 2026',text:"Hakuna street lights hii city manze. Giza kila mahali. [There are no street lights in this city. Darkness everywhere.]",hope:null,source:'https://x.com/AonjelaPel/status/2040846617843024164'},
+  {id:'v08',platform:'twitter',handle:'@Leonmuigz',area:'Nairobi CBD',role:'Daily Pharmacist',theme:'governance',mood:'frustration',likes:37,retweets:32,views:1275,timestamp:'Apr 5, 2026',text:"This used to be the most prestigious business centre a while back, now it is just an over glorified slum with a few good skyscrapers and a Chinese owned Expressway.",hope:null,source:'https://x.com/Leonmuigz/status/2040817315768422864'},
+  {id:'v09',platform:'twitter',handle:'@MaithyaVilivu',area:'Nairobi roads',role:'Maithya wa Vilivuu',theme:'transport',mood:'frustration',likes:74,retweets:310,views:3737,timestamp:'Apr 5, 2026',text:"So many unmarked roads in Kenya at the moment. Both urban and rural tarmac roads. What is the excuse of the lame ducks at KEnHA?",hope:null,source:'https://x.com/MaithyaVilivu/status/2040736779905405053'},
+  {id:'v10',platform:'twitter',handle:'@Alvin_Kanindo',area:'Kilimani / Westlands / Lavington',role:'Alvin Kanindo',theme:'housing',mood:'frustration',likes:11,retweets:96,views:1858,timestamp:'Apr 4, 2026',text:"Inadequate drainage, nonstop construction, and lax enforcement have thrown once-prime areas into disorder. Nairobi planning is breaking down in real time. Driving around Kilimani, Kileleswa, Lavington, Westlands these days — it is one dusty or flooding shanty town.",hope:null,source:'https://x.com/Alvin_Kanindo/status/2040447342860456146'},
+  {id:'v11',platform:'twitter',handle:'@zablonorina1',area:'Gikomba Market',role:'The Blood Pressure Champion',theme:'livelihoods',mood:'mixed',likes:264,retweets:931,views:13600,timestamp:'Apr 2, 2026',text:"The proposed multi-storey Gikomba Market raises a simple but uncomfortable question: do we really understand how biashara works in Kenya? Markets do not fail because of lack of space, they fail when you fight human behavior. Biashara follows movement, visibility, and convenience. Building upwards may look like modernization, but without considering trader behavior, you risk creating empty upper floors and overburdened ground levels.",hope:"We do not need architecture that looks impressive on paper. We need design that understands how Kenyans actually trade, hustle, and survive. Because in markets like Gikomba, height does not equal progress — flow does.",source:'https://x.com/zablonorina1/status/2039740078268805462'},
+  {id:'v12',platform:'twitter',handle:'@farhiyaabass',area:'Nairobi green spaces',role:'Farhiya Abass',theme:'environment',mood:'mixed',likes:33,retweets:23,views:612,timestamp:'Apr 5, 2026',text:"It is not that Nairobi lacks green spaces. We are just busy fighting to protect the ones we already have rather than creating more.",hope:"Rwanda and Ethiopia made deliberate choices about green space, drainage and public realm. Nairobi can make those same choices.",source:'https://x.com/farhiyaabass/status/2040877574427971924'},
+  {id:'v13',platform:'twitter',handle:'@Alfayaz11',area:'Nairobi — identity',role:'Alfayaz — #ReclaimNairobi',theme:'governance',mood:'mixed',likes:7,retweets:197,views:1888,timestamp:'Apr 4, 2026',text:"Do not we all love Nairobi… but it is what it is. A big chaotic slum. We have ruined a once beautiful green city in the sun. Who will save Nairobi? #ReclaimNairobi",hope:"Someone is actively trying to turn this city into a shanty town with zero street lighting, no paint and impassable roads. That someone can be stopped.",source:'https://x.com/Alfayaz11/status/2040418968415109268'},
+  {id:'v14',platform:'twitter',handle:'@dnkariuki',area:"Lang'ata, Nairobi",role:"Duke of Gatanga",theme:'environment',mood:'frustration',likes:117,retweets:35,views:2932,timestamp:'Apr 5, 2026',text:"Mifereji imekauka lakini ukitembea unaona tu clean water ikipotelea mtoni. Langata is cursed. [The taps are dry but as you walk you see clean water leaking away into the river. Langata is cursed.]",hope:null,source:'https://x.com/dnkariuki/status/2040643232699150370'},
+  {id:'v15',platform:'twitter',handle:'@EricKigada',area:'Nairobi streets',role:'Eric Kigada, urban design voice',theme:'governance',mood:'mixed',likes:301,retweets:676,views:41900,timestamp:'Apr 5, 2026',text:"An example of a street with Urban Designers and without Urban Designers.",hope:"The difference between a functional city and a chaotic one is not money. It is whether you involve people who understand how cities work.",source:'https://x.com/EricKigada/status/2040700201120244150'},
+  {id:'v16',platform:'twitter',handle:'@mbithi',area:'Nairobi — transport aspiration',role:'Mbithi Masya',theme:'transport',mood:'hope',likes:377,retweets:286,views:5386,timestamp:'Apr 1, 2026',text:"All buses, trains, and trams are free in this country. For everyone! Luxembourg is unreal. When will your country have this?",hope:"Free public transport is not a fantasy. Vietnam did it for a city of 14 million. If we fix how we collect and spend transport revenue, Nairobi can too.",source:'https://x.com/mbithi/status/2039314328482943105'},
+  {id:'v17',platform:'twitter',handle:'@AmbokoJH',area:'Nairobi — EVs',role:'Julians Amboko, economics journalist',theme:'transport',mood:'hope',likes:122,retweets:64,views:15200,timestamp:'Apr 3, 2026',text:"The government of Kenya is sourcing 3,000 Electric Vehicles.",hope:"3,000 EVs is a beginning. Tie that procurement to local assembly, matatu integration and boda boda transition and it changes the whole transport ecosystem.",source:'https://x.com/AmbokoJH/status/2039941534838128700'},
+  {id:'v18',platform:'twitter',handle:'@amenya_nelson',area:'Nairobi — collective action',role:'Nelson Amenya',theme:'governance',mood:'hope',likes:152,retweets:619,views:14000,timestamp:'Apr 5, 2026',text:"We need to form an alliance that will restore Nairobi ASAP.",hope:"The anger on these streets is not despair — it is unspent energy. Rwanda and Ethiopia showed what happens when leadership and citizens align. We are not waiting anymore.",source:'https://x.com/amenya_nelson/status/2040859015840698414'},
+  {id:'v19',platform:'twitter',handle:'@Alvin_Kanindo',area:'Nairobi drainage',role:'Alvin Kanindo quoting George Tsitati',theme:'environment',mood:'frustration',likes:34,retweets:311,views:1887,timestamp:'Apr 4, 2026',text:"This is what happens when urban planning is sacrificed for politics and quick deals. [quoting @Tsitati_George: The insufferable stench from the drainage and sewers in Nairobi complements the revolting misery of the city misgovernance.]",hope:null,source:'https://x.com/Alvin_Kanindo/status/2040472930400735248'},
+  {id:'v20',platform:'twitter',handle:'@Mbwesaa',area:'Nairobi CBD',role:'Downfall of us All',theme:'governance',mood:'frustration',likes:251,retweets:777,views:18100,timestamp:'Apr 4, 2026',text:"Just look at how much of an eyesore the ground infrastructure looks. What a shithole. [Reacting to aerial rooftop views of Nairobi CBD]",hope:null,source:'https://x.com/Mbwesaa/status/2040516717969801307'},
+  {id:'v21',platform:'twitter',handle:'@farhiyaabass',area:'Nairobi green spaces',role:'Farhiya Abass',theme:'environment',mood:'mixed',likes:173,retweets:284,views:8676,timestamp:'Apr 5, 2026',text:"Look at the green spaces... eh Nairobi. Rwanda is not just developing for itself, it is quietly inspiring ideas across the continent. And that is the beauty of African progress.",hope:"Rwanda and Ethiopia made deliberate choices about green space, drainage and public realm. Nairobi can make those same choices.",source:'https://x.com/farhiyaabass/status/2040765111388741761'},
+  {id:'v22',platform:'twitter',handle:'@W_Asherah',area:'Nairobi transport economics',role:'Nairobian — transport policy watcher',theme:'transport',mood:'mixed',likes:480,retweets:117,views:2216,timestamp:'Apr 5, 2026',text:"By the way, that is 36 billion KES for free public transport. That is 1/3 of what the SHA system — that is dysfunctional — cost. [Responding to debate on Vietnam free transit for 14 million people]",hope:"We have the money. The question is the political will to spend it on things that work for ordinary people rather than systems that drain them.",source:'https://x.com/W_Asherah/status/2040732633366208851'},
+  {id:'v23',platform:'twitter',handle:'@NdunguWainaina',area:'Nairobi — city planning',role:"Ndung'u Wainaina, civic voice",theme:'governance',mood:'mixed',likes:351,retweets:163,views:11300,timestamp:'Apr 4, 2026',text:"Can @SakajaJohnson see how serious city planning and management is done? [Sharing images of Addis Ababa Peacock Park]",hope:"Addis has Peacock Park. Kigali has its wetlands. Nairobi has Uhuru Park and Karura — we just need a governor who understands what world-class urban management actually looks like.",source:'https://x.com/NdunguWainaina/status/2040502831719789056'},
+  {id:'v24',platform:'twitter',handle:'@AbiyAhmedAli',area:'Addis Ababa — benchmark',role:'PM Abiy Ahmed Ali, Ethiopia',theme:'livelihoods',mood:'hope',likes:1106,retweets:2300,views:162300,timestamp:'Apr 4, 2026',text:"We inaugurated the Addis Sports Park, a 5.7-hectare project that stands as a testament to our promise of urban renewal and the restoration of our citizens dignity. True development must be centred on the community. This project provides 105 new commercial shops to empower community members relocated during development, with a grand plaza for 3,000 people to gather.",hope:"This is the benchmark Nairobi 2055 must match. Infrastructure that restores dignity, includes displaced traders, and connects to green space.",source:'https://x.com/AbiyAhmedAli/status/2040427118815768879'},
+  {id:'v25',platform:'twitter',handle:'@Mbwesaa',area:'Nairobi streets',role:'Downfall of us All',theme:'governance',mood:'frustration',likes:182,retweets:717,views:3886,timestamp:'Apr 5, 2026',text:"Yikes! This country is a filthy war-torn-esque pigsty. Time to call it wraps. Cannot stand this anymore.",hope:null,source:'https://x.com/Mbwesaa/status/2040868212837900713'},
 ];
 
 const VOICE_THEMES = {
-  'transport': {label:'Transport & Mobility', icon:'🚌'},
-  'flooding': {label:'Flooding & Climate', icon:'🌊'},
-  'livelihoods': {label:'Markets & Livelihoods', icon:'🛒'},
-  'housing': {label:'Housing & Settlements', icon:'🏘️'},
-  'youth': {label:'Youth & Opportunity', icon:'🎓'},
-  'environment': {label:'Environment & Services', icon:'🌿'},
-  'governance': {label:'Governance & Services', icon:'🏛️'},
-  'culture': {label:'Pride & Culture', icon:'🎨'},
+  transport:   {label:'Transport & Mobility',    icon:'🚌'},
+  flooding:    {label:'Flooding & Climate',       icon:'🌊'},
+  livelihoods: {label:'Markets & Livelihoods',   icon:'🛒'},
+  housing:     {label:'Housing & Settlements',    icon:'🏘️'},
+  youth:       {label:'Youth & Opportunity',      icon:'🎓'},
+  environment: {label:'Environment & Services',   icon:'🌿'},
+  governance:  {label:'Governance & Services',    icon:'🏛️'},
+  culture:     {label:'Pride & Culture',          icon:'🎨'},
 };
 
 const PLATFORM_CONFIG = {
-  twitter: {label:'X (Twitter)', icon:'✕', color:'#1DA1F2', bg:'#15202B'},
-  facebook: {label:'Facebook', icon:'f', color:'#1877F2', bg:'#1C1E21'},
-  whatsapp: {label:'WhatsApp', icon:'●', color:'#25D366', bg:'#0D1418'},
-  instagram: {label:'Instagram', icon:'◎', color:'#E1306C', bg:'#1A1A1A'},
-  other: {label:'News / Documented', icon:'◈', color:'#C8A84B', bg:'#1E2018'},
+  twitter:   {label:'X (Twitter)',       icon:'✕', color:'#1DA1F2', bg:'#15202B'},
+  facebook:  {label:'Facebook',          icon:'f', color:'#1877F2', bg:'#1C1E21'},
+  whatsapp:  {label:'WhatsApp',          icon:'●', color:'#25D366', bg:'#0D1418'},
+  instagram: {label:'Instagram',         icon:'◎', color:'#E1306C', bg:'#1A1A1A'},
+  other:     {label:'News / Documented', icon:'◈', color:'#C8A84B', bg:'#1E2018'},
 };
 
 const VOICE_STORAGE_KEY = 'n2055_voices';
-const VOICE_EDIT_KEY = 'n2055_voices_edits'; // stores edits to seed voices
+const VOICE_EDIT_KEY    = 'n2055_voices_edits';
+let _importImages  = [];
+let _importPlatform = 'other';
+let _vcMode        = 'add';
+let _vcEditId      = null;
 
-
+// ── Data helpers ─────────────────────────────────────────────────────────────
+function getVoices() {
+  let extra = [], edits = {};
+  try { const s = localStorage.getItem(VOICE_STORAGE_KEY); extra = s ? JSON.parse(s) : []; } catch {}
+  try { const e = localStorage.getItem(VOICE_EDIT_KEY);    edits = e ? JSON.parse(e) : {}; } catch {}
+  const seeds      = VOICE_SEED.filter(Boolean).map(v => edits[v.id] ? Object.assign({}, v, edits[v.id]) : v);
+  const validExtra = extra.filter(v => v && v.id && !edits[v.id + '_deleted']);
+  return seeds.concat(validExtra);
+}
 
 function saveVoice(v) {
   try {
-    const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-    const extra = stored ? JSON.parse(stored) : [];
-    extra.push(v);
-    localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(extra));
+    const s    = localStorage.getItem(VOICE_STORAGE_KEY);
+    const list = s ? JSON.parse(s) : [];
+    list.push(v);
+    localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list));
     return true;
-  } catch(e) {
-    try {
-      const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-      const extra = stored ? JSON.parse(stored) : [];
-      const slim = {...v, media_images:null, screenshot_b64:null};
-      extra.push(slim);
-      localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(extra));
+  } catch (e1) {
+    try {                                            // retry without images
+      const s    = localStorage.getItem(VOICE_STORAGE_KEY);
+      const list = s ? JSON.parse(s) : [];
+      list.push(Object.assign({}, v, {media_images: null, screenshot_b64: null}));
+      localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list));
       showToast('Voice saved without photos — storage limit reached');
       return true;
-    } catch(e2) {
-      showToast('Could not save — storage full. Clear browser data and retry.');
+    } catch (e2) {
+      showToast('Could not save — browser storage full. Clear data and retry.');
       return false;
     }
   }
@@ -3637,543 +3539,433 @@ function saveVoice(v) {
 
 function saveVoiceEdit(id, fields) {
   try {
-    const edits = JSON.parse(localStorage.getItem(VOICE_EDIT_KEY)||'{}');
-    edits[id] = {...(edits[id]||{}), ...fields};
+    const s    = localStorage.getItem(VOICE_EDIT_KEY);
+    const edits = s ? JSON.parse(s) : {};
+    edits[id]  = Object.assign({}, edits[id] || {}, fields);
     localStorage.setItem(VOICE_EDIT_KEY, JSON.stringify(edits));
   } catch {}
 }
 
-function getVoices() {
-  let extra = [], edits = {};
-  try { const s=localStorage.getItem(VOICE_STORAGE_KEY); extra=s?JSON.parse(s):[]; } catch {}
-  try { const e=localStorage.getItem(VOICE_EDIT_KEY); edits=e?JSON.parse(e):{}; } catch {}
-  const seeds = VOICE_SEED.map(v => edits[v.id] ? {...v,...edits[v.id]} : v);
-  const validExtra = extra.filter(v => v && v.id && !edits[v.id+'_deleted']);
-  return [...seeds, ...validExtra];
-}
-
-
+// ── Formatting ────────────────────────────────────────────────────────────────
 function fmtNum(n) {
-  if(!n) return '';
-  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
-  if(n>=1000) return (n/1000).toFixed(1)+'K';
-  return n.toString();
+  if (!n) return '';
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000)    return (n / 1000).toFixed(1) + 'K';
+  return String(n);
 }
 
+// ── Media builder (plain string concat — no template literals) ───────────────
+function buildMediaHtml(v) {
+  var images = (v.media_images && v.media_images.length) ? v.media_images
+             : (v.screenshot_b64 ? [v.screenshot_b64] : []);
+  var video  = v.video_url || null;
+  var html   = '';
+
+  if (images.length) {
+    var cls = images.length === 1 ? 'vc-media-1'
+            : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
+    html += '<div class="vc-media-grid ' + cls + '">';
+    for (var i = 0; i < images.length; i++) {
+      html += '<img src="' + images[i] + '" class="vc-media-img" alt="photo" loading="lazy"/>';
+    }
+    html += '</div>';
+  }
+
+  if (video) {
+    var ytM = video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+    var viM = video.match(/vimeo\.com\/(\d+)/);
+    var src = '';
+    if (ytM) src = 'https://www.youtube.com/embed/' + ytM[1] + '?rel=0&modestbranding=1';
+    else if (viM) src = 'https://player.vimeo.com/video/' + viM[1];
+    if (src) {
+      html += '<div class="vc-video-wrap"><iframe src="' + src + '" class="vc-video-frame" allowfullscreen loading="lazy" frameborder="0"></iframe></div>';
+    } else {
+      html += '<a href="' + video + '" target="_blank" rel="noopener" class="vc-video-link">\u25b6 Watch video \u2197</a>';
+    }
+  }
+  return html;
+}
+
+// ── Card renderer ─────────────────────────────────────────────────────────────
 function renderVoiceCard(v) {
-  const admin = isAdmin();
-  const pc = PLATFORM_CONFIG[v.platform] || PLATFORM_CONFIG.other;
-  const moodColor = v.mood==='hope' ? '#5DBF7A' : v.mood==='mixed' ? '#C8A84B' : '#E85888';
-  const moodLabel = v.mood==='hope' ? '✦ Hope' : v.mood==='mixed' ? '⟳ Complex' : '◈ Frustration';
-  const themeObj = VOICE_THEMES[v.theme] || {icon:'🗣',label:v.theme};
-  // Inline media rendering (photos + video)
-  const mediaHtml = (function(v) {
-    const images = v.media_images && v.media_images.length ? v.media_images : (v.screenshot_b64 ? [v.screenshot_b64] : []);
-    const video = v.video_url || null;
-    let html = '';
-    if(images.length) {
-      const cls = images.length === 1 ? 'vc-media-1' : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
-      html += '<div class="vc-media-grid ' + cls + '">' +
-        images.map((b64,i) => '<img src="' + b64 + '" class="vc-media-img" alt="photo ' + (i+1) + '" loading="lazy"/>').join('') +
-        '</div>';
-    }
-    if(video) {
-      const ytMatch = video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
-      const vimeoMatch = video.match(/vimeo\.com\/(\d+)/);
-      let embedSrc = '';
-      if(ytMatch) embedSrc = 'https://www.youtube.com/embed/' + ytMatch[1] + '?rel=0&modestbranding=1';
-      else if(vimeoMatch) embedSrc = 'https://player.vimeo.com/video/' + vimeoMatch[1];
-      if(embedSrc) html += '<div class="vc-video-wrap"><iframe src="' + embedSrc + '" class="vc-video-frame" allowfullscreen loading="lazy" frameborder="0"></iframe></div>';
-      else html += '<a href="' + video + '" target="_blank" rel="noopener" class="vc-video-link">▶ Watch video ↗</a>';
-    }
-    return html;
-  })(v);
-  const adminBtns = admin ? `<div class="vc-admin-btns">
-    <button class="vc-edit-btn" onclick="openEditModal('${v.id}')">✎ Edit</button>
-    <button class="vc-del-btn" onclick="deleteVoice('${v.id}')">✕</button>
-  </div>` : '';
+  var admin     = isAdmin();
+  var pc        = PLATFORM_CONFIG[v.platform] || PLATFORM_CONFIG.other;
+  var moodColor = v.mood === 'hope' ? '#5DBF7A' : v.mood === 'mixed' ? '#C8A84B' : '#E85888';
+  var moodLabel = v.mood === 'hope' ? '\u2726 Hope' : v.mood === 'mixed' ? '\u27f3 Complex' : '\u25c8 Frustration';
+  var themeObj  = VOICE_THEMES[v.theme] || {icon:'\uD83D\uDDE3', label: v.theme};
+  var mediaHtml = buildMediaHtml(v);
+  var srcDomain = '';
+  if (v.source) { try { srcDomain = new URL(v.source).hostname.replace('www.',''); } catch {} }
+  var sourceLink = srcDomain ? '<a href="' + v.source + '" target="_blank" rel="noopener" class="vc-source-link">\u2197 ' + srcDomain + '</a>' : '';
+  var hopeHtml  = v.hope ? '<div class="vc-hope"><span class="vc-hope-label">\uD83D\uDCA1 Hope for 2055:</span> <em>' + v.hope + '</em></div>' : '';
+  var metaLine  = '<div class="vc-meta-line">\uD83D\uDCCD ' + v.area + ' \u00b7 ' + themeObj.icon + ' ' + themeObj.label + ' \u00b7 <span style="color:' + moodColor + '">' + moodLabel + '</span> ' + sourceLink + '</div>';
+  var adminBtns = admin ? '<div class="vc-admin-btns"><button class="vc-edit-btn" onclick="openEditModal(\'' + v.id + '\')">&#10002; Edit</button><button class="vc-del-btn" onclick="deleteVoice(\'' + v.id + '\')">&#10005;</button></div>' : '';
+  var initials  = (v.handle || 'N').replace('@','').slice(0,2).toUpperCase();
+  var cardId    = ' data-vcid="' + v.id + '"';
 
-  const sourceLink = v.source ? `<a href="${v.source}" target="_blank" rel="noopener" class="vc-source-link">↗ Source</a>` : '';
-
-  // Screenshot card — now handled by mediaHtml in each platform card
-  // Legacy: if ONLY screenshot_b64 and no other media, render as old screenshot card
-  if(v.screenshot_b64 && !v.media_images && !v.video_url) {
-    return `<div class="voice-card vc-screenshot" data-vcid="${v.id}" style="--vc:${moodColor};--pc:${pc.color}">
-      ${adminBtns}
-      <div class="vc-platform-badge">${pc.icon} ${pc.label}</div>
-      <img src="${v.screenshot_b64}" class="vc-screenshot-img" alt="Social media post" loading="lazy"/>
-      <div class="vc-screen-footer">
-        <span class="vc-area">📍 ${v.area}</span>
-        <span class="vc-mood-tag" style="color:${moodColor}">${moodLabel}</span>
-        <span class="vc-theme-tag">${themeObj.icon} ${themeObj.label}</span>
-        ${sourceLink}
-      </div>
-      ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-    </div>`;
+  // Legacy screenshot-only card
+  if (v.screenshot_b64 && !v.media_images && !v.video_url) {
+    return '<div class="voice-card vc-screenshot"' + cardId + ' style="--vc:' + moodColor + ';--pc:' + pc.color + '">' + adminBtns +
+      '<div class="vc-platform-badge">' + pc.icon + ' ' + pc.label + '</div>' +
+      '<img src="' + v.screenshot_b64 + '" class="vc-screenshot-img" alt="post" loading="lazy"/>' +
+      '<div class="vc-screen-footer"><span class="vc-area">\uD83D\uDCCD ' + v.area + '</span><span class="vc-mood-tag" style="color:' + moodColor + '">' + moodLabel + '</span><span class="vc-theme-tag">' + themeObj.icon + ' ' + themeObj.label + '</span>' + sourceLink + '</div>' +
+      hopeHtml + '</div>';
   }
 
-  // Twitter/X card
-  if(v.platform==='twitter') {
-    const initials = (v.handle||'N').replace('@','').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-twitter" data-vcid="${v.id}" style="--vc:${moodColor}">
-      ${adminBtns}
-      <div class="vc-tw-header">
-        <div class="vc-tw-avatar">${initials}</div>
-        <div class="vc-tw-meta">
-          <div class="vc-tw-name">${v.role}</div>
-          <div class="vc-tw-handle">${v.handle}</div>
-        </div>
-        <div class="vc-tw-x">✕</div>
-      </div>
-      <div class="vc-tw-body">${v.text}</div>
-      ${mediaHtml}
-      <div class="vc-tw-footer">
-        <span class="vc-tw-time">🕐 ${v.timestamp||''}</span>
-        ${v.views?`<span class="vc-tw-stat">${fmtNum(v.views)} views</span>`:''}
-        ${v.retweets?`<span class="vc-tw-stat">🔁 ${fmtNum(v.retweets)}</span>`:''}
-        ${v.likes?`<span class="vc-tw-stat">♡ ${fmtNum(v.likes)}</span>`:''}
-        ${sourceLink}
-      </div>
-      <div class="vc-meta-line">📍 ${v.area} · ${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span></div>
-      ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-    </div>`;
+  // Twitter / X
+  if (v.platform === 'twitter') {
+    return '<div class="voice-card vc-twitter"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+      '<div class="vc-tw-header"><div class="vc-tw-avatar">' + initials + '</div><div class="vc-tw-meta"><div class="vc-tw-name">' + v.role + '</div><div class="vc-tw-handle">' + v.handle + '</div></div><div class="vc-tw-x">\u2715</div></div>' +
+      '<div class="vc-tw-body">' + v.text + '</div>' +
+      mediaHtml +
+      '<div class="vc-tw-footer"><span class="vc-tw-time">\uD83D\uDD50 ' + (v.timestamp||'') + '</span>' +
+        (v.views    ? '<span class="vc-tw-stat">' + fmtNum(v.views)    + ' views</span>' : '') +
+        (v.retweets ? '<span class="vc-tw-stat">\uD83D\uDD01 ' + fmtNum(v.retweets) + '</span>' : '') +
+        (v.likes    ? '<span class="vc-tw-stat">\u2661 ' + fmtNum(v.likes) + '</span>' : '') +
+        sourceLink + '</div>' +
+      metaLine + hopeHtml + '</div>';
   }
 
-  // Facebook card
-  if(v.platform==='facebook') {
-    const initials = (v.handle||'FB').replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-facebook" data-vcid="${v.id}" style="--vc:${moodColor}">
-      ${adminBtns}
-      <div class="vc-fb-header">
-        <div class="vc-fb-avatar" style="background:linear-gradient(135deg,#1877F2,#00B4FF)">${initials}</div>
-        <div class="vc-fb-meta">
-          <div class="vc-fb-name">${v.handle}</div>
-          <div class="vc-fb-time">${v.timestamp||''} · 🌐</div>
-        </div>
-        <div class="vc-fb-f">f</div>
-      </div>
-      <div class="vc-fb-body">${v.text}</div>
-      ${mediaHtml}
-      ${v.likes?`<div class="vc-fb-reactions"><span>👍 ❤️ 😮</span><span class="vc-fb-count">${fmtNum(v.likes)} reactions</span></div>`:''}
-      <div class="vc-meta-line">📍 ${v.area} · ${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
-      ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-    </div>`;
+  // Facebook
+  if (v.platform === 'facebook') {
+    var fbInit = (v.handle||'FB').replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase();
+    return '<div class="voice-card vc-facebook"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+      '<div class="vc-fb-header"><div class="vc-fb-avatar" style="background:linear-gradient(135deg,#1877F2,#00B4FF)">' + fbInit + '</div><div class="vc-fb-meta"><div class="vc-fb-name">' + v.handle + '</div><div class="vc-fb-time">' + (v.timestamp||'') + ' \u00b7 \uD83C\uDF10</div></div><div class="vc-fb-f">f</div></div>' +
+      '<div class="vc-fb-body">' + v.text + '</div>' +
+      mediaHtml +
+      (v.likes ? '<div class="vc-fb-reactions"><span>\uD83D\uDC4D \u2764\uFE0F \uD83D\uDE2E</span><span class="vc-fb-count">' + fmtNum(v.likes) + ' reactions</span></div>' : '') +
+      metaLine + hopeHtml + '</div>';
   }
 
-  // WhatsApp card
-  if(v.platform==='whatsapp') {
-    return `<div class="voice-card vc-whatsapp" data-vcid="${v.id}" style="--vc:${moodColor}">
-      ${adminBtns}
-      <div class="vc-wa-header">
-        <div class="vc-wa-icon">●</div>
-        <div class="vc-wa-group">${v.handle}</div>
-        <div class="vc-wa-platform">WhatsApp</div>
-      </div>
-      <div class="vc-wa-bubble">
-        <div class="vc-wa-sender">${v.role} · ${v.area}</div>
-        <div class="vc-wa-text">${v.text}</div>
-        ${mediaHtml}
-        <div class="vc-wa-time">${v.timestamp||''} ✓✓</div>
-      </div>
-      ${mediaHtml}
-    <div class="vc-meta-line">${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
-      ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-    </div>`;
+  // WhatsApp
+  if (v.platform === 'whatsapp') {
+    return '<div class="voice-card vc-whatsapp"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+      '<div class="vc-wa-header"><div class="vc-wa-icon">\u25cf</div><div class="vc-wa-group">' + v.handle + '</div><div class="vc-wa-platform">WhatsApp</div></div>' +
+      '<div class="vc-wa-bubble"><div class="vc-wa-sender">' + v.role + ' \u00b7 ' + v.area + '</div><div class="vc-wa-text">' + v.text + '</div>' +
+      mediaHtml +
+      '<div class="vc-wa-time">' + (v.timestamp||'') + ' \u2713\u2713</div></div>' +
+      metaLine + hopeHtml + '</div>';
   }
 
-  // Instagram card
-  if(v.platform==='instagram') {
-    const initials = (v.handle||'IG').replace('@','').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-instagram" data-vcid="${v.id}" style="--vc:${moodColor}">
-      ${adminBtns}
-      <div class="vc-ig-header">
-        <div class="vc-ig-avatar">${initials}</div>
-        <div class="vc-ig-handle">${v.handle}</div>
-        <div class="vc-ig-icon">◎</div>
-      </div>
-      <div class="vc-ig-body">${v.text}</div>
-      ${mediaHtml}
-      ${v.likes?`<div class="vc-ig-likes">♥ ${fmtNum(v.likes)} likes · ${v.timestamp||''}</div>`:''}
-      <div class="vc-meta-line">📍 ${v.area} · ${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span> ${sourceLink}</div>
-      ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-    </div>`;
+  // Instagram
+  if (v.platform === 'instagram') {
+    return '<div class="voice-card vc-instagram"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+      '<div class="vc-ig-header"><div class="vc-ig-avatar">' + initials + '</div><div class="vc-ig-handle">' + v.handle + '</div><div class="vc-ig-icon">\u25ce</div></div>' +
+      '<div class="vc-ig-body">' + v.text + '</div>' +
+      mediaHtml +
+      (v.likes ? '<div class="vc-ig-likes">\u2665 ' + fmtNum(v.likes) + ' likes \u00b7 ' + (v.timestamp||'') + '</div>' : '') +
+      metaLine + hopeHtml + '</div>';
   }
 
-  // Generic / documented source card
-  const srcDomain = v.source ? (() => { try { return new URL(v.source).hostname.replace('www.',''); } catch { return ''; }})() : '';
-  return `<div class="voice-card vc-documented" data-vcid="${v.id}" style="--vc:${moodColor}">
-    ${adminBtns}
-    <div class="vc-doc-header">
-      <div class="vc-doc-meta">
-        <div class="vc-doc-name">${v.role}</div>
-        <div class="vc-doc-sub">📍 ${v.area} · ${v.timestamp||''}</div>
-      </div>
-      ${srcDomain ? `<a href="${v.source}" target="_blank" rel="noopener" class="vc-doc-src">${srcDomain} ↗</a>` : ''}
-    </div>
-    <blockquote class="vc-doc-quote">"${v.text}"</blockquote>
-    <div class="vc-meta-line">${themeObj.icon} ${themeObj.label} · <span style="color:${moodColor}">${moodLabel}</span></div>
-    ${v.hope ? `<div class="vc-hope"><span class="vc-hope-label">💡 Hope for 2055:</span> <em>${v.hope}</em></div>` : ''}
-  </div>`;
+  // Documented / other
+  return '<div class="voice-card vc-documented"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+    '<div class="vc-doc-header"><div class="vc-doc-meta"><div class="vc-doc-name">' + v.role + '</div><div class="vc-doc-sub">\uD83D\uDCCD ' + v.area + ' \u00b7 ' + (v.timestamp||'') + '</div></div>' +
+    (srcDomain ? '<a href="' + v.source + '" target="_blank" rel="noopener" class="vc-doc-src">' + srcDomain + ' \u2197</a>' : '') + '</div>' +
+    '<blockquote class="vc-doc-quote">' + v.text + '</blockquote>' +
+    mediaHtml + metaLine + hopeHtml + '</div>';
 }
 
+// ── Voices tab renderer ───────────────────────────────────────────────────────
 function renderVoices() {
+  var main = document.getElementById('main');
+  if (!main) return;
   try {
-  const main = document.getElementById('main');
-  const voices = getVoices();
-  const admin = isAdmin();
-
-  // Interleave by mood
-  const byMood = {frustration:[], mixed:[], hope:[]};
-  voices.forEach(v => (byMood[v.mood]||byMood.frustration).push(v));
-  const interleaved = [];
-  const maxLen = Math.max(byMood.frustration.length, byMood.mixed.length, byMood.hope.length);
-  for(let i=0; i<maxLen; i++) {
-    if(byMood.frustration[i]) interleaved.push(byMood.frustration[i]);
-    if(byMood.mixed[i]) interleaved.push(byMood.mixed[i]);
-    if(byMood.hope[i]) interleaved.push(byMood.hope[i]);
-  }
-
-  const cards = interleaved.map(renderVoiceCard).join('');
-  const importBtns = admin ? `<div class="vc-import-bar">
-    <span class="vc-import-label">📥 Harvest from:</span>
-    <button class="vc-import-btn vc-twitter-btn" onclick="openImportModal('twitter')">✕ Twitter / X</button>
-    <button class="vc-import-btn vc-fb-btn" onclick="openImportModal('facebook')">f Facebook</button>
-    <button class="vc-import-btn vc-wa-btn" onclick="openImportModal('whatsapp')">● WhatsApp</button>
-    <button class="vc-import-btn vc-ig-btn" onclick="openImportModal('instagram')">◎ Instagram</button>
-    <button class="vc-import-btn vc-other-btn" onclick="openImportModal('other')">◈ News / Other</button>
-  </div>` : '';
-
-  main.innerHTML = `<div class="voices-wrap">
-    <div class="voices-header">
-      <div class="vh-title">🗣 Nairobi's Voices — Real Nairobians. Real Issues.</div>
-      <div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. The city's frustrations, contradictions and hopes — unfiltered and side by side. These are the people this plan is for.</div>
-      <div class="vh-legend">
-        <span class="vhl-item" style="--lc:#E85888">◈ Frustration</span>
-        <span class="vhl-item" style="--lc:#C8A84B">⟳ Complex / Mixed</span>
-        <span class="vhl-item" style="--lc:#5DBF7A">✦ Hope</span>
-        <span class="vhl-note">All quotes are attributed and sourced. Use ↗ Source links to verify.</span>
-      </div>
-    </div>
-    ${importBtns}
-    <div class="voices-grid">${cards}</div>
-  </div>`;
-  } catch(err) {
-    const em=document.getElementById('main');
-    if(em) em.innerHTML='<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br>'+err.message+'</div>';
-    console.error('renderVoices crash:',err);
+    var voices = getVoices();
+    var byMood = {frustration:[], mixed:[], hope:[]};
+    voices.forEach(function(v) { (byMood[v.mood] || byMood.frustration).push(v); });
+    var interleaved = [];
+    var maxLen = Math.max(byMood.frustration.length, byMood.mixed.length, byMood.hope.length);
+    for (var i = 0; i < maxLen; i++) {
+      if (byMood.frustration[i]) interleaved.push(byMood.frustration[i]);
+      if (byMood.mixed[i])       interleaved.push(byMood.mixed[i]);
+      if (byMood.hope[i])        interleaved.push(byMood.hope[i]);
+    }
+    var cards = interleaved.map(renderVoiceCard).join('');
+    var importBtns = isAdmin() ? '<div class="vc-import-bar">' +
+      '<span class="vc-import-label">\uD83D\uDCE5 Harvest from:</span>' +
+      '<button class="vc-import-btn vc-twitter-btn" onclick="openImportModal(\'twitter\')">\u2715 Twitter / X</button>' +
+      '<button class="vc-import-btn vc-fb-btn" onclick="openImportModal(\'facebook\')">f Facebook</button>' +
+      '<button class="vc-import-btn vc-wa-btn" onclick="openImportModal(\'whatsapp\')">\u25cf WhatsApp</button>' +
+      '<button class="vc-import-btn vc-ig-btn" onclick="openImportModal(\'instagram\')">\u25ce Instagram</button>' +
+      '<button class="vc-import-btn vc-other-btn" onclick="openImportModal(\'other\')">\u25c8 News / Other</button>' +
+      '</div>' : '';
+    main.innerHTML = '<div class="voices-wrap">' +
+      '<div class="voices-header">' +
+        '<div class="vh-title">\uD83D\uDDE3 Nairobi\'s Voices \u2014 Real Nairobians. Real Issues.</div>' +
+        '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side. These are the people this plan is for.</div>' +
+        '<div class="vh-legend">' +
+          '<span class="vhl-item" style="--lc:#E85888">\u25c8 Frustration</span>' +
+          '<span class="vhl-item" style="--lc:#C8A84B">\u27f3 Complex / Mixed</span>' +
+          '<span class="vhl-item" style="--lc:#5DBF7A">\u2726 Hope</span>' +
+          '<span class="vhl-note">All quotes are attributed and sourced. Use \u2197 Source links to verify.</span>' +
+        '</div>' +
+      '</div>' +
+      importBtns +
+      '<div class="voices-grid">' + cards + '</div>' +
+    '</div>';
+  } catch (err) {
+    main.innerHTML = '<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br><br>' + err.message + '</div>';
+    console.error('renderVoices crash:', err);
   }
 }
 
-function vcInjectModal() { /* modal is static in DOM */ }
-
-let _vcMode = 'add'; // 'add' or 'edit'
-let _vcEditId = null;
-let _importImages = []; // replaces _importImgB64
-let _importPlatform = 'other';
-
-
+// ── Auto-classify ─────────────────────────────────────────────────────────────
 function vcAutoFill() {
-  if(!isAdmin()) return;
-  const urlInput = document.getElementById('vc-url-input');
-  const textArea = document.getElementById('vc-m-text');
-  const statusEl = document.getElementById('vc-autofill-status');
-  const btn = document.getElementById('vc-autofill-btn');
-
-  const url = urlInput?.value?.trim();
-  const pastedText = textArea?.value?.trim();
-
-  if(!url && !pastedText) {
-    statusEl.className='vc-autofill-status error';
-    statusEl.textContent='Paste a URL or some post text first.';
-    return;
+  if (!isAdmin()) return;
+  var urlEl    = document.getElementById('vc-url-input');
+  var textArea = document.getElementById('vc-m-text');
+  var statusEl = document.getElementById('vc-autofill-status');
+  var url      = urlEl ? urlEl.value.trim() : '';
+  var text     = textArea ? textArea.value.trim() : '';
+  if (!url && !text) { statusEl.className='vc-autofill-status error'; statusEl.textContent='Paste a URL or some post text first.'; return; }
+  statusEl.className='vc-autofill-status loading'; statusEl.textContent='\u2728 Classifying post...';
+  if (url) {
+    var m = url.match(/x\.com\/([^/]+)\/status\//i) || url.match(/twitter\.com\/([^/]+)\/status\//i);
+    if (m && m[1] !== 'i') { var el = document.getElementById('vc-m-handle'); if (el) el.value = '@' + m[1]; }
+    var srcEl = document.getElementById('vc-m-source'); if (srcEl) srcEl.value = url;
   }
-
-  statusEl.className='vc-autofill-status loading';
-  statusEl.textContent='✨ Classifying post...';
-
-  // Extract handle from X/Twitter URL: x.com/USERNAME/status/ID
-  let handle = '';
-  if(url) {
-    const m = url.match(/x\.com\/([^/]+)\/status\//i) || url.match(/twitter\.com\/([^/]+)\/status\//i);
-    if(m && m[1] !== 'i') handle = '@' + m[1];
-    const srcEl = document.getElementById('vc-m-source');
-    if(srcEl) srcEl.value = url;
-  }
-  if(handle) { const el=document.getElementById('vc-m-handle'); if(el) el.value=handle; }
-
-  const text = pastedText || '';
-  const low = text.toLowerCase();
-
-  // ── THEME detection ──────────────────────────────────────────
-  const themeScores = {
-    transport:   (low.match(/matatu|boda|road|traffic|bus|train|tram|ev|electric vehicle|expressway|KEnHA|kenha|transport|commut|lane|highway|tram|fare|brt|nairobi expressway/g)||[]).length,
-    flooding:    (low.match(/flood|rain|drainage|sewer|mifereji|river|water|drain|storm|inundat|overflow|downpour/g)||[]).length,
+  var low = text.toLowerCase();
+  var themeScores = {
+    transport:   (low.match(/matatu|boda|road|traffic|bus|train|tram|ev|electric vehicle|expressway|kenha|transport|commut|highway|fare|brt/g)||[]).length,
+    flooding:    (low.match(/flood|rain|drainage|sewer|mifereji|river|drain|storm|inundat|overflow|downpour/g)||[]).length,
     livelihoods: (low.match(/gikomba|market|trader|biashara|vendor|hustle|shop|business|stall|jua kali|demolit|informal economy/g)||[]).length,
     housing:     (low.match(/house|housing|slum|settlement|demolit|tenant|landlord|rent|informal settlement|upgrade|shelter/g)||[]).length,
     environment: (low.match(/green|tree|park|garbage|waste|river|pollution|sewer|open sewer|litter|dump|clean|environment|air quality/g)||[]).length,
     governance:  (low.match(/governor|county|sakaja|government|planning|enforce|policy|corrupt|tax|levy|officer|ward|politician|leader|council/g)||[]).length,
-    youth:       (low.match(/youth|young|graduate|student|job|unemploy|gen z|generation|university|opportunity|internship/g)||[]).length,
+    youth:       (low.match(/youth|young|graduate|student|job|unemploy|gen z|generation|university|opportunity/g)||[]).length,
     culture:     (low.match(/music|art|culture|heritage|nairobian|pride|creative|festival|identity/g)||[]).length,
   };
-  const theme = Object.entries(themeScores).sort((a,b)=>b[1]-a[1])[0][0];
-
-  // ── MOOD detection ───────────────────────────────────────────
-  const frustrationWords = /disgrace|shame|chaos|broken|fail|terrible|horrible|mess|disaster|pathetic|useless|corrupt|neglect|ruined|slum|eyesore|filthy|cursed|giza|shithole|war.torn|pigsty|deplorable|embarrass|outrag|angry|furious|unacceptable|joke|laughing.stock|stench|revolting|misery|lament|deteriorat/i;
-  const hopeWords = /electric vehicle|free transport|inaugurate|restore|alliance|progress|better|improve|invest|new|clean|world.class|inspir|potential|possible|solution|change|transform|develop|upgrade|build|vision|future|delivers|benchmark|leading|success/i;
-
-  const frustScore = (text.match(frustrationWords)||[]).length;
-  const hopeScore  = (text.match(hopeWords)||[]).length;
-  let mood = 'frustration';
-  if(hopeScore > frustScore * 1.5) mood = 'hope';
-  else if(hopeScore > 0 && frustScore > 0) mood = 'mixed';
-  else if(hopeScore > frustScore) mood = 'hope';
-
-  // ── AREA detection ───────────────────────────────────────────
-  const areaMap = [
+  var theme = Object.keys(themeScores).sort(function(a,b){return themeScores[b]-themeScores[a];})[0];
+  var frustScore = (text.match(/disgrace|shame|chaos|broken|fail|terrible|horrible|mess|disaster|pathetic|useless|corrupt|neglect|ruined|slum|eyesore|filthy|cursed|deplorable|outrag|angry|furious|unacceptable|stench|revolting|lament/i)||[]).length;
+  var hopeScore  = (text.match(/electric vehicle|free transport|inaugurate|restore|alliance|progress|better|improve|invest|new|clean|world.class|inspir|potential|possible|solution|change|transform|develop|upgrade|build|vision|future|delivers|benchmark|leading|success/i)||[]).length;
+  var mood = 'frustration';
+  if (hopeScore > frustScore * 1.5) mood = 'hope';
+  else if (hopeScore > 0 && frustScore > 0) mood = 'mixed';
+  else if (hopeScore > frustScore) mood = 'hope';
+  var areaMap = [
     ['Mathare','mathare'],['Kibera','kibera'],['Mukuru','mukuru'],['Gikomba','gikomba'],
-    ['CBD Nairobi','cbd|central business district'],
-    ["Lang'ata","lang.?ata"],['Westlands','westlands'],['Kilimani','kilimani'],
-    ['Kileleswa','kileleswa'],['Lavington','lavington'],['Ruaraka','ruaraka'],
-    ['Embakasi','embakasi'],['Eastlands','eastlands'],['Kayole','kayole'],
-    ['Parklands','parklands'],['Ngong Road','ngong road'],['Thika Road','thika road'],
-    ['Mombasa Road','mombasa road'],['Kangundo Road','kangundo'],
-    ['Nairobi Expressway','expressway'],['270 rooftop','270'],
-    ['Nairobi rivers','open sewer|river'],['Nairobi roads','kenha|unmarked road'],
-    ['Nairobi streets','street light|giza'],['Nairobi CBD','cbd|tom mboya|kenyatta avenue'],
+    ['CBD Nairobi','cbd|central business district'],["Lang'ata","lang.?ata"],
+    ['Westlands','westlands'],['Kilimani','kilimani'],['Lavington','lavington'],
+    ['Ruaraka','ruaraka'],['Embakasi','embakasi'],['Eastlands','eastlands'],
+    ['Ngong Road','ngong road'],['Thika Road','thika road'],['Kangundo Road','kangundo'],
+    ['Nairobi Expressway','expressway'],['Nairobi rivers','open sewer'],
+    ['Nairobi roads','kenha|unmarked road'],['Nairobi streets','street light|giza'],
   ];
-  let area = 'Nairobi';
-  for(const [label, pattern] of areaMap) {
-    if(new RegExp(pattern,'i').test(text)) { area = label; break; }
+  var area = 'Nairobi';
+  for (var ai = 0; ai < areaMap.length; ai++) {
+    if (new RegExp(areaMap[ai][1],'i').test(text)) { area = areaMap[ai][0]; break; }
   }
-
-  // ── Populate fields ──────────────────────────────────────────
-  const set = (id, val) => { const el=document.getElementById(id); if(el&&val) el.value=val; };
-  set('vc-m-theme', theme);
-  set('vc-m-mood',  mood);
-  set('vc-m-area',  area);
-
-  // Suggest a role if handle was found
-  if(handle && !document.getElementById('vc-m-role')?.value) {
-    set('vc-m-role', 'Nairobi resident');
-  }
-
+  var setV = function(id, val) { var el = document.getElementById(id); if (el && val) el.value = val; };
+  setV('vc-m-theme', theme); setV('vc-m-mood', mood); setV('vc-m-area', area);
+  var roleEl = document.getElementById('vc-m-role');
+  if (roleEl && !roleEl.value) roleEl.value = 'Nairobi resident';
   statusEl.className='vc-autofill-status success';
-  statusEl.textContent=`✓ Suggested: ${theme} · ${mood} · ${area} — review and adjust, then Add to Voices.`;
+  statusEl.textContent='\u2713 Suggested: ' + theme + ' \u00b7 ' + mood + ' \u00b7 ' + area + ' \u2014 review and adjust, then Add to Voices.';
 }
 
+// ── Modal helpers ─────────────────────────────────────────────────────────────
 function openImportModal(platform) {
-  if(!isAdmin()) return;
-  _vcMode = 'add';
-  _vcEditId = null;
-  _importPlatform = platform;
-  _importImages = [];
-  const pc = PLATFORM_CONFIG[platform] || PLATFORM_CONFIG.other;
-  ensureModal();
-  document.getElementById('vc-modal-title').textContent = `Import from ${pc.label}`;
-  document.getElementById('vc-modal-save-btn').textContent = 'Add to Voices →';
-  document.getElementById('vc-modal-note').textContent = 'Paste post text below, or drag-and-drop a screenshot from socials.';
+  if (!isAdmin()) return;
+  _vcMode = 'add'; _vcEditId = null; _importPlatform = platform; _importImages = [];
+  var pc = PLATFORM_CONFIG[platform] || PLATFORM_CONFIG.other;
+  document.getElementById('vc-modal-title').textContent = 'Import from ' + pc.label;
+  document.getElementById('vc-modal-save-btn').textContent = 'Add to Voices \u2192';
+  document.getElementById('vc-modal-note').textContent = 'Paste post URL or text. Hit \u2728 Auto-fill to classify — or fill manually.';
   document.getElementById('vc-m-platform').value = platform;
   clearModalFields();
   document.getElementById('vc-modal-overlay').style.display = 'flex';
 }
 
 function openEditModal(id) {
-  if(!isAdmin()) return;
-  const voices = getVoices();
-  const v = voices.find(v2=>v2.id===id);
-  if(!v) return;
-  _vcMode = 'edit';
-  _vcEditId = id;
-  _importImages = v.media_images ? [...v.media_images] : (v.screenshot_b64 ? [v.screenshot_b64] : []);
-  ensureModal();
+  if (!isAdmin()) return;
+  var voices = getVoices();
+  var v = voices.find(function(x){ return x.id === id; });
+  if (!v) return;
+  _vcMode = 'edit'; _vcEditId = id;
+  _importImages = (v.media_images && v.media_images.length) ? v.media_images.slice() : (v.screenshot_b64 ? [v.screenshot_b64] : []);
   document.getElementById('vc-modal-title').textContent = 'Edit Voice';
   document.getElementById('vc-modal-save-btn').textContent = 'Save Changes';
   document.getElementById('vc-modal-note').textContent = 'Edit this voice entry.';
-  document.getElementById('vc-m-id').value = id;
-  document.getElementById('vc-m-role').value = v.role||'';
-  document.getElementById('vc-m-handle').value = v.handle||'';
-  document.getElementById('vc-m-area').value = v.area||'';
-  document.getElementById('vc-m-time').value = v.timestamp||'';
-  document.getElementById('vc-m-text').value = v.text||'';
-  document.getElementById('vc-m-platform').value = v.platform||'other';
-  document.getElementById('vc-m-mood').value = v.mood||'frustration';
-  document.getElementById('vc-m-theme').value = v.theme||'governance';
-  document.getElementById('vc-m-likes').value = v.likes||'';
-  document.getElementById('vc-m-retweets').value = v.retweets||'';
-  document.getElementById('vc-m-views').value = v.views||'';
-  document.getElementById('vc-m-source').value = v.source||'';
-  const vidEl2=document.getElementById('vc-m-video'); if(vidEl2) vidEl2.value=v.video_url||'';
-  document.getElementById('vc-m-hope').value = v.hope||'';
-  // Show existing screenshot if any
+  document.getElementById('vc-m-id').value        = id;
+  document.getElementById('vc-m-role').value      = v.role      || '';
+  document.getElementById('vc-m-handle').value    = v.handle    || '';
+  document.getElementById('vc-m-area').value      = v.area      || '';
+  document.getElementById('vc-m-time').value      = v.timestamp || '';
+  document.getElementById('vc-m-text').value      = v.text      || '';
+  document.getElementById('vc-m-platform').value  = v.platform  || 'other';
+  document.getElementById('vc-m-mood').value      = v.mood      || 'frustration';
+  document.getElementById('vc-m-theme').value     = v.theme     || 'governance';
+  document.getElementById('vc-m-likes').value     = v.likes     || '';
+  document.getElementById('vc-m-retweets').value  = v.retweets  || '';
+  document.getElementById('vc-m-views').value     = v.views     || '';
+  document.getElementById('vc-m-source').value    = v.source    || '';
+  var vidEl = document.getElementById('vc-m-video'); if (vidEl) vidEl.value = v.video_url || '';
+  document.getElementById('vc-m-hope').value      = v.hope      || '';
   vcRenderPhotoPreviews();
   document.getElementById('vc-modal-overlay').style.display = 'flex';
 }
 
-function ensureModal() { /* modal is always in DOM */ }
+function ensureModal() { /* modal is always static in DOM */ }
 
 function clearModalFields() {
-  const urlEl=document.getElementById('vc-url-input'); if(urlEl) urlEl.value='';
   _importImages = [];
   vcRenderPhotoPreviews();
-  const vidEl=document.getElementById('vc-m-video'); if(vidEl) vidEl.value='';
-  const stEl=document.getElementById('vc-autofill-status'); if(stEl){stEl.className='vc-autofill-status';stEl.textContent='';}
-  ['vc-m-role','vc-m-handle','vc-m-area','vc-m-time','vc-m-text','vc-m-source','vc-m-hope'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
+  var urlEl = document.getElementById('vc-url-input'); if (urlEl) urlEl.value = '';
+  var stEl  = document.getElementById('vc-autofill-status');
+  if (stEl) { stEl.className = 'vc-autofill-status'; stEl.textContent = ''; }
+  var vidEl = document.getElementById('vc-m-video'); if (vidEl) vidEl.value = '';
+  ['vc-m-role','vc-m-handle','vc-m-area','vc-m-time','vc-m-text','vc-m-source','vc-m-hope'].forEach(function(id){
+    var el = document.getElementById(id); if (el) el.value = '';
   });
-  ['vc-m-likes','vc-m-retweets','vc-m-views'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
+  ['vc-m-likes','vc-m-retweets','vc-m-views'].forEach(function(id){
+    var el = document.getElementById(id); if (el) el.value = '';
   });
-  const img=document.getElementById('vc-preview-img');
-  if(img){img.style.display='none';}
-  const di=document.getElementById('vc-drop-inner');
-  if(di){di.style.display='flex';}
-  const ci=document.getElementById('vc-clear-img');
-  if(ci){ci.style.display='none';}
-  // _importImages cleared in clearModalFields above
 }
 
 function closeVcModal() {
-  const o=document.getElementById('vc-modal-overlay');
-  if(o) o.style.display='none';
+  var o = document.getElementById('vc-modal-overlay'); if (o) o.style.display = 'none';
 }
 
 function vcOverlayClick(e) {
-  if(e.target===document.getElementById('vc-modal-overlay')) closeVcModal();
+  if (e.target === document.getElementById('vc-modal-overlay')) closeVcModal();
 }
 
+// ── Photo upload helpers ──────────────────────────────────────────────────────
 function vcDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('vc-drag-over'); }
+
 function vcDrop(e) {
   e.preventDefault(); e.currentTarget.classList.remove('vc-drag-over');
   vcLoadFiles(e.dataTransfer.files);
 }
+
 function vcFileSelected(e) { vcLoadFiles(e.target.files); }
+
 function vcLoadFiles(files) {
-  const imgs = Array.from(files).filter(f=>f.type.startsWith('image/'));
-  if(!imgs.length) return;
-  const remaining = 3 - _importImages.length;
-  imgs.slice(0, remaining).forEach(file => {
-    const r = new FileReader();
-    r.onload = function(ev) {
-      _importImages.push(ev.target.result);
-      vcRenderPhotoPreviews();
-    };
+  var imgs = Array.from(files).filter(function(f){ return f.type.startsWith('image/'); });
+  var remaining = 3 - _importImages.length;
+  imgs.slice(0, remaining).forEach(function(file) {
+    var r = new FileReader();
+    r.onload = function(ev) { _importImages.push(ev.target.result); vcRenderPhotoPreviews(); };
     r.readAsDataURL(file);
   });
 }
+
 function vcRenderPhotoPreviews() {
-  const wrap = document.getElementById('vc-photo-previews');
-  const inner = document.getElementById('vc-drop-inner');
-  if(!wrap) return;
-  if(_importImages.length === 0) {
+  var wrap  = document.getElementById('vc-photo-previews');
+  var inner = document.getElementById('vc-drop-inner');
+  if (!wrap) return;
+  if (_importImages.length === 0) {
     wrap.innerHTML = '';
-    if(inner) inner.style.display = 'flex';
+    if (inner) inner.style.display = 'flex';
     return;
   }
-  if(inner) inner.style.display = 'none';
-  wrap.innerHTML = _importImages.map((b64, i) =>
-    `<div class="vc-photo-thumb">
-      <img src="${b64}" alt="photo ${i+1}"/>
-      <button class="vc-thumb-del" onclick="vcRemovePhoto(${i},event)">✕</button>
-    </div>`
-  ).join('') + (_importImages.length < 3 ?
-    `<div class="vc-photo-add" onclick="document.getElementById('vc-file-input').click()">+ Add photo</div>` : '');
+  if (inner) inner.style.display = 'none';
+  var html = '';
+  for (var i = 0; i < _importImages.length; i++) {
+    html += '<div class="vc-photo-thumb"><img src="' + _importImages[i] + '" alt="photo ' + (i+1) + '"/><button class="vc-thumb-del" onclick="vcRemovePhoto(' + i + ',event)">\u2715</button></div>';
+  }
+  if (_importImages.length < 3) {
+    html += '<div class="vc-photo-add" onclick="document.getElementById(\'vc-file-input\').click()">+ Add photo</div>';
+  }
+  wrap.innerHTML = html;
 }
+
 function vcRemovePhoto(idx, e) {
   e.stopPropagation();
   _importImages.splice(idx, 1);
   vcRenderPhotoPreviews();
-  document.getElementById('vc-file-input').value = '';
+  var fi = document.getElementById('vc-file-input'); if (fi) fi.value = '';
 }
 
+// ── Save & delete ─────────────────────────────────────────────────────────────
 function saveVcModal() {
-  if(!isAdmin()) return;
-  const text = document.getElementById('vc-m-text')?.value?.trim();
-  const area = document.getElementById('vc-m-area')?.value?.trim();
-  const role = document.getElementById('vc-m-role')?.value?.trim();
-  if(!text && !_importImages.length && !document.getElementById('vc-m-video')?.value?.trim()) { showToast('Please add post text, a photo, or a video URL'); return; }
-  if(!area) { /* default area */ }
-  const fields = {
-    platform: document.getElementById('vc-m-platform')?.value||'other',
-    handle: document.getElementById('vc-m-handle')?.value?.trim()||'',
-    area: area||'Nairobi', role: role||'',
-    theme: document.getElementById('vc-m-theme')?.value||'governance',
-    mood: document.getElementById('vc-m-mood')?.value||'frustration',
-    text: text||'',
-    hope: document.getElementById('vc-m-hope')?.value?.trim()||null,
-    timestamp: document.getElementById('vc-m-time')?.value?.trim()||'',
-    likes: parseInt(document.getElementById('vc-m-likes')?.value)||0,
-    retweets: parseInt(document.getElementById('vc-m-retweets')?.value)||0,
-    views: parseInt(document.getElementById('vc-m-views')?.value)||0,
-    source: document.getElementById('vc-m-source')?.value?.trim()||null,
-    media_images: _importImages.length ? [..._importImages] : null,
-    screenshot_b64: _importImages.length ? _importImages[0] : null, // backward compat
-    video_url: document.getElementById('vc-m-video')?.value?.trim()||null,
+  if (!isAdmin()) return;
+  var text  = (document.getElementById('vc-m-text')?.value || '').trim();
+  var area  = (document.getElementById('vc-m-area')?.value || '').trim();
+  var role  = (document.getElementById('vc-m-role')?.value || '').trim();
+  var video = (document.getElementById('vc-m-video')?.value || '').trim();
+  if (!text && !_importImages.length && !video) {
+    showToast('Please add post text, a photo, or a video URL'); return;
+  }
+  var fields = {
+    platform:     document.getElementById('vc-m-platform')?.value || 'other',
+    handle:       (document.getElementById('vc-m-handle')?.value || '').trim(),
+    area:         area || 'Nairobi',
+    role:         role,
+    theme:        document.getElementById('vc-m-theme')?.value   || 'governance',
+    mood:         document.getElementById('vc-m-mood')?.value    || 'frustration',
+    text:         text,
+    hope:         (document.getElementById('vc-m-hope')?.value   || '').trim() || null,
+    timestamp:    (document.getElementById('vc-m-time')?.value   || '').trim(),
+    likes:        parseInt(document.getElementById('vc-m-likes')?.value)    || 0,
+    retweets:     parseInt(document.getElementById('vc-m-retweets')?.value) || 0,
+    views:        parseInt(document.getElementById('vc-m-views')?.value)    || 0,
+    source:       (document.getElementById('vc-m-source')?.value || '').trim() || null,
+    media_images: _importImages.length ? _importImages.slice() : null,
+    screenshot_b64: _importImages.length ? _importImages[0] : null,
+    video_url:    video || null,
   };
 
-  if(_vcMode==='edit' && _vcEditId) {
-    // Check if it's a seed voice or custom
-    const isSeeded = VOICE_SEED.some(s=>s.id===_vcEditId);
-    if(isSeeded) {
+  if (_vcMode === 'edit' && _vcEditId) {
+    var isSeeded = VOICE_SEED.some(function(s){ return s.id === _vcEditId; });
+    if (isSeeded) {
       saveVoiceEdit(_vcEditId, fields);
     } else {
-      // Update in localStorage
       try {
-        const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-        const extra = stored ? JSON.parse(stored) : [];
-        const idx = extra.findIndex(v=>v.id===_vcEditId);
-        if(idx>=0) { extra[idx]={...extra[idx],...fields}; localStorage.setItem(VOICE_STORAGE_KEY,JSON.stringify(extra)); }
+        var stored = localStorage.getItem(VOICE_STORAGE_KEY);
+        var list   = stored ? JSON.parse(stored) : [];
+        var idx    = list.findIndex(function(x){ return x.id === _vcEditId; });
+        if (idx >= 0) { list[idx] = Object.assign({}, list[idx], fields); localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list)); }
       } catch {}
     }
-    showToast('✓ Voice updated');
-  } else {
-    const newId = 'vc_'+Date.now();
-    const v = {id:newId, ...fields};
-    saveVoice(v);
-    const pc=PLATFORM_CONFIG[fields.platform]||PLATFORM_CONFIG.other;
+    showToast('\u2713 Voice updated');
     closeVcModal();
     renderVoices();
-    // Find the new card by data-id and scroll + flash it
-    setTimeout(() => {
-      const newCard = document.querySelector('[data-vcid="'+newId+'"]');
-      if(newCard) {
-        newCard.scrollIntoView({behavior:'smooth', block:'center'});
-        newCard.style.outline = '2px solid #5DBF7A';
-        newCard.style.outlineOffset = '3px';
-        setTimeout(() => { newCard.style.outline=''; newCard.style.outlineOffset=''; }, 2000);
-      }
-      showToast('✓ Voice added — highlighted in green');
-    }, 150);
-    return;
+  } else {
+    var newId = 'vc_' + Date.now();
+    if (saveVoice(Object.assign({id: newId}, fields))) {
+      closeVcModal();
+      renderVoices();
+      setTimeout(function() {
+        var card = document.querySelector('[data-vcid="' + newId + '"]');
+        if (card) {
+          card.scrollIntoView({behavior:'smooth', block:'center'});
+          card.style.outline = '2px solid #5DBF7A';
+          card.style.outlineOffset = '3px';
+          setTimeout(function(){ card.style.outline=''; card.style.outlineOffset=''; }, 2000);
+        }
+        showToast('\u2713 Voice added \u2014 highlighted in green');
+      }, 150);
+    }
   }
-  closeVcModal();
-  renderVoices();
 }
 
 function deleteVoice(id) {
-  if(!isAdmin()) return;
-  // Use inline toast-style confirmation instead of browser confirm() which is blocked on some browsers
-  const btn = document.querySelector(`.vc-del-btn[onclick="deleteVoice('${id}')"]`);
-  if(btn && !btn.dataset.confirmed) {
-    btn.dataset.confirmed = '1';
-    btn.textContent = 'Sure?';
-    btn.style.background = 'rgba(232,80,80,0.4)';
-    setTimeout(() => { if(btn) { btn.dataset.confirmed=''; btn.textContent='✕'; btn.style.background=''; } }, 2500);
+  if (!isAdmin()) return;
+  var btn = document.querySelector('.vc-del-btn[onclick="deleteVoice(\'' + id + '\')"]');
+  if (btn && !btn.dataset.confirmed) {
+    btn.dataset.confirmed = '1'; btn.textContent = 'Sure?'; btn.style.background = 'rgba(232,80,80,0.4)';
+    setTimeout(function(){ if(btn){btn.dataset.confirmed='';btn.textContent='\u2715';btn.style.background='';} }, 2500);
     return;
   }
-  const isSeeded = VOICE_SEED.some(s=>s.id===id);
-  if(isSeeded) {
-    const edits = JSON.parse(localStorage.getItem(VOICE_EDIT_KEY)||'{}');
-    edits[id+'_deleted'] = true;
-    localStorage.setItem(VOICE_EDIT_KEY, JSON.stringify(edits));
+  var isSeeded = VOICE_SEED.some(function(s){ return s.id === id; });
+  if (isSeeded) {
+    try {
+      var s = localStorage.getItem(VOICE_EDIT_KEY);
+      var edits = s ? JSON.parse(s) : {};
+      edits[id + '_deleted'] = true;
+      localStorage.setItem(VOICE_EDIT_KEY, JSON.stringify(edits));
+    } catch {}
   } else {
     try {
-      const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-      const extra = stored ? JSON.parse(stored) : [];
-      localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(extra.filter(v=>v.id!==id)));
+      var stored = localStorage.getItem(VOICE_STORAGE_KEY);
+      var list   = stored ? JSON.parse(stored) : [];
+      localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list.filter(function(v){ return v.id !== id; })));
     } catch {}
   }
   renderVoices();
 }
+
 
 
 
