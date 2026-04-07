@@ -3659,7 +3659,28 @@ function renderVoiceCard(v) {
   const moodColor = v.mood==='hope' ? '#5DBF7A' : v.mood==='mixed' ? '#C8A84B' : '#E85888';
   const moodLabel = v.mood==='hope' ? '✦ Hope' : v.mood==='mixed' ? '⟳ Complex' : '◈ Frustration';
   const themeObj = VOICE_THEMES[v.theme] || {icon:'🗣',label:v.theme};
-  const mediaHtml = vcMediaEmbed(v);
+  // Inline media rendering (photos + video)
+  const mediaHtml = (function(v) {
+    const images = v.media_images && v.media_images.length ? v.media_images : (v.screenshot_b64 ? [v.screenshot_b64] : []);
+    const video = v.video_url || null;
+    let html = '';
+    if(images.length) {
+      const cls = images.length === 1 ? 'vc-media-1' : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
+      html += '<div class="vc-media-grid ' + cls + '">' +
+        images.map((b64,i) => '<img src="' + b64 + '" class="vc-media-img" alt="photo ' + (i+1) + '" loading="lazy"/>').join('') +
+        '</div>';
+    }
+    if(video) {
+      const ytMatch = video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
+      const vimeoMatch = video.match(/vimeo\.com\/(\d+)/);
+      let embedSrc = '';
+      if(ytMatch) embedSrc = 'https://www.youtube.com/embed/' + ytMatch[1] + '?rel=0&modestbranding=1';
+      else if(vimeoMatch) embedSrc = 'https://player.vimeo.com/video/' + vimeoMatch[1];
+      if(embedSrc) html += '<div class="vc-video-wrap"><iframe src="' + embedSrc + '" class="vc-video-frame" allowfullscreen loading="lazy" frameborder="0"></iframe></div>';
+      else html += '<a href="' + video + '" target="_blank" rel="noopener" class="vc-video-link">▶ Watch video ↗</a>';
+    }
+    return html;
+  })(v);
   const adminBtns = admin ? `<div class="vc-admin-btns">
     <button class="vc-edit-btn" onclick="openEditModal('${v.id}')">✎ Edit</button>
     <button class="vc-del-btn" onclick="deleteVoice('${v.id}')">✕</button>
