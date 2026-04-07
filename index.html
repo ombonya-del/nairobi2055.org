@@ -3610,16 +3610,7 @@ const PLATFORM_CONFIG = {
 const VOICE_STORAGE_KEY = 'n2055_voices';
 const VOICE_EDIT_KEY = 'n2055_voices_edits'; // stores edits to seed voices
 
-function getVoices() {
-  try {
-    const stored = localStorage.getItem(VOICE_STORAGE_KEY);
-    const extra = stored ? JSON.parse(stored) : [];
-    // Apply any admin edits to seed voices
-    const edits = JSON.parse(localStorage.getItem(VOICE_EDIT_KEY)||'{}');
-    const seeds = VOICE_SEED.map(v => edits[v.id] ? {...v, ...edits[v.id]} : v);
-    return [...seeds, ...extra.filter(v=>!edits[v.id+'_deleted'])];
-  } catch { return [...VOICE_SEED]; }
-}
+
 
 function saveVoice(v) {
   try {
@@ -3798,6 +3789,7 @@ function renderVoiceCard(v) {
 }
 
 function renderVoices() {
+  try {
   const main = document.getElementById('main');
   const voices = getVoices();
   const admin = isAdmin();
@@ -3837,8 +3829,11 @@ function renderVoices() {
     ${importBtns}
     <div class="voices-grid">${cards}</div>
   </div>`;
-
-
+  } catch(err) {
+    const em=document.getElementById('main');
+    if(em) em.innerHTML='<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br>'+err.message+'</div>';
+    console.error('renderVoices crash:',err);
+  }
 }
 
 function vcInjectModal() { /* modal is static in DOM */ }
