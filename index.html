@@ -3628,7 +3628,20 @@ function saveVoice(v) {
     extra.push(v);
     localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(extra));
     return true;
-  } catch { return false; }
+  } catch(e) {
+    try {
+      const stored = localStorage.getItem(VOICE_STORAGE_KEY);
+      const extra = stored ? JSON.parse(stored) : [];
+      const slim = {...v, media_images:null, screenshot_b64:null};
+      extra.push(slim);
+      localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(extra));
+      showToast('Voice saved without photos — storage limit reached');
+      return true;
+    } catch(e2) {
+      showToast('Could not save — storage full. Clear browser data and retry.');
+      return false;
+    }
+  }
 }
 
 function saveVoiceEdit(id, fields) {
@@ -3639,40 +3652,15 @@ function saveVoiceEdit(id, fields) {
   } catch {}
 }
 
-function fmtNum(n) {
-  if(!n) return '';
-  if(n>=1000000) return (n/1000000).toFixed(1)+'M';
-  if(n>=1000) return (n/1000).toFixed(1)+'K';
-  return n.toString();
+function getVoices() {
+  let extra = [], edits = {};
+  try { const s=localStorage.getItem(VOICE_STORAGE_KEY); extra=s?JSON.parse(s):[]; } catch {}
+  try { const e=localStorage.getItem(VOICE_EDIT_KEY); edits=e?JSON.parse(e):{}; } catch {}
+  const seeds = VOICE_SEED.map(v => edits[v.id] ? {...v,...edits[v.id]} : v);
+  const validExtra = extra.filter(v => v && v.id && !edits[v.id+'_deleted']);
+  return [...seeds, ...validExtra];
 }
 
-function vcMediaEmbed(v) {
-  const images = v.media_images && v.media_images.length ? v.media_images : (v.screenshot_b64 ? [v.screenshot_b64] : []);
-  const video = v.video_url || null;
-  let html = '';
-  // Photo grid
-  if(images.length) {
-    const cls = images.length === 1 ? 'vc-media-1' : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
-    html += `<div class="vc-media-grid ${cls}">` +
-      images.map((b64,i) => `<img src="${b64}" class="vc-media-img" alt="photo ${i+1}" loading="lazy"/>`).join('') +
-      `</div>`;
-  }
-  // Video embed
-  if(video) {
-    let embedSrc = '';
-    const ytMatch = video.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/);
-    const vimeoMatch = video.match(/vimeo\.com\/(\d+)/);
-    if(ytMatch) embedSrc = `https://www.youtube.com/embed/${ytMatch[1]}?rel=0&modestbranding=1`;
-    else if(vimeoMatch) embedSrc = `https://player.vimeo.com/video/${vimeoMatch[1]}`;
-    if(embedSrc) {
-      html += `<div class="vc-video-wrap"><iframe src="${embedSrc}" class="vc-video-frame" allowfullscreen loading="lazy" frameborder="0"></iframe></div>`;
-    } else {
-      // X/Twitter or other — show as linked badge
-      html += `<a href="${video}" target="_blank" rel="noopener" class="vc-video-link">▶ Watch video ↗</a>`;
-    }
-  }
-  return html;
-}
 
 function renderVoiceCard(v) {
   const admin = isAdmin();
@@ -3691,7 +3679,7 @@ function renderVoiceCard(v) {
   // Screenshot card — now handled by mediaHtml in each platform card
   // Legacy: if ONLY screenshot_b64 and no other media, render as old screenshot card
   if(v.screenshot_b64 && !v.media_images && !v.video_url) {
-    return `<div class="voice-card vc-screenshot" style="--vc:${moodColor};--pc:${pc.color}">
+    return `<div class="voice-card vc-screenshot" data-vcid="${v.id}" style="--vc:${moodColor};--pc:${pc.color}">
       ${adminBtns}
       <div class="vc-platform-badge">${pc.icon} ${pc.label}</div>
       <img src="${v.screenshot_b64}" class="vc-screenshot-img" alt="Social media post" loading="lazy"/>
@@ -3708,7 +3696,7 @@ function renderVoiceCard(v) {
   // Twitter/X card
   if(v.platform==='twitter') {
     const initials = (v.handle||'N').replace('@','').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-twitter" style="--vc:${moodColor}">
+    return `<div class="voice-card vc-twitter" data-vcid="${v.id}" style="--vc:${moodColor}">
       ${adminBtns}
       <div class="vc-tw-header">
         <div class="vc-tw-avatar">${initials}</div>
@@ -3735,7 +3723,7 @@ function renderVoiceCard(v) {
   // Facebook card
   if(v.platform==='facebook') {
     const initials = (v.handle||'FB').replace(/[^A-Za-z]/g,'').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-facebook" style="--vc:${moodColor}">
+    return `<div class="voice-card vc-facebook" data-vcid="${v.id}" style="--vc:${moodColor}">
       ${adminBtns}
       <div class="vc-fb-header">
         <div class="vc-fb-avatar" style="background:linear-gradient(135deg,#1877F2,#00B4FF)">${initials}</div>
@@ -3755,7 +3743,7 @@ function renderVoiceCard(v) {
 
   // WhatsApp card
   if(v.platform==='whatsapp') {
-    return `<div class="voice-card vc-whatsapp" style="--vc:${moodColor}">
+    return `<div class="voice-card vc-whatsapp" data-vcid="${v.id}" style="--vc:${moodColor}">
       ${adminBtns}
       <div class="vc-wa-header">
         <div class="vc-wa-icon">●</div>
@@ -3777,7 +3765,7 @@ function renderVoiceCard(v) {
   // Instagram card
   if(v.platform==='instagram') {
     const initials = (v.handle||'IG').replace('@','').slice(0,2).toUpperCase();
-    return `<div class="voice-card vc-instagram" style="--vc:${moodColor}">
+    return `<div class="voice-card vc-instagram" data-vcid="${v.id}" style="--vc:${moodColor}">
       ${adminBtns}
       <div class="vc-ig-header">
         <div class="vc-ig-avatar">${initials}</div>
@@ -3794,7 +3782,7 @@ function renderVoiceCard(v) {
 
   // Generic / documented source card
   const srcDomain = v.source ? (() => { try { return new URL(v.source).hostname.replace('www.',''); } catch { return ''; }})() : '';
-  return `<div class="voice-card vc-documented" style="--vc:${moodColor}">
+  return `<div class="voice-card vc-documented" data-vcid="${v.id}" style="--vc:${moodColor}">
     ${adminBtns}
     <div class="vc-doc-header">
       <div class="vc-doc-meta">
@@ -4115,22 +4103,27 @@ function saveVcModal() {
     }
     showToast('✓ Voice updated');
   } else {
-    const v = {id:'vc_'+Date.now(), ...fields};
+    const newId = 'vc_'+Date.now();
+    const v = {id:newId, ...fields};
     saveVoice(v);
     const pc=PLATFORM_CONFIG[fields.platform]||PLATFORM_CONFIG.other;
-    const total = getVoices().length;
-    showToast('✓ Voice added ('+total+' total) — scroll down to see it');
+    closeVcModal();
+    renderVoices();
+    // Find the new card by data-id and scroll + flash it
+    setTimeout(() => {
+      const newCard = document.querySelector('[data-vcid="'+newId+'"]');
+      if(newCard) {
+        newCard.scrollIntoView({behavior:'smooth', block:'center'});
+        newCard.style.outline = '2px solid #5DBF7A';
+        newCard.style.outlineOffset = '3px';
+        setTimeout(() => { newCard.style.outline=''; newCard.style.outlineOffset=''; }, 2000);
+      }
+      showToast('✓ Voice added — highlighted in green');
+    }, 150);
+    return;
   }
   closeVcModal();
   renderVoices();
-  // Scroll to show newly added card (it appears at bottom of its mood group)
-  setTimeout(() => {
-    const grid = document.querySelector('.voices-grid');
-    if(grid) {
-      const cards = grid.querySelectorAll('.voice-card');
-      if(cards.length) cards[cards.length-1].scrollIntoView({behavior:'smooth', block:'center'});
-    }
-  }, 100);
 }
 
 function deleteVoice(id) {
