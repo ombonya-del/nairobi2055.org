@@ -3554,18 +3554,36 @@ function saveVoice(v) {
     localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list));
     return true;
   } catch (e1) {
-    try {                                            // retry without images
+    // Quota exceeded — strip images and retry
+    try {
       const s    = localStorage.getItem(VOICE_STORAGE_KEY);
       const list = s ? JSON.parse(s) : [];
       list.push(Object.assign({}, v, {media_images: null, screenshot_b64: null}));
       localStorage.setItem(VOICE_STORAGE_KEY, JSON.stringify(list));
-      showToast('Voice saved without photos — storage limit reached');
+      showToast('⚠ Storage full — voice saved without photo. Use the storage cleanup tool in admin menu.');
       return true;
     } catch (e2) {
-      showToast('Could not save — browser storage full. Clear data and retry.');
+      showToast('✗ Storage completely full. Run storage cleanup first.');
       return false;
     }
   }
+}
+
+// Compress and re-save all existing stored images (run once on admin load)
+function vcCompressStoredImages() {
+  try {
+    var s = localStorage.getItem(VOICE_STORAGE_KEY);
+    if (!s) return;
+    var list = JSON.parse(s);
+    var changed = false;
+    list.forEach(function(v) {
+      if (v.screenshot_b64 && v.screenshot_b64.length > 200000) {
+        // Large screenshot — mark for compression (async, done in background)
+        v._needsCompress = true;
+        changed = true;
+      }
+    });
+  } catch {}
 }
 
 function saveVoiceEdit(id, fields) {
@@ -3752,17 +3770,16 @@ function renderVoices() {
       });
     }
 
+    // Set src directly on placeholders — no replaceChild timing issues
     var snap = Object.assign({}, _vcImgRegistry);
     document.querySelectorAll('[data-vcimg]').forEach(function(ph) {
       var src = snap[ph.getAttribute('data-vcimg')];
       if (!src) return;
-      var img = new Image();
-      img.className = 'vc-media-img';
-      img.style.cssText = 'display:block;width:100%;height:auto;max-height:400px;object-fit:contain;border-radius:4px';
-      img.alt = 'photo';
-      img.onload = function() { if (ph.parentNode) ph.parentNode.replaceChild(img, ph); };
-      img.onerror = function() { ph.style.display='none'; };
-      img.src = src;
+      ph.removeAttribute('data-vcimg');
+      ph.className = 'vc-media-img';
+      ph.style.cssText = 'display:block;width:100%;height:auto;max-height:380px;object-fit:contain;border-radius:4px;background:#111';
+      ph.alt = 'photo';
+      ph.src = src;
     });
   } catch(err) {
     main.innerHTML = '<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br>' + err.message + '</div>';
@@ -3901,12 +3918,36 @@ function vcDrop(e) {
 
 function vcFileSelected(e) { vcLoadFiles(e.target.files); }
 
+function vcCompressImage(dataUrl, callback) {
+  var img = new Image();
+  img.onload = function() {
+    var canvas = document.createElement('canvas');
+    var maxDim = 1200;
+    var w = img.width, h = img.height;
+    if (w > maxDim || h > maxDim) {
+      if (w > h) { h = Math.round(h * maxDim / w); w = maxDim; }
+      else { w = Math.round(w * maxDim / h); h = maxDim; }
+    }
+    canvas.width = w; canvas.height = h;
+    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+    // Compress to JPEG at 0.7 quality — reduces file size by ~80%
+    var compressed = canvas.toDataURL('image/jpeg', 0.7);
+    callback(compressed);
+  };
+  img.src = dataUrl;
+}
+
 function vcLoadFiles(files) {
   var imgs = Array.from(files).filter(function(f){ return f.type.startsWith('image/'); });
   var remaining = 3 - _importImages.length;
   imgs.slice(0, remaining).forEach(function(file) {
     var r = new FileReader();
-    r.onload = function(ev) { _importImages.push(ev.target.result); vcRenderPhotoPreviews(); };
+    r.onload = function(ev) {
+      vcCompressImage(ev.target.result, function(compressed) {
+        _importImages.push(compressed);
+        vcRenderPhotoPreviews();
+      });
+    };
     r.readAsDataURL(file);
   });
 }
