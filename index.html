@@ -2918,14 +2918,40 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeViz();});
 
 const LNK_KEY='n2055_links';
 function getLinkOverrides(){try{return JSON.parse(localStorage.getItem(LNK_KEY)||'{}')}catch{return{}}}
-function applyLinkOverrides(){const ov=getLinkOverrides();document.querySelectorAll('.bench-link,.also-link').forEach(a=>{const lbl=a.querySelector('.cmp-cn')?.textContent||'';if(ov[lbl])a.href=ov[lbl];});}
+function applyLinkOverrides(){
+  var ov=getLinkOverrides();
+  document.querySelectorAll('.bench-link').forEach(function(a){
+    var lbl=a.querySelector('.cmp-cn')?.textContent||'';
+    if(ov[lbl])a.href=ov[lbl];
+  });
+  document.querySelectorAll('.also-link').forEach(function(a){
+    var strong=a.querySelector('strong');
+    var lbl=strong?strong.textContent.trim():(a.textContent.trim().slice(0,50));
+    if(ov[lbl])a.href=ov[lbl];
+  });
+}
 function openEditLinks(){
   const rows=document.getElementById('editRows'),ov=getLinkOverrides();rows.innerHTML='';
-  document.querySelectorAll('.bench-link').forEach(a=>{
-    const lbl=a.querySelector('.cmp-cn')?.textContent||'';if(!lbl)return;
-    const cur=ov[lbl]||a.getAttribute('href')||'';
-    rows.innerHTML+=`<div class="edit-row"><div class="edit-lbl" title="${lbl}">${lbl.substring(0,26)}${lbl.length>26?'…':''}</div><input value="${cur.replace(/"/g,'&quot;')}" data-label="${lbl.replace(/"/g,'&quot;')}" placeholder="https://..."/></div>`;
+  var added = new Set();
+
+  // Bench links (main headline links)
+  document.querySelectorAll('.bench-link').forEach(function(a){
+    var lbl=a.querySelector('.cmp-cn')?.textContent||'';if(!lbl||added.has(lbl))return;
+    added.add(lbl);
+    var cur=ov[lbl]||a.getAttribute('href')||'';
+    rows.innerHTML+='<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,28)+(lbl.length>28?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
   });
+
+  // Also-links (secondary reference links)
+  document.querySelectorAll('.also-link').forEach(function(a){
+    var strong=a.querySelector('strong');
+    var lbl=strong?strong.textContent.trim():(a.textContent.trim().slice(0,50));
+    if(!lbl||added.has(lbl))return;
+    added.add(lbl);
+    var cur=ov[lbl]||a.getAttribute('href')||'';
+    rows.innerHTML+='<div class="edit-row"><div class="edit-lbl edit-lbl-also" title="'+lbl+'">&#128196; '+lbl.substring(0,28)+(lbl.length>28?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+  });
+
   document.getElementById('editOverlay').classList.add('active');
 }
 function saveEditLinks(){
