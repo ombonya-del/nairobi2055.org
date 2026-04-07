@@ -3501,6 +3501,8 @@ const PLATFORM_CONFIG = {
 const VOICE_STORAGE_KEY = 'n2055_voices';
 const VOICE_EDIT_KEY    = 'n2055_voices_edits';
 let _importImages  = [];
+let _vcImgRegistry = {}; // stores base64 data separately from innerHTML
+let _vcImgCounter  = 0;
 let _importPlatform = 'other';
 let _vcMode        = 'add';
 let _vcEditId      = null;
@@ -3566,7 +3568,9 @@ function buildMediaHtml(v) {
             : images.length === 2 ? 'vc-media-2' : 'vc-media-3';
     html += '<div class="vc-media-grid ' + cls + '">';
     for (var i = 0; i < images.length; i++) {
-      html += '<img src="' + images[i] + '" class="vc-media-img" alt="photo"/>';
+      var imgIdx = _vcImgCounter++;
+      _vcImgRegistry[imgIdx] = images[i];
+      html += '<img data-vcimg="' + imgIdx + '" class="vc-media-img" alt="photo" style="min-height:40px;background:#1a1a1a;display:block;width:100%"/>';
     }
     html += '</div>';
   }
@@ -3689,6 +3693,7 @@ function renderVoices() {
       '<button class="vc-import-btn vc-ig-btn" onclick="openImportModal(\'instagram\')">\u25ce Instagram</button>' +
       '<button class="vc-import-btn vc-other-btn" onclick="openImportModal(\'other\')">\u25c8 News / Other</button>' +
       '</div>' : '';
+    _vcImgRegistry = {}; _vcImgCounter = 0; // reset before each render
     main.innerHTML = '<div class="voices-wrap">' +
       '<div class="voices-header">' +
         '<div class="vh-title">\uD83D\uDDE3 Nairobi\'s Voices \u2014 Real Nairobians. Real Issues.</div>' +
@@ -3703,6 +3708,20 @@ function renderVoices() {
       importBtns +
       '<div class="voices-grid">' + cards + '</div>' +
     '</div>';
+  // Apply images programmatically to bypass Chrome's innerHTML data-URL limitation
+  document.querySelectorAll('[data-vcimg]').forEach(function(img) {
+    var idx = img.getAttribute('data-vcimg');
+    if (_vcImgRegistry[idx]) {
+      var src = _vcImgRegistry[idx];
+      var newImg = new Image();
+      newImg.className = img.className;
+      newImg.style.cssText = 'display:block;width:100%;max-height:400px;object-fit:contain;border-radius:4px';
+      newImg.alt = img.alt;
+      newImg.onload = function() { img.parentNode && img.parentNode.replaceChild(newImg, img); };
+      newImg.onerror = function() { img.style.display='none'; };
+      newImg.src = src;
+    }
+  });
   } catch (err) {
     main.innerHTML = '<div style="padding:40px;color:#E85050;font-size:13px"><b>Voices tab error:</b><br><br>' + err.message + '</div>';
     console.error('renderVoices crash:', err);
