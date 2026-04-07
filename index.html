@@ -3673,6 +3673,7 @@ function renderVoiceCard(v) {
 function renderVoices() {
   var main = document.getElementById('main');
   if (!main) return;
+  _vcImgRegistry = {}; _vcImgCounter = 0; // reset BEFORE building cards
   try {
     var voices = getVoices();
     var byMood = {frustration:[], mixed:[], hope:[]};
@@ -3693,7 +3694,6 @@ function renderVoices() {
       '<button class="vc-import-btn vc-ig-btn" onclick="openImportModal(\'instagram\')">\u25ce Instagram</button>' +
       '<button class="vc-import-btn vc-other-btn" onclick="openImportModal(\'other\')">\u25c8 News / Other</button>' +
       '</div>' : '';
-    _vcImgRegistry = {}; _vcImgCounter = 0; // reset before each render
     main.innerHTML = '<div class="voices-wrap">' +
       '<div class="voices-header">' +
         '<div class="vh-title">\uD83D\uDDE3 Nairobi\'s Voices \u2014 Real Nairobians. Real Issues.</div>' +
