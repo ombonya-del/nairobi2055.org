@@ -484,14 +484,14 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-other-btn{background:rgba(200,168,75,0.12);color:#C8A84B;border-color:rgba(200,168,75,0.3)}
 .vc-other-btn:hover{background:rgba(200,168,75,0.25)}
 /* Grid */
-.voices-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-bottom:32px}
+.voices-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-bottom:32px;align-items:start}
 /* Base card */
-.voice-card{border-radius:12px;padding:0;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.voice-card{border-radius:12px;padding:0;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;height:fit-content;align-self:start}
 .voice-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
 .vc-del{position:absolute;top:8px;right:8px;background:rgba(232,80,80,0.2);border:1px solid rgba(232,80,80,0.4);color:#E85050;width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:10px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s;z-index:10}
 .voice-card:hover .vc-del{opacity:1}
 /* Twitter/X card */
-.vc-twitter{background:#15202B;border:1px solid #38444D;padding:16px}
+.vc-twitter{background:#15202B;border:1px solid #38444D;padding:14px}
 .vc-tw-header{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
 .vc-tw-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1DA1F2,#0d8ecf);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
 .vc-tw-meta{flex:1}
@@ -503,7 +503,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-tw-stat{color:#8B98A5}
 .vc-tw-area{font-size:11px;color:#6B7A87;margin-bottom:8px;line-height:1.5}
 /* Facebook card */
-.vc-facebook{background:#242526;border:1px solid #3E4042;padding:16px}
+.vc-facebook{background:#242526;border:1px solid #3E4042;padding:14px}
 .vc-fb-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .vc-fb-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
 .vc-fb-meta{flex:1}
@@ -514,7 +514,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-fb-reactions{display:flex;justify-content:space-between;font-size:12px;color:#8A8D91;padding:8px 0;border-top:1px solid #3E4042;border-bottom:1px solid #3E4042;margin-bottom:8px}
 .vc-fb-count{font-size:12px;color:#8A8D91}
 /* WhatsApp card */
-.vc-whatsapp{background:#0D1418;border:1px solid #25D36633;padding:16px}
+.vc-whatsapp{background:#0D1418;border:1px solid #25D36633;padding:14px}
 .vc-wa-header{display:flex;align-items:center;gap:8px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #1F2C33}
 .vc-wa-icon{font-size:18px;color:#25D366}
 .vc-wa-group{font-size:13px;font-weight:700;color:#E9EDEF;flex:1}
@@ -525,7 +525,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-wa-text{font-size:13px;color:#E9EDEF;line-height:1.6}
 .vc-wa-time{font-size:10px;color:#8696A0;text-align:right;margin-top:4px}
 /* Instagram card */
-.vc-instagram{background:#1A1A1A;border:1px solid #333;padding:16px}
+.vc-instagram{background:#1A1A1A;border:1px solid #333;padding:14px}
 .vc-ig-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .vc-ig-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
 .vc-ig-handle{font-size:13px;font-weight:700;color:#FAFAFA;flex:1}
@@ -539,7 +539,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-screen-footer{padding:10px 14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:#111;border-top:1px solid #333}
 /* Hope & area shared */
 .vc-hope{margin:10px 16px 14px;font-size:12px;color:#A0B0A0;line-height:1.6;padding:10px 12px;background:rgba(93,191,122,0.08);border-radius:6px;border-left:3px solid #5DBF7A}
-.vc-twitter .vc-hope,.vc-facebook .vc-hope,.vc-whatsapp .vc-hope,.vc-instagram .vc-hope{margin:0 0 4px}
+.vc-twitter .vc-hope,.vc-facebook .vc-hope,.vc-whatsapp .vc-hope,.vc-instagram .vc-hope{margin:8px 0 0}
 .vc-hope-label{font-size:11px;font-weight:700;color:#5DBF7A;display:block;margin-bottom:3px}
 .vc-mood-tag,.vc-area,.vc-theme-tag{font-size:11px;color:var(--text3)}
 /* Import modal */
@@ -573,7 +573,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 
 
 /* Documented source card */
-.vc-documented{background:#1A1C17;border:1px solid #333;padding:16px;border-top:3px solid var(--vc,#C8A84B)}
+.vc-documented{background:#1A1C17;border:1px solid #333;padding:14px;border-top:3px solid var(--vc,#C8A84B)}
 .vc-doc-header{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px}
 .vc-doc-name{font-size:13px;font-weight:700;color:#F0EAD6}
 .vc-doc-sub{font-size:11px;color:#6B7A87;margin-top:2px}
@@ -4080,11 +4080,11 @@ function saveVcModal() {
   const area = document.getElementById('vc-m-area')?.value?.trim();
   const role = document.getElementById('vc-m-role')?.value?.trim();
   if(!text && !_importImages.length && !document.getElementById('vc-m-video')?.value?.trim()) { showToast('Please add post text, a photo, or a video URL'); return; }
-  if(!area) { showToast('Please add an area / ward'); return; }
+  if(!area) { /* default area */ }
   const fields = {
     platform: document.getElementById('vc-m-platform')?.value||'other',
     handle: document.getElementById('vc-m-handle')?.value?.trim()||'',
-    area, role: role||'',
+    area: area||'Nairobi', role: role||'',
     theme: document.getElementById('vc-m-theme')?.value||'governance',
     mood: document.getElementById('vc-m-mood')?.value||'frustration',
     text: text||'',
@@ -4118,10 +4118,19 @@ function saveVcModal() {
     const v = {id:'vc_'+Date.now(), ...fields};
     saveVoice(v);
     const pc=PLATFORM_CONFIG[fields.platform]||PLATFORM_CONFIG.other;
-    showToast('✓ Voice imported — '+pc.label);
+    const total = getVoices().length;
+    showToast('✓ Voice added ('+total+' total) — scroll down to see it');
   }
   closeVcModal();
   renderVoices();
+  // Scroll to show newly added card (it appears at bottom of its mood group)
+  setTimeout(() => {
+    const grid = document.querySelector('.voices-grid');
+    if(grid) {
+      const cards = grid.querySelectorAll('.voice-card');
+      if(cards.length) cards[cards.length-1].scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  }, 100);
 }
 
 function deleteVoice(id) {
