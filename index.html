@@ -2919,38 +2919,74 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeViz();});
 const LNK_KEY='n2055_links';
 function getLinkOverrides(){try{return JSON.parse(localStorage.getItem(LNK_KEY)||'{}')}catch{return{}}}
 function applyLinkOverrides(){
-  var ov=getLinkOverrides();
+  var ov = getLinkOverrides();
+  // bench-link: label from .cmp-cn
   document.querySelectorAll('.bench-link').forEach(function(a){
-    var lbl=a.querySelector('.cmp-cn')?.textContent||'';
-    if(ov[lbl])a.href=ov[lbl];
+    var lbl = a.querySelector('.cmp-cn')?.textContent || '';
+    if (ov[lbl]) a.href = ov[lbl];
   });
+  // also-link: label from strong
   document.querySelectorAll('.also-link').forEach(function(a){
-    var strong=a.querySelector('strong');
-    var lbl=strong?strong.textContent.trim():(a.textContent.trim().slice(0,50));
-    if(ov[lbl])a.href=ov[lbl];
+    var strong = a.querySelector('strong');
+    var lbl = strong ? strong.textContent.trim() : a.textContent.trim().slice(0,50);
+    if (ov[lbl]) a.href = ov[lbl];
+  });
+  // bench-item: label from .bi-city
+  document.querySelectorAll('.bench-item[href], a.bench-item').forEach(function(a){
+    var cityEl = a.querySelector('.bi-city');
+    var lbl = cityEl ? cityEl.textContent.trim() : '';
+    if (lbl && ov[lbl]) a.href = ov[lbl];
   });
 }
 function openEditLinks(){
-  const rows=document.getElementById('editRows'),ov=getLinkOverrides();rows.innerHTML='';
+  var rows = document.getElementById('editRows');
+  var ov = getLinkOverrides();
+  rows.innerHTML = '';
   var added = new Set();
 
-  // Bench links (main headline links)
+  // Type 1: bench-link (main headline links — label from .cmp-cn)
   document.querySelectorAll('.bench-link').forEach(function(a){
-    var lbl=a.querySelector('.cmp-cn')?.textContent||'';if(!lbl||added.has(lbl))return;
+    var lbl = a.querySelector('.cmp-cn')?.textContent || '';
+    if (!lbl || added.has(lbl)) return;
     added.add(lbl);
-    var cur=ov[lbl]||a.getAttribute('href')||'';
-    rows.innerHTML+='<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,28)+(lbl.length>28?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    var cur = ov[lbl] || a.getAttribute('href') || '';
+    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
   });
 
-  // Also-links (secondary reference links)
+  // Type 2: also-link (secondary reference links — label from strong tag)
   document.querySelectorAll('.also-link').forEach(function(a){
-    var strong=a.querySelector('strong');
-    var lbl=strong?strong.textContent.trim():(a.textContent.trim().slice(0,50));
-    if(!lbl||added.has(lbl))return;
+    var strong = a.querySelector('strong');
+    var lbl = strong ? strong.textContent.trim() : a.textContent.trim().slice(0,50);
+    if (!lbl || added.has(lbl)) return;
     added.add(lbl);
-    var cur=ov[lbl]||a.getAttribute('href')||'';
-    rows.innerHTML+='<div class="edit-row"><div class="edit-lbl edit-lbl-also" title="'+lbl+'">&#128196; '+lbl.substring(0,28)+(lbl.length>28?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    var cur = ov[lbl] || a.getAttribute('href') || '';
+    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-also" title="'+lbl+'">&#128196; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
   });
+
+  // Type 3: bench-item (newer panel format — label from .bi-city)
+  document.querySelectorAll('.bench-item[href], a.bench-item').forEach(function(a){
+    var cityEl = a.querySelector('.bi-city');
+    var lbl = cityEl ? cityEl.textContent.trim() : a.textContent.trim().slice(0,50);
+    if (!lbl || added.has(lbl)) return;
+    added.add(lbl);
+    var cur = ov[lbl] || a.getAttribute('href') || '';
+    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+  });
+
+  // Type 4: any other anchor in the panel with an http href not yet captured
+  var panel = document.querySelector('#vizOv .vp-section, #vizOv [class*="panel"], #vizOv');
+  if (panel) {
+    Array.from(panel.querySelectorAll('a[href]')).forEach(function(a){
+      var href = a.getAttribute('href') || '';
+      if (!href.startsWith('http')) return;
+      // Use the most descriptive text available
+      var lbl = (a.querySelector('.bi-city, .cmp-cn, strong, b')?.textContent || a.textContent).trim().slice(0,60);
+      if (!lbl || added.has(lbl) || added.has(href)) return;
+      added.add(lbl);
+      var cur = ov[lbl] || href;
+      rows.innerHTML += '<div class="edit-row"><div class="edit-lbl" style="color:#aaa" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    });
+  }
 
   document.getElementById('editOverlay').classList.add('active');
 }
