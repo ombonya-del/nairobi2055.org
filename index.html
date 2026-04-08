@@ -2907,6 +2907,7 @@ function showViz(pid,sc,ph,ivIdx){
   document.getElementById('vPanel').innerHTML=v.getPanel();
   document.getElementById('vizOv').style.display='flex';
   document.body.style.overflow='hidden';
+  applyLinkOverrides(); // apply any saved URL overrides to newly injected panel
 }
 function closeViz(){
   closeEditLinks();
@@ -2950,7 +2951,11 @@ function openEditLinks(){
     if (!lbl || added.has(lbl)) return;
     added.add(lbl);
     var cur = ov[lbl] || a.getAttribute('href') || '';
-    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    var benchRow = '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div>'
+      + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..." data-savekey="1"/>'
+      + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
+      + '</div>';
+    rows.innerHTML += benchRow;
   });
 
   // Type 2: also-link (secondary reference links — label from strong tag)
@@ -2960,7 +2965,11 @@ function openEditLinks(){
     if (!lbl || added.has(lbl)) return;
     added.add(lbl);
     var cur = ov[lbl] || a.getAttribute('href') || '';
-    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-also" title="'+lbl+'">&#128196; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    var row_also = '<div class="edit-row"><div class="edit-lbl edit-lbl-also" title="'+lbl+'">&#128196; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div>'
+      + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..." data-savekey="1"/>'
+      + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
+      + '</div>';
+    rows.innerHTML += row_also;
   });
 
   // Type 3: bench-item (newer panel format — label from .bi-city)
@@ -2970,7 +2979,11 @@ function openEditLinks(){
     if (!lbl || added.has(lbl)) return;
     added.add(lbl);
     var cur = ov[lbl] || a.getAttribute('href') || '';
-    rows.innerHTML += '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+    var rowBenchItem = '<div class="edit-row"><div class="edit-lbl edit-lbl-bench" title="'+lbl+'">&#128196; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div>'
+      + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..." data-savekey="1"/>'
+      + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
+      + '</div>';
+    rows.innerHTML += rowBenchItem;
   });
 
   // Type 4: any other anchor in the panel with an http href not yet captured
@@ -2984,16 +2997,47 @@ function openEditLinks(){
       if (!lbl || added.has(lbl) || added.has(href)) return;
       added.add(lbl);
       var cur = ov[lbl] || href;
-      rows.innerHTML += '<div class="edit-row"><div class="edit-lbl" style="color:#aaa" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div><input value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..."/></div>';
+      rows.innerHTML += '<div class="edit-row"><div class="edit-lbl" style="color:#aaa" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div>'
+        + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..." data-savekey="1"/>'
+        + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
+        + '</div>';
     });
   }
 
   document.getElementById('editOverlay').classList.add('active');
+  // Wire up Enter key for all inputs
+  rows.querySelectorAll('[data-savekey]').forEach(function(inp) {
+    inp.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') saveSingleLink(inp.dataset.label, inp);
+    });
+  });
 }
 function saveEditLinks(){
-  const ov=getLinkOverrides();
-  document.querySelectorAll('#editRows input').forEach(inp=>{const v=inp.value.trim();if(v)ov[inp.dataset.label]=v;});
-  localStorage.setItem(LNK_KEY,JSON.stringify(ov));applyLinkOverrides();closeEditLinks();
+  var ov = getLinkOverrides();
+  document.querySelectorAll('#editRows input').forEach(function(inp){
+    var v = inp.value.trim();
+    if (v) ov[inp.dataset.label] = v;
+    else delete ov[inp.dataset.label]; // clearing a field removes override
+  });
+  localStorage.setItem(LNK_KEY, JSON.stringify(ov));
+  applyLinkOverrides();
+  closeEditLinks();
+}
+
+function saveSingleLink(label, inputEl) {
+  var ov = getLinkOverrides();
+  var v = inputEl.value.trim();
+  if (v) ov[label] = v;
+  else delete ov[label];
+  localStorage.setItem(LNK_KEY, JSON.stringify(ov));
+  applyLinkOverrides();
+  // Visual feedback
+  inputEl.style.borderColor = '#5DBF7A';
+  inputEl.style.background = 'rgba(93,191,122,0.1)';
+  setTimeout(function() {
+    inputEl.style.borderColor = '';
+    inputEl.style.background = '';
+  }, 1500);
 }
 function closeEditLinks(){
   const ov=document.getElementById('editOverlay');
@@ -3333,40 +3377,121 @@ function applyAdminMode(){
 }
 
 function openPreviewCodesModal(){
-  const PCODES = {"NRB2055-A1":"Peer Reviewer A","NRB2055-B2":"Peer Reviewer B","NRB2055-C3":"Peer Reviewer C","NRB2055-D4":"Peer Reviewer D","NRB2055-E5":"Peer Reviewer E","NRB2055-F6":"Peer Reviewer F","NRB2055-G7":"Peer Reviewer G","NRB2055-H8":"Peer Reviewer H","NRB2055-J9":"Peer Reviewer J","NRB2055-K0":"Peer Reviewer K"};
-  // Load saved names
-  let savedNames = {};
-  try{ savedNames = JSON.parse(localStorage.getItem('n2055_preview_names')||'{}'); }catch{}
-  const session = (()=>{ try{return JSON.parse(localStorage.getItem('n2055_preview')||'null');}catch{return null;} })();
-  let rows = '';
-  Object.entries(PCODES).forEach(([code,defaultName])=>{
-    const name = savedNames[code] || defaultName;
-    const isActive = session && session.code===code && session.expires>Date.now();
-    const isExp = session && session.code===code && session.expires<=Date.now();
-    const statusColor = isActive?'#5DBF7A':isExp?'#E85050':'#5C5C4E';
-    const statusText = isActive?'● Active':isExp?'✕ Expired':'○ Unused';
-    rows += `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-top:1px solid #2F342A">
-      <span style="font-family:monospace;font-size:10px;color:#C8A84B;background:#131610;padding:3px 8px;border-radius:4px;letter-spacing:.1em;font-weight:700;flex-shrink:0">${code}</span>
-      <input id="pcm-${code}" value="${name}" placeholder="Person name" style="flex:1;background:#131610;border:1px solid #3A3F32;color:#F0EAD6;padding:5px 9px;border-radius:5px;font-size:11px;outline:none"/>
-      <span style="font-size:8px;color:${statusColor};font-weight:700;flex-shrink:0;min-width:55px">${statusText}</span>
-      <button onclick="copyCode(this,'${code}')" style="background:transparent;border:1px solid #3A3F32;color:#8A8878;padding:3px 8px;border-radius:4px;font-size:8px;cursor:pointer;flex-shrink:0">Copy</button>
-    </div>`;
+  // Load customisations from localStorage
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
+
+  // Build the table rows — one per code
+  var rows = '';
+  Object.keys(PREVIEW_CODES).forEach(function(code) {
+    var name = saved[code] || PREVIEW_CODES[code];
+    var safeName = name.replace(/"/g, '&quot;');
+    var btnStyle = 'padding:2px 7px;border-radius:4px;cursor:pointer;font-size:9px;white-space:nowrap;';
+    var resetBtn = '<button data-code="' + code + '" data-action="reset" style="background:rgba(200,80,80,0.15);border:1px solid rgba(200,80,80,0.3);color:#E85050;' + btnStyle + '">&#8635; Reset</button>';
+    var copyBtn  = '<button data-code="' + code + '" data-action="copy"  style="background:rgba(93,191,122,0.15);border:1px solid rgba(93,191,122,0.3);color:#5DBF7A;' + btnStyle + '">&#128203; Copy link</button>';
+    var genBtn   = '<button data-code="' + code + '" data-action="gen"   style="background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);color:#C8A84B;' + btnStyle + '">&#8853; New code</button>';
+    rows += '<tr style="border-bottom:1px solid #2A2E26">'
+      + '<td style="padding:6px 4px;font-size:10px;font-family:monospace;color:#C8A84B;white-space:nowrap">' + code + '</td>'
+      + '<td style="padding:6px 4px"><input id="pc-name-' + code + '" value="' + name + '" style="background:#2A2E26;border:1px solid #3A3F32;border-radius:4px;color:#F0EAD6;padding:3px 6px;font-size:10px;width:100%;min-width:120px"/></td>'
+      + '<td style="padding:6px 4px;white-space:nowrap">'
+      + '<div style="display:flex;gap:4px;align-items:center">'
+      + copyBtn + genBtn + resetBtn
+      + '</div></td>'
+      + '</tr>';
   });
-  document.getElementById('pcModalRows').innerHTML = rows;
-  document.getElementById('previewCodesModal').style.display = 'flex';
+
+  var modal = document.getElementById('previewCodesModal');
+  modal.querySelector('#pcModalRows').innerHTML = '<table style="width:100%;border-collapse:collapse">'
+    + '<thead><tr>'
+    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">CODE</th>'
+    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">RECIPIENT NAME</th>'
+    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">ACTIONS</th>'
+    + '</tr></thead>'
+    + '<tbody>' + rows + '</tbody></table>';
+  modal.style.display = 'flex';
+  // Wire up buttons via delegation
+  modal.querySelector('#pcModalRows').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-action]');
+    if (!btn) return;
+    var code = btn.dataset.code;
+    var action = btn.dataset.action;
+    if (action === 'reset') pcResetCode(code);
+    else if (action === 'gen') pcGenCode(code);
+    else if (action === 'copy') {
+      var name = (document.getElementById('pc-name-' + code) || {value: PREVIEW_CODES[code]}).value;
+      pcCopyCode(code, name);
+    }
+  });
 }
 
 function savePreviewNamesModal(){
-  const PCODES = {"NRB2055-A1":"Peer Reviewer A","NRB2055-B2":"Peer Reviewer B","NRB2055-C3":"Peer Reviewer C","NRB2055-D4":"Peer Reviewer D","NRB2055-E5":"Peer Reviewer E","NRB2055-F6":"Peer Reviewer F","NRB2055-G7":"Peer Reviewer G","NRB2055-H8":"Peer Reviewer H","NRB2055-J9":"Peer Reviewer J","NRB2055-K0":"Peer Reviewer K"};
-  const names = {};
-  Object.keys(PCODES).forEach(code=>{
-    const el = document.getElementById('pcm-'+code);
-    if(el) names[code] = el.value;
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
+  Object.keys(PREVIEW_CODES).forEach(function(code) {
+    var inp = document.getElementById('pc-name-' + code);
+    if (inp) saved[code] = inp.value.trim() || PREVIEW_CODES[code];
   });
-  localStorage.setItem('n2055_preview_names', JSON.stringify(names));
-  const btn = document.querySelector('[onclick="savePreviewNamesModal()"]');
-  if(btn){ btn.textContent='✓ Saved!'; setTimeout(()=>btn.textContent='✓ Save Names',1500); }
+  localStorage.setItem('n2055_preview_names', JSON.stringify(saved));
+  showToast('Names saved');
 }
+
+function pcCopyCode(code, name) {
+  // Save name first
+  savePreviewNamesModal();
+  var url = 'https://nairobi2055.org?preview=1&code=' + code;
+  var nl = '\n';
+  var msg = 'Hi ' + name + ',' + nl + nl
+    + 'Here is your private preview link for the Nairobi 2055 Transformation Master Plan:' + nl + nl
+    + url + nl + nl
+    + 'Your access code: ' + code + nl
+    + 'You have 25 minutes to explore the plan. Please keep this link confidential.' + nl + nl
+    + 'Nairobi 2055 Team';
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(msg).then(function() { showToast('Copied message for ' + name + ' — paste into email/WhatsApp'); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = msg; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('Copied message for ' + name);
+  }
+}
+
+function pcGenCode(oldCode) {
+  // Generate a new random code and replace the old one
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var newCode = 'NRB' + new Date().getFullYear() + '-';
+  for (var i = 0; i < 2; i++) newCode += chars[Math.floor(Math.random() * chars.length)];
+  newCode += Math.floor(Math.random() * 10);
+  // Save the mapping
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
+  var name = (document.getElementById('pc-name-' + oldCode) || {}).value || PREVIEW_CODES[oldCode] || 'Peer Reviewer';
+  delete saved[oldCode];
+  saved[newCode] = name;
+  // Clear any active session for old code
+  var sessions = {};
+  try { sessions = JSON.parse(localStorage.getItem('n2055_preview') || '{}'); } catch {}
+  delete sessions[oldCode];
+  localStorage.setItem('n2055_preview_names', JSON.stringify(saved));
+  localStorage.setItem('n2055_preview', JSON.stringify(sessions));
+  // Update PREVIEW_CODES in memory
+  PREVIEW_CODES[newCode] = name;
+  delete PREVIEW_CODES[oldCode];
+  showToast('New code generated: ' + newCode + ' — refresh codes panel to see it');
+  openPreviewCodesModal();
+}
+
+function pcResetCode(code) {
+  // Clear the active session for this code so it can be reused
+  var sessions = {};
+  try { sessions = JSON.parse(localStorage.getItem('n2055_preview') || '{}'); } catch {}
+  delete sessions[code];
+  localStorage.setItem('n2055_preview', JSON.stringify(sessions));
+  showToast('Code ' + code + ' reset — can be used again for a fresh 25-min session');
+}
+
+
 
 
 // ── PREVIEW ACCESS SYSTEM ───────────────────────────────────
