@@ -2921,16 +2921,27 @@ const LNK_KEY='n2055_links';
 function getLinkOverrides(){try{return JSON.parse(localStorage.getItem(LNK_KEY)||'{}')}catch{return{}}}
 function applyLinkOverrides(){
   var ov = getLinkOverrides();
-  if (!Object.keys(ov).length) return;
-  // Apply overrides to ALL anchors in the viz overlay
-  // Keys can be: label text (old style) OR original href (new style)
-  document.querySelectorAll('#vizOv a[href], #vMap a[href], #vPanel a[href]').forEach(function(a){
-    var href = a.getAttribute('href') || '';
-    var lbl = (a.querySelector('.cmp-cn, .bi-city, strong, b') || {textContent:''}).textContent.trim()
-              || a.textContent.trim().replace(/↗/g,'').trim().slice(0,60);
-    // Match by original href (preferred) or by label text (legacy)
-    if (href && ov[href]) { a.href = ov[href]; }
-    else if (lbl && ov[lbl]) { a.href = ov[lbl]; }
+  // bench-link: label from .cmp-cn
+  document.querySelectorAll('.bench-link').forEach(function(a){
+    var lbl = a.querySelector('.cmp-cn')?.textContent || '';
+    if (ov[lbl]) a.href = ov[lbl];
+  });
+  // also-link: label from strong
+  document.querySelectorAll('.also-link').forEach(function(a){
+    var strong = a.querySelector('strong');
+    var lbl = strong ? strong.textContent.trim() : a.textContent.trim().slice(0,50);
+    if (ov[lbl]) a.href = ov[lbl];
+  });
+  // bench-item: label from .bi-city
+  document.querySelectorAll('.bench-item[href], a.bench-item').forEach(function(a){
+    var cityEl = a.querySelector('.bi-city');
+    var lbl = cityEl ? cityEl.textContent.trim() : '';
+    if (lbl && ov[lbl]) a.href = ov[lbl];
+  });
+  // ALL other anchors: match by original href
+  document.querySelectorAll('#vizOv a[href]').forEach(function(a){
+    var href = a.getAttribute('href')||'';
+    if(href && ov[href]) a.href = ov[href];
   });
 }
 function openEditLinks(){
@@ -2980,21 +2991,19 @@ function openEditLinks(){
     rows.innerHTML += rowBenchItem;
   });
 
-  // Type 4: any other anchor with http href — use href as key
-  var panel = document.getElementById('vizOv');
+  // Type 4: any other anchor in the panel with an http href not yet captured
+  var panel = document.querySelector('#vizOv .vp-section, #vizOv [class*="panel"], #vizOv');
   if (panel) {
     Array.from(panel.querySelectorAll('a[href]')).forEach(function(a){
       var href = a.getAttribute('href') || '';
       if (!href.startsWith('http')) return;
-      if (added.has(href)) return;
-      added.add(href);
-      var labelText = (a.querySelector('.bi-city, .cmp-cn, strong, b') || {textContent:''}).textContent.trim()
-                      || a.textContent.trim().replace(/\u2197/g,'').replace(/\u2197/g,'').trim();
-      var display = labelText.substring(0,30) + (labelText.length>30?'&hellip;':'');
-      var cur = ov[href] || href;
-      rows.innerHTML += '<div class="edit-row">'
-        + '<div class="edit-lbl" style="color:#aaa" title="'+href+'">&#128279; '+display+'</div>'
-        + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+href.replace(/"/g,'&quot;')+'" data-savekey="1" placeholder="https://..."/>'
+      // Use the most descriptive text available
+      var lbl = (a.querySelector('.bi-city, .cmp-cn, strong, b')?.textContent || a.textContent).trim().slice(0,60);
+      if (!lbl || added.has(lbl) || added.has(href)) return;
+      added.add(lbl);
+      var cur = ov[lbl] || href;
+      rows.innerHTML += '<div class="edit-row"><div class="edit-lbl" style="color:#aaa" title="'+lbl+'">&#128279; '+lbl.substring(0,30)+(lbl.length>30?'&hellip;':'')+'</div>'
+        + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+lbl.replace(/"/g,'&quot;')+'" placeholder="https://..." data-savekey="1"/>'
         + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
         + '</div>';
     });
@@ -3442,15 +3451,8 @@ function pcCopyCode(code, name) {
     + 'Your access code: ' + code + nl
     + 'You have 25 minutes to explore the plan. Please keep this link confidential.' + nl + nl
     + 'Nairobi 2055 Team';
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(msg).then(function() { showToast('Copied message for ' + name + ' — paste into email/WhatsApp'); });
-  } else {
-    var ta = document.createElement('textarea');
-    ta.value = msg; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-    document.body.removeChild(ta);
-    showToast('Copied message for ' + name);
-  }
+  function doCopy(){var ta=document.createElement('textarea');ta.value=msg;ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);showToast('\u2713 Copied for '+name+' \u2014 paste into email or WhatsApp');}
+  if(navigator.clipboard&&document.hasFocus()){navigator.clipboard.writeText(msg).then(function(){showToast('\u2713 Copied for '+name+' \u2014 paste into email or WhatsApp');}).catch(doCopy);}else{doCopy();}
 }
 
 function pcGenCode(oldCode) {
