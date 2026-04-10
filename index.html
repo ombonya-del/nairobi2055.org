@@ -225,7 +225,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .viz-close:hover{border-color:#E85050;color:#E85050}
 .viz-body{display:grid;grid-template-columns:1.2fr 1fr}
 @media(max-width:740px){.viz-body{grid-template-columns:1fr}}
-.viz-map{padding:18px;border-right:1px solid var(--border)}
+.viz-map{padding:18px;border-right:1px solid var(--border);overflow:hidden}.viz-map svg{overflow:hidden;display:block}
 .viz-panel{padding:18px;overflow-y:auto;max-height:82vh}
 .vsect{font-size:9px;color:var(--text4);text-transform:uppercase;letter-spacing:.13em;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:7px}
 .vsect::after{content:'';flex:1;height:1px;background:var(--border)}
@@ -1063,16 +1063,16 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <!-- Phase 2 legend -->
 <line x1="40" y1="395" x2="90" y2="395" stroke="#2255AA" stroke-width="6" stroke-linecap="round" stroke-dasharray="10,5"/>
 <text x="98" y="399" fill="#C8A84B" font-size="9" font-weight="600" font-family="system-ui">Phase 2 (2035–2045)</text>
-<text x="98" y="411" fill="#8A8878" font-size="8" font-family="system-ui">Full 20km corridor · All 168 outfalls removed · Mixed-use edge development · 300,000+...</text>
+<text x="98" y="411" fill="#8A8878" font-size="8" font-family="system-ui">Full 20km corridor · All 168 outfalls removed · Mixed-use edge development · 300,000+ daily users</text>
 
 <!-- Cycling path legend -->
 <line x1="40" y1="430" x2="90" y2="430" stroke="#C8A84B" stroke-width="2" stroke-linecap="round" stroke-dasharray="8,3"/>
 <text x="98" y="434" fill="#C8A84B" font-size="9" font-weight="600" font-family="system-ui">Proposed cycling + walking path</text>
-<text x="98" y="446" fill="#8A8878" font-size="8" font-family="system-ui">Continuous 20km uninterrupted path · Connects Chiromo to Eastlands · Integrated with B...</text>
+<text x="98" y="446" fill="#8A8878" font-size="8" font-family="system-ui">Continuous 20km uninterrupted path · Connects Chiromo to Eastlands · Integrated with BRT stations</text>
 
 <!-- Settlement dots legend -->
 <ellipse cx="60" cy="462" rx="16" ry="9" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="1.2" stroke-dasharray="2,1"/>
-<text x="98" y="465" fill="#5DBF7A" font-size="9" font-family="system-ui">Informal settlements adjacent to corridor — sewer connections from in-situ u...</text>
+<text x="98" y="465" fill="#5DBF7A" font-size="9" font-family="system-ui">Informal settlements adjacent to corridor — sewer connections from in-situ upgrading eliminate r...</text>
 
 <text x="272" y="477" text-anchor="middle" fill="#3A3F32" font-size="7" font-family="system-ui">Geographic schematic · River path based on OSM data · Not to exact scale · Coordinates approximate</text>
 </svg></template>
@@ -1387,8 +1387,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <rect x="278" y="258" width="258" height="60" fill="#1E2A1A" rx="0"/>
 <text x="290" y="274" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Piped water — every plot connected to mains</text>
 <text x="290" y="287" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Sewer connection — river pollution eliminated</text>
-<text x="290" y="300" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Street lighting — safe at night for all re...</text>
-<text x="290" y="313" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Title deed issued — tenure secure, home is...</text>
+<text x="290" y="300" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Street lighting — safe at night for all residents</text>
+<text x="290" y="313" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓  Title deed issued — tenure secure, home is theirs</text>
 
 <!-- ════════════════════════════════════════════════════════
      CENTRE DIVIDER  
@@ -1413,7 +1413,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <text x="372" y="372" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">residents own their homes legally</text>
 <text x="500" y="346" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="Georgia,serif">Community led</text>
 <text x="500" y="360" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700" font-family="Georgia,serif">CO-DESIGN</text>
-<text x="500" y="372" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">residents sha...</text>
+<text x="500" y="372" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">residents...</text>
 
 <!-- Scale comparison -->
 <rect x="8" y="390" width="255" height="44" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
@@ -1422,7 +1422,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 
 <rect x="272" y="390" width="264" height="44" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
 <text x="404" y="408" text-anchor="middle" fill="#C4BFA8" font-size="9" font-weight="600" font-family="system-ui">European comparison</text>
-<text x="404" y="424" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700" font-family="Georgia,serif">Medellín comunas · Rotterdam social housing ·...</text>
+<text x="404" y="424" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700" font-family="Georgia,serif">Medellín comunas · Rotterdam...</text>
 
 <text x="272" y="448" text-anchor="middle" fill="#3A3F32" font-size="7.5" font-family="system-ui">Street-level illustration — composite view of typical Mathare ward block before and after in-situ upgrading</text>
 </svg></template>
@@ -1450,7 +1450,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <template id="viz-tpl-matatu-map"><svg viewBox="0 0 544 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="360" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Matatu Buyback — Circular Economy Pipeline</text>
-<text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Voluntary buyback · MOA partnership · Scrap steel · Kenyan rail tracks · 25,000 vehicles o...</text>
+<text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Voluntary buyback · MOA partnership · Scrap steel · Kenyan rail tracks · 25,000 vehicles over 30 years</text>
 <!-- Flow nodes -->
 <!-- Node 1: Matatus -->
 <rect x="20" y="120" width="88" height="72" fill="#21251C" rx="10" stroke="#E8844A" stroke-width="2"/>
@@ -2993,9 +2993,11 @@ function openEditLinks(){
                       || a.textContent.trim().replace(/\u2197/g,'').replace(/\u2197/g,'').trim();
       var display = labelText.substring(0,30) + (labelText.length>30?'&hellip;':'');
       var cur = ov[href] || href;
+      var safeHref=href.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
+      var safeCur=cur.replace(/&/g,'&amp;').replace(/"/g,'&quot;');
       rows.innerHTML += '<div class="edit-row">'
-        + '<div class="edit-lbl" style="color:#aaa" title="'+href+'">&#128279; '+display+'</div>'
-        + '<input class="edit-inp" value="'+cur.replace(/"/g,'&quot;')+'" data-label="'+href.replace(/"/g,'&quot;')+'" data-savekey="1" placeholder="https://..."/>'
+        + '<div class="edit-lbl" style="color:#aaa" title="'+safeHref+'">&#128279; '+display+'</div>'
+        + '<input class="edit-inp" value="'+safeCur+'" data-label="'+safeHref+'" data-savekey="1" placeholder="https://..."/>'
         + '<button class="edit-save-one" onclick="saveSingleLink(this.previousElementSibling.dataset.label,this.previousElementSibling)">&#10003;</button>'
         + '</div>';
     });
@@ -4315,7 +4317,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-silicon-map"><svg viewBox="0 0 544 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="380" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Silicon Savannah 2.0 — 10 Sector Accelerators</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Nairobi as Africa leading innovation economy · $2B FDI target · 200K tech jobs by 2035</text><rect x="16" y="56" width="252" height="48" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1.5"/><text x="30" y="73" font-size="18">💰</text><text x="58" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">FinTech &amp; M-Pesa</text><text x="58" y="87" fill="#8A8878" font-size="8.5" font-family="system-ui">Mobile payments · DeFi · Insurance · Credit scoring</text><text x="256" y="87" text-anchor="end" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="Georgia,serif">$800M VC</text><rect x="16" y="112" width="252" height="48" fill="#21251C" rx="7" stroke="#5DBF7A" stroke-width="1.5"/><text x="30" y="129" font-size="18">🌾</text><text x="58" y="129" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">AgriTech</text><text x="58" y="143" fill="#8A8878" font-size="8.5" font-family="system-ui">Precision farming · Supply chain · Cold storage</text><text x="256" y="143" text-anchor="end" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="Georgia,serif">5M farmers</text><rect x="16" y="168" width="252" height="48" fill="#21251C" rx="7" stroke="#E85888" stroke-width="1.5"/><text x="30" y="185" font-size="18">🏥</text><text x="58" y="185" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">HealthTech</text><text x="58" y="199" fill="#8A8878" font-size="8.5" font-family="system-ui">Telemedicine · Diagnostics · EHR · Drug supply</text><text x="256" y="199" text-anchor="end" fill="#E85888" font-size="8.5" font-weight="700" font-family="Georgia,serif">Export ready</text><rect x="16" y="224" width="252" height="48" fill="#21251C" rx="7" stroke="#3FBFB0" stroke-width="1.5"/><text x="30" y="241" font-size="18">🌿</text><text x="58" y="241" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">ClimateTech</text><text x="58" y="255" fill="#8A8878" font-size="8.5" font-family="system-ui">Carbon markets · Solar · EV · Green buildings</text><text x="256" y="255" text-anchor="end" fill="#3FBFB0" font-size="8.5" font-weight="700" font-family="Georgia,serif">GCF eligible</text><rect x="16" y="280" width="252" height="48" fill="#21251C" rx="7" stroke="#8B79E8" stroke-width="1.5"/><text x="30" y="297" font-size="18">📡</text><text x="58" y="297" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">EdTech</text><text x="58" y="311" fill="#8A8878" font-size="8.5" font-family="system-ui">AI tutoring · Skills · Swahili content · VET</text><text x="256" y="311" text-anchor="end" fill="#8B79E8" font-size="8.5" font-weight="700" font-family="Georgia,serif">Pan-African</text><rect x="278" y="56" width="252" height="48" fill="#21251C" rx="7" stroke="#378ADD" stroke-width="1.5"/><text x="292" y="73" font-size="18">🏗️</text><text x="320" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">PropTech</text><text x="320" y="87" fill="#8A8878" font-size="8.5" font-family="system-ui">Digital title deeds · Tokenized REITs ·...</text><text x="518" y="87" text-anchor="end" fill="#378ADD" font-size="8.5" font-weight="700" font-family="Georgia,serif">Settlement-first</text><rect x="278" y="112" width="252" height="48" fill="#21251C" rx="7" stroke="#E8844A" stroke-width="1.5"/><text x="292" y="129" font-size="18">🚚</text><text x="320" y="129" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">LogiTech</text><text x="320" y="143" fill="#8A8878" font-size="8.5" font-family="system-ui">Last-mile delivery · EV fleet · Cold ch...</text><text x="518" y="143" text-anchor="end" fill="#E8844A" font-size="8.5" font-weight="700" font-family="Georgia,serif">EAC corridor</text><rect x="278" y="168" width="252" height="48" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1.5"/><text x="292" y="185" font-size="18">🔒</text><text x="320" y="185" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">CyberSec + GovTech</text><text x="320" y="199" fill="#8A8878" font-size="8.5" font-family="system-ui">Identity · Data sovereignty · e-Gov API...</text><text x="518" y="199" text-anchor="end" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="Georgia,serif">National infra</text><rect x="278" y="224" width="252" height="48" fill="#21251C" rx="7" stroke="#78BF45" stroke-width="1.5"/><text x="292" y="241" font-size="18">🎬</text><text x="320" y="241" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Creative MediaTech</text><text x="320" y="255" fill="#8A8878" font-size="8.5" font-family="system-ui">Streaming · Gaming · Swahili AI · Matat...</text><text x="518" y="255" text-anchor="end" fill="#78BF45" font-size="8.5" font-weight="700" font-family="Georgia,serif">200M market</text><rect x="278" y="280" width="252" height="48" fill="#21251C" rx="7" stroke="#E85050" stroke-width="1.5"/><text x="292" y="297" font-size="18">🏭</text><text x="320" y="297" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">ManuTech</text><text x="320" y="311" fill="#8A8878" font-size="8.5" font-family="system-ui">EV assembly · Solar panels · Medical de...</text><text x="518" y="311" text-anchor="end" fill="#E85050" font-size="8.5" font-weight="700" font-family="Georgia,serif">Made in Kenya</text>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Nairobi as Africa leading innovation economy · $2B FDI target · 200K tech jobs by 2035</text><rect x="16" y="56" width="252" height="48" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1.5"/><text x="30" y="73" font-size="18">💰</text><text x="58" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">FinTech &amp; M-Pesa</text><text x="58" y="87" fill="#8A8878" font-size="8.5" font-family="system-ui">Mobile payments · DeFi · Insurance · Credit scoring</text><text x="256" y="87" text-anchor="end" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="Georgia,serif">$800M VC</text><rect x="16" y="112" width="252" height="48" fill="#21251C" rx="7" stroke="#5DBF7A" stroke-width="1.5"/><text x="30" y="129" font-size="18">🌾</text><text x="58" y="129" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">AgriTech</text><text x="58" y="143" fill="#8A8878" font-size="8.5" font-family="system-ui">Precision farming · Supply chain · Cold storage</text><text x="256" y="143" text-anchor="end" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="Georgia,serif">5M farmers</text><rect x="16" y="168" width="252" height="48" fill="#21251C" rx="7" stroke="#E85888" stroke-width="1.5"/><text x="30" y="185" font-size="18">🏥</text><text x="58" y="185" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">HealthTech</text><text x="58" y="199" fill="#8A8878" font-size="8.5" font-family="system-ui">Telemedicine · Diagnostics · EHR · Drug supply</text><text x="256" y="199" text-anchor="end" fill="#E85888" font-size="8.5" font-weight="700" font-family="Georgia,serif">Export ready</text><rect x="16" y="224" width="252" height="48" fill="#21251C" rx="7" stroke="#3FBFB0" stroke-width="1.5"/><text x="30" y="241" font-size="18">🌿</text><text x="58" y="241" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">ClimateTech</text><text x="58" y="255" fill="#8A8878" font-size="8.5" font-family="system-ui">Carbon markets · Solar · EV · Green buildings</text><text x="256" y="255" text-anchor="end" fill="#3FBFB0" font-size="8.5" font-weight="700" font-family="Georgia,serif">GCF eligible</text><rect x="16" y="280" width="252" height="48" fill="#21251C" rx="7" stroke="#8B79E8" stroke-width="1.5"/><text x="30" y="297" font-size="18">📡</text><text x="58" y="297" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">EdTech</text><text x="58" y="311" fill="#8A8878" font-size="8.5" font-family="system-ui">AI tutoring · Skills · Swahili content · VET</text><text x="256" y="311" text-anchor="end" fill="#8B79E8" font-size="8.5" font-weight="700" font-family="Georgia,serif">Pan-African</text><rect x="278" y="56" width="252" height="48" fill="#21251C" rx="7" stroke="#378ADD" stroke-width="1.5"/><text x="292" y="73" font-size="18">🏗️</text><text x="320" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">PropTech</text><text x="320" y="87" fill="#8A8878" font-size="8.5" font-family="system-ui">Digital title deeds · Tokenized REITs · Rental</text><text x="518" y="87" text-anchor="end" fill="#378ADD" font-size="8.5" font-weight="700" font-family="Georgia,serif">Settlement-first</text><rect x="278" y="112" width="252" height="48" fill="#21251C" rx="7" stroke="#E8844A" stroke-width="1.5"/><text x="292" y="129" font-size="18">🚚</text><text x="320" y="129" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">LogiTech</text><text x="320" y="143" fill="#8A8878" font-size="8.5" font-family="system-ui">Last-mile delivery · EV fleet · Cold chain · Ports</text><text x="518" y="143" text-anchor="end" fill="#E8844A" font-size="8.5" font-weight="700" font-family="Georgia,serif">EAC corridor</text><rect x="278" y="168" width="252" height="48" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1.5"/><text x="292" y="185" font-size="18">🔒</text><text x="320" y="185" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">CyberSec + GovTech</text><text x="320" y="199" fill="#8A8878" font-size="8.5" font-family="system-ui">Identity · Data sovereignty · e-Gov APIs · Blockch...</text><text x="518" y="199" text-anchor="end" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="Georgia,serif">National infra</text><rect x="278" y="224" width="252" height="48" fill="#21251C" rx="7" stroke="#78BF45" stroke-width="1.5"/><text x="292" y="241" font-size="18">🎬</text><text x="320" y="241" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Creative MediaTech</text><text x="320" y="255" fill="#8A8878" font-size="8.5" font-family="system-ui">Streaming · Gaming · Swahili AI · Matatu NFTs</text><text x="518" y="255" text-anchor="end" fill="#78BF45" font-size="8.5" font-weight="700" font-family="Georgia,serif">200M market</text><rect x="278" y="280" width="252" height="48" fill="#21251C" rx="7" stroke="#E85050" stroke-width="1.5"/><text x="292" y="297" font-size="18">🏭</text><text x="320" y="297" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">ManuTech</text><text x="320" y="311" fill="#8A8878" font-size="8.5" font-family="system-ui">EV assembly · Solar panels · Medical devices · Rail</text><text x="518" y="311" text-anchor="end" fill="#E85050" font-size="8.5" font-weight="700" font-family="Georgia,serif">Made in Kenya</text>
 <rect x="16" y="336" width="512" height="36" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="64" y="351" text-anchor="middle" fill="#C8A84B" font-size="14" font-weight="700" font-family="Georgia,serif">10</text>
 <text x="64" y="363" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Sector accelerators</text>
@@ -4372,7 +4374,7 @@ function deleteVoice(id) {
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Full EV Transition</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">All new vehicle registrations electric by 2040 · 2,000 EV city buses · 1,000 charging points</text>
 <!-- Timeline progression -->
-<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Powered by Kenya's renewable energy grid (93% hydro, geothermal, wind) · Charging points in e...</text>
+<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Powered by Kenya's renewable energy grid (93% hydro, geothermal, wind) · Charging points in every ward</text>
 <!-- Bar chart: EV adoption curve -->
 <rect x="40" y="262" width="46" height="8" fill="rgba(93,191,122,0.2)" rx="4"/><rect x="40" y="262" width="46" height="4" fill="#5DBF7A" rx="2"/><text x="63" y="260" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="Georgia,serif">5%</text><text x="63" y="284" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">2025</text>
 <rect x="98" y="246" width="46" height="24" fill="rgba(93,191,122,0.3)" rx="4"/><rect x="98" y="246" width="46" height="4" fill="#5DBF7A" rx="2"/><text x="121" y="244" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="Georgia,serif">15%</text><text x="121" y="284" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">2028</text>
@@ -4483,7 +4485,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-creative_d-map"><svg viewBox="0 0 544 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="560" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Constituency Creative Districts — 8 Unique Identities</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Each district built around its corridor's distinct cultural tradition · Free incubator in...</text><rect x="16" y="58" width="250" height="117" fill="#21251C" rx="8" stroke="#E8844A" stroke-width="1.8"/>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Each district built around its corridor's distinct cultural tradition · Free incubator in every one</text><rect x="16" y="58" width="250" height="117" fill="#21251C" rx="8" stroke="#E8844A" stroke-width="1.8"/>
 <rect x="16" y="58" width="250" height="26" fill="#E8844A" opacity="0.2" rx="8"/>
 <text x="29" y="75" fill="#E8844A" font-size="10" font-weight="700" font-family="system-ui">🎨 Westlands Arts Quarter</text>
 <text x="29" y="91" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 102, 106, 107</text>
@@ -4497,7 +4499,7 @@ function deleteVoice(id) {
 <text x="291" y="91" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 45, 60, 145</text>
 <text x="291" y="105" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 Sports stars · Gengetone MCs · Stadium energy</text>
 <text x="291" y="118" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Champion" — stadiums, athletes, bold yellow</text>
-<text x="291" y="131" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Kasarani Stadium creative gateway + amphithe...</text>
+<text x="291" y="131" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Kasarani Stadium creative gateway + amphitheatre 2,000-seat</text>
 <text x="291" y="146" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">🏫 Music production studio · Beat lab · DJ academy</text>
 <text x="291" y="161" fill="#5C5C4E" font-size="7.5" font-family="system-ui">📍 Kasarani Stadium Creative Gateway</text><rect x="16" y="183" width="250" height="117" fill="#21251C" rx="8" stroke="#5DBF7A" stroke-width="1.8"/>
 <rect x="16" y="183" width="250" height="26" fill="#5DBF7A" opacity="0.2" rx="8"/>
@@ -4511,10 +4513,10 @@ function deleteVoice(id) {
 <rect x="278" y="183" width="250" height="26" fill="#E85888" opacity="0.2" rx="8"/>
 <text x="291" y="200" fill="#E85888" font-size="10" font-weight="700" font-family="system-ui">💃 Eastlands Sound Museum</text>
 <text x="291" y="216" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 7, 9, 11, 58</text>
-<text x="291" y="230" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 Gengetone origins · Afrobeats · Bold Eastland...</text>
-<text x="291" y="243" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Eastlander" — MC faces, bold typography,...</text>
-<text x="291" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Former Kenya Pipeline compound → full arts c...</text>
-<text x="291" y="271" fill="#E85888" font-size="8" font-weight="700" font-family="system-ui">🏫 Music video production · Street fashion · Kni...</text>
+<text x="291" y="230" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 Gengetone origins · Afrobeats · Bold Eastlands pride</text>
+<text x="291" y="243" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Eastlander" — MC faces, bold typography, deep red</text>
+<text x="291" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Former Kenya Pipeline compound → full arts campus</text>
+<text x="291" y="271" fill="#E85888" font-size="8" font-weight="700" font-family="system-ui">🏫 Music video production · Street fashion · Knitwear</text>
 <text x="291" y="286" fill="#5C5C4E" font-size="7.5" font-family="system-ui">📍 Pipeline Estate, Embakasi</text><rect x="16" y="308" width="250" height="117" fill="#21251C" rx="8" stroke="#C8A84B" stroke-width="1.8"/>
 <rect x="16" y="308" width="250" height="26" fill="#C8A84B" opacity="0.2" rx="8"/>
 <text x="29" y="325" fill="#C8A84B" font-size="10" font-weight="700" font-family="system-ui">🏺 Lang'ata Heritage Lane</text>
@@ -4528,9 +4530,9 @@ function deleteVoice(id) {
 <text x="291" y="325" fill="#3FBFB0" font-size="10" font-weight="700" font-family="system-ui">🔧 Dagoretti Craft Village</text>
 <text x="291" y="341" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 46, 48, 118</text>
 <text x="291" y="355" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 Jua kali tools · Hands at work · Industrial pride</text>
-<text x="291" y="368" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Craftsman" — tools, hands, welding spark...</text>
-<text x="291" y="381" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Dagoretti Market creative hub + craft-to-mar...</text>
-<text x="291" y="396" fill="#3FBFB0" font-size="8" font-weight="700" font-family="system-ui">🏫 Metalwork · Leather goods · Upcycled fashion...</text>
+<text x="291" y="368" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Craftsman" — tools, hands, welding sparks imagery</text>
+<text x="291" y="381" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Dagoretti Market creative hub + craft-to-market accelerator</text>
+<text x="291" y="396" fill="#3FBFB0" font-size="8" font-weight="700" font-family="system-ui">🏫 Metalwork · Leather goods · Upcycled fashion atelier</text>
 <text x="291" y="411" fill="#5C5C4E" font-size="7.5" font-family="system-ui">📍 Dagoretti Market Creative Hub</text><rect x="16" y="433" width="250" height="117" fill="#21251C" rx="8" stroke="#78BF45" stroke-width="1.8"/>
 <rect x="16" y="433" width="250" height="26" fill="#78BF45" opacity="0.2" rx="8"/>
 <text x="29" y="450" fill="#78BF45" font-size="10" font-weight="700" font-family="system-ui">🎤 Mathare People's Museum</text>
@@ -4543,12 +4545,12 @@ function deleteVoice(id) {
 <rect x="278" y="433" width="250" height="26" fill="#378ADD" opacity="0.2" rx="8"/>
 <text x="291" y="450" fill="#378ADD" font-size="10" font-weight="700" font-family="system-ui">📱 Roysambu Media Quarter</text>
 <text x="291" y="466" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 106, 237</text>
-<text x="291" y="480" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 YouTube motifs · Creator economy · Digital ar...</text>
-<text x="291" y="493" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Creator" — play buttons, screens, digita...</text>
-<text x="291" y="506" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Githurai multimedia college campus linkage +...</text>
+<text x="291" y="480" fill="#C4BFA8" font-size="8" font-family="system-ui">🎨 YouTube motifs · Creator economy · Digital art · Diaspora</text>
+<text x="291" y="493" fill="#C4BFA8" font-size="8" font-family="system-ui">🚌 "The Creator" — play buttons, screens, digital motifs</text>
+<text x="291" y="506" fill="#C4BFA8" font-size="8" font-family="system-ui">🏛️ Githurai multimedia college campus linkage + creator hub</text>
 <text x="291" y="521" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">🏫 YouTube/TikTok production · 3D modelling · Gaming</text>
 <text x="291" y="536" fill="#5C5C4E" font-size="7.5" font-family="system-ui">📍 Githurai 45 Creative Campus, Roysambu</text>
-<text x="272" y="553" text-anchor="middle" fill="#3A3F32" font-size="7.5" font-family="system-ui">Each district: 1 decommissioned matatu as centrepiece installation · Free incubator · Anti-displacement rent con...</text>
+<text x="272" y="553" text-anchor="middle" fill="#3A3F32" font-size="7.5" font-family="system-ui">Each district: 1 decommissioned matatu as centrepiece installation · F...</text>
 </svg></template>
 <template id="viz-tpl-creative_d-panel"><div class="vsect">Benchmark City</div>
 <a class="bench-link" href="https://www.mabonengprecinct.com/" target="_blank" rel="noopener"><div class="cmp-flag">🇿🇦</div><div><div class="cmp-cn">Maboneng, Johannesburg</div><div class="cmp-sy">2009 · Transformed derelict industrial zone → Africa's most celebrated creative district</div></div><div class="ext-ico">↗</div></a>
@@ -4688,7 +4690,7 @@ function deleteVoice(id) {
 <!-- Right panel: spec list -->
 <rect x="385" y="56" width="151" height="310" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="460" y="74" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">Ward Park Spec</text>
-<text x="460" y="86" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Minimum standard · all 85</text><rect x="393" y="98" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="111" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ 400m running track</text><rect x="393" y="118" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="133" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Cycling path (perimeter)</text><rect x="393" y="138" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="162" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Walking path (inner)</text><rect x="393" y="158" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="171" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Outdoor gym — 12 free...</text><rect x="393" y="178" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="191" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Community centre + li...</text><rect x="393" y="198" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="211" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ All-weather playground</text><rect x="393" y="218" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="231" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Pond / water feature</text><rect x="393" y="238" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="251" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Weekend market area</text><rect x="393" y="258" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="271" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Shade trees — 30% canopy</text><rect x="393" y="278" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="291" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Benches + seating</text><rect x="393" y="298" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="311" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Solar LED lighting</text><rect x="393" y="318" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="348" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Public toilets + water</text><rect x="393" y="338" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="362" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Free Wi-Fi + power pts</text><rect x="393" y="358" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="371" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ CCTV safety hub</text><rect x="393" y="378" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="391" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Accessible ramps + paths</text>
+<text x="460" y="86" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Minimum standard · all 85</text><rect x="393" y="98" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="111" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ 400m running track</text><rect x="393" y="118" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="133" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Cycling path (perimeter)</text><rect x="393" y="138" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="162" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Walking path (inner)</text><rect x="393" y="158" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="171" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Outdoor gym — 12 free stations</text><rect x="393" y="178" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="191" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Community centre + library</text><rect x="393" y="198" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="211" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ All-weather playground</text><rect x="393" y="218" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="231" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Pond / water feature</text><rect x="393" y="238" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="251" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Weekend market area</text><rect x="393" y="258" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="271" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Shade trees — 30% canopy</text><rect x="393" y="278" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="291" fill="#5DBF7A" font-size="8.5" font-family="system-ui">✓ Benches + seating</text><rect x="393" y="298" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="311" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Solar LED lighting</text><rect x="393" y="318" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="348" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Public toilets + water</text><rect x="393" y="338" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="362" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Free Wi-Fi + power pts</text><rect x="393" y="358" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="371" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ CCTV safety hub</text><rect x="393" y="378" width="135" height="17" fill="#1A1D16" rx="3"/><text x="401" y="391" fill="#C8A84B" font-size="8.5" font-family="system-ui">★ Accessible ramps + paths</text>
 
 <!-- Bottom bar -->
 <rect x="16" y="378" width="512" height="110" fill="#21251C" rx="8" stroke="#3A3F32" stroke-width="1"/>
@@ -4705,14 +4707,14 @@ function deleteVoice(id) {
 <text x="435" y="420" text-anchor="middle" fill="#8B79E8" font-size="9" font-weight="700" font-family="system-ui">Phase 3: 30 wards</text>
 <text x="435" y="433" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">100% city coverage</text>
 <text x="435" y="446" text-anchor="middle" fill="#8B79E8" font-size="8.5" font-weight="700" font-family="system-ui">2045–2055</text>
-<text x="272" y="474" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Area per park: 0.5–2 hectares · Design quality identical across all wards · No entry fee · Communi...</text>
+<text x="272" y="474" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Area per park: 0.5–2 hectares · Design quality identical across all wards · No entry fee · Community maintenance team paid</text>
 <text x="272" y="486" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Prototype: aerial plan view · not to exact scale · final designs by community co-design committee per ward</text>
 </svg></template>
 <template id="viz-tpl-green_space-panel"><div class="vsect">Benchmark</div><a class="bench-link" href="https://www.nparks.gov.sg" target="_blank" rel="noopener"><div class="cmp-flag">🇸🇬</div><div><div class="cmp-cn">Singapore Neighbourhood Parks + ActiveSG</div><div class="cmp-sy">Every resident within 400m of a park · Free ActiveSG facilities at every location · 100% coverage</div></div><div class="ext-ico">↗</div></a><div class="vsect">Park Specification Comparison</div><table class="cmp-tbl"><tr><th>Feature</th><th>Nairobi Ward Park</th><th>Singapore Neighbourhood Park</th></tr><tr><td>Minimum size</td><td>0.5–2 ha</td><td>0.4 ha minimum</td></tr><tr><td>Running track</td><td>400m rubberised</td><td>Yes — at major parks</td></tr><tr><td>Outdoor gym</td><td>12 free stations</td><td>Yes — ActiveSG programme</td></tr><tr><td>Library/community centre</td><td>Embedded in park</td><td>Separate community centre</td></tr><tr><td>Night lighting</td><td>Solar LED, full park</td><td>Yes — all parks lit</td></tr><tr><td>Entry fee</td><td>Free — always</td><td>Free</td></tr></table><div class="vsect vsect2">5 Maintenance Principles</div><div class="lsn"><span class="lsn-n">1</span><span>Community maintenance teams are paid, not volunteer — every ward park has a paid 3-person maintenance team: a groundskeeper, a facility attendant, and a programmer/coordinator. At KES 25,000/month each, this costs KES 75,000/ward/month — KES 6.375M/month across all 85 wards. This is non-negotiable: unpaid volunteer maintenance fails within 18 months in every documented case.</span></div><div class="lsn"><span class="lsn-n">2</span><span>The library is the usage anchor — parks without a reason to linger empty after morning exercise. A community library with Wi-Fi, study space, and a small collection of 5,000+ books creates 8-hour daily park usage. Students from every background share the same study space. This is the most powerful cross-class amenity in the park.</span></div><div class="lsn"><span class="lsn-n">3</span><span>Running tracks must be rubberised, not painted concrete — painted concrete tracks are abandoned within 2 years due to surface deterioration and injury risk. Rubberised surfaces (same as athletics tracks) cost more upfront but last 15+ years with minimal maintenance. Settle for nothing less in settlement ward parks.</span></div><div class="lsn"><span class="lsn-n">4</span><span>The pond earns its budget — a small water feature (0.1–0.2 ha) serves as stormwater detention, creates microclimate cooling, attracts biodiversity, and becomes the most photographed and socially shared feature of any park. It also filters grey water through natural reed beds, reducing maintenance costs.</span></div><div class="lsn"><span class="lsn-n">5</span><span>Program the park or it empties — parks that open and wait for users fail. Parks with Monday morning yoga, Tuesday youth football, Wednesday craft market, Thursday movie night, Friday community dinner become institutions. Every ward park needs a programming budget of KES 50,000/month for events, not just maintenance.</span></div><a class="also-link" href="https://www.ozcf.co.za" target="_blank" rel="noopener"><span class="also-ico">🇿🇦</span><span><strong>Cape Town — Oranjezicht City Farm</strong> — Community-run urban farm and market embedded in a public park. Now draws 10,000 visitors/weekend from all income levels. The weekend market is the cross-class engine. Nairobi's ward parks need the same.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.hetvondelpark.net" target="_blank" rel="noopener"><span class="also-ico">🇳🇱</span><span><strong>Amsterdam Vondelpark</strong> — 10M visitors/year, daily programming — markets, concerts, fitness, families. Achieved through active programming management, not passive design. Nairobi's ward parks need this programming model.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><div class="viz-note"><strong>Youth employment in every park:</strong> 85 parks × 3 paid maintenance staff = 255 permanent jobs. Add 1 librarian + 1 market coordinator + 2 fitness instructors per park = 425 more jobs. The green spaces programme creates 680 permanent community employment positions — before counting the 3,000+ construction jobs to build all 85 parks.</div></template>
 <template id="viz-tpl-cycling-map"><svg viewBox="0 0 544 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="460" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">City-Wide Cycling Network — Nairobi Road Refit Plan</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">500km target · Physically separated · Priority: existing high-traffic corridors needing ur...</text>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">500km target · Physically separated · Priority: existing high-traffic corridors needing urgent refit</text>
 
 <!-- Road network base -->
 <!-- Thika Road (N) — HIGH PRIORITY -->
@@ -4808,14 +4810,14 @@ function deleteVoice(id) {
 <line x1="300" y1="414" x2="340" y2="414" stroke="#378ADD" stroke-width="2.5" stroke-dasharray="8,4" stroke-linecap="round"/>
 <text x="348" y="418" fill="#378ADD" font-size="8.5" font-family="system-ui">Phase 2 — dedicated lane, 2035–2045</text>
 <line x1="300" y1="436" x2="340" y2="436" stroke="#5DBF7A" stroke-width="4" stroke-dasharray="6,3" stroke-linecap="round"/>
-<text x="348" y="440" fill="#5DBF7A" font-size="8.5" font-family="system-ui">Settlement connector — Phase 1 pri...</text>
+<text x="348" y="440" fill="#5DBF7A" font-size="8.5" font-family="system-ui">Settlement connector — Phase 1 priority</text>
 </svg></template>
 <template id="viz-tpl-cycling-panel"><div class="vsect">Benchmark</div><a class="bench-link" href="https://bogota.gov.co/" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇴</div><div><div class="cmp-cn">Bogotá CicloVía + permanent network</div><div class="cmp-sy">550km permanent cycle network · Physical separation on all primary roads · 800K daily users</div></div><div class="ext-ico">↗</div></a><div class="vsect">Nairobi Road Refit Priority</div><table class="cmp-tbl"><tr><th>Road</th><th>Daily traffic</th><th>Current cycle infra</th><th>Priority</th></tr><tr><td>Thika Road</td><td>200,000+ vehicles/day</td><td>None</td><td>🔴 Urgent Phase 1</td></tr><tr><td>Mombasa Road</td><td>180,000+ vehicles/day</td><td>None</td><td>🔴 Urgent Phase 1</td></tr><tr><td>Ngong Road</td><td>120,000+ vehicles/day</td><td>Painted (ineffective)</td><td>🔴 Urgent Phase 1</td></tr><tr><td>Waiyaki Way</td><td>140,000+ vehicles/day</td><td>None</td><td>🔴 Urgent Phase 1</td></tr><tr><td>Jogoo Road</td><td>80,000+ vehicles/day</td><td>None</td><td>🟡 Phase 1</td></tr><tr><td>Uhuru Highway</td><td>60,000+ vehicles/day</td><td>Partial painted</td><td>🟡 Phase 1</td></tr></table><div class="vsect vsect2">5 Design Standards</div><div class="lsn"><span class="lsn-n">1</span><span>Physical separation is mandatory on all roads above 50,000 daily vehicles — this means a concrete kerb, raised lane, or physical barrier. Painted lines on Nairobi roads disappear within 6 months under matatu and lorry pressure. The Thika, Mombasa, Ngong, and Waiyaki corridors must have kerb-protected lanes. No exceptions.</span></div><div class="lsn"><span class="lsn-n">2</span><span>Minimum lane width: 1.8m for one-way, 2.8m for two-way cycling — a lane narrower than 1.8m forces cyclists to ride close to the kerb, making overtaking dangerous. All Phase 1 lanes on major corridors must meet this minimum. The settlement connector routes (Kibera, Mathare, Mukuru) need 2.0m to accommodate cargo bikes and shared use.</span></div><div class="lsn"><span class="lsn-n">3</span><span>Settlement connectors must be graded, compacted, and lit — the 15km of settlement connector paths (from BRT stations into Kibera, Mathare, and Mukuru) are currently unpaved and unlit. They must be: graded to remove major slope barriers, compacted with all-weather gravel or pavers, and lit with solar LED every 40m. Without this, the cycling network does not serve its highest-need users.</span></div><div class="lsn"><span class="lsn-n">4</span><span>Secure cycling parking at every BRT station from day one — a BRT station without secure cycle parking loses 30% of potential cycling users who live within 3km. 50-bicycle secure parking bays at every BRT station (minimum) is a Phase 1 requirement, not a Phase 2 aspiration.</span></div><div class="lsn"><span class="lsn-n">5</span><span>Enforcement of cycle lanes requires physical barriers AND fines — Bogotá's painted lanes failed before the barriers were added. Nairobi's NPS must issue on-the-spot fines for vehicles parked or driving in cycle lanes. Without enforcement, the infrastructure is performative. A dedicated cycle lane enforcement unit of 50 officers is a Phase 1 operational budget item.</span></div><a class="also-link" href="https://www.amsterdam.nl/en/traffic-transport/cycling/" target="_blank" rel="noopener"><span class="also-ico">🇳🇱</span><span><strong>Amsterdam cycling infrastructure</strong> — 880km of cycle paths, 63% of all trips by bike. The infrastructure standard Nairobi is building toward. Key lesson: the network only works when it is continuous — one gap in a cycle route eliminates the whole route for cautious cyclists.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.dart.go.tz" target="_blank" rel="noopener"><span class="also-ico">🇹🇿</span><span><strong>Dar es Salaam BRT cycling integration</strong> — East Africa's closest comparable city. DART BRT system designed cycle parking at stations from day one. 3,000+ cycles parked daily at Gerezani station alone. Nairobi must replicate this integration.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><div class="viz-note"><strong>The matatu relationship:</strong> Nairobi's cycling network is not in competition with matatus — it is the solution to the last-mile problem. The cycling path from the Thika Road BRT station to Mathare takes a cyclist 8 minutes by bike and replaces a 35-minute walk. The Matatu Buyback Scheme and the cycling network are designed together: as matatus exit the roads, protected cycle lanes take their space.</div></template>
 <template id="viz-tpl-ev_bus-map"><svg viewBox="0 0 544 350" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="350" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">EV City Bus Fleet</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">500 buses Phase 1 · 2,000 buses Phase 2 · Solar-powered depots · Settlement routes priority</text>
-<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Replacing diesel buses · 10 solar-powered depots · EV maintenance hub in Nairobi · Settlement...</text>
+<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Replacing diesel buses · 10 solar-powered depots · EV maintenance hub in Nairobi · Settlement routes first</text>
 <!-- Fleet comparison: old vs new -->
 <!-- BEFORE row -->
 <text x="100" y="96" text-anchor="middle" fill="#E85050" font-size="9" font-weight="700" font-family="system-ui">RETIRING (diesel)</text>
@@ -4866,7 +4868,7 @@ function deleteVoice(id) {
 <rect width="544" height="370" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mass Rail Transit — 3-Line Network</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Line 1: Thika/Kasarani–CBD · Line 2: JKIA–CBD · Line 3: Kibera/Westlands–CBD</text>
-<text x="272" y="80" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly serves Kibera for the first time · Matatu...</text>
+<text x="272" y="80" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly serves Kibera for the first time · Matatu-sourced steel</text>
 <!-- 3-line rail diagram -->
 <!-- Line 1: red/orange — Thika/Kasarani to CBD -->
 <path d="M244,58 L255,90 L262,125 L268,160 L272,183" fill="none" stroke="#E8844A" stroke-width="8" stroke-linecap="round"/>
@@ -4897,7 +4899,7 @@ function deleteVoice(id) {
 <text x="152" y="337" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Phase 2: 3,000km of rail from bought-back matatus</text>
 <rect x="295" y="306" width="229" height="38" fill="#21251C" rx="6" stroke="#5DBF7A" stroke-width="1"/>
 <text x="409" y="323" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="system-ui">Line 3 direct access to Kibera CBD</text>
-<text x="409" y="337" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">First mass transit connection to Nairobi's largest...</text>
+<text x="409" y="337" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">First mass transit connection to Nairobi's largest settlement</text>
 <rect x="20" y="318" width="504" height="44" fill="#21251C" rx="5" stroke="#3A3F32" stroke-width="1"/><text x="83" y="362" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">3 lines</text><text x="83" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 2 network</text><text x="209" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">80 stations</text><text x="209" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">City-wide</text><text x="335" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">70%</text><text x="335" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Transit mode share target</text><text x="461" y="336" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Kibera</text><text x="461" y="350" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Directly connected</text>
 <text x="272" y="366" text-anchor="middle" fill="#3A3F32" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
 </svg></template>
@@ -4910,7 +4912,7 @@ function deleteVoice(id) {
 <rect width="544" height="360" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Nairobi Emergency Command Centre</text>
 <text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">24/7 multi-agency coordination hub · 85-ward coverage · Settlement priority dispatch</text>
-<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Unified command · Police · Fire · EMS · Disaster response · City services · Real-time city da...</text>
+<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Unified command · Police · Fire · EMS · Disaster response · City services · Real-time city dashboard</text>
 <!-- Central command hub -->
 <circle cx="272" cy="175" r="50" fill="rgba(232,106,56,0.1)" stroke="#E86A38" stroke-width="2"/>
 <text x="272" y="166" text-anchor="middle" fill="#E86A38" font-size="11" font-weight="700" font-family="Georgia,serif">Emergency</text>
@@ -4934,8 +4936,8 @@ function deleteVoice(id) {
 <template id="viz-tpl-maas-map"><svg viewBox="0 0 544 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="340" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mobility-as-a-Service (MaaS)</text>
-<text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Unified AI platform · Boda, matatu, shuttle, cycling · Real-time optimization · Settlement...</text>
-<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Single app · All transport modes · AI route optimization · One payment (M-Pesa) · Settlement-...</text>
+<text x="20" y="46" fill="#5C5C4E" font-size="9" font-family="system-ui">Unified AI platform · Boda, matatu, shuttle, cycling · Real-time optimization · Settlement coverage</text>
+<text x="272" y="70" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">Single app · All transport modes · AI route optimization · One payment (M-Pesa) · Settlement-first coverage</text>
 <!-- MaaS app concept -->
 <rect x="176" y="84" width="192" height="128" fill="#21251C" rx="12" stroke="#C8A84B" stroke-width="2"/>
 <text x="272" y="107" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">NairobiMaaS</text>
@@ -5026,7 +5028,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-first_resp-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="480" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Ward First Responder Network — Single Ward Model</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">How 30 first responders cover one ward · Nairobi Emergency Command Centre connection · Nat...</text>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">How 30 first responders cover one ward · Nairobi Emergency Command Centre connection · National NDMA integration</text>
 
 <!-- Ward boundary (left two thirds) -->
 <rect x="16" y="56" width="330" height="290" fill="#1E2018" rx="8" stroke="#E86A38" stroke-width="1.5"/>
@@ -5365,7 +5367,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-youth_emp-map"><svg viewBox="0 0 544 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="480" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Youth Employment Compact — 200,000 Pathways</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Every pillar generates specific youth employment · Civic works + manufacturing + service p...</text>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Every pillar generates specific youth employment · Civic works + manufacturing + service provision</text>
 <circle cx="272" cy="220" r="38" fill="rgba(200,168,75,0.12)" stroke="#C8A84B" stroke-width="2"/>
 <text x="272" y="214" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">200,000</text>
 <text x="272" y="228" text-anchor="middle" fill="#C8A84B" font-size="9" font-family="system-ui">Youth Jobs</text>
@@ -5462,7 +5464,7 @@ function deleteVoice(id) {
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">City Authority Act — Constitutional Amendment Process</text>
 <text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Kenya devolution framework · Article 217 Senate process · County governors assent required</text>
 <line x1="100" y1="62" x2="100" y2="440" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="80" r="13" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="84" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">01</text><rect x="125" y="56" width="400" height="46" fill="rgba(200,168,75,0.1)" rx="7" stroke="#C8A84B" stroke-width="1.2"/><text x="143" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Cabinet Proposal</text><text x="143" y="120" fill="#8A8878" font-size="8.5" font-family="system-ui">Ministry of Devolution drafts City Authority Bill · Public participation...</text><text x="143" y="105" fill="#5C5C4E" font-size="8" font-family="system-ui">6 months · Key actors: CS Devolution, Nairobi Governor, AG</text>
+<circle cx="100" cy="80" r="13" fill="#C8A84B" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="84" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">01</text><rect x="125" y="56" width="400" height="46" fill="rgba(200,168,75,0.1)" rx="7" stroke="#C8A84B" stroke-width="1.2"/><text x="143" y="73" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Cabinet Proposal</text><text x="143" y="120" fill="#8A8878" font-size="8.5" font-family="system-ui">Ministry of Devolution drafts City Authority Bill · Public participation required</text><text x="143" y="105" fill="#5C5C4E" font-size="8" font-family="system-ui">6 months · Key actors: CS Devolution, Nairobi Governor, AG</text>
 <line x1="100" y1="93" x2="100" y2="123" stroke="#3A3F32" stroke-width="2"/>
 <circle cx="100" cy="143" r="13" fill="#378ADD" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="147" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">02</text><rect x="125" y="119" width="400" height="46" fill="rgba(55,138,221,0.1)" rx="7" stroke="#378ADD" stroke-width="1.2"/><text x="143" y="136" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">National Assembly Committee</text><text x="143" y="183" fill="#8A8878" font-size="8.5" font-family="system-ui">Justice &amp; Legal Affairs Committee · Clause-by-clause · Public hearings</text><text x="143" y="168" fill="#5C5C4E" font-size="8" font-family="system-ui">3 months · Risk: MP resistance from NMS patronage interests</text>
 <line x1="100" y1="156" x2="100" y2="186" stroke="#3A3F32" stroke-width="2"/>
@@ -5472,7 +5474,7 @@ function deleteVoice(id) {
 <line x1="100" y1="282" x2="100" y2="312" stroke="#3A3F32" stroke-width="2"/>
 <circle cx="100" cy="332" r="13" fill="#E8844A" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="336" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">05</text><rect x="125" y="308" width="400" height="46" fill="rgba(232,136,74,0.1)" rx="7" stroke="#E8844A" stroke-width="1.2"/><text x="143" y="325" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">Presidential Assent</text><text x="143" y="365" fill="#8A8878" font-size="8.5" font-family="system-ui">President has 14 days to assent or refer to Supreme Court</text><text x="143" y="351" fill="#5C5C4E" font-size="8" font-family="system-ui">1 month · Risk: Supreme Court referral adds 6 months</text>
 <line x1="100" y1="345" x2="100" y2="375" stroke="#3A3F32" stroke-width="2"/>
-<circle cx="100" cy="395" r="13" fill="#E85888" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="399" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">06</text><rect x="125" y="371" width="400" height="46" fill="rgba(232,88,136,0.1)" rx="7" stroke="#E85888" stroke-width="1.2"/><text x="143" y="388" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">City Authority Act Commences</text><text x="143" y="410" fill="#8A8878" font-size="8.5" font-family="system-ui">NMS dissolved · City Authority Board appointed · Governor gains full pla...</text><text x="143" y="422" fill="#5C5C4E" font-size="8" font-family="system-ui">6-month transition · First Board: 11 members</text>
+<circle cx="100" cy="395" r="13" fill="#E85888" stroke="#F0EAD6" stroke-width="1.5"/><text x="100" y="399" text-anchor="middle" fill="#131610" font-size="8.5" font-weight="700" font-family="system-ui">06</text><rect x="125" y="371" width="400" height="46" fill="rgba(232,88,136,0.1)" rx="7" stroke="#E85888" stroke-width="1.2"/><text x="143" y="388" fill="#F0EAD6" font-size="10" font-weight="700" font-family="system-ui">City Authority Act Commences</text><text x="143" y="410" fill="#8A8878" font-size="8.5" font-family="system-ui">NMS dissolved · City Authority Board appointed · Governor gains full planning + fiscal powers</text><text x="143" y="422" fill="#5C5C4E" font-size="8" font-family="system-ui">6-month transition · First Board: 11 members</text>
 
 <rect x="16" y="428" width="512" height="52" fill="#21251C" rx="7" stroke="#3A3F32" stroke-width="1"/>
 <text x="272" y="447" text-anchor="middle" fill="#C4BFA8" font-size="9.5" font-weight="600" font-family="system-ui">Total minimum timeline: 18–24 months from Cabinet approval to commencement</text>
@@ -5538,17 +5540,17 @@ function deleteVoice(id) {
 <text x="42" y="266" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">THE CROSS-CLASS DESIGN PRINCIPLE</text>
 <text x="42" y="282" fill="#C4BFA8" font-size="8" font-family="system-ui">Every public space in Nairobi 2055 is designed so that a Kibera resident and a Westlands resident are</text>
 <text x="42" y="297" fill="#C4BFA8" font-size="8" font-family="system-ui">equally welcome and equally comfortable. No VIP sections. No paid admission. No dress code. One city.</text>
-<text x="42" y="314" fill="#C4BFA8" font-size="8" font-family="system-ui">Standard features: water point · clean toilets · solar lighting · cycling access · shade trees · o...</text>
+<text x="42" y="314" fill="#C4BFA8" font-size="8" font-family="system-ui">Standard features: water point · clean toilets · solar lighting · cycling access · shade trees · open wifi</text>
 <text x="42" y="330" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">85 ward parks by 2035 · All built using recycled HDPE infrastructure from the MRF circular economy</text>
 
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">World-Class Public Spaces — The 5 Anchor Projects</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌿 Uhuru Park redesign — Nairobi's Central Park · Lake restoration · Amphitheatre · Cross-class...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌊 Nairobi Riverfront — post-restoration public park along 5km Phase 1 corridor · Walking + cyc...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌿 Uhuru Park redesign — Nairobi's Central Park · Lake restoration · Amphitheatre · Cross-class design</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌊 Nairobi Riverfront — post-restoration public park along 5km Phase 1 corridor · Walking + cycling trail</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏟️ Kasarani Sports Precinct — international standard · community access 5 days/week</text>
 <text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌳 85 ward parks — minimum 1ha each · designed with community · built from recycled materials</text>
-<text x="32" y="454" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🛣️ Cross-class corridor — Ngong Rd to CBD redesigned for people: 3m cycling lane, market stall...</text>
+<text x="32" y="454" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🛣️ Cross-class corridor — Ngong Rd to CBD redesigned for people: 3m cycling lane, market stalls, trees</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: New York Central Park (social equaliser) · Medellín urban acupuncture · Helsinki public space</text>
 </svg></template>
 <template id="viz-tpl-xclass_space-panel"><div class="vsect">Benchmark</div>
@@ -5646,13 +5648,13 @@ function deleteVoice(id) {
 <line x1="318" y1="255" x2="388" y2="286" stroke="#78BF45" stroke-width="1.5" opacity="0.7"/>
 <rect x="390" y="275" width="148" height="28" fill="#21251C" rx="5" stroke="#78BF45" stroke-width="1.2"/>
 <text x="464" y="288" text-anchor="middle" fill="#78BF45" font-size="8.5" font-weight="700" font-family="system-ui">🚌 Transport</text>
-<text x="464" y="296" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">MaaS platform · BRT tracking · E...</text>
+<text x="464" y="296" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">MaaS platform · BRT tracking · EV dispatch</text>
 
 <!-- Emergency -->
 <line x1="316" y1="212" x2="394" y2="188" stroke="#E86A38" stroke-width="1.5" opacity="0.7"/>
 <rect x="396" y="177" width="140" height="28" fill="#21251C" rx="5" stroke="#E86A38" stroke-width="1.2"/>
 <text x="466" y="190" text-anchor="middle" fill="#E86A38" font-size="8.5" font-weight="700" font-family="system-ui">🚨 Emergency</text>
-<text x="466" y="198" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">AI dispatch · Drone control · E...</text>
+<text x="466" y="198" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">AI dispatch · Drone control · Early warning</text>
 
 <!-- Tech (self reference) -->
 <line x1="318" y1="196" x2="368" y2="150" stroke="#8B79E8" stroke-width="1.5" opacity="0.7"/>
@@ -5682,7 +5684,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-matatu_museum-map"><svg viewBox="0 0 544 540" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="540" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Matatu Heritage — Museum Network + Cultural Preservation</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">8 constituency museums · Each celebrating its distinct corridor livery tradition · Permane...</text>
+<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">8 constituency museums · Each celebrating its distinct corridor livery tradition · Permanent installations</text>
 
 <!-- Museum cards - 2 column layout -->
 <rect x="16" y="58" width="250" height="112" fill="#21251C" rx="8" stroke="#E8844A" stroke-width="1.8"/>
@@ -5698,11 +5700,11 @@ function deleteVoice(id) {
 <rect x="278" y="58" width="250" height="26" fill="#8B79E8" opacity="0.18" rx="8"/>
 <text x="308" y="75" fill="#8B79E8" font-size="10" font-weight="700" font-family="system-ui">🎵 Kasarani Culture Hub</text>
 <text x="308" y="91" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🚌 Route: 45, 60, 145</text>
-<text x="308" y="104" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Sports stars · Genget...</text>
-<text x="308" y="117" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu concert st...</text>
-<text x="308" y="130" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Music production · Beat lab...</text>
+<text x="308" y="104" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Sports stars · Gengetone artists...</text>
+<text x="308" y="117" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu concert stage · seats...</text>
+<text x="308" y="130" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Music production · Beat lab · DJ academy</text>
 <text x="308" y="148" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">📍 Kasarani Stadium Creative Gateway</text>
-<text x="308" y="162" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as...</text>
+<text x="308" y="162" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as centrepiece</text>
 <rect x="16" y="178" width="250" height="112" fill="#21251C" rx="8" stroke="#5DBF7A" stroke-width="1.8"/>
 <rect x="16" y="178" width="250" height="26" fill="#5DBF7A" opacity="0.18" rx="8"/>
 <text x="30" y="195" fill="#5DBF7A" font-size="10" font-weight="700" font-family="system-ui">🖼️ Kibera Art Quarter Museum</text>
@@ -5716,11 +5718,11 @@ function deleteVoice(id) {
 <rect x="278" y="178" width="250" height="26" fill="#E85888" opacity="0.18" rx="8"/>
 <text x="308" y="195" fill="#E85888" font-size="10" font-weight="700" font-family="system-ui">💃 Eastlands Sound Museum</text>
 <text x="308" y="211" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🚌 Route: 7, 9, 11, 58</text>
-<text x="308" y="224" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Gengetone MCs · Afrob...</text>
-<text x="308" y="237" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as recordi...</text>
-<text x="308" y="250" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Music video production · Kni...</text>
+<text x="308" y="224" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Gengetone MCs · Afrobeats artists...</text>
+<text x="308" y="237" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as recording booth —...</text>
+<text x="308" y="250" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Music video production · Knitwear · Str...</text>
 <text x="308" y="268" fill="#E85888" font-size="8" font-weight="700" font-family="system-ui">📍 Pipeline Estate — Embakasi</text>
-<text x="308" y="282" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as...</text>
+<text x="308" y="282" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as centrepiece</text>
 <rect x="16" y="298" width="250" height="112" fill="#21251C" rx="8" stroke="#C8A84B" stroke-width="1.8"/>
 <rect x="16" y="298" width="250" height="26" fill="#C8A84B" opacity="0.18" rx="8"/>
 <text x="30" y="315" fill="#C8A84B" font-size="10" font-weight="700" font-family="system-ui">🏺 Lang'ata Heritage Centre</text>
@@ -5734,11 +5736,11 @@ function deleteVoice(id) {
 <rect x="278" y="298" width="250" height="26" fill="#3FBFB0" opacity="0.18" rx="8"/>
 <text x="308" y="315" fill="#3FBFB0" font-size="10" font-weight="700" font-family="system-ui">🔧 Dagoretti Craft Museum</text>
 <text x="308" y="331" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🚌 Route: 46, 48, 118</text>
-<text x="308" y="344" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Jua kali tools · Hand...</text>
-<text x="308" y="357" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as interac...</text>
-<text x="308" y="370" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Metalwork · Leather goods ·...</text>
+<text x="308" y="344" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: Jua kali tools · Hands at work ·...</text>
+<text x="308" y="357" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as interactive craft...</text>
+<text x="308" y="370" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: Metalwork · Leather goods · Upcycled fa...</text>
 <text x="308" y="388" fill="#3FBFB0" font-size="8" font-weight="700" font-family="system-ui">📍 Dagoretti Market Creative Hub</text>
-<text x="308" y="402" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as...</text>
+<text x="308" y="402" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as centrepiece</text>
 <rect x="16" y="418" width="250" height="112" fill="#21251C" rx="8" stroke="#78BF45" stroke-width="1.8"/>
 <rect x="16" y="418" width="250" height="26" fill="#78BF45" opacity="0.18" rx="8"/>
 <text x="30" y="435" fill="#78BF45" font-size="10" font-weight="700" font-family="system-ui">🎤 Mathare People's Museum</text>
@@ -5752,15 +5754,15 @@ function deleteVoice(id) {
 <rect x="278" y="418" width="250" height="26" fill="#378ADD" opacity="0.18" rx="8"/>
 <text x="308" y="435" fill="#378ADD" font-size="10" font-weight="700" font-family="system-ui">📱 Roysambu Media Museum</text>
 <text x="308" y="451" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🚌 Route: 106, 237 ex.</text>
-<text x="308" y="464" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: YouTube motifs · Digi...</text>
-<text x="308" y="477" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as live-st...</text>
-<text x="308" y="490" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: TikTok/YouTube production ·...</text>
+<text x="308" y="464" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎨 Livery tradition: YouTube motifs · Digital art · Cr...</text>
+<text x="308" y="477" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Installation: Single matatu as live-stream studio...</text>
+<text x="308" y="490" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎓 Incubator: TikTok/YouTube production · 3D modellin...</text>
 <text x="308" y="508" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">📍 Githurai 45 Creative Campus</text>
-<text x="308" y="522" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as...</text>
+<text x="308" y="522" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Decommissioned matatu permanently installed as centrepiece</text>
 
 <!-- Bottom note -->
 <rect x="16" y="537" width="512" height="0" fill="none"/>
-<text x="272" y="534" text-anchor="middle" fill="#3A3F32" font-size="7.5" font-family="system-ui">Each museum: 1 decommissioned matatu permanently installed · Free entry · Cultural programming 7 days/week · Ant...</text>
+<text x="272" y="534" text-anchor="middle" fill="#3A3F32" font-size="7.5" font-family="system-ui">Each museum: 1 decommissioned matatu permanently installed · Free entr...</text>
 </svg></template>
 <template id="viz-tpl-matatu_museum-panel"><div class="vsect">Global Benchmark</div><a class="bench-link" href="https://www.si.edu" target="_blank" rel="noopener"><div class="cmp-flag">🇺🇸</div><div><div class="cmp-cn">Smithsonian Institution — Matatu Art Collection</div><div class="cmp-sy">Washington DC · Permanently collected Nairobi matatu art · Recognizes it as global art movement</div></div><div class="ext-ico">↗</div></a><div class="vsect">Why a Distributed Museum Network</div><table class="cmp-tbl"><tr><th>Element</th><th>Nairobi Network (8 museums)</th><th>Single Central Museum</th></tr><tr><td>Community ownership</td><td>Each community owns its history</td><td>Risk: central elite curation</td></tr><tr><td>Footfall</td><td>Local + tourist — 8 locations</td><td>Single destination only</td></tr><tr><td>Cultural specificity</td><td>Each corridor's own tradition</td><td>Averaged, generic</td></tr><tr><td>Cost</td><td>8× smaller, community-built</td><td>High single capital cost</td></tr><tr><td>Anti-displacement</td><td>Anchor in each neighbourhood</td><td>No community effect</td></tr></table><div class="vsect vsect2">5 Principles of the Museum Network</div><div class="lsn"><span class="lsn-n">1</span><span>The matatu is the museum — the decommissioned bus is not a display object in a building. It IS the building. A Westlands matatu with Westlife and chrome detail becomes the entrance arch to the Westlands gallery. A Mathare matatu becomes an oral history booth where residents record their stories. The vehicle is the cultural artefact and the functional space simultaneously.</span></div><div class="lsn"><span class="lsn-n">2</span><span>Each museum is curated by people from that corridor — the Kibera Art Quarter Museum curatorial committee must be majority Kibera residents. External curators can advise, but the Kibera community decides which matatu is displayed, which artists are featured, and how the space is programmed. Cultural authority stays local.</span></div><div class="lsn"><span class="lsn-n">3</span><span>Matatu drivers and conductors are the primary oral historians — before a matatu is decommissioned and installed, its driver and conductor should be recorded in a structured oral history interview: the routes they drove, the passengers they carried, the music they played, the passengers who became famous. These recordings become the museum's core content.</span></div><div class="lsn"><span class="lsn-n">4</span><span>The incubator is embedded in the museum — a matatu museum without a working creative studio is a monument. Every museum has a functional free creative workspace attached: a podcast studio in Mathare, a fashion atelier in Westlands, a music production suite in Kasarani. The cultural heritage and the creative economy future exist in the same building.</span></div><div class="lsn"><span class="lsn-n">5</span><span>Document before the matatu fleet disappears — the Matatu Buyback Scheme will retire 25,000 vehicles over 30 years. Before each iconic vehicle is scrapped for rail steel, it must be assessed for museum preservation. A curatorial committee should begin identifying the 50 most culturally significant matatus in each corridor for preservation within the next 5 years — before Phase 1 buybacks begin.</span></div><a class="also-link" href="https://www.apartheidmuseum.org" target="_blank" rel="noopener"><span class="also-ico">🇿🇦</span><span><strong>Apartheid Museum, Johannesburg</strong> — Community-embedded museum that uses physical objects — actual apartheid-era vehicles, pass books, protest banners — as its primary curatorial medium. The matatu museum network follows the same "objects as history" approach.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.museudofutebol.org.br" target="_blank" rel="noopener"><span class="also-ico">🇧🇷</span><span><strong>Museu do Futebol, São Paulo</strong> — Museum entirely about a popular cultural practice — football — built in a repurposed stadium. 750,000 visitors/year. Proves that popular culture museums outperform fine art museums for community engagement and tourism. Matatu culture is Nairobi's equivalent.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><div class="viz-note"><strong>The Smithsonian already validated this:</strong> When the Smithsonian Institution in Washington DC acquired Nairobi matatu art for its permanent collection, it made a global statement: matatu culture is not local folk art — it is a world-significant art movement. The Nairobi Matatu Heritage Museum Network simply brings that global recognition home to the communities that created it.</div></template>
 <template id="viz-tpl-sports_dev-map"><svg viewBox="0 0 544 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
@@ -5939,7 +5941,7 @@ function deleteVoice(id) {
 <!-- Bottom bar -->
 <rect x="16" y="360" width="512" height="48" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
 <text x="272" y="378" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="system-ui">The Guarantee: No Worker Left Behind</text>
-<text x="272" y="393" text-anchor="middle" fill="#C8A84B" font-size="9" font-family="system-ui">Every retired matatu owner: fair market value + EV taxi loan · Every displaced driver: retrai...</text>
+<text x="272" y="393" text-anchor="middle" fill="#C8A84B" font-size="9" font-family="system-ui">Every retired matatu owner: fair market value + EV taxi loan · Every displaced driver: retraining + placement</text>
 <text x="272" y="406" text-anchor="middle" fill="#8A8878" font-size="8.5" font-family="system-ui">MOA partnership ensures industry buy-in · Managed transition not imposed disruption</text>
 </svg></template>
 <template id="viz-tpl-ev_retire-panel"><div class="vsect">Benchmark</div><a class="bench-link" href="https://www.sz.gov.cn/en_szgov/" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇳</div><div><div class="cmp-cn">Shenzhen — World's First 100% EV Bus City</div><div class="cmp-sy">2018 · 16,359 diesel buses retired in 2 years · All drivers retrained · Zero net job losses</div></div><div class="ext-ico">↗</div></a><div class="vsect">Transition Comparison</div><table class="cmp-tbl"><tr><th>Element</th><th>Nairobi (30yr managed)</th><th>Shenzhen (2yr rapid)</th></tr><tr><td>Fleet size</td><td>25,000 matatus + buses</td><td>16,359 buses</td></tr><tr><td>Transition timeline</td><td>30 years (managed)</td><td>2 years (accelerated)</td></tr><tr><td>Worker retraining</td><td>50,000 total</td><td>All 60,000+ drivers retrained</td></tr><tr><td>Compensation model</td><td>Fair market value buyback</td><td>Operators compensated per vehicle</td></tr><tr><td>Circular economy</td><td>Matatu steel → rail tracks</td><td>Batteries → second-life storage</td></tr></table><div class="vsect vsect2">5 Key Implementation Rules</div><div class="lsn"><span class="lsn-n">1</span><span>The MOA must co-own the buyback programme — the Matatu Owners Association represents 30,000+ vehicle owners and 700,000+ workers. If the buyback is imposed on the industry, it will be resisted, delayed, and partially subverted. If the MOA co-designs and co-implements it, with MOA-appointed assessors valuing each vehicle and MOA-run retraining centres, the industry becomes a partner in its own transformation.</span></div><div class="lsn"><span class="lsn-n">2</span><span>The EV taxi loan is the owner retention tool — a matatu owner who receives fair market value (KES 800K–3M depending on vehicle) and a government-backed EV taxi loan at 8% (commercial rate: 18%) has a clear economic pathway: exit the matatu, enter the EV taxi economy. The loan terms must be calibrated so the monthly repayment is less than a matatu owner's current net monthly income.</span></div><div class="lsn"><span class="lsn-n">3</span><span>Retraining must begin 24 months before the buyback offer arrives — a matatu driver who receives a buyback offer with no retraining pathway will reject it. The City Authority must build 10 EV bus driver training centres and 5 EV technician schools before Phase 1 buybacks begin. Retraining is a pre-condition of the buyback programme, not a promise made afterward.</span></div><div class="lsn"><span class="lsn-n">4</span><span>The scrap steel quality control chain must be established in Phase 1 — buying back 5,000 matatus in Phase 1 means processing approximately 12,500 tonnes of scrap steel. The Scrap Metal Council of Kenya must establish licensed, quality-controlled processing depots before Phase 1 buybacks begin. The rail track manufacturer's specifications must be agreed before the first matatu is stripped.</span></div><div class="lsn"><span class="lsn-n">5</span><span>Monitor and publish displacement data monthly — track: number of matatu workers who took the buyback, number who retrained, number who found new employment, number who are unemployed. If retraining absorption rates fall below 80%, the buyback programme must pause until the labour market catches up. Worker welfare is the brake on the transition pace.</span></div><a class="also-link" href="https://www.ilo.org/global/topics/green-jobs/" target="_blank" rel="noopener"><span class="also-ico">🇩🇪</span><span><strong>Germany Ruhr — Coal Transition</strong> — 30-year managed transition of 700,000 coal miners. Workers retrained, pensions guaranteed, communities reinvested. The gold standard for managed industry transition. Nairobi's matatu transition follows the same principles.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.gov.uk/government/organisations/department-for-energy-security-and-net-zero" target="_blank" rel="noopener"><span class="also-ico">🇬🇧</span><span><strong>UK — coal mine closure programme</strong> — Structured compensation + retraining over 15 years. Key lesson: transitions that guarantee compensation AND retraining AND community investment succeed. Transitions that only compensate and abandon produce long-term social damage.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><div class="viz-note"><strong>The matatu driver is not the problem — they are the solution:</strong> Nairobi's 700,000+ matatu workers know every route, every shortcut, every passenger pattern, and every traffic pattern in the city. Retrained as EV bus operators, rail conductors, and transport system coordinators, they are the most valuable human resource in Nairobi's transport transition. The EV future does not replace the matatu workforce — it repurposes it.</div></template>
@@ -6053,7 +6055,7 @@ function deleteVoice(id) {
 
 <circle cx="282" cy="451" r="5" fill="#E8844A"/>
 <text x="282" y="455" fill="white" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">5</text>
-<text x="294" y="455" fill="#C4BFA8" font-size="8" font-family="system-ui">South B &amp; C — Ngong Road culvert upsizing +...</text>
+<text x="294" y="455" fill="#C4BFA8" font-size="8" font-family="system-ui">South B &amp; C — Ngong Road culvert upsizing + retention</text>
 
 <!-- Row 3 -->
 <circle cx="38" cy="470" r="5" fill="#E85050"/>
@@ -6062,7 +6064,7 @@ function deleteVoice(id) {
 
 <circle cx="282" cy="470" r="5" fill="#C8A84B"/>
 <text x="282" y="474" fill="#131610" font-size="7" font-weight="700" text-anchor="middle" font-family="system-ui">6</text>
-<text x="294" y="474" fill="#C4BFA8" font-size="8" font-family="system-ui">Globe/Kariokor — River overflow barriers + IoT...</text>
+<text x="294" y="474" fill="#C4BFA8" font-size="8" font-family="system-ui">Globe/Kariokor — River overflow barriers + IoT gauge sensors</text>
 
 <!-- Risk legend row -->
 <rect x="32" y="486" width="12" height="9" fill="#E85050" opacity="0.5" rx="2"/>
@@ -6121,7 +6123,7 @@ function deleteVoice(id) {
 <path d="M 305 188 Q 350 188 390 188 Q 430 188 480 185" stroke="#E8844A" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
 <path d="M 305 188 Q 350 188 390 188 Q 430 188 480 185" stroke="#E8844A" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
 <text x="340" y="175" fill="#E8844A" font-size="9" font-weight="700" font-family="system-ui">2 JOGOO ROAD / OUTER RING ROAD</text>
-<text x="340" y="165" fill="#8A8878" font-size="7.5" font-family="system-ui">Raised kerbs + IoT sensors + reed-bed fi...</text>
+<text x="340" y="165" fill="#8A8878" font-size="7.5" font-family="system-ui">Raised kerbs + IoT sensors + reed-bed filters</text>
 <!-- 3: Thika Road (N) -->
 <path d="M 265 175 Q 260 145 255 115 Q 250 88 245 60" stroke="#C8A84B" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
 <path d="M 265 175 Q 260 145 255 115 Q 250 88 245 60" stroke="#C8A84B" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
@@ -6131,7 +6133,7 @@ function deleteVoice(id) {
 <path d="M 305 205 Q 350 225 400 248 Q 440 268 490 290" stroke="#8B79E8" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
 <path d="M 305 205 Q 350 225 400 248 Q 440 268 490 290" stroke="#8B79E8" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
 <text x="420" y="285" fill="#8B79E8" font-size="9" font-weight="700" font-family="system-ui">4 MOMBASA ROAD</text>
-<text x="420" y="297" fill="#8A8878" font-size="7.5" font-family="system-ui">Industrial area drainag...</text>
+<text x="420" y="297" fill="#8A8878" font-size="7.5" font-family="system-ui">Industrial area drainage + Muku...</text>
 <!-- 5: Limuru/Parklands Road (NW) -->
 <path d="M 255 175 Q 220 155 180 135 Q 140 115 100 95 Q 70 80 40 68" stroke="#5DBF7A" stroke-width="8" fill="none" opacity="0.7" stroke-linecap="round"/>
 <path d="M 255 175 Q 220 155 180 135 Q 140 115 100 95 Q 70 80 40 68" stroke="#5DBF7A" stroke-width="2" fill="none" opacity="1" stroke-dasharray="6,4"/>
@@ -6168,7 +6170,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-flood_riparian-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="440" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Riparian Buffer Enforcement — 30m from Every Watercourse</text>
-<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">The law already exists — enforcement is zero · Every structure in the red zone is a future...</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">The law already exists — enforcement is zero · Every structure in the red zone is a future death</text>
 <rect x="20" y="52" width="504" height="280" fill="#21251C" rx="6"/>
 <!-- RIVERS with 30m buffer zones shown -->
 <!-- Nairobi River + 30m buffer -->
@@ -6215,11 +6217,11 @@ function deleteVoice(id) {
 <rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
 <text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Riparian Buffer Enforcement Act — What It Mandates</text>
 <rect x="32" y="370" width="12" height="10" fill="#E85050" opacity="0.3" rx="1"/>
-<text x="50" y="379" fill="#C4BFA8" font-size="8.5" font-family="system-ui">30m buffer zone either side of every river, stream and seasonal drainage channel — NO cons...</text>
+<text x="50" y="379" fill="#C4BFA8" font-size="8.5" font-family="system-ui">30m buffer zone either side of every river, stream and seasonal drainage channel — NO construction</text>
 <rect x="32" y="386" width="12" height="10" fill="#E85050" opacity="0.85" rx="1"/>
-<text x="50" y="395" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Existing illegal structures: demolition with compensation for genuine first occupants (zer...</text>
+<text x="50" y="395" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Existing illegal structures: demolition with compensation for genuine first occupants (zero for speculation)</text>
 <text x="32" y="412" fill="#5C5C4E" font-size="8" font-family="system-ui">Dedicated Riparian Enforcement Unit · Criminal penalties · Annual satellite-verified compliance mapping</text>
-<text x="32" y="424" fill="#5C5C4E" font-size="8" font-family="system-ui">The 30m buffer law (Water Act 2016) already exists. The missing ingredient is enforcement. This plan...</text>
+<text x="32" y="424" fill="#5C5C4E" font-size="8" font-family="system-ui">The 30m buffer law (Water Act 2016) already exists. The missing ingredient is enforcement. This plan funds it.</text>
 </svg></template>
 <template id="viz-tpl-flood_riparian-panel"><div class="vp-section">
 <div class="vp-title">Riparian Buffer Enforcement Act — The Law That Exists But Is Never Enforced</div>
@@ -6429,12 +6431,12 @@ function deleteVoice(id) {
 <rect x="20" y="344" width="504" height="84" fill="#21251C" rx="6"/>
 <text x="32" y="360" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Crisis Infrastructure — What Activates When River Gauges Hit RED</text>
 <circle cx="38" cy="374" r="6" fill="none" stroke="#E85050" stroke-width="1.5"/>
-<text x="50" y="378" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Automated flood gates (G1–G6): Close when river level reaches critical threshold — sensor-...</text>
+<text x="50" y="378" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Automated flood gates (G1–G6): Close when river level reaches critical threshold — sensor-triggered, no human ne...</text>
 <polygon points="38,390 33,403 43,403" fill="#C8A84B"/>
-<text x="50" y="400" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Rescue boats (pre-positioned): 4 boats, 8 crew per boat, 24hr crisis deployment in highest...</text>
+<text x="50" y="400" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Rescue boats (pre-positioned): 4 boats, 8 crew per boat, 24hr crisis deployment in highest-risk corridors</text>
 <rect x="31" y="408" width="14" height="6" fill="#E8844A" rx="1"/>
-<text x="50" y="416" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Deployable barriers (DB1–DB3): Mobile HESCO/Tiger Dam barriers pre-stored at Embakasi depo...</text>
-<text x="32" y="430" fill="#5C5C4E" font-size="8" font-family="system-ui">Source: Rotterdam flood gate system · Bangladesh EWS trigger thresholds · NYC East Side Coastal Resi...</text>
+<text x="50" y="416" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Deployable barriers (DB1–DB3): Mobile HESCO/Tiger Dam barriers pre-stored at Embakasi depot, deployed by NYS with...</text>
+<text x="32" y="430" fill="#5C5C4E" font-size="8" font-family="system-ui">Source: Rotterdam flood gate system · Bangladesh EWS trigger thresholds · NYC East Side Coastal Resiliency</text>
 </svg></template>
 <template id="viz-tpl-flood_barriers-panel"><div class="vp-section">
 <div class="vp-title">Crisis Scenario — Emergency Flood Infrastructure</div>
@@ -6574,7 +6576,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-waste_infra-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Waste → Infrastructure — The Circular Manufacturing Pipeline</text>
-<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Nairobi's waste becomes Nairobi's infrastructure · KES 4–8B annual procurement redirected...</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Nairobi's waste becomes Nairobi's infrastructure · KES 4–8B annual procurement redirected locally</text>
 <rect x="20" y="52" width="504" height="320" fill="#21251C" rx="6"/>
 
 <!-- FLOW DIAGRAM: Waste → Sort → Process → Product → City -->
@@ -6660,10 +6662,10 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="382" width="504" height="108" fill="#21251C" rx="6"/>
 <text x="32" y="398" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Why This Changes Everything for Nairobi</text>
-<text x="32" y="415" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📍 NCG procurement mandate: all public contracts must prioritise recycled-material products whe...</text>
-<text x="32" y="430" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💰 KES 4–8B currently spent on imported cast iron, steel, concrete → redirected to local circul...</text>
-<text x="32" y="445" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🔄 Plastic manhole covers are lighter, cheaper, and don't get stolen — solving a chronic Nairob...</text>
-<text x="32" y="460" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌱 Organic waste → biogas powers the MRF facilities → compost feeds the 10M tree urban forest p...</text>
+<text x="32" y="415" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📍 NCG procurement mandate: all public contracts must prioritise recycled-material products where technically equivalent</text>
+<text x="32" y="430" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💰 KES 4–8B currently spent on imported cast iron, steel, concrete → redirected to local circular manufacturers</text>
+<text x="32" y="445" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🔄 Plastic manhole covers are lighter, cheaper, and don't get stolen — solving a chronic Nairobi infrastructure loss</text>
+<text x="32" y="460" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌱 Organic waste → biogas powers the MRF facilities → compost feeds the 10M tree urban forest programme</text>
 <text x="32" y="476" fill="#5C5C4E" font-size="8" font-family="system-ui">Benchmarks: Curitiba (Brazil) · Pune SWaCH (India) · Johannesburg Pikitup · Rwanda Green City Kigali</text>
 </svg></template>
 <template id="viz-tpl-waste_infra-panel"><div class="vp-section">
@@ -6784,10 +6786,10 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">What Changes for Nairobi Residents</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: average permit takes 60 days, 7 office visits, KES 15,000 in fees → 2055: 48 hours, one...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: 3 million settlement residents have no city service access → 2055: M-Pesa + WhatsApp =...</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: 200+ NCG services require in-person visit → 2055: 200+ services online, available in Sw...</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: procurement is opaque, no public record → 2055: every NCG transaction on open data dash...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: average permit takes 60 days, 7 office visits, KES 15,000 in fees → 2055: 48 hours, one app, KES 500</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: 3 million settlement residents have no city service access → 2055: M-Pesa + WhatsApp = full access</text>
+<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: 200+ NCG services require in-person visit → 2055: 200+ services online, available in Swahili and English</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: procurement is opaque, no public record → 2055: every NCG transaction on open data dashboard</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Based on: Estonia X-Road model · Singapore Government API · M-Pesa mobile payment backbone</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Priority: offline-first design — USSD fallback for no-smartphone users · settlement connectivity intermittent</text>
 </svg></template>
@@ -6876,12 +6878,12 @@ function deleteVoice(id) {
 <rect x="20" y="360" width="504" height="130" fill="#21251C" rx="6"/>
 <text x="32" y="376" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Layered Approach — No Community Faces Climate Risk Alone</text>
 <rect x="32" y="386" width="10" height="10" fill="#E85050" opacity="0.5" rx="1"/>
-<text x="48" y="395" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Zone 1 (High): Mathare riverbank, Kibera riverside, Mukuru kwa Reuben — emergency interven...</text>
+<text x="48" y="395" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Zone 1 (High): Mathare riverbank, Kibera riverside, Mukuru kwa Reuben — emergency intervention priority</text>
 <rect x="32" y="402" width="10" height="10" fill="#E8844A" opacity="0.5" rx="1"/>
-<text x="48" y="411" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Zone 2 (Medium): Dense informal areas — systematic Phase 1 climate-proofing integrated wit...</text>
+<text x="48" y="411" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Zone 2 (Medium): Dense informal areas — systematic Phase 1 climate-proofing integrated with upgrading</text>
 <rect x="32" y="418" width="10" height="10" fill="#C8A84B" opacity="0.5" rx="1"/>
 <text x="48" y="427" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Zone 3 (Lower): Formal neighbourhoods — building standards, drainage retrofit, green corridors</text>
-<text x="32" y="446" fill="#C4BFA8" font-size="8.5" font-family="system-ui">All 5 pathways active simultaneously — no single intervention is sufficient alone. The linkage...</text>
+<text x="32" y="446" fill="#C4BFA8" font-size="8.5" font-family="system-ui">All 5 pathways active simultaneously — no single intervention is sufficient alone. The linkages are the plan.</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Medellín Zone 3 upgrading · Dhaka community resilience · Singapore Green Plan · Netherlands Delta</text>
 <text x="32" y="476" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Governance: NCG leads · National government funds riparian enforcement · Community committees implement</text>
 </svg></template>
@@ -6984,7 +6986,7 @@ function deleteVoice(id) {
 <text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🇰🇪 M-Pesa: world's most advanced mobile money — the payment layer every AI service runs on</text>
 <text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏗️ iHub + Andela + Strathmore: Africa's deepest tech talent pipeline already in Nairobi</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📡 Safaricom 4G: 95% Nairobi coverage — 5G upgrade is incremental, not a greenfield build</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🧠 Key differentiator: African AI for African cities — flood models trained on Mathare, not Mis...</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🧠 Key differentiator: African AI for African cities — flood models trained on Mathare, not Mississippi</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Shenzhen (manufacturing → tech), Bengaluru (talent pipeline), Estonia (digital government)</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Risk: brain drain if salaries uncompetitive. Mitigation: equity stakes in city-funded AI ventures</text>
 </svg></template>
@@ -7073,12 +7075,12 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Why Nairobi and Not Lagos or Johannesburg?</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📱 M-Pesa gives Nairobi a 15-year head start in mobile finance that Lagos and Joburg cannot rep...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌍 Geography: Nairobi is the gateway to East + Central Africa — 500M people, fastest growing ma...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📱 M-Pesa gives Nairobi a 15-year head start in mobile finance that Lagos and Joburg cannot replicate fast</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌍 Geography: Nairobi is the gateway to East + Central Africa — 500M people, fastest growing markets</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Rwanda + Kenya regulatory reform: most business-friendly regulatory environment in Africa</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">♻️ The circular economy gives manufacturing a locally-sourced, zero-import raw material supply...</text>
-<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Dubai DIFC (gateway model) · Kigali Finance Centre (clean governance) · India UPI (mobile paym...</text>
-<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Risk: political instability, post-election uncertainty. Mitigation: independent Central Bank + rule of law...</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">♻️ The circular economy gives manufacturing a locally-sourced, zero-import raw material supply chain</text>
+<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Dubai DIFC (gateway model) · Kigali Finance Centre (clean governance) · India UPI (mobile payment scale)</text>
+<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Risk: political instability, post-election uncertainty. Mitigation: independent Central Bank + rule of law investment</text>
 </svg></template>
 <template id="viz-tpl-fintech_hub-panel"><div class="vp-section">
 <div class="vp-title">FinTech, Finance & Economic Hub</div>
@@ -7173,8 +7175,8 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Social Floor — Why This Makes Every Other Pillar Possible</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">A resident who cannot afford healthcare cannot invest in their business. An informal worker wi...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">cannot save. A city that does not address mental health cannot sustain economic productivity....</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">A resident who cannot afford healthcare cannot invest in their business. An informal worker with no pension</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">cannot save. A city that does not address mental health cannot sustain economic productivity. The social</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">floor is not charity — it is the pre-condition for a functioning economy at scale.</text>
 <text x="32" y="445" fill="#C4BFA8" font-size="8.5" font-family="system-ui">All services delivered via M-Pesa — no bank account, no smartphone, no office visit required.</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Ghana NHIS · Brazil Bolsa Família · GiveDirectly Kenya UBI · Uruguay social protection</text>
@@ -7283,12 +7285,12 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Key Innovation — No Office Visit Required</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: a Mathare resident waits 3+ hours at Pumwani for a 10-minute consultation. Round trip:...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: a Mathare resident waits 3+ hours at Pumwani for a 10-minute consultation. Round trip: 4 hours,</text>
 <text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">half a day's income, KES 200 in transport, and a prescription they then need to fill elsewhere.</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">2055: WhatsApp triage, video doctor within 4 hours, prescription delivered by boda, NHIF pays....</text>
+<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">2055: WhatsApp triage, video doctor within 4 hours, prescription delivered by boda, NHIF pays. Total</text>
 <text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">time: 2 hours. Total cost to resident: KES 0. Productivity lost: 2 hours not 6.</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: AMREF Flying Doctors telemedicine · Seoul Smart Healthcare · Amsterdam cycling health</text>
-<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">85 ward telemedicine hubs by 2030 · 1 community health worker per 500 households · Air quality dashboard l...</text>
+<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">85 ward telemedicine hubs by 2030 · 1 community health worker per 500 households · Air quality dashboard live 2026</text>
 </svg></template>
 <template id="viz-tpl-health_digital-panel"><div class="vp-section">
 <div class="vp-title">Digital Health & Healthy City</div>
@@ -7385,12 +7387,12 @@ function deleteVoice(id) {
 <rect x="32" y="278" width="480" height="58" fill="#2F342A" rx="4"/>
 <text x="42" y="296" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">What Changes — The Equaliser</text>
 <text x="42" y="312" fill="#C4BFA8" font-size="8" font-family="system-ui">Today: Nairobi Alliance/Strathmore vs Huruma Primary. Same KCSE exam. Outcomes are not comparable.</text>
-<text x="42" y="326" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">2055: Same internet, same devices, same teachers paid market rates. The postcode no longer determi...</text>
+<text x="42" y="326" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">2055: Same internet, same devices, same teachers paid market rates. The postcode no longer determines the outcome.</text>
 
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Key Interventions — What the Money Buys</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏫 85 public secondary schools refurbished to minimum physical standard — working toilets, powe...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏫 85 public secondary schools refurbished to minimum physical standard — working toilets, power, internet</text>
 <text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💻 1:1 device access for every Nairobi student by 2030 — NCG-procured, DFID co-funded</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">👩‍🏫 Teachers paid market-rate salaries competitive with private schools — ending the talent drain</text>
 <text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎫 Skills Passport — every competency verifiable, owned by the worker, portable across East Africa</text>
@@ -7482,18 +7484,18 @@ function deleteVoice(id) {
 <!-- SWAHILI ADVANTAGE -->
 <rect x="32" y="248" width="480" height="70" fill="#2F342A" rx="4"/>
 <text x="42" y="266" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">THE SWAHILI ADVANTAGE — Why Nairobi, Not Lagos or Cairo</text>
-<text x="42" y="282" fill="#C4BFA8" font-size="8" font-family="system-ui">Swahili: 200M+ speakers across 14 countries · The lingua franca of East &amp; Central Africa · Zer...</text>
-<text x="42" y="298" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi is the Swahili content capital — the music, the slang, the fashion originates here. The 20...</text>
+<text x="42" y="282" fill="#C4BFA8" font-size="8" font-family="system-ui">Swahili: 200M+ speakers across 14 countries · The lingua franca of East &amp; Central Africa · Zero Swahili streaming giant...</text>
+<text x="42" y="298" fill="#C4BFA8" font-size="8" font-family="system-ui">Nairobi is the Swahili content capital — the music, the slang, the fashion originates here. The 2055 plan makes it officia...</text>
 <text x="42" y="312" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">Afrobeats went global without government support. Swahili content will go global with it.</text>
 
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Creative City Legacy Fund — KES 2B by 2030</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📜 Heritage documentation grant: KES 500K per community to record oral histories, traditions, b...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎬 Swahili content production fund: KES 200M for music, film, and games in Swahili for the cont...</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Creative district infrastructure: 8 ward creative hubs with studios, fabrication labs, and...</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌍 UNESCO Creative City application: focus on music (strongest global reach) — 2028 application...</text>
-<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Cape Town UNESCO Creative City (Design) · Lagos Afrobeats industry · Jamaica cultural export s...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📜 Heritage documentation grant: KES 500K per community to record oral histories, traditions, buildings</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🎬 Swahili content production fund: KES 200M for music, film, and games in Swahili for the continental market</text>
+<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏛️ Creative district infrastructure: 8 ward creative hubs with studios, fabrication labs, and performance spaces</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌍 UNESCO Creative City application: focus on music (strongest global reach) — 2028 application deadline</text>
+<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Cape Town UNESCO Creative City (Design) · Lagos Afrobeats industry · Jamaica cultural export strategy</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Target: 100,000 creative economy jobs · KES 50B annual creative sector revenue by 2035</text>
 </svg></template>
 <template id="viz-tpl-culture_creative-panel"><div class="vp-section">
@@ -7688,8 +7690,8 @@ function deleteVoice(id) {
 <text x="32" y="407" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Organic waste → biogas → powers city grid → feeds back into building energy systems</text>
 <text x="32" y="422" fill="#C4BFA8" font-size="8.5" font-family="system-ui">MRF compost → urban agriculture plots → feeds markets → organic waste back to MRF</text>
 <text x="32" y="437" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Biodiversity corridors cool the city → reduce air conditioning demand → lower building energy use</text>
-<text x="32" y="460" fill="#5C5C4E" font-size="7.5" font-family="system-ui">NCC mandate: all new buildings EDGE-certified · Solar mandatory on roofs above 200sqm · Rainwater harvesti...</text>
-<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Target: Net-zero built environment by 2050 · Zero waste to landfill by 2045 · 30% reduction in building en...</text>
+<text x="32" y="460" fill="#5C5C4E" font-size="7.5" font-family="system-ui">NCC mandate: all new buildings EDGE-certified · Solar mandatory on roofs above 200sqm · Rainwater harvesting required</text>
+<text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Target: Net-zero built environment by 2050 · Zero waste to landfill by 2045 · 30% reduction in building energy use by 2035</text>
 </svg></template>
 <template id="viz-tpl-green_building-panel"><div class="vp-section">
 <div class="vp-title">Green Building & Circular City</div>
@@ -7778,17 +7780,17 @@ function deleteVoice(id) {
 <!-- NAIROBI-SPECIFIC CONTEXT -->
 <rect x="32" y="262" width="480" height="70" fill="#2F342A" rx="4"/>
 <text x="42" y="280" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">THE NAIROBI CONTEXT — Why This Is Urgent</text>
-<text x="42" y="296" fill="#C4BFA8" font-size="8" font-family="system-ui">Today: 4 fire stations for 5.5M people · Average response time 35+ min · No USAR capability · No d...</text>
-<text x="42" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui">Mathare, Kibera, Mukuru: narrow lanes make ground vehicles impossible → drones are the only first...</text>
+<text x="42" y="296" fill="#C4BFA8" font-size="8" font-family="system-ui">Today: 4 fire stations for 5.5M people · Average response time 35+ min · No USAR capability · No drone fleet</text>
+<text x="42" y="311" fill="#C4BFA8" font-size="8" font-family="system-ui">Mathare, Kibera, Mukuru: narrow lanes make ground vehicles impossible → drones are the only first response</text>
 <text x="42" y="326" fill="#E85050" font-size="8" font-weight="700" font-family="system-ui">Target: 8 min critical response citywide by 2030 · Zero preventable deaths by 2040</text>
 
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Why Drones Are the Game-Changer for Nairobi</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Mathare's lanes are 1.5m wide. A fire engine cannot enter. A drone can reach anywhere in 10 mi...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">deliver an AED, provide aerial situation assessment, and guide ground crews to the best access...</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">This is not futurism — drones are deployed for emergency response in Rwanda, Ghana, and Nigeri...</text>
-<text x="32" y="446" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The Nairobi Climate Emergency Response Academy trains responders using the same AI simulation...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Mathare's lanes are 1.5m wide. A fire engine cannot enter. A drone can reach anywhere in 10 minutes,</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">deliver an AED, provide aerial situation assessment, and guide ground crews to the best access route.</text>
+<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">This is not futurism — drones are deployed for emergency response in Rwanda, Ghana, and Nigeria today.</text>
+<text x="32" y="446" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The Nairobi Climate Emergency Response Academy trains responders using the same AI simulation tools</text>
 <text x="32" y="461" fill="#C4BFA8" font-size="8.5" font-family="system-ui">used by Singapore SCDF and Tokyo Metropolitan Fire — the first in East Africa.</text>
 <text x="32" y="476" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Tokyo earthquake system · NYC Notify · Joburg EMS · Rwanda drone deliveries (Zipline)</text>
 </svg></template>
@@ -7808,7 +7810,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-governance_reform-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Governance Reform — From Dysfunction to Accountability</text>
-<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">NMS-County split → City Authority Act · Contractor cartel → Performance bonds · Opacity →...</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">NMS-County split → City Authority Act · Contractor cartel → Performance bonds · Opacity → Open data</text>
 <rect x="20" y="52" width="504" height="300" fill="#21251C" rx="6"/>
 
 <!-- CURRENT vs REFORMED side-by-side -->
@@ -7860,10 +7862,10 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Political Economy — Why This Is the Hardest Pillar</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Governance reform requires the Governor to break with constituencies who benefit from the curr...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The City Authority Act requires national political will — the President must want Nairobi to s...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Governance reform requires the Governor to break with constituencies who benefit from the current system.</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The City Authority Act requires national political will — the President must want Nairobi to succeed.</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Property tax reform creates enemies among property owners who have evaded for decades.</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The realistic path: build the evidence base through performance bonds and open data. Make fail...</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The realistic path: build the evidence base through performance bonds and open data. Make failure visible.</text>
 <text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Rwanda Imihigo · Porto Alegre participatory budgeting · Kenya Auditor General annual reports</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Nairobi 2022 Audit: KES 14.7B irregular expenditure identified — the problem is documented, not disputed</text>
 </svg></template>
@@ -7950,10 +7952,10 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">5 Urban Centres + 15-Minute City — The Two-Part Strategy</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Part 1 — 5 Secondary Centres: Each has a full mix of offices, retail, health, education, and p...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Part 1 — 5 Secondary Centres: Each has a full mix of offices, retail, health, education, and parks.</text>
 <text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Eastlands · Kangemi · Kasarani · Karen · Ruai — reducing the CBD commute burden on all corridors.</text>
 <text x="32" y="426" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Part 2 — 15-Minute City: Within each centre, every essential service reachable in 15 min on foot.</text>
-<text x="32" y="441" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The dashed circles show 15-min walking radius. Mixed-use zoning makes it legal to build homes...</text>
+<text x="32" y="441" fill="#C4BFA8" font-size="8.5" font-family="system-ui">The dashed circles show 15-min walking radius. Mixed-use zoning makes it legal to build homes next to</text>
 <text x="32" y="456" fill="#C4BFA8" font-size="8.5" font-family="system-ui">offices next to markets — the current zoning code prohibits this. The code changes in Phase 1.</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Paris 15-min city · Seoul 5 urban centres · Nairobi Innovation District (Westlands anchor)</text>
 </svg></template>
@@ -8029,11 +8031,11 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">50 Playgrounds + 50,000 Green Jobs — The Social Investment</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🛝 50 playgrounds — 50 highest-density settlement wards first · Solar-lit · Rubber surface · Co...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🛝 50 playgrounds — 50 highest-density settlement wards first · Solar-lit · Rubber surface · Community-maintained</text>
 <text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💪 Smart outdoor gyms in every ward — free · Solar-powered · No membership needed</text>
 <text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💚 50,000 green jobs: park coordinators · urban forest managers · MRF operators · cycling crew</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏆 Priority hiring: informal settlement residents first · TVET career ladder from apprentice to...</text>
-<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">The evidence: Medellín's cable cars + parks reduced violence by 60% in targeted comunas · Helsinki public...</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏆 Priority hiring: informal settlement residents first · TVET career ladder from apprentice to supervisor</text>
+<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">The evidence: Medellín's cable cars + parks reduced violence by 60% in targeted comunas · Helsinki public space = happiness</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Design principle: every playground community-designed — children in Mathare choose their playground features</text>
 </svg></template>
 <template id="viz-tpl-social_fabric_prog-panel"><div class="vp-section">
@@ -8103,11 +8105,11 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
 <text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The IoT Monitoring Network — 200 Sensors, 1 Dashboard</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📡 200 low-cost environmental IoT sensors: air quality (PM2.5, NOx) · water quality · noise · t...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📊 Open Climate Data Platform: all data public, real-time, machine-readable · feeds AI city man...</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌡️ Urban heat island mapping: identifies which wards need priority tree-planting and cooling i...</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📏 Nairobi River gauge network: real-time flood warning, feeds 72-hour pre-flood waste clearanc...</text>
-<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Nairobi River: 30 years of failed promises. The 2055 plan is different — because Dandora MRF makes closure...</text>
+<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📡 200 low-cost environmental IoT sensors: air quality (PM2.5, NOx) · water quality · noise · temperature</text>
+<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📊 Open Climate Data Platform: all data public, real-time, machine-readable · feeds AI city manager</text>
+<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌡️ Urban heat island mapping: identifies which wards need priority tree-planting and cooling interventions</text>
+<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📏 Nairobi River gauge network: real-time flood warning, feeds 72-hour pre-flood waste clearance protocol</text>
+<text x="32" y="462" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Nairobi River: 30 years of failed promises. The 2055 plan is different — because Dandora MRF makes closure viable.</text>
 <text x="32" y="474" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Benchmarks: Stockholm Hammarby remediation · Seoul Cheonggyecheon · Curitiba environmental record</text>
 </svg></template>
 <template id="viz-tpl-environment_adv-panel"><div class="vp-section">
@@ -8192,10 +8194,10 @@ function deleteVoice(id) {
 <rect x="32" y="388" width="12" height="12" fill="#E85050" rx="1"/>
 <text x="50" y="398" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Existing 4 stations (CBD · Ruaraka · Langata · Gigiri)</text>
 <rect x="32" y="406" width="12" height="12" fill="#E8844A" rx="1" stroke="#E8844A" stroke-width="1.5"/>
-<text x="50" y="416" fill="#C4BFA8" font-size="8.5" font-family="system-ui">New 8 stations by 2030 — Westlands · Kibera · Mathare · Kasarani · Mukuru · Southlands · E...</text>
+<text x="50" y="416" fill="#C4BFA8" font-size="8.5" font-family="system-ui">New 8 stations by 2030 — Westlands · Kibera · Mathare · Kasarani · Mukuru · Southlands · Eastlands · Kawangware</text>
 <text x="32" y="434" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🚁 4 Emergency helicopters — response target: anywhere in Nairobi under 8 minutes</text>
-<text x="32" y="449" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Settlement units: smaller rapid vehicles fitting Mathare/Kibera 1.5m lanes — not standard fire...</text>
-<text x="32" y="464" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: Gikomba market has burned 8 times in 20 years — nearest station 30 min away. New Eastla...</text>
+<text x="32" y="449" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Settlement units: smaller rapid vehicles fitting Mathare/Kibera 1.5m lanes — not standard fire engines</text>
+<text x="32" y="464" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Today: Gikomba market has burned 8 times in 20 years — nearest station 30 min away. New Eastlands station: 5 min.</text>
 <text x="32" y="479" fill="#5C5C4E" font-size="7.5" font-family="system-ui">KPI: quarterly response time published by ward · Target: 8 min critical response by 2030 · 12 min by 2027</text>
 </svg></template>
 <template id="viz-tpl-fire_safety-panel"><div class="vp-section">
@@ -8473,7 +8475,7 @@ function deleteVoice(id) {
 <text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">🛵 Boda boda operators · 🛒 Market traders · 🏗️ Construction casual workers</text>
 <text x="32" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">👗 Tailors, cobblers, hair stylists · 🍳 Food vendors and caterers</text>
 <text x="32" y="429" fill="#C4BFA8" font-size="8" font-family="system-ui">📱 Phone repair, electronics, secondhand goods (Luthuli Ave, Westlands)</text>
-<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">All eligible for: 1-day registration · M-Pesa NHIF · Skills Passport · Cooperative membership · Micro-pens...</text>
+<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">All eligible for: 1-day registration · M-Pesa NHIF · Skills Passport · Cooperative membership · Micro-pension (KES 50/day)</text>
 <text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">They keep working how they want — they just gain protection they currently have none of</text>
 </svg></template>
 <template id="viz-tpl-informal_economy-panel"><div class="vp-section">
@@ -8564,10 +8566,10 @@ function deleteVoice(id) {
 <rect x="20" y="352" width="504" height="118" fill="#21251C" rx="6"/>
 <text x="32" y="368" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">Committee Mandate — 5 Core Functions</text>
 <text x="32" y="384" fill="#C4BFA8" font-size="8" font-family="system-ui">1. Flood and fire preparedness — 2× annual community drills, maintain ward emergency kit</text>
-<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">2. Early warning relay — receive NCG/KMet alerts, activate phone tree to all 200 households within 1...</text>
-<text x="32" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">3. Vulnerable resident registry — maintain updated list of elderly, disabled, pregnant residents nee...</text>
+<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">2. Early warning relay — receive NCG/KMet alerts, activate phone tree to all 200 households within 15 min</text>
+<text x="32" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">3. Vulnerable resident registry — maintain updated list of elderly, disabled, pregnant residents needing priority support</text>
 <text x="32" y="429" fill="#C4BFA8" font-size="8" font-family="system-ui">4. Infrastructure reporting — report blocked drains, damaged lights, fire hazards via NCG app monthly</text>
-<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Selection: Ward baraza open vote · Gender-balanced (min 4 women of 12) · No political party affiliation re...</text>
+<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Selection: Ward baraza open vote · Gender-balanced (min 4 women of 12) · No political party affiliation requirement</text>
 <text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Budget: KES 50,000/year per ward committee for equipment, training, and communication costs</text>
 </svg></template>
 <template id="viz-tpl-community_resilience-panel"><div class="vp-section">
@@ -8655,12 +8657,12 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="352" width="504" height="118" fill="#21251C" rx="6"/>
 <text x="32" y="368" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The Political Economy — Why This Is Hard</text>
-<text x="32" y="384" fill="#C4BFA8" font-size="8" font-family="system-ui">The contractor cartel distributes procurement revenue to politically connected firms. Councillors, M...</text>
-<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">constituents and funders. Reform requires the Governor to break with this model — and requires State...</text>
+<text x="32" y="384" fill="#C4BFA8" font-size="8" font-family="system-ui">The contractor cartel distributes procurement revenue to politically connected firms. Councillors, MCAs, and MPs have contract...</text>
+<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">constituents and funders. Reform requires the Governor to break with this model — and requires State backing to absorb the po...</text>
 <text x="32" y="418" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">The realistic path: performance bonds + GPS tracking + public scorecards create the evidence base.</text>
-<text x="32" y="433" fill="#C4BFA8" font-size="8" font-family="system-ui">When Nairobi residents can see in real time which contractor's truck never left the depot, accountab...</text>
+<text x="32" y="433" fill="#C4BFA8" font-size="8" font-family="system-ui">When Nairobi residents can see in real time which contractor's truck never left the depot, accountability becomes a political...</text>
 <text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 1 (2025-2028): Performance bonds on all contracts above KES 5M · GPS public dashboard live</text>
-<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 2 (2028-2035): 3-strikes termination · City-led services piloted in 10 wards · Contractor model phas...</text>
+<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Phase 2 (2028-2035): 3-strikes termination · City-led services piloted in 10 wards · Contractor model phased out for core services</text>
 </svg></template>
 <template id="viz-tpl-contractor_reform-panel"><div class="vp-section">
 <div class="vp-title">Clean Procurement &amp; Contractor Reform — Why Nairobi's Services Don't Work</div>
@@ -8756,12 +8758,12 @@ function deleteVoice(id) {
 <!-- LEGEND -->
 <rect x="20" y="352" width="504" height="118" fill="#21251C" rx="6"/>
 <text x="32" y="368" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">What a Digital Address Unlocks</text>
-<text x="32" y="384" fill="#C4BFA8" font-size="8" font-family="system-ui">🚑 Ambulance finds you — today, 40% of Nairobi emergencies have no locatable address → response delay...</text>
-<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">💧 Water + power billing tied to address — ending the flat-rate billing that subsidises waste and pen...</text>
+<text x="32" y="384" fill="#C4BFA8" font-size="8" font-family="system-ui">🚑 Ambulance finds you — today, 40% of Nairobi emergencies have no locatable address → response delayed or impossible</text>
+<text x="32" y="399" fill="#C4BFA8" font-size="8" font-family="system-ui">💧 Water + power billing tied to address — ending the flat-rate billing that subsidises waste and penalises the poor</text>
 <text x="32" y="414" fill="#C4BFA8" font-size="8" font-family="system-ui">📦 Postal + courier delivery — formal economy access for informal settlement residents and businesses</text>
-<text x="32" y="429" fill="#C4BFA8" font-size="8" font-family="system-ui">📜 Property rights — an address is the first step toward a title deed and the capital security it pro...</text>
-<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Implementation: NCG mapping teams (1 per ward) + community volunteers + WhatsApp verification · Target: 80...</text>
-<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Model: Google Plus Codes + NCG ward numbering overlay · Cost: KES 2,000 per plot including QR plate + data...</text>
+<text x="32" y="429" fill="#C4BFA8" font-size="8" font-family="system-ui">📜 Property rights — an address is the first step toward a title deed and the capital security it provides</text>
+<text x="32" y="453" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Implementation: NCG mapping teams (1 per ward) + community volunteers + WhatsApp verification · Target: 800,000 plots addressed by 2028</text>
+<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Model: Google Plus Codes + NCG ward numbering overlay · Cost: KES 2,000 per plot including QR plate + database entry</text>
 </svg></template>
 <template id="viz-tpl-digital_address-panel"><div class="vp-section">
 <div class="vp-title">Digital Addressing — The Infrastructure Invisible Residents Need First</div>
@@ -8781,7 +8783,7 @@ function deleteVoice(id) {
 <template id="viz-tpl-markets-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Modern Markets — The Desire-Line Design Principle</text>
-<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Why markets go where they go · Trading forecourt solution · Ward anchor typology · BRT adj...</text>
+<text x="20" y="42" fill="#5C5C4E" font-size="9" font-family="system-ui">Why markets go where they go · Trading forecourt solution · Ward anchor typology · BRT adjacency</text>
 <rect x="20" y="52" width="504" height="300" fill="#21251C" rx="6"/>
 
 <!-- LEFT PANEL: THE PROBLEM (roadside market) -->
@@ -8880,8 +8882,8 @@ function deleteVoice(id) {
 <text x="377" y="416" fill="#8A8878" font-size="7.5" text-anchor="middle" font-family="system-ui">Walking distance · 20-30 stalls</text>
 <text x="377" y="428" fill="#8A8878" font-size="7.5" text-anchor="middle" font-family="system-ui">Canopy + drainage only</text>
 <text x="377" y="440" fill="#3FBFB0" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">30 markets · Phase 2-3</text>
-<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Location + climate rule: every market raised 60cm · perimeter drainage · 100-year rainfall canopy · flood...</text>
-<text x="32" y="477" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Design rule: trader associations participate in layout decisions · No trader displaced without equivalent...</text>
+<text x="32" y="465" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Location + climate rule: every market raised 60cm · perimeter drainage · 100-year rainfall canopy · flood stock insurance</text>
+<text x="32" y="477" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Design rule: trader associations participate in layout decisions · No trader displaced without equivalent spot in new design</text>
 </svg></template>
 <template id="viz-tpl-markets-panel"><div class="vp-section">
 <div class="vp-title">Modern Sustainable Markets — The Design Principles</div>
