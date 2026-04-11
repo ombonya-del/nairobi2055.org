@@ -904,7 +904,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <!-- Major roads: light gray lines -->
 <!-- Thika Road (N-S) -->
 <line x1="360" y1="60" x2="360" y2="380" stroke="#2A2E26" stroke-width="5"/>
-<text x="363" y="75" fill="#3A3F32" font-size="7.5" font-family="system-ui" transform="rotate(-90 363 75)">THIKA ROAD</text>
+<text x="363" y="75" fill="#6A7060" font-size="7.5" font-family="system-ui" transform="rotate(-90 363 75)">THIKA ROAD</text>
 <!-- Mombasa Road (SE) -->
 <line x1="272" y1="250" x2="520" y2="420" stroke="#2A2E26" stroke-width="4"/>
 <!-- Ngong Road (SW) -->
@@ -1074,7 +1074,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <ellipse cx="60" cy="462" rx="16" ry="9" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="1.2" stroke-dasharray="2,1"/>
 <text x="98" y="465" fill="#5DBF7A" font-size="9" font-family="system-ui">Informal settlements adjacent to corridor — sewer connections from in-situ upgrading eliminate r...</text>
 
-<text x="272" y="477" text-anchor="middle" fill="#3A3F32" font-size="7" font-family="system-ui">Geographic schematic · River path based on OSM data · Not to exact scale · Coordinates approximate</text>
+<text x="272" y="477" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Geographic schematic · River path based on OSM data · Not to exact scale · Coordinates approximate</text>
 </svg></template>
 <template id="viz-tpl-river-panel"><div class="vsect">Benchmark City</div>
 <a class="bench-link" href="https://www.landscapeperformance.org/case-study-briefs/cheonggyecheon-stream-restoration-project" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇷</div><div><div class="cmp-cn">Seoul — Cheonggyecheon</div><div class="cmp-sy">Restored 2005 · Demolished elevated highway · Restored urban stream</div></div><div class="ext-ico">↗</div></a>
@@ -2653,6 +2653,12 @@ function getVizKey(title){
   if(!title) return null;
   const t=title.toUpperCase();
 
+  if(t.includes('NAIROBI TECH HUB NETWORK')||t.includes('TECH HUB NETWORK')||t.includes('12 INNOVATION NODE')) return 'TECH_HUB_NET';
+  if(t.includes('DIGITAL INFRASTRUCTURE INVESTMENT')||t.includes('CITYWIDE CONNECTIVITY')) return 'DIGITAL_INFRA';
+  if(t.includes('MATATU CULTURAL LANDMARK')||t.includes('25 HERITAGE BUS')) return 'MATATU_LANDMARK';
+  if(t.includes('CREATIVE ECONOMY BASELINE')||t.includes('CREATIVE ECONOMY STUDY')) return 'CREATIVE_ECONOMY';
+  if(t.includes('COMMUNITY FLOOD MAPPING')||t.includes('FLOOD MAPPING PROGRAMME')||t.includes('FLOOD MAPPING')) return 'FLOOD_MAPPING';
+  if(t.includes('EMERGENCY RESPONSE SURGE')||t.includes('RESPONSE SURGE')||t.includes('FULL MOBILISATION')) return 'EMERG_RESPONSE_SURGE';
   // ── New cards (must come before generic checks) ─────────────────────
   if(t.includes('NAIROBI CULTURAL HERITAGE MAP')||t.includes('CULTURAL HERITAGE MAP')) return 'CULTURAL_HERITAGE';
   if(t.includes('DANDORA LANDFILL REMEDIATION')||t.includes('DANDORA RECLAMATION')) return 'DANDORA_RECLAIM';
@@ -2956,7 +2962,31 @@ const VIZ={
   AI_CYCLING:{title:'AI-Optimized Cycling Route Network — 500km Smart Paths',
     subtitle:'Real-Time Safety · AI Routing · Settlement Connection · 2030 Full Network',
     getMap:()=>document.getElementById('viz-tpl-ai_cycling-map').innerHTML,
-    getPanel:()=>document.getElementById('viz-tpl-ai_cycling-panel').innerHTML}
+    getPanel:()=>document.getElementById('viz-tpl-ai_cycling-panel').innerHTML},
+  TECH_HUB_NET:{title:'Nairobi Tech Hub Network — 12 Innovation Nodes',
+    subtitle:'Distributed · Settlement-Inclusive · 50,000 Startups by 2040',
+    getMap:()=>document.getElementById('viz-tpl-tech_hub_net-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-tech_hub_net-panel').innerHTML},
+  DIGITAL_INFRA:{title:'Digital Infrastructure Investment — Citywide Connectivity',
+    subtitle:'Fibre · 5G · Data Centres · Government API · KES 120B Investment',
+    getMap:()=>document.getElementById('viz-tpl-digital_infra-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-digital_infra-panel').innerHTML},
+  MATATU_LANDMARK:{title:'Matatu Cultural Landmark Programme — 25 Heritage Buses',
+    subtitle:'Permanently Installed · Living Monuments · UNESCO Recognition Target',
+    getMap:()=>document.getElementById('viz-tpl-matatu_landmark-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-matatu_landmark-panel').innerHTML},
+  CREATIVE_ECONOMY:{title:'Creative Economy Baseline — Nairobi\'s KES 240B Creative Sector',
+    subtitle:'Music · Film · Fashion · Visual Art · Architecture · Digital',
+    getMap:()=>document.getElementById('viz-tpl-creative_economy-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-creative_economy-panel').innerHTML},
+  FLOOD_MAPPING:{title:'Community Flood Mapping — 85 Ward Risk Registers',
+    subtitle:'Community-Led · Real-Time · Open Data · Prevention + Response',
+    getMap:()=>document.getElementById('viz-tpl-flood_mapping-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-flood_mapping-panel').innerHTML},
+  EMERG_RESPONSE_SURGE:{title:'Climate Emergency Response Surge — Nairobi Full Mobilisation',
+    subtitle:'All-Hands · 72-Hour Surge · Cross-Pillar · Crisis Scenario Protocol',
+    getMap:()=>document.getElementById('viz-tpl-emerg_response_surge-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-emerg_response_surge-panel').innerHTML}
 };
 function showVizEl(el){
   showViz(el.dataset.pid,el.dataset.sc,parseInt(el.dataset.ph),parseInt(el.dataset.i));
@@ -5644,89 +5674,89 @@ function deleteVoice(id) {
 </defs>
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Tech Infrastructure — How It Connects All 10 Pillars</text>
-<text x="20" y="44" fill="#5C5C4E" font-size="9" font-family="system-ui">Innovation District · Universal Broadband · Government API Platform · Smart City OS</text>
+<text x="20" y="44" fill="#C4BFA8" font-size="9" font-family="system-ui">Innovation District · Universal Broadband · Government API Platform · Smart City OS</text>
 
 <!-- Central tech hub -->
 <ellipse cx="272" cy="230" rx="65" ry="55" fill="url(#hubGlow)"/>
 <ellipse cx="272" cy="230" rx="52" ry="44" fill="#21251C" stroke="#8B79E8" stroke-width="2"/>
 <text x="272" y="218" text-anchor="middle" fill="#8B79E8" font-size="10" font-weight="700" font-family="Georgia,serif">Nairobi</text>
 <text x="272" y="231" text-anchor="middle" fill="#8B79E8" font-size="10" font-weight="700" font-family="Georgia,serif">Tech Stack</text>
-<text x="272" y="244" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Innovation District</text>
-<text x="272" y="256" text-anchor="middle" fill="#5C5C4E" font-size="8" font-family="system-ui">Upper Hill · 3km²</text>
+<text x="272" y="244" text-anchor="middle" fill="#C4BFA8" font-size="8" font-family="system-ui">Innovation District</text>
+<text x="272" y="256" text-anchor="middle" fill="#C4BFA8" font-size="8" font-family="system-ui">Upper Hill · 3km²</text>
 
 <!-- Three infrastructure layers -->
 <!-- Layer 1: Universal Broadband (outer ring, blue) -->
 <ellipse cx="272" cy="230" rx="145" ry="125" fill="none" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
 <rect x="16" y="70" width="115" height="32" fill="#21251C" rx="5" stroke="#378ADD" stroke-width="1.2"/>
 <text x="73" y="83" text-anchor="middle" fill="#378ADD" font-size="8.5" font-weight="700" font-family="system-ui">📡 Universal Broadband</text>
-<text x="73" y="95" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Fibre every address · Free WiFi</text>
+<text x="73" y="95" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Fibre every address · Free WiFi</text>
 
 <!-- Layer 2: Government API (middle ring, gold) -->
 <ellipse cx="272" cy="230" rx="100" ry="86" fill="none" stroke="#C8A84B" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.6"/>
 <rect x="414" y="70" width="112" height="32" fill="#21251C" rx="5" stroke="#C8A84B" stroke-width="1.2"/>
 <text x="470" y="83" text-anchor="middle" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="system-ui">⚙️ Government API</text>
-<text x="470" y="95" text-anchor="middle" fill="#5C5C4E" font-size="7.5" font-family="system-ui">Open data · 200+ services</text>
+<text x="470" y="95" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Open data · 200+ services</text>
 
 <!-- Spokes to 10 pillars around the ring -->
 <!-- Urban Design -->
 <line x1="272" y1="186" x2="272" y2="112" stroke="#3DBF78" stroke-width="1.5" opacity="0.7"/>
 <rect x="210" y="82" width="124" height="28" fill="#21251C" rx="5" stroke="#3DBF78" stroke-width="1.2"/>
 <text x="272" y="98" text-anchor="middle" fill="#3DBF78" font-size="8.5" font-weight="700" font-family="system-ui">🏙️ Urban Design</text>
-<text x="272" y="106" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">BRT tracking · Upgrade apps · Digital address</text>
+<text x="272" y="106" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">BRT tracking · Upgrade apps · Digital address</text>
 
 <!-- Governance -->
 <line x1="225" y1="196" x2="158" y2="148" stroke="#C8A84B" stroke-width="1.5" opacity="0.7"/>
 <rect x="14" y="118" width="140" height="28" fill="#21251C" rx="5" stroke="#C8A84B" stroke-width="1.2"/>
 <text x="84" y="131" text-anchor="middle" fill="#C8A84B" font-size="8.5" font-weight="700" font-family="system-ui">🏛️ Governance</text>
-<text x="84" y="139" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">e-Citizen · Land registry · Permits</text>
+<text x="84" y="139" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">e-Citizen · Land registry · Permits</text>
 
 <!-- Economy -->
 <line x1="222" y1="218" x2="145" y2="210" stroke="#378ADD" stroke-width="1.5" opacity="0.7"/>
 <rect x="8" y="198" width="132" height="28" fill="#21251C" rx="5" stroke="#378ADD" stroke-width="1.2"/>
 <text x="74" y="211" text-anchor="middle" fill="#378ADD" font-size="8.5" font-weight="700" font-family="system-ui">💰 Economy</text>
-<text x="74" y="219" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">M-Pesa API · SME finance · SEZ platform</text>
+<text x="74" y="219" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">M-Pesa API · SME finance · SEZ platform</text>
 
 <!-- Environment -->
 <line x1="225" y1="258" x2="155" y2="290" stroke="#5DBF7A" stroke-width="1.5" opacity="0.7"/>
 <rect x="8" y="278" width="142" height="28" fill="#21251C" rx="5" stroke="#5DBF7A" stroke-width="1.2"/>
 <text x="79" y="291" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="700" font-family="system-ui">🌿 Environment</text>
-<text x="79" y="299" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Pollution sensors · Tree tracking · EV grid</text>
+<text x="79" y="299" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">Pollution sensors · Tree tracking · EV grid</text>
 
 <!-- Social Fabric -->
 <line x1="244" y1="270" x2="215" y2="330" stroke="#E85888" stroke-width="1.5" opacity="0.7"/>
 <rect x="70" y="320" width="148" height="28" fill="#21251C" rx="5" stroke="#E85888" stroke-width="1.2"/>
 <text x="144" y="333" text-anchor="middle" fill="#E85888" font-size="8.5" font-weight="700" font-family="system-ui">🤝 Social Fabric</text>
-<text x="144" y="341" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Telemedicine · ECD apps · NHIF digital</text>
+<text x="144" y="341" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">Telemedicine · ECD apps · NHIF digital</text>
 
 <!-- Culture -->
 <line x1="272" y1="274" x2="272" y2="352" stroke="#E8844A" stroke-width="1.5" opacity="0.7"/>
 <rect x="188" y="342" width="168" height="28" fill="#21251C" rx="5" stroke="#E8844A" stroke-width="1.2"/>
 <text x="272" y="355" text-anchor="middle" fill="#E8844A" font-size="8.5" font-weight="700" font-family="system-ui">🎨 Culture</text>
-<text x="272" y="363" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">NFT marketplace · Streaming · VR districts</text>
+<text x="272" y="363" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">NFT marketplace · Streaming · VR districts</text>
 
 <!-- Healthy Living -->
 <line x1="302" y1="270" x2="335" y2="328" stroke="#3FBFB0" stroke-width="1.5" opacity="0.7"/>
 <rect x="316" y="318" width="148" height="28" fill="#21251C" rx="5" stroke="#3FBFB0" stroke-width="1.2"/>
 <text x="390" y="331" text-anchor="middle" fill="#3FBFB0" font-size="8.5" font-weight="700" font-family="system-ui">🌳 Healthy Living</text>
-<text x="390" y="339" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">Smart parks · Cycling app · Health wearables</text>
+<text x="390" y="339" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">Smart parks · Cycling app · Health wearables</text>
 
 <!-- Transport -->
 <line x1="318" y1="255" x2="388" y2="286" stroke="#78BF45" stroke-width="1.5" opacity="0.7"/>
 <rect x="390" y="275" width="148" height="28" fill="#21251C" rx="5" stroke="#78BF45" stroke-width="1.2"/>
 <text x="464" y="288" text-anchor="middle" fill="#78BF45" font-size="8.5" font-weight="700" font-family="system-ui">🚌 Transport</text>
-<text x="464" y="296" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">MaaS platform · BRT tracking · EV dispatch</text>
+<text x="464" y="296" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">MaaS platform · BRT tracking · EV dispatch</text>
 
 <!-- Emergency -->
 <line x1="316" y1="212" x2="394" y2="188" stroke="#E86A38" stroke-width="1.5" opacity="0.7"/>
 <rect x="396" y="177" width="140" height="28" fill="#21251C" rx="5" stroke="#E86A38" stroke-width="1.2"/>
 <text x="466" y="190" text-anchor="middle" fill="#E86A38" font-size="8.5" font-weight="700" font-family="system-ui">🚨 Emergency</text>
-<text x="466" y="198" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">AI dispatch · Drone control · Early warning</text>
+<text x="466" y="198" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">AI dispatch · Drone control · Early warning</text>
 
 <!-- Tech (self reference) -->
 <line x1="318" y1="196" x2="368" y2="150" stroke="#8B79E8" stroke-width="1.5" opacity="0.7"/>
 <rect x="370" y="118" width="162" height="28" fill="#21251C" rx="5" stroke="#8B79E8" stroke-width="1.2"/>
 <text x="451" y="131" text-anchor="middle" fill="#8B79E8" font-size="8.5" font-weight="700" font-family="system-ui">⚡ Tech &amp; Innovation</text>
-<text x="451" y="139" text-anchor="middle" fill="#5C5C4E" font-size="7" font-family="system-ui">AI research · 5G/6G · GovTech startups</text>
+<text x="451" y="139" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui" fill="#C4BFA8">AI research · 5G/6G · GovTech startups</text>
 
 <!-- Bottom stats bar -->
 <rect x="16" y="408" width="512" height="80" fill="#21251C" rx="8" stroke="#3A3F32" stroke-width="1"/>
@@ -8576,8 +8606,8 @@ function deleteVoice(id) {
 <!-- COMPOSITION nodes around the centre -->
 <!-- Community elected rep -->
 <circle cx="148" cy="130" r="28" fill="#378ADD" opacity="0.2" stroke="#378ADD" stroke-width="1.2"/>
-<text x="148" y="125" fill="#378ADD" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">ELECTED</text>
-<text x="148" y="137" fill="#378ADD" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">RESIDENTS</text>
+<text x="148" y="125" fill="#A0A898" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">ELECTED</text>
+<text x="148" y="137" fill="#A0A898" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">RESIDENTS</text>
 <text x="148" y="149" fill="#8A8878" font-size="7" text-anchor="middle" font-family="system-ui">4 per committee</text>
 <line x1="176" y1="143" x2="210" y2="163" stroke="#378ADD" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
 
@@ -8611,8 +8641,8 @@ function deleteVoice(id) {
 
 <!-- Faith leader -->
 <circle cx="346" cy="308" r="28" fill="#3FBFB0" opacity="0.2" stroke="#3FBFB0" stroke-width="1.2"/>
-<text x="346" y="303" fill="#3FBFB0" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">FAITH</text>
-<text x="346" y="315" fill="#3FBFB0" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">LEADER</text>
+<text x="346" y="303" fill="#A0A898" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">FAITH</text>
+<text x="346" y="315" fill="#A0A898" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">LEADER</text>
 <text x="346" y="327" fill="#8A8878" font-size="7" text-anchor="middle" font-family="system-ui">church/mosque</text>
 <line x1="326" y1="285" x2="302" y2="232" stroke="#3FBFB0" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/>
 
@@ -8624,7 +8654,7 @@ function deleteVoice(id) {
 
 <!-- SELECTION box -->
 <rect x="400" y="68" width="112" height="50" fill="#2F342A" stroke="#378ADD" stroke-width="1" rx="4"/>
-<text x="456" y="84" fill="#378ADD" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">SELECTION</text>
+<text x="456" y="84" fill="#A0A898" font-size="8" font-weight="700" text-anchor="middle" font-family="system-ui">SELECTION</text>
 <text x="456" y="97" fill="#8A8878" font-size="7" text-anchor="middle" font-family="system-ui">Ward baraza vote</text>
 <text x="456" y="108" fill="#8A8878" font-size="7" text-anchor="middle" font-family="system-ui">2-year terms · 1 renewal</text>
 
@@ -9944,4 +9974,394 @@ function deleteVoice(id) {
 <div class="vsect vsect2">Also Compare</div>
 <a class="also-link" href="https://www.worldbank.org/en/topic/transport/brief/cycling" target="_blank" rel="noopener"><span class="also-ico">🌍</span><span><strong>World Bank: Cycling in African Cities</strong> — evidence showing that every $1 invested in cycling infrastructure generates $5 in economic returns (reduced congestion, health benefits, reduced vehicle accidents). Nairobi's ROI calculation is more dramatic given current congestion costs.</span><span class="ext-ico" style="margin-left:auto">↗</span></a>
 <div class="viz-note"><strong>The economic case for AI cycling:</strong> Nairobi loses KES 54B/year to traffic congestion. A 20% shift of CBD-bound commuters to cycling would reduce that by KES 10B. The 500km AI cycling network, including AI sensors and apps, costs KES 8B to build. Payback in under a year from congestion savings alone.</div></template>
+
+<template id="viz-tpl-tech_hub_net-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Nairobi Tech Hub Network — 12 Innovation Nodes</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">Distributed hubs · Settlement-inclusive · 50,000 startups by 2040 · $2B FDI target</text>
+<!-- Central hub -->
+<circle cx="272" cy="185" r="28" fill="rgba(139,121,232,0.15)" stroke="#8B79E8" stroke-width="2.5"/>
+<text x="272" y="181" text-anchor="middle" fill="#8B79E8" font-size="9" font-weight="700">UPPER HILL</text>
+<text x="272" y="194" text-anchor="middle" fill="#8B79E8" font-size="8">MAIN HUB</text>
+<!-- Tier 1 nodes -->
+<circle cx="145" cy="110" r="20" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="2"/>
+<text x="145" y="107" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">iHub</text>
+<text x="145" y="119" text-anchor="middle" fill="#5DBF7A" font-size="7">Westlands</text>
+<circle cx="390" cy="110" r="20" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="2"/>
+<text x="390" y="107" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">Strathmore</text>
+<text x="390" y="119" text-anchor="middle" fill="#5DBF7A" font-size="7">Madaraka</text>
+<circle cx="430" cy="210" r="20" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="2"/>
+<text x="430" y="207" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">Konza</text>
+<text x="430" y="219" text-anchor="middle" fill="#5DBF7A" font-size="7">Link Node</text>
+<circle cx="110" cy="210" r="20" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="2"/>
+<text x="110" y="207" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">UoN</text>
+<text x="110" y="219" text-anchor="middle" fill="#5DBF7A" font-size="7">Main Campus</text>
+<!-- Tier 2 settlement hubs -->
+<circle cx="80" cy="300" r="14" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="80" y="297" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Kibera</text>
+<text x="80" y="308" text-anchor="middle" fill="#C8A84B" font-size="6.5">Hub</text>
+<circle cx="185" cy="295" r="14" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="185" y="292" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Mathare</text>
+<text x="185" y="303" text-anchor="middle" fill="#C8A84B" font-size="6.5">Hub</text>
+<circle cx="355" cy="295" r="14" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="355" y="292" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Mukuru</text>
+<text x="355" y="303" text-anchor="middle" fill="#C8A84B" font-size="6.5">Hub</text>
+<circle cx="460" cy="300" r="14" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="460" y="297" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Kasarani</text>
+<text x="460" y="308" text-anchor="middle" fill="#C8A84B" font-size="6.5">Hub</text>
+<circle cx="270" cy="310" r="14" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="270" y="307" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Dandora</text>
+<text x="270" y="318" text-anchor="middle" fill="#C8A84B" font-size="6.5">Hub</text>
+<!-- Connections -->
+<line x1="252" y1="172" x2="163" y2="125" stroke="#3A3F32" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="292" y1="172" x2="372" y2="125" stroke="#3A3F32" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="300" y1="195" x2="412" y2="208" stroke="#3A3F32" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="244" y1="195" x2="128" y2="208" stroke="#3A3F32" stroke-width="1" stroke-dasharray="3,2"/>
+<line x1="258" y1="210" x2="94" y2="290" stroke="#C8A84B" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.6"/>
+<line x1="264" y1="212" x2="199" y2="285" stroke="#C8A84B" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.6"/>
+<line x1="280" y1="212" x2="341" y2="285" stroke="#C8A84B" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.6"/>
+<line x1="286" y1="211" x2="446" y2="290" stroke="#C8A84B" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.6"/>
+<line x1="272" y1="213" x2="272" y2="296" stroke="#C8A84B" stroke-width="0.8" stroke-dasharray="2,3" opacity="0.6"/>
+<!-- Legend -->
+<rect x="20" y="348" width="504" height="58" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<circle cx="42" cy="365" r="7" fill="rgba(139,121,232,0.3)" stroke="#8B79E8" stroke-width="1.5"/>
+<text x="56" y="369" fill="#8B79E8" font-size="8.5" font-family="system-ui">Central Hub — 10,000+ sq ft, full accelerator, VC access</text>
+<circle cx="42" cy="385" r="6" fill="rgba(93,191,122,0.2)" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="56" y="389" fill="#5DBF7A" font-size="8.5" font-family="system-ui">Tier 1 Anchor — University/established hub, 5,000+ sq ft</text>
+<circle cx="290" cy="365" r="5" fill="rgba(200,168,75,0.2)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="302" y="369" fill="#C8A84B" font-size="8.5" font-family="system-ui">Settlement Hub — 500–1,000 sq ft, subsidised, community-owned</text>
+<text x="272" y="410" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">12 nodes · 4 tiers · Fibre-connected · All hubs within 30min of a settlement</text>
+</svg></template>
+<template id="viz-tpl-tech_hub_net-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.ccHub.ng" target="_blank" rel="noopener"><div class="cmp-flag">🇳🇬</div><div><div class="cmp-cn">CcHUB Lagos — Africa's Hub Model</div><div class="cmp-sy">Co-creation hub · 500+ startups supported · $40M raised · Distributed city network</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">Hub Tier Comparison</div>
+<table class="cmp-tbl">
+<tr><th>Tier</th><th>Size</th><th>Focus</th><th>Count</th></tr>
+<tr><td>Central</td><td>10,000+ sq ft</td><td>VC, scale-ups, HQ</td><td>1</td></tr>
+<tr><td>Anchor</td><td>5,000 sq ft</td><td>University links, sector focus</td><td>4</td></tr>
+<tr><td>Settlement</td><td>500–1,000 sq ft</td><td>Community founders, early stage</td><td>7</td></tr>
+</table>
+<div class="vsect vsect2">Why Distributed Matters</div>
+<div class="lsn"><span class="lsn-n">1</span><span>Kenya's best tech talent is not concentrated in Westlands. Kibera, Mathare, and Korogocho have produced exceptional developers, designers, and entrepreneurs who cannot afford CBD co-working spaces at KES 15,000/month. Settlement hubs bring infrastructure to where talent already is.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>The 12-hub network creates a city-wide innovation immune system — when one hub is disrupted (flooding, power outage, security incident), work continues across 11 others. Single-location innovation clusters are fragile; distributed networks are antifragile.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://www.ihub.co.ke" target="_blank" rel="noopener"><span class="also-ico">🇰🇪</span><span><strong>iHub Nairobi — Original Model</strong> — founded 2010, produced M-Pesa ecosystem companies. The 2055 network scales this to 12 nodes, with settlement hubs as the key innovation over the original model.</span><span class="ext-ico" style="margin-left:auto">↗</span></a></template>
+<template id="viz-tpl-digital_infra-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Digital Infrastructure Investment — KES 120B</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">Fibre backbone · 5G citywide · 3 data centres · Government API · Universal broadband</text>
+<!-- Layer diagram: 4 infrastructure layers -->
+<!-- Layer 4: Application (top) -->
+<rect x="30" y="62" width="484" height="50" fill="rgba(139,121,232,0.12)" rx="6" stroke="#8B79E8" stroke-width="1.5"/>
+<text x="50" y="83" fill="#8B79E8" font-size="9" font-weight="700">APPLICATION LAYER</text>
+<text x="50" y="97" fill="#B0A8C8" font-size="8" font-family="system-ui">e-Citizen · Land registry · Digital address · M-PESA APIs · Open Government data</text>
+<text x="490" y="88" text-anchor="end" fill="#8B79E8" font-size="8.5" font-family="system-ui">200+ services</text>
+<!-- Layer 3: Data centres -->
+<rect x="30" y="122" width="484" height="50" fill="rgba(93,191,122,0.1)" rx="6" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="50" y="143" fill="#5DBF7A" font-size="9" font-weight="700">DATA CENTRE LAYER</text>
+<text x="50" y="157" fill="#9AB898" font-size="8" font-family="system-ui">Ruaraka · Upper Hill · Konza link — Tier 3 certified · 99.99% uptime · Solar-backed</text>
+<text x="490" y="148" text-anchor="end" fill="#5DBF7A" font-size="8.5" font-family="system-ui">3 centres · 50MW</text>
+<!-- Layer 2: 5G -->
+<rect x="30" y="182" width="484" height="50" fill="rgba(55,138,221,0.1)" rx="6" stroke="#378ADD" stroke-width="1.5"/>
+<text x="50" y="203" fill="#378ADD" font-size="9" font-weight="700">5G / WIRELESS LAYER</text>
+<text x="50" y="217" fill="#90B8D8" font-size="8" font-family="system-ui">2,500 towers · 100% settlement coverage · Sub-10ms latency · IoT sensor backbone</text>
+<text x="490" y="208" text-anchor="end" fill="#378ADD" font-size="8.5" font-family="system-ui">2,500 towers</text>
+<!-- Layer 1: Fibre -->
+<rect x="30" y="242" width="484" height="50" fill="rgba(200,168,75,0.1)" rx="6" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="50" y="263" fill="#C8A84B" font-size="9" font-weight="700">FIBRE BACKBONE LAYER</text>
+<text x="50" y="277" fill="#C8B870" font-size="8" font-family="system-ui">3,500km conduit · All 85 wards connected · 10Gbps core · Last-mile to every plot</text>
+<text x="490" y="268" text-anchor="end" fill="#C8A84B" font-size="8.5" font-family="system-ui">3,500km</text>
+<!-- Investment breakdown -->
+<rect x="30" y="308" width="484" height="90" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<text x="50" y="326" fill="#F0EAD6" font-size="8.5" font-weight="700">KES 120B INVESTMENT BREAKDOWN (2025–2035)</text>
+<rect x="50" y="334" width="95" height="48" fill="rgba(200,168,75,0.15)" rx="3" stroke="#C8A84B" stroke-width="0.8"/>
+<text x="97" y="352" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">KES 45B</text>
+<text x="97" y="367" text-anchor="middle" fill="#8A8878" font-size="7.5">Fibre network</text>
+<text x="97" y="378" text-anchor="middle" fill="#8A8878" font-size="7.5">37.5% of total</text>
+<rect x="155" y="334" width="95" height="48" fill="rgba(55,138,221,0.15)" rx="3" stroke="#378ADD" stroke-width="0.8"/>
+<text x="202" y="352" text-anchor="middle" fill="#378ADD" font-size="12" font-weight="700" font-family="Georgia,serif">KES 38B</text>
+<text x="202" y="367" text-anchor="middle" fill="#8A8878" font-size="7.5">5G towers</text>
+<text x="202" y="378" text-anchor="middle" fill="#8A8878" font-size="7.5">31.7% of total</text>
+<rect x="260" y="334" width="95" height="48" fill="rgba(93,191,122,0.15)" rx="3" stroke="#5DBF7A" stroke-width="0.8"/>
+<text x="307" y="352" text-anchor="middle" fill="#5DBF7A" font-size="12" font-weight="700" font-family="Georgia,serif">KES 22B</text>
+<text x="307" y="367" text-anchor="middle" fill="#8A8878" font-size="7.5">Data centres</text>
+<text x="307" y="378" text-anchor="middle" fill="#8A8878" font-size="7.5">18.3% of total</text>
+<rect x="365" y="334" width="125" height="48" fill="rgba(139,121,232,0.15)" rx="3" stroke="#8B79E8" stroke-width="0.8"/>
+<text x="427" y="352" text-anchor="middle" fill="#8B79E8" font-size="12" font-weight="700" font-family="Georgia,serif">KES 15B</text>
+<text x="427" y="367" text-anchor="middle" fill="#8A8878" font-size="7.5">GovAPI platform</text>
+<text x="427" y="378" text-anchor="middle" fill="#8A8878" font-size="7.5">12.5% of total</text>
+<text x="272" y="410" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">KES 120B total · 2025–2035 · PPP model · 40% public 60% private · World Bank co-financing</text>
+</svg></template>
+<template id="viz-tpl-digital_infra-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.ida.gov.sg" target="_blank" rel="noopener"><div class="cmp-flag">🇸🇬</div><div><div class="cmp-cn">Singapore — National Digital Infrastructure</div><div class="cmp-sy">Nationwide fibre · 5G complete 2025 · Government API · Smart Nation foundation</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">Why Infrastructure Before Applications</div>
+<div class="lsn"><span class="lsn-n">1</span><span>Every digital service in Nairobi 2055 — the digital address system, e-citizen platform, matatu dispatch AI, flood sensors — runs on the same physical infrastructure. Building the application without the infrastructure is building on sand. KES 120B in infrastructure enables KES 2T in digital economy value.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>Settlement connectivity is the non-negotiable. Westlands already has fibre. The 3,500km network prioritises the last-mile to informal settlements where connectivity gaps are widest. A Mathare resident with a smartphone but no affordable data access is still digitally excluded.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://www.konza.go.ke" target="_blank" rel="noopener"><span class="also-ico">🇰🇪</span><span><strong>Konza Technopolis</strong> — Kenya's existing smart city investment. The Nairobi digital infrastructure links Konza as a data centre and innovation node rather than treating it as a separate project.</span><span class="ext-ico" style="margin-left:auto">↗</span></a></template>
+<template id="viz-tpl-matatu_landmark-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Matatu Cultural Landmark Programme — 25 Buses</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">Permanent installations · Iconic routes preserved · UNESCO intangible heritage target</text>
+<!-- Bus silhouette diagram (stylised) -->
+<rect x="80" y="65" width="384" height="140" rx="12" fill="#21251C" stroke="#C8A84B" stroke-width="2.5"/>
+<!-- Windows -->
+<rect x="105" y="82" width="45" height="30" rx="4" fill="#1A2A3A" stroke="#C8A84B" stroke-width="1"/>
+<rect x="162" y="82" width="45" height="30" rx="4" fill="#1A3A2A" stroke="#5DBF7A" stroke-width="1"/>
+<rect x="219" y="82" width="45" height="30" rx="4" fill="#2A1A3A" stroke="#8B79E8" stroke-width="1"/>
+<rect x="276" y="82" width="45" height="30" rx="4" fill="#2A1A0A" stroke="#E8844A" stroke-width="1"/>
+<rect x="333" y="82" width="45" height="30" rx="4" fill="#1A2A1A" stroke="#3DBF78" stroke-width="1"/>
+<!-- Livery stripe -->
+<rect x="80" y="122" width="384" height="18" fill="#C8A84B" opacity="0.8"/>
+<text x="272" y="135" text-anchor="middle" fill="#1A1D16" font-size="9" font-weight="700">HERITAGE LANDMARK — NOT FOR SALE · PERMANENT INSTALLATION</text>
+<!-- Side art panels -->
+<rect x="80" y="140" width="150" height="55" fill="#21251C" rx="0"/>
+<text x="155" y="162" text-anchor="middle" fill="#E85050" font-size="9" font-weight="700">🎨 ORIGINAL LIVERY</text>
+<text x="155" y="176" text-anchor="middle" fill="#8A8878" font-size="7.5">Artist-authenticated</text>
+<text x="155" y="188" text-anchor="middle" fill="#8A8878" font-size="7.5">Certificate of heritage</text>
+<rect x="314" y="140" width="150" height="55" fill="#21251C" rx="0"/>
+<text x="389" y="162" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700">🏛️ PERMANENT SITE</text>
+<text x="389" y="176" text-anchor="middle" fill="#8A8878" font-size="7.5">Legal protection</text>
+<text x="389" y="188" text-anchor="middle" fill="#8A8878" font-size="7.5">Community stewardship</text>
+<!-- Wheels -->
+<circle cx="160" cy="215" r="18" fill="#2A2E26" stroke="#C8A84B" stroke-width="2"/>
+<circle cx="160" cy="215" r="8" fill="#1A1D16" stroke="#C8A84B" stroke-width="1.5"/>
+<circle cx="384" cy="215" r="18" fill="#2A2E26" stroke="#C8A84B" stroke-width="2"/>
+<circle cx="384" cy="215" r="8" fill="#1A1D16" stroke="#C8A84B" stroke-width="1.5"/>
+<!-- 25 landmark locations -->
+<rect x="20" y="248" width="504" height="120" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<text x="40" y="266" fill="#C8A84B" font-size="8.5" font-weight="700">25 LANDMARK INSTALLATION SITES</text>
+<text x="40" y="282" fill="#8A8878" font-size="8" font-family="system-ui">• CBD Roundabout — Kencom (Route 34 "The Legend")</text>
+<text x="40" y="296" fill="#8A8878" font-size="8" font-family="system-ui">• Kibera Social Justice Centre (Route 19 "The Freedom Bus")</text>
+<text x="40" y="310" fill="#8A8878" font-size="8" font-family="system-ui">• Mathare Museum entrance (Route 58 "The Mathare")</text>
+<text x="40" y="324" fill="#8A8878" font-size="8" font-family="system-ui">• Kasarani Stadium creative gateway (Route 45 "The Champion")</text>
+<text x="280" y="282" fill="#8A8878" font-size="8" font-family="system-ui">• Dagoretti craft market (Route 118 "The Craftsman")</text>
+<text x="280" y="296" fill="#8A8878" font-size="8" font-family="system-ui">• Eastlands Pipeline estate (Route 7 "The Eastlander")</text>
+<text x="280" y="310" fill="#8A8878" font-size="8" font-family="system-ui">• Karen heritage precinct (Route 111 "The Safari")</text>
+<text x="280" y="324" fill="#8A8878" font-size="8" font-family="system-ui">• + 18 further sites across all 8 districts</text>
+<text x="40" y="345" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="600">Protection: Heritage Act 2026 · Cannot be demolished, relocated, or sold without CRC + Governor approval</text>
+<text x="272" y="395" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">Matatu Cultural Landmark Programme · 25 permanently installed buses · Nairobi 2055 Heritage Plan</text>
+</svg></template>
+<template id="viz-tpl-matatu_landmark-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://ich.unesco.org" target="_blank" rel="noopener"><div class="cmp-flag">🇺🇳</div><div><div class="cmp-cn">UNESCO Intangible Cultural Heritage List</div><div class="cmp-sy">Safeguarding living traditions · Community-held heritage · Legal protection frameworks</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">Why Permanent Installation</div>
+<div class="lsn"><span class="lsn-n">1</span><span>When a matatu is decommissioned, its art — sometimes worth more than the bus — is typically destroyed with it. Permanent installation creates a city-wide open-air gallery of Kenya's most distinctive art form, accessible to every resident for free, forever.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>The Heritage Act 2026 legal protection is the key innovation. A bus that is legally registered as a cultural landmark cannot be removed for development or sold for scrap. Community Resilience Committees are the designated stewardship bodies for each installation.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span>Tourism routing: 25 landmark installations across 8 districts create a self-guided matatu heritage trail. International visitors to Nairobi can follow a mapped route connecting installations — the world's only urban matatu art safari.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://www.streetart.co.za/johannesburg" target="_blank" rel="noopener"><span class="also-ico">🇿🇦</span><span><strong>Johannesburg Maboneng — Street Art District</strong> — permanent murals as protected cultural landmarks generate tourism revenue and community pride. Nairobi's matatu landmark programme applies the same principle to three-dimensional objects.</span><span class="ext-ico" style="margin-left:auto">↗</span></a></template>
+<template id="viz-tpl-creative_economy-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Creative Economy Baseline — KES 240B Sector</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">6 creative sub-sectors · 180,000 workers · 4.2% of Nairobi GDP · Undercounted by 60%</text>
+<!-- 6 sector treemap-style boxes -->
+<!-- Music - largest -->
+<rect x="20" y="58" width="180" height="120" fill="rgba(139,121,232,0.15)" rx="6" stroke="#8B79E8" stroke-width="1.5"/>
+<text x="110" y="98" text-anchor="middle" fill="#8B79E8" font-size="14" font-weight="700" font-family="Georgia,serif">MUSIC</text>
+<text x="110" y="115" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">KES 78B</text>
+<text x="110" y="130" text-anchor="middle" fill="#8A8878" font-size="8">Streaming · Live · Publishing</text>
+<text x="110" y="142" text-anchor="middle" fill="#8A8878" font-size="8">55,000 workers</text>
+<text x="110" y="155" text-anchor="middle" fill="#8A8878" font-size="8">Gengetone · Afrobeats · Gospel</text>
+<text x="110" y="167" text-anchor="middle" fill="#8B79E8" font-size="7.5">32.5% of creative sector</text>
+<!-- Fashion -->
+<rect x="210" y="58" width="155" height="120" fill="rgba(232,132,74,0.12)" rx="6" stroke="#E8844A" stroke-width="1.5"/>
+<text x="287" y="94" text-anchor="middle" fill="#E8844A" font-size="12" font-weight="700" font-family="Georgia,serif">FASHION</text>
+<text x="287" y="110" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">KES 52B</text>
+<text x="287" y="124" text-anchor="middle" fill="#8A8878" font-size="8">Design · Jua kali · Retail</text>
+<text x="287" y="137" text-anchor="middle" fill="#8A8878" font-size="8">42,000 workers</text>
+<text x="287" y="150" text-anchor="middle" fill="#E8844A" font-size="7.5">21.7% of sector</text>
+<!-- Digital -->
+<rect x="375" y="58" width="149" height="120" fill="rgba(55,138,221,0.12)" rx="6" stroke="#378ADD" stroke-width="1.5"/>
+<text x="449" y="94" text-anchor="middle" fill="#378ADD" font-size="12" font-weight="700" font-family="Georgia,serif">DIGITAL</text>
+<text x="449" y="110" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">KES 45B</text>
+<text x="449" y="124" text-anchor="middle" fill="#8A8878" font-size="8">Gaming · NFTs · Content</text>
+<text x="449" y="137" text-anchor="middle" fill="#8A8878" font-size="8">28,000 workers</text>
+<text x="449" y="150" text-anchor="middle" fill="#378ADD" font-size="7.5">18.8% of sector</text>
+<!-- Film/TV -->
+<rect x="20" y="188" width="155" height="100" fill="rgba(93,191,122,0.12)" rx="6" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="97" y="220" text-anchor="middle" fill="#5DBF7A" font-size="11" font-weight="700">FILM &amp; TV</text>
+<text x="97" y="236" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">KES 35B</text>
+<text x="97" y="250" text-anchor="middle" fill="#8A8878" font-size="8">Production · PostProd · OTT</text>
+<text x="97" y="263" text-anchor="middle" fill="#8A8878" font-size="8">22,000 workers</text>
+<text x="97" y="276" text-anchor="middle" fill="#5DBF7A" font-size="7.5">14.6% of sector</text>
+<!-- Visual Art -->
+<rect x="185" y="188" width="140" height="100" fill="rgba(200,168,75,0.12)" rx="6" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="255" y="220" text-anchor="middle" fill="#C8A84B" font-size="10" font-weight="700">VISUAL ART</text>
+<text x="255" y="236" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">KES 18B</text>
+<text x="255" y="250" text-anchor="middle" fill="#8A8878" font-size="8">Galleries · Matatu · Murals</text>
+<text x="255" y="263" text-anchor="middle" fill="#8A8878" font-size="8">20,000 workers</text>
+<text x="255" y="276" text-anchor="middle" fill="#C8A84B" font-size="7.5">7.5% of sector</text>
+<!-- Architecture -->
+<rect x="335" y="188" width="189" height="100" fill="rgba(61,191,120,0.1)" rx="6" stroke="#3DBF78" stroke-width="1.5"/>
+<text x="429" y="220" text-anchor="middle" fill="#3DBF78" font-size="10" font-weight="700">ARCHITECTURE</text>
+<text x="429" y="236" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">KES 12B</text>
+<text x="429" y="250" text-anchor="middle" fill="#8A8878" font-size="8">Design · Planning · Built env</text>
+<text x="429" y="263" text-anchor="middle" fill="#8A8878" font-size="8">13,000 workers</text>
+<text x="429" y="276" text-anchor="middle" fill="#3DBF78" font-size="7.5">5.0% of sector</text>
+<!-- 2055 targets -->
+<rect x="20" y="302" width="504" height="80" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1"/>
+<text x="40" y="320" fill="#C8A84B" font-size="8.5" font-weight="700">2055 TARGETS — CREATIVE ECONOMY AS NAIROBI'S 2ND LARGEST SECTOR</text>
+<text x="40" y="336" fill="#8A8878" font-size="8" font-family="system-ui">Current: KES 240B (4.2% of Nairobi GDP) · 180,000 formal workers · 60% more informal</text>
+<text x="40" y="350" fill="#5DBF7A" font-size="8" font-family="system-ui" font-weight="600">Target 2035: KES 500B (7% GDP) · 350,000 workers · Regional export platform</text>
+<text x="40" y="364" fill="#8B79E8" font-size="8" font-family="system-ui" font-weight="600">Target 2055: KES 1.2T (12% GDP) · 600,000 workers · Africa's leading creative city</text>
+<text x="272" y="395" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">Creative Economy Baseline · Nairobi 2055 Cultural Strategy · 6 sub-sectors · KES 240B</text>
+</svg></template>
+<template id="viz-tpl-creative_economy-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.dcms.gov.uk/creative-industries" target="_blank" rel="noopener"><div class="cmp-flag">🇬🇧</div><div><div class="cmp-cn">UK Creative Industries — £108B Sector</div><div class="cmp-sy">Fastest growing sector 2010–2023 · 2.4M workers · Policy baseline drove investment</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">Why a Baseline Study First</div>
+<div class="lsn"><span class="lsn-n">1</span><span>Nairobi's creative economy is currently undercounted by an estimated 60% because informal creative workers — matatu artists, jua kali designers, street musicians — are classified as informal economy workers, not creative sector workers. The baseline study recategorises them, revealing the true sector size.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>You cannot grow what you cannot measure. The UK's creative industries grew from £60B to £108B between 2010 and 2023 largely because DCMS began publishing annual creative economy statistics in 2001 — making the sector legible to investors, lenders, and policymakers.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://unctad.org/creative-economy" target="_blank" rel="noopener"><span class="also-ico">🌍</span><span><strong>UNCTAD Creative Economy Reports</strong> — Africa's creative economy grows at 7% per year vs 3% for the overall economy. Nairobi's 2055 strategy targets capturing 15% of continental creative export revenue.</span><span class="ext-ico" style="margin-left:auto">↗</span></a></template>
+<template id="viz-tpl-flood_mapping-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Community Flood Mapping — 85 Ward Risk Registers</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">Community-mapped · Open data · Real-time sensor overlay · Prevention + rapid response</text>
+<!-- Map showing Nairobi with flood risk zones -->
+<rect x="20" y="58" width="310" height="220" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<text x="175" y="76" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">NAIROBI FLOOD RISK MAP</text>
+<!-- Rivers -->
+<path d="M20,150 Q80,140 140,148 Q200,155 260,145 Q290,140 330,143" fill="none" stroke="#378ADD" stroke-width="4" opacity="0.5"/>
+<path d="M150,58 Q160,100 165,150 Q170,200 175,278" fill="none" stroke="#378ADD" stroke-width="3" opacity="0.4"/>
+<!-- HIGH risk zones (red) -->
+<ellipse cx="100" cy="165" rx="45" ry="28" fill="rgba(229,80,80,0.3)" stroke="#E85050" stroke-width="1.5"/>
+<text x="100" y="162" text-anchor="middle" fill="#E85050" font-size="8.5" font-weight="700">MATHARE</text>
+<text x="100" y="174" text-anchor="middle" fill="#E85050" font-size="7">HIGH RISK</text>
+<ellipse cx="220" cy="185" rx="38" ry="22" fill="rgba(229,80,80,0.25)" stroke="#E85050" stroke-width="1.5"/>
+<text x="220" y="182" text-anchor="middle" fill="#E85050" font-size="8" font-weight="700">MUKURU</text>
+<text x="220" y="193" text-anchor="middle" fill="#E85050" font-size="7">HIGH RISK</text>
+<!-- MEDIUM risk zones (amber) -->
+<ellipse cx="130" cy="230" rx="35" ry="20" fill="rgba(200,168,75,0.2)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="130" y="227" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700">KIBERA</text>
+<text x="130" y="238" text-anchor="middle" fill="#C8A84B" font-size="7">MED RISK</text>
+<ellipse cx="265" cy="135" rx="30" ry="18" fill="rgba(200,168,75,0.2)" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="265" y="132" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">PANGANI</text>
+<text x="265" y="143" text-anchor="middle" fill="#C8A84B" font-size="7">MED RISK</text>
+<!-- Community mappers -->
+<circle cx="85" cy="148" r="4" fill="#5DBF7A"/>
+<circle cx="120" cy="155" r="4" fill="#5DBF7A"/>
+<circle cx="195" cy="172" r="4" fill="#5DBF7A"/>
+<circle cx="245" cy="165" r="4" fill="#5DBF7A"/>
+<circle cx="145" cy="215" r="4" fill="#C8A84B"/>
+<circle cx="270" cy="118" r="4" fill="#C8A84B"/>
+<text x="175" y="262" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-family="system-ui">● Community mapper locations</text>
+<!-- Right panel: what gets mapped -->
+<rect x="344" y="58" width="180" height="220" fill="#21251C" rx="6" stroke="#378ADD" stroke-width="1.5"/>
+<text x="434" y="78" text-anchor="middle" fill="#378ADD" font-size="9" font-weight="700">WHAT GETS MAPPED</text>
+<text x="360" y="98" fill="#5DBF7A" font-size="8.5">✓ Blocked drainage points</text>
+<text x="360" y="113" fill="#5DBF7A" font-size="8.5">✓ Historical flood extents</text>
+<text x="360" y="128" fill="#5DBF7A" font-size="8.5">✓ Vulnerable structures</text>
+<text x="360" y="143" fill="#5DBF7A" font-size="8.5">✓ Evacuation paths</text>
+<text x="360" y="158" fill="#5DBF7A" font-size="8.5">✓ Safe high-ground points</text>
+<text x="360" y="173" fill="#5DBF7A" font-size="8.5">✓ River level sensor sites</text>
+<text x="360" y="193" fill="#C8A84B" font-size="8">WHO MAPS IT</text>
+<text x="360" y="208" fill="#8A8878" font-size="7.5">Ward CRC committees</text>
+<text x="360" y="221" fill="#8A8878" font-size="7.5">Youth volunteers (stipend)</text>
+<text x="360" y="234" fill="#8A8878" font-size="7.5">Cooperative members</text>
+<text x="360" y="247" fill="#8A8878" font-size="7.5">Academic partners (UoN)</text>
+<text x="360" y="265" fill="#8A8878" font-size="7.5">Open data · CC licence</text>
+<!-- Stats row -->
+<rect x="20" y="295" width="504" height="75" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<text x="40" y="313" fill="#F0EAD6" font-size="8.5" font-weight="700">85 WARD RISK REGISTERS — WHAT EACH CONTAINS</text>
+<text x="40" y="329" fill="#8A8878" font-size="8" font-family="system-ui">• Risk rating (High/Med/Low) · Historical flood events (years, extents) · Current blocked drains list</text>
+<text x="40" y="343" fill="#8A8878" font-size="8" font-family="system-ui">• Evacuation route map with assembly points · Vulnerable resident count · CRC contact directory</text>
+<text x="40" y="357" fill="#C8A84B" font-size="8" font-family="system-ui" font-weight="600">Updated annually · Verified by county engineers · Linked to wearable alert trigger thresholds</text>
+<text x="272" y="390" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">Community Flood Mapping Programme · 85 wards · Open data · Nairobi 2055 Resilience Plan</text>
+</svg></template>
+<template id="viz-tpl-flood_mapping-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.openstreetmap.org/user/Humanitarian_OSM_Team" target="_blank" rel="noopener"><div class="cmp-flag">🌍</div><div><div class="cmp-cn">Humanitarian OpenStreetMap Team — Community Mapping</div><div class="cmp-sy">Community-led disaster risk mapping · 300,000 volunteers · 100+ countries · Open data</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">Why Community-Led Mapping</div>
+<div class="lsn"><span class="lsn-n">1</span><span>Government flood risk maps of Nairobi's informal settlements are outdated or non-existent — official mapping hasn't been updated since 2010 in most wards. Community mappers know where the drainage is blocked, which alley floods first, which rooftop is the community rally point. That knowledge is not in any database.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>The maps are not just about response — they drive prevention. A ward with a documented list of 34 blocked drains can demand they be cleared before the rains. A map creates accountability that verbal community knowledge cannot.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span>Open data licence means the maps can be used by anyone — the ward cooperative planning drain clearance, the fire service routing emergency vehicles, the school deciding whether to close, the family deciding whether to evacuate. All from a single community-maintained data source.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://www.mapkibera.org" target="_blank" rel="noopener"><span class="also-ico">🇰🇪</span><span><strong>Map Kibera — Nairobi Pioneer</strong> — community mapping project in Kibera since 2009. The 85-ward flood mapping programme scales this methodology to all wards with flood risk ratings and integration into the Emergency Governance Protocol.</span><span class="ext-ico" style="margin-left:auto">↗</span></a></template>
+<template id="viz-tpl-emerg_response_surge-map"><svg viewBox="0 0 544 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="420" fill="#1A1D16"/>
+<text x="20" y="26" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Climate Emergency Response Surge — Full Mobilisation</text>
+<text x="20" y="42" fill="#8A8878" font-size="9" font-family="system-ui">Crisis scenario · All-hands 72-hour surge · Cross-pillar deployment · Zero preventable deaths</text>
+<!-- Trigger box -->
+<rect x="20" y="58" width="504" height="28" fill="#2A0A0A" rx="5" stroke="#E85050" stroke-width="2"/>
+<text x="272" y="76" text-anchor="middle" fill="#E85050" font-size="9.5" font-weight="700">⚡ CLIMATE EMERGENCY DECLARED — FULL SURGE PROTOCOL ACTIVATED</text>
+<!-- 6 surge pillars -->
+<rect x="20" y="96" width="80" height="155" fill="#21251C" rx="6" stroke="#E85050" stroke-width="1.5"/>
+<text x="60" y="116" text-anchor="middle" fill="#E85050" font-size="8" font-weight="700">SEARCH</text>
+<text x="60" y="127" text-anchor="middle" fill="#E85050" font-size="8" font-weight="700">&amp; RESCUE</text>
+<text x="60" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">🚁</text>
+<text x="60" y="165" text-anchor="middle" fill="#8A8878" font-size="7">4 rescue boats</text>
+<text x="60" y="177" text-anchor="middle" fill="#8A8878" font-size="7">2 drone units</text>
+<text x="60" y="189" text-anchor="middle" fill="#8A8878" font-size="7">USAR teams</text>
+<text x="60" y="201" text-anchor="middle" fill="#8A8878" font-size="7">First responders</text>
+<text x="60" y="237" text-anchor="middle" fill="#E85050" font-size="7.5" font-weight="700">Hour 0–6</text>
+<rect x="108" y="96" width="80" height="155" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="148" y="116" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700">LOGISTICS</text>
+<text x="148" y="127" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700">&amp; SUPPLY</text>
+<text x="148" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">🚛</text>
+<text x="148" y="165" text-anchor="middle" fill="#8A8878" font-size="7">Coop vehicles</text>
+<text x="148" y="177" text-anchor="middle" fill="#8A8878" font-size="7">Food + water</text>
+<text x="148" y="189" text-anchor="middle" fill="#8A8878" font-size="7">Medical kits</text>
+<text x="148" y="201" text-anchor="middle" fill="#8A8878" font-size="7">Shelter packs</text>
+<text x="148" y="237" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700">Hour 2–12</text>
+<rect x="196" y="96" width="80" height="155" fill="#21251C" rx="6" stroke="#378ADD" stroke-width="1.5"/>
+<text x="236" y="116" text-anchor="middle" fill="#378ADD" font-size="8" font-weight="700">SHELTER</text>
+<text x="236" y="127" text-anchor="middle" fill="#378ADD" font-size="8" font-weight="700">&amp; CARE</text>
+<text x="236" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">🏠</text>
+<text x="236" y="165" text-anchor="middle" fill="#8A8878" font-size="7">Schools open</text>
+<text x="236" y="177" text-anchor="middle" fill="#8A8878" font-size="7">Hub kitchens</text>
+<text x="236" y="189" text-anchor="middle" fill="#8A8878" font-size="7">Child safe zones</text>
+<text x="236" y="201" text-anchor="middle" fill="#8A8878" font-size="7">Elder priority</text>
+<text x="236" y="237" text-anchor="middle" fill="#378ADD" font-size="7.5" font-weight="700">Hour 4–24</text>
+<rect x="284" y="96" width="80" height="155" fill="#21251C" rx="6" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="324" y="116" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">MEDICAL</text>
+<text x="324" y="127" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700">SURGE</text>
+<text x="324" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">🏥</text>
+<text x="324" y="165" text-anchor="middle" fill="#8A8878" font-size="7">Mobile clinics</text>
+<text x="324" y="177" text-anchor="middle" fill="#8A8878" font-size="7">Blood stocks up</text>
+<text x="324" y="189" text-anchor="middle" fill="#8A8878" font-size="7">Mental health</text>
+<text x="324" y="201" text-anchor="middle" fill="#8A8878" font-size="7">KNH on standby</text>
+<text x="324" y="237" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700">Hour 2–72</text>
+<rect x="372" y="96" width="80" height="155" fill="#21251C" rx="6" stroke="#8B79E8" stroke-width="1.5"/>
+<text x="412" y="116" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700">COMMS</text>
+<text x="412" y="127" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700">&amp; DATA</text>
+<text x="412" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">📡</text>
+<text x="412" y="165" text-anchor="middle" fill="#8A8878" font-size="7">Wearable alerts</text>
+<text x="412" y="177" text-anchor="middle" fill="#8A8878" font-size="7">AI coord centre</text>
+<text x="412" y="189" text-anchor="middle" fill="#8A8878" font-size="7">Live dashboard</text>
+<text x="412" y="201" text-anchor="middle" fill="#8A8878" font-size="7">Media briefings</text>
+<text x="412" y="237" text-anchor="middle" fill="#8B79E8" font-size="7.5" font-weight="700">Hour 0–72</text>
+<rect x="460" y="96" width="64" height="155" fill="#21251C" rx="6" stroke="#E8844A" stroke-width="1.5"/>
+<text x="492" y="116" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700">CLEAR</text>
+<text x="492" y="127" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700">&amp; CLEAN</text>
+<text x="492" y="145" text-anchor="middle" fill="#F0EAD6" font-size="14">🧹</text>
+<text x="492" y="165" text-anchor="middle" fill="#8A8878" font-size="7">Drain clear</text>
+<text x="492" y="177" text-anchor="middle" fill="#8A8878" font-size="7">Waste clear</text>
+<text x="492" y="189" text-anchor="middle" fill="#8A8878" font-size="7">Disinfect</text>
+<text x="492" y="201" text-anchor="middle" fill="#8A8878" font-size="7">Road clear</text>
+<text x="492" y="237" text-anchor="middle" fill="#E8844A" font-size="7.5" font-weight="700">Hr 12–72</text>
+<!-- Mobilisation numbers -->
+<rect x="20" y="265" width="504" height="70" fill="#21251C" rx="6" stroke="#3A3F32" stroke-width="1"/>
+<text x="40" y="283" fill="#F0EAD6" font-size="8.5" font-weight="700">FULL SURGE MOBILISATION NUMBERS</text>
+<text x="100" y="305" text-anchor="middle" fill="#E85050" font-size="14" font-weight="700" font-family="Georgia,serif">6,000</text>
+<text x="100" y="320" text-anchor="middle" fill="#8A8878" font-size="7.5">cooperative workers</text>
+<text x="100" y="330" text-anchor="middle" fill="#8A8878" font-size="7.5">mobilised in 6 hrs</text>
+<text x="220" y="305" text-anchor="middle" fill="#C8A84B" font-size="14" font-weight="700" font-family="Georgia,serif">85</text>
+<text x="220" y="320" text-anchor="middle" fill="#8A8878" font-size="7.5">ward CRC committees</text>
+<text x="220" y="330" text-anchor="middle" fill="#8A8878" font-size="7.5">activated simultaneously</text>
+<text x="340" y="305" text-anchor="middle" fill="#378ADD" font-size="14" font-weight="700" font-family="Georgia,serif">10K</text>
+<text x="340" y="320" text-anchor="middle" fill="#8A8878" font-size="7.5">wearable alerts</text>
+<text x="340" y="330" text-anchor="middle" fill="#8A8878" font-size="7.5">broadcasting live</text>
+<text x="465" y="305" text-anchor="middle" fill="#5DBF7A" font-size="12" font-weight="700" font-family="Georgia,serif">ZERO</text>
+<text x="465" y="320" text-anchor="middle" fill="#8A8878" font-size="7.5">preventable deaths</text>
+<text x="465" y="330" text-anchor="middle" fill="#5DBF7A" font-size="7.5">target by 2030</text>
+<text x="272" y="390" text-anchor="middle" fill="#4A4E42" font-size="7.5" font-family="system-ui">Climate Emergency Response Surge · Full mobilisation protocol · Nairobi 2055 Resilience Framework</text>
+</svg></template>
+<template id="viz-tpl-emerg_response_surge-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.fema.gov/emergency-managers/national-preparedness/frameworks/response" target="_blank" rel="noopener"><div class="cmp-flag">🇺🇸</div><div><div class="cmp-cn">US National Response Framework</div><div class="cmp-sy">Full surge protocols · 15 Emergency Support Functions · Cross-agency coordination · 72-hour standard</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect">What Makes This Different from Standard Emergency Response</div>
+<div class="lsn"><span class="lsn-n">1</span><span>A standard emergency response deploys emergency services and waits for the situation to stabilise. A climate emergency surge deploys all 6 functions simultaneously from hour zero — search and rescue, logistics, shelter, medical, communications, and clearance all activate in parallel, not sequentially.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span>The 6,000-person cooperative network is the surge's backbone. In a standard emergency, marshalling 6,000 people takes days of phone calls and coordination. Because the cooperative is pre-organized with ward captains, communication trees, and assigned zones, it mobilises in under 6 hours.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span>The AI coordination centre processes real-time data from 10,000 wearable devices, cooperative check-ins, sensor feeds, and satellite imagery to produce a live picture of the emergency that the Governor's Crisis Cabinet uses to make resource allocation decisions every 2 hours.</span></div>
+<div class="vsect vsect2">Also Compare</div>
+<a class="also-link" href="https://www.ifrc.org/emergency-response" target="_blank" rel="noopener"><span class="also-ico">🌍</span><span><strong>IFRC Emergency Response Units</strong> — modular pre-packaged emergency response capacities that deploy within 24 hours. Nairobi's surge protocol adapts the ERU modular concept to a permanent standing capacity rather than a deployed external team.</span><span class="ext-ico" style="margin-left:auto">↗</span></a>
+<div class="viz-note"><strong>The March 2026 lesson at full scale:</strong> 71 people died because the response was sequential, uncoordinated, and slow. The surge protocol replaces that with a pre-planned, pre-authorized, pre-resourced response that begins before the peak of the event. Every element was designed by asking: what should have happened in March 2026 that didn't?</div></template>
 </html>
