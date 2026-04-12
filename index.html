@@ -216,17 +216,17 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 
 /* ── VIZ MODAL ── */
 .viz-ov{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:24px 14px;overflow-y:auto;backdrop-filter:blur(8px)}
-.viz-modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:100%;max-width:1060px;animation:panelIn .22s ease;position:relative;overflow:hidden}
+.viz-modal{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:100%;max-width:1060px;animation:panelIn .22s ease;position:relative;overflow:visible}
 .viz-hd{padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;background:var(--bg2);border-radius:16px 16px 0 0;position:sticky;top:0;z-index:2}
 .vtag{font-size:8px;color:var(--text4);text-transform:uppercase;letter-spacing:.14em;font-weight:700}
 .vtitle{font-family:Georgia,serif;font-size:18px;font-weight:700;color:var(--text);letter-spacing:-.02em;margin-top:2px}
 .vsub{font-size:10px;color:var(--text3);margin-top:2px}
 .viz-close{margin-left:auto;background:var(--bg3);border:1px solid var(--border);color:var(--text3);width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .15s}
 .viz-close:hover{border-color:#E85050;color:#E85050}
-.viz-body{display:grid;grid-template-columns:1.2fr 1fr}
+.viz-body{display:grid;grid-template-columns:1.2fr 1fr;align-items:start}
 @media(max-width:740px){.viz-body{grid-template-columns:1fr}}
-.viz-map{padding:18px;border-right:1px solid var(--border);overflow-y:auto}.viz-map svg{overflow:visible;display:block}
-.viz-panel{padding:18px;overflow-y:auto;max-height:82vh}
+.viz-map{padding:18px;border-right:1px solid var(--border)}.viz-map svg{overflow:visible;display:block}
+.viz-panel{padding:18px;overflow-y:auto;max-height:calc(100vh - 120px)}
 .vsect{font-size:9px;color:var(--text4);text-transform:uppercase;letter-spacing:.13em;font-weight:700;margin:0 0 10px;display:flex;align-items:center;gap:7px}
 .vsect::after{content:'';flex:1;height:1px;background:var(--border)}
 .vsect2{margin-top:16px}
@@ -642,8 +642,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 
 
 /* ── VIZ SEARCH ─────────────────────────────────────────── */
-#vizSearchBtn{position:fixed;bottom:24px;right:24px;z-index:800;background:var(--gold);color:#1A1D16;border:none;border-radius:50px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:7px;box-shadow:0 4px 16px rgba(0,0,0,0.4);transition:all .2s}
-#vizSearchBtn:hover{background:#F0D070;transform:translateY(-2px)}
+#vizSearchBtn{background:transparent;color:var(--text3);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .15s;white-space:nowrap}
+#vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:var(--gold)}
 #vizSearchOverlay{display:none;position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding-top:80px}
 #vizSearchOverlay.open{display:flex}
 #vizSearchBox{background:#21251C;border:1.5px solid var(--gold);border-radius:14px;width:min(640px,92vw);max-height:78vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
@@ -3472,6 +3472,17 @@ function applyAdminMode(){
   // Edit Links button in viz modal
   const editBtn = document.querySelector('.edit-links-btn');
   if(editBtn) editBtn.style.display = admin ? '' : 'none';
+  // Search button in controls bar (always visible)
+  if(!document.getElementById('vizSearchBtn')){
+    const srchBtn = document.createElement('button');
+    srchBtn.id = 'vizSearchBtn';
+    srchBtn.title = 'Search viz cards (Ctrl+K)';
+    srchBtn.innerHTML = '<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search Cards';
+    srchBtn.onclick = openVizSearch;
+    const ctrls = document.querySelector('.ctrls');
+    if(ctrls) ctrls.appendChild(srchBtn);
+  }
+
   // Preview codes button in controls bar
   let pcBtn = document.getElementById('preview-codes-btn');
   if(admin){
@@ -9267,10 +9278,6 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </div>
 
-<button id="vizSearchBtn" onclick="openVizSearch()" title="Search viz cards (Ctrl+K)">
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-  Search Cards
-</button>
 
 <div id="vizSearchOverlay" onclick="if(event.target===this)closeVizSearch()">
   <div id="vizSearchBox">
