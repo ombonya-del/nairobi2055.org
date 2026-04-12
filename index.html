@@ -642,8 +642,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 
 
 /* ── VIZ SEARCH ─────────────────────────────────────────── */
-#vizSearchBtn{cursor:pointer;transition:opacity .15s}
-#vizSearchBtn:hover{opacity:0.85}
+
+
 #vizSearchOverlay{display:none;position:fixed;inset:0;z-index:8000;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding-top:80px}
 #vizSearchOverlay.open{display:flex}
 #vizSearchBox{background:#21251C;border:1.5px solid var(--gold);border-radius:14px;width:min(640px,92vw);max-height:78vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
@@ -660,6 +660,10 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 #vsCount{padding:6px 20px 2px;font-size:11px;color:var(--muted)}
 #vizSearchClose{position:absolute;top:8px;right:12px;background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;padding:4px 8px}
 
+
+/* ── SEARCH BUTTON (inline with Preview Codes) ── */
+#vizSearchBtn{background:transparent;border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:all .15s}
+#vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:rgba(200,168,75,.5)}
 </style>
 </head>
 <body>
@@ -2502,8 +2506,7 @@ function dpHTML(pid){
   return'<div class="dpanel" id="dpanel-'+pid+'" style="--pc:'+col+'">'
     +'<div class="dpanel-head">'
     +'<div class="dico">'+pObj.icon+'</div>'
-    +'<div style="flex:1"><div class="dtitle">'+pObj.name+'</div><div class="dsub">'+pObj.tagline+'</div></div>'
-    +'<button id="vizSearchBtn" onclick="openVizSearch()" title="Search cards (Ctrl+K)" style="background:transparent;border:1px solid rgba(255,255,255,0.15);border-radius:6px;padding:5px 10px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);cursor:pointer;display:inline-flex;align-items:center;gap:5px;margin-right:6px;white-space:nowrap"><svg width=\"10\" height=\"10\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.5\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><path d=\"m21 21-4.35-4.35\"/></svg> Search</button>'
+    +'<div><div class="dtitle">'+pObj.name+'</div><div class="dsub">'+pObj.tagline+'</div></div>'
     +'<button class="dclose" onclick="closeDP()">✕</button>'
     +'</div>'
     // Phase summary
@@ -3473,6 +3476,16 @@ function applyAdminMode(){
   // Edit Links button in viz modal
   const editBtn = document.querySelector('.edit-links-btn');
   if(editBtn) editBtn.style.display = admin ? '' : 'none';
+  // Search button — always visible, inserted before Preview Codes on same row
+  var srchBtn=document.getElementById('vizSearchBtn');
+  if(!srchBtn){
+    srchBtn=document.createElement('button');
+    srchBtn.id='vizSearchBtn';
+    srchBtn.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search Cards';
+    srchBtn.title='Search viz cards (Ctrl+K)';
+    srchBtn.onclick=openVizSearch;
+  }
+
   // Preview codes button in controls bar
   let pcBtn = document.getElementById('preview-codes-btn');
   if(admin){
@@ -3489,6 +3502,13 @@ function applyAdminMode(){
     pcBtn.style.display = '';
   } else {
     if(pcBtn) pcBtn.remove(); // Remove entirely — not just hidden
+  }
+  // Insert search button on the same row as Preview Codes (or alone if no Preview Codes)
+  var ctrls=document.querySelector('.ctrls');
+  if(ctrls && srchBtn && !ctrls.contains(srchBtn)){
+    var pcRef=document.getElementById('preview-codes-btn');
+    if(pcRef) ctrls.insertBefore(srchBtn,pcRef);
+    else ctrls.appendChild(srchBtn);
   }
 }
 
