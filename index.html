@@ -807,13 +807,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <rect width="544" height="430" fill="#1A1D16" rx="10"/>
 <text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Nairobi BRT — 4 Corridor Network</text>
 <text x="20" y="46" fill="#A0A898" font-size="9" font-family="system-ui">Phase 1 · 2025–2035 · 200km total · EV fleet · Integrated smart ticketing</text>
-<!-- Legend top-left (moved away from Ngong terminus) -->
-<rect x="20" y="58" width="160" height="76" fill="#21251C" rx="6" stroke="#6A7060" stroke-width="1"/>
-<text x="30" y="72" fill="#A0A898" font-size="7.5" font-family="system-ui">CORRIDORS</text>
-<rect x="30" y="80" width="12" height="4" fill="#E8844A" rx="1"/><text x="47" y="84" fill="#C4BFA8" font-size="8" font-family="system-ui">Thika Road</text>
-<rect x="30" y="93" width="12" height="4" fill="#3DBF78" rx="1"/><text x="47" y="97" fill="#C4BFA8" font-size="8" font-family="system-ui">Mombasa Road</text>
-<rect x="30" y="106" width="12" height="4" fill="#8B79E8" rx="1"/><text x="47" y="110" fill="#C4BFA8" font-size="8" font-family="system-ui">Ngong Road</text>
-<rect x="30" y="119" width="12" height="4" fill="#C8A84B" rx="1"/><text x="47" y="123" fill="#C4BFA8" font-size="8" font-family="system-ui">Jogoo Road</text>
 <!-- Thika Road: orange, going north -->
 <line x1="272" y1="222" x2="246" y2="88" stroke="#E8844A" stroke-width="6.5" stroke-linecap="round"/>
 <circle cx="265" cy="188" r="5" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/>
@@ -858,6 +851,16 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 <circle cx="272" cy="222" r="20" fill="rgba(200,168,75,0.12)"/>
 <circle cx="272" cy="222" r="13" fill="#C8A84B" stroke="#F0EAD6" stroke-width="2"/>
 <text x="272" y="226" text-anchor="middle" fill="#1A1D16" font-size="7.5" font-weight="bold" font-family="system-ui">CBD</text>
+<!-- Legend: compact 2×2 grid in the gap between Ngong (SW) and Mombasa (SE) corridors -->
+<!-- At y=320 the gap runs x≈168 to x≈376 — 208px wide. Legend sits centered at x=272 -->
+<circle cx="182" cy="317" r="4" fill="#E8844A"/>
+<text x="190" y="321" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Thika Road</text>
+<circle cx="182" cy="331" r="4" fill="#8B79E8"/>
+<text x="190" y="335" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Ngong Road</text>
+<circle cx="282" cy="317" r="4" fill="#3DBF78"/>
+<text x="290" y="321" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Mombasa Road</text>
+<circle cx="282" cy="331" r="4" fill="#C8A84B"/>
+<text x="290" y="335" fill="#C4BFA8" font-size="7.5" font-family="system-ui">Jogoo Road</text>
 <!-- Stats bar -->
 <rect x="20" y="355" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
 <text x="220" y="373" fill="#C8A84B" font-size="14" font-weight="700" font-family="Georgia,serif">200km</text>
@@ -4787,7 +4790,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <template id="viz-tpl-creative_d-map"><svg viewBox="0 0 544 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="560" fill="#1A1D16"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Constituency Creative Districts — 8 Unique Identities</text>
-<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Each district built around its corridor's distinct cultur...</text><rect x="16" y="58" width="250" height="117" fill="#21251C" rx="8" stroke="#E8844A" stroke-width="1.8"/>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Each district built around its corridor's distinct cultural tradition · Free incubator in every one</text><rect x="16" y="58" width="250" height="117" fill="#21251C" rx="8" stroke="#E8844A" stroke-width="1.8"/>
 <rect x="16" y="58" width="250" height="26" fill="#E8844A" opacity="0.2" rx="8"/>
 <text x="29" y="75" fill="#E8844A" font-size="10" font-weight="700" font-family="system-ui">🎨 Westlands Arts Quarter</text>
 <text x="29" y="91" fill="#8A8878" font-size="7.5" font-family="system-ui">Route: 102, 106, 107</text>
