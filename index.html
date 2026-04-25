@@ -2704,6 +2704,7 @@ function getVizKey(title){
   if(t.includes('MATATU BUYBACK')||t.includes('SCRAP METAL PARTNERSHIP')||t.includes('MATATU CIRCULAR')) return 'MATATU';
   if(t.includes('MOBILITY-AS-A-SERVICE')||t.includes('MAAS')||t.includes('MOBILITY AS A SERVICE')) return 'MAAS';
   // ── Governance (Pillar 2) ───────────────────────────────────
+  if(t.includes('WORLD-CLASS PUBLIC SPACES')||t.includes('WORLD CLASS PUBLIC')) return 'WORLD_CLASS_SPACES';
   if(t.includes('CROSS-CLASS PUBLIC')||t.includes('CROSS CLASS')) return 'XCLASS_SPACE';
   if(t.includes('NMS/COUNTY')||t.includes('CITY AUTHORITY')||t.includes('INCREMENTAL DEVOLUTION')||t.includes('ADAPTIVE GOVERNANCE')) return 'CITY_AUTH';
   if(t.includes('REGIONAL SPATIAL')||t.includes('BINDING METROPOLITAN')||t.includes('METROPOLITAN SPATIAL')) return 'REGIONAL_SP';
@@ -2744,6 +2745,7 @@ function getVizKey(title){
   if(t.includes('CIVIC TECH PARTICIPATION PLATFORM')) return 'GOVTECH';
   if(t.includes('DIGITAL TWIN')||t.includes('GOVERNMENT API')||t.includes('OPEN GOVERNMENT')||t.includes('GOVTECH')||t.includes('SMART CONTRACT PROCUREMENT')||t.includes('RADICAL TRANSPARENCY')||t.includes('AI-POWERED PERMIT')||t.includes('E-GOVERNANCE')||t.includes('DATA SOVEREIGNTY')||t.includes('DECENTRALIZED IDENTITY')||t.includes('OFFLINE-FIRST')||t.includes('AI CITY MANAGER')||t.includes('PARTICIPATORY BUDGETING')||t.includes('ALGORITHMIC ACCOUNTABILITY')||t.includes('DIGITAL EMERGENCY TWIN')||t.includes('OPEN SOURCE GOVERNMENT')) return 'GOVTECH';
   // ── Climate Resilience ──────────────────────────────────────
+  if(t.includes('CLIMATE-RESILIENT URBAN VILLAGES')||t.includes('URBAN VILLAGES')) return 'URBAN_VILLAGES';
   if(t.includes('CLIMATE RISK')||t.includes('CLIMATE-RESILIENT URBAN')||t.includes('ECOSYSTEM-BASED ADAPTATION')||t.includes('SETTLEMENT CLIMATE')||t.includes('INFRASTRUCTURE DISASTER')||t.includes('DISASTER-RESILIENT')||t.includes('CLIMATE DISPLACEMENT')||t.includes('CLIMATE REFUGEE')||t.includes('HEAT-RESILIENT')||t.includes('HEAT ISLAND')||t.includes('CLIMATE-RESILIENT VALUE')||t.includes('NEAR-ZERO EMISSIONS')||t.includes('CARBON-NEGATIVE')||t.includes('NET-ZERO BUILT')||t.includes('GLOBAL GREEN CITY')||t.includes('POST-CLIMATE')||t.includes('NEAR-ZERO-EMISSION PUBLIC')||t.includes('INFORMAL SETTLEMENT CLIMATE')||t.includes('EMERGENCY INFRASTRUCTURE CLIMATE')) return 'CLIMATE_RESILIENCE';
   // ── AI & Deep Tech ───────────────────────────────────────────
   if(t.includes('AI RESEARCH')||t.includes('AI EVERYTHING')||t.includes('AI-OPTIMIZED')||t.includes('NAIROBI AI SUPERCOMPUTER')||t.includes('QUANTUM COMPUTING')||t.includes('SPATIAL COMPUTING')||t.includes('WEB3 CITY')||t.includes('NAIROBI SINGULARITY')||t.includes('SYNTHETIC BIOLOGY')||t.includes('AI CLIMATE ADAPTATION')||t.includes('CLIMATE-AI')||t.includes('LIVING LABORATORY')||t.includes('5G ROLLOUT')||t.includes('5G/6G')||t.includes('UNIVERSAL BROADBAND')||t.includes('RESILIENT DIGITAL')||t.includes('DIGITAL INFRASTRUCTURE INVESTMENT')||t.includes('NAIROBI AS GLOBAL TECH')||t.includes('GLOBAL CLIMATE TECH')||t.includes('DIGITAL SKILLS FOR ALL')) return 'AI_TECH';
@@ -2758,6 +2760,7 @@ function getVizKey(title){
   // ── Culture & Creative City ──────────────────────────────────
   if(t.includes('CULTURAL IDENTITY')||t.includes('CULTURAL EXPORT')||t.includes('GLOBAL CREATIVE CITY')||t.includes('AFRICAN CREATIVE INDUSTRIES')||t.includes('CREATIVE ECONOMY')||t.includes('MOBILE CREATIVE')||t.includes('ESTABLISHED CREATIVE')||t.includes('CREATIVE CITY LEGACY')||t.includes('CULTURAL INFRASTRUCTURE')||t.includes('CULTURAL HERITAGE CLIMATE')||t.includes('CULTURAL TECH')||t.includes('CULTURE AS COMMUNITY')||t.includes('DOCUMENTING ENDANGERED')||t.includes('POST-ADVERSITY CULTURAL')||t.includes('CIVIC IDENTITY')||t.includes('LIVING CITY MANIFESTO')||t.includes('VIRTUAL REALITY NAIROBI')||t.includes('CLIMATE STORYTELLING')||t.includes('CLIMATE PROSPERITY REFRAME')||t.includes('NAIROBI AS GLOBAL CREATIVE')||t.includes('NAIROBI AS GLOBAL CLIMATE CULTURE')) return 'CULTURE_CREATIVE';
   // ── Future Transport ─────────────────────────────────────────
+  if(t.includes('AIR TAXI INFRASTRUCTURE')||t.includes('VERTIPORT')) return 'AIR_TAXI_INFRA';
   if(t.includes('AUTONOMOUS VEHICLE')||t.includes('AUTONOMOUS BIKE')||t.includes('FULLY AUTONOMOUS TRANSPORT')||t.includes('HYPERLOOP')||t.includes('AIR TAXI')||t.includes('MICRO-MOBILITY')||t.includes('GAMIFIED ACTIVE TRANSPORT')||t.includes('RAIL NETWORK EXPANSION')||t.includes('COMMUTER RAIL')||t.includes('EMERGENCY CLIMATE TRANSIT')||t.includes('TRANSIT AS CLIMATE EVACUATION')||t.includes('TRANSIT AS PLATFORM')||t.includes('ZERO-EMISSION MASS TRANSIT')||t.includes('ZERO-EMISSION CLIMATE-RESILIENT')||t.includes('GREEN JOBS IN TRANSIT')||t.includes('50,000 E-BODA')||t.includes('SOLAR-POWERED BUS DEPOTS')) return 'TRANSPORT_FUTURE';
   // ── Green Building & Circular City ──────────────────────────
   if(t.includes('GREEN BUILDING CODE')||t.includes('GREEN BUILDING STANDARD')||t.includes('GREEN BUILDING INCENTIVE')||t.includes('SOLAR MICROGRID')||t.includes('VIRTUAL POWER PLANT')||t.includes('URBAN AGRICULTURE MANDATE')||t.includes('URBAN BIODIVERSITY CORRIDORS')||t.includes('TARGETED URBAN GREENING')||t.includes('GREEN CORRIDORS AS CLIMATE')||t.includes('CIRCULAR ECONOMY CITY MODEL')||t.includes('FULL CIRCULAR ECONOMY')||t.includes('CLOSED-LOOP ECOLOGY')||t.includes('WASTE TECH ECOSYSTEM')) return 'GREEN_BUILDING';
@@ -2771,6 +2774,7 @@ function getVizKey(title){
   // ── Housing & Urban Form ─────────────────────────────────────
   if(t.includes('DECENTRALIZED WATER AND SANITATION')) return 'WATER_SANITATION';
   if(t.includes('INFORMAL ECONOMY FORMALIZATION')) return 'INFORMAL_ECONOMY';
+  if(t.includes('5 SECONDARY URBAN CENTRES')) return 'SECONDARY_CENTRES';
   if(t.includes('3D-PRINTED HOUSING')||t.includes('SOCIAL HOUSING AS COMMUNITY')||t.includes('MIXED-USE ZONING')||t.includes('15-MINUTE CITY')||t.includes('20-MINUTE CITY')||t.includes('5 SECONDARY URBAN CENTRES')||t.includes('PARTIAL INFORMAL FORMALIZATION')||t.includes('NAIROBI INNOVATION DISTRICT')||t.includes('NAIROBI TECH HUB NETWORK')) return 'HOUSING_URBAN';
   // ── Social Fabric Programmes ─────────────────────────────────
   if(t.includes('RUNNING TRACKS AND PLAYGROUNDS')||t.includes('SMART PLAYGROUNDS')||t.includes('50 PLAYGROUNDS')||t.includes('UNIVERSAL ACCESSIBILITY')||t.includes('GREEN JOBS PROGRAMME')||t.includes('POST-ADVERSITY SOCIAL CAPITAL')||t.includes('NAIROBI AS EQUITABLE')||t.includes('SUSTAINED GROWTH ECONOMY')||t.includes('ABUNDANCE ECONOMY')||t.includes('POST-SCARCITY CITY INFRASTRUCTURE')||t.includes('AFRICAN CLIMATE GOVERNANCE HUB')) return 'SOCIAL_FABRIC_PROG';
@@ -3010,7 +3014,19 @@ const VIZ={
   EMERG_RESPONSE_SURGE:{title:'Climate Emergency Response Surge — Nairobi Full Mobilisation',
     subtitle:'All-Hands · 72-Hour Surge · Cross-Pillar · Crisis Scenario Protocol',
     getMap:()=>document.getElementById('viz-tpl-emerg_response_surge-map').innerHTML,
-    getPanel:()=>document.getElementById('viz-tpl-emerg_response_surge-panel').innerHTML}
+    getPanel:()=>document.getElementById('viz-tpl-emerg_response_surge-panel').innerHTML},
+  SECONDARY_CENTRES:{title:'5 Secondary Urban Centres',subtitle:'Westlands · Kasarani · Karen · Embakasi · Ruiru — full-service nodes',
+    getMap:()=>document.getElementById('viz-tpl-secondary_centres-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-secondary_centres-panel').innerHTML},
+  WORLD_CLASS_SPACES:{title:'World-Class Public Spaces',subtitle:'Uhuru Park redesign · 85 Ward Parks · Riverfront · Cross-class design',
+    getMap:()=>document.getElementById('viz-tpl-world_class_spaces-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-world_class_spaces-panel').innerHTML},
+  AIR_TAXI_INFRA:{title:'Air Taxi Infrastructure — Vertiport Network',subtitle:'Wilson Airport · JKIA · Upperhill · Westlands · Phase 3: 2040–2055',
+    getMap:()=>document.getElementById('viz-tpl-air_taxi_infra-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-air_taxi_infra-panel').innerHTML},
+  URBAN_VILLAGES:{title:'Climate-Resilient Urban Villages',subtitle:'Self-sufficient clusters · Solar · Water recycling · Local food · 72hr crisis autonomy',
+    getMap:()=>document.getElementById('viz-tpl-urban_villages-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-urban_villages-panel').innerHTML}
 };
 function showVizEl(el){
   showViz(el.dataset.pid,el.dataset.sc,parseInt(el.dataset.ph),parseInt(el.dataset.i));
@@ -5170,43 +5186,61 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="vsect vsect2">Also Compare</div><a class="also-link" href="https://www.mlgrd.gov.gh/" target="_blank" rel="noopener"><span class="also-ico">🇬🇭</span><span><strong>Accra EV Bus Pilot</strong> — Ghana's GPRTU electric bus pilot achieved 42% fuel cost savings and 99% reliability rate in the first year. West African proof that EV buses work in sub-Saharan African conditions.</span><span class="ext-ico" style="margin-left:auto">↗</span></a><a class="also-link" href="https://www.myciti.org.za/" target="_blank" rel="noopener"><span class="also-ico">🇿🇦</span><span><strong>Cape Town MyCity EV transition</strong> — Cape Town committed to a 100% zero-emission bus fleet by 2040. Procurement strategy: buy 20% EV initially, then scale to 100% as local charging infrastructure matures.</span><span class="ext-ico" style="margin-left:auto">↗</span></a>
 <div class="viz-note"><strong>Why Kenya's grid makes this transformative:</strong> When Shenzhen electrified its bus fleet, it drew on a 30% coal-powered grid — meaning each EV bus was still indirectly burning fossil fuel. Nairobi's EV buses will draw on 93% renewable power. This means Nairobi's EV bus fleet will be, from day one, among the most carbon-clean public bus systems in the world — qualifying for Green Climate Fund concessional financing that Shenzhen could not access.</div></template>
 <template id="viz-tpl-mass_rail-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
-<rect width="544" height="370" fill="#1A1D16" rx="10"/>
-<text x="20" y="30" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mass Rail Transit — 3-Line Network</text>
-<text x="20" y="46" fill="#A0A898" font-size="9" font-family="system-ui">Line 1: Thika/Kasara...–CBD · Line 2: JKIA–CBD · Line 3:...</text>
-<text x="272" y="80" text-anchor="middle" fill="#8A8878" font-size="9" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly s...</text>
-<!-- 3-line rail diagram -->
-<!-- Line 1: red/orange — Thika/Kasara... to CBD -->
-<path d="M244,58 L255,90 L262,125 L268,160 L272,183" fill="none" stroke="#E8844A" stroke-width="8" stroke-linecap="round"/>
-<!-- stations L1 -->
-<circle cx="248" cy="62" r="6" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/><text x="258" y="66" fill="#8A8878" font-size="8" font-family="system-ui">Thika...</text>
-<circle cx="256" cy="90" r="6" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/><text x="266" y="94" fill="#8A8878" font-size="8" font-family="system-ui">Kasara...</text>
-<circle cx="263" cy="125" r="6" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/><text x="273" y="129" fill="#8A8878" font-size="8" font-family="system-ui">Muthaiga</text>
-<circle cx="268" cy="158" r="6" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/><text x="278" y="162" fill="#8A8878" font-size="8" font-family="system-ui">Parklands</text>
+<rect width="544" height="430" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mass Rail Transit — 3-Line Network</text>
+<text x="20" y="44" fill="#A0A898" font-size="8.5" font-family="system-ui">Line 1: Thika/Kasarani–CBD · Line 2: JKIA–CBD · Line 3: Kibera/Westlands–CBD</text>
+<text x="272" y="62" text-anchor="middle" fill="#8A8878" font-size="8.5" font-family="system-ui">80 stations · Integrated with BRT · Line 3 directly serves Kibera for the first time</text>
+<!-- Line 1: orange — Thika/Kasarani to CBD -->
+<path d="M244,78 L255,108 L262,138 L268,165 L272,190" fill="none" stroke="#E8844A" stroke-width="8" stroke-linecap="round"/>
+<circle cx="246" cy="80" r="7" fill="#E8844A" stroke="#F0EAD6" stroke-width="1.5"/>
+<circle cx="256" cy="108" r="5" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/>
+<circle cx="263" cy="138" r="5" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/>
+<circle cx="268" cy="165" r="5" fill="#1A1D16" stroke="#E8844A" stroke-width="2.5"/>
+<text x="258" y="84" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui">Thika Rd Terminus</text>
+<text x="268" y="112" fill="#8A8878" font-size="7.5" font-family="system-ui">Kasarani</text>
+<text x="275" y="142" fill="#8A8878" font-size="7.5" font-family="system-ui">Muthaiga</text>
+<text x="278" y="169" fill="#8A8878" font-size="7.5" font-family="system-ui">Parklands</text>
 <!-- Line 2: blue — JKIA to CBD -->
-<path d="M428,330 L390,295 L352,260 L314,222 L272,183" fill="none" stroke="#378ADD" stroke-width="8" stroke-linecap="round"/>
-<circle cx="426" cy="332" r="6" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/><text x="436" y="336" fill="#8A8878" font-size="8" font-family="system-ui">JKIA</text>
-<circle cx="390" cy="297" r="6" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/><text x="400" y="301" fill="#8A8878" font-size="8" font-family="system-ui">Airport North</text>
-<circle cx="352" cy="262" r="6" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/><text x="362" y="266" fill="#8A8878" font-size="8" font-family="system-ui">South B</text>
-<circle cx="314" cy="224" r="6" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/><text x="324" y="228" fill="#8A8878" font-size="8" font-family="system-ui">Embakasi</text>
-<!-- Line 3: green — Kibera/Westlands -->
-<path d="M118,320 L158,285 L195,250 L232,215 L272,183" fill="none" stroke="#5DBF7A" stroke-width="8" stroke-linecap="round"/>
-<circle cx="120" cy="322" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="110" y="320" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Kibera Terminus</text>
-<circle cx="158" cy="287" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="148" y="291" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Langata</text>
-<circle cx="195" cy="252" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="185" y="256" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Adams Arcade</text>
-<circle cx="232" cy="217" r="6" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/><text x="222" y="221" text-anchor="end" fill="#8A8878" font-size="8" font-family="system-ui">Upperhill</text>
+<path d="M428,340 L390,305 L352,268 L314,228 L272,190" fill="none" stroke="#378ADD" stroke-width="8" stroke-linecap="round"/>
+<circle cx="428" cy="340" r="7" fill="#378ADD" stroke="#F0EAD6" stroke-width="1.5"/>
+<circle cx="390" cy="305" r="5" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/>
+<circle cx="352" cy="268" r="5" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/>
+<circle cx="314" cy="228" r="5" fill="#1A1D16" stroke="#378ADD" stroke-width="2.5"/>
+<text x="438" y="344" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">JKIA</text>
+<text x="400" y="309" fill="#8A8878" font-size="7.5" font-family="system-ui">Airport North</text>
+<text x="360" y="272" fill="#8A8878" font-size="7.5" font-family="system-ui">South B</text>
+<text x="322" y="232" fill="#8A8878" font-size="7.5" font-family="system-ui">Embakasi</text>
+<!-- Line 3: green — Kibera/Westlands to CBD -->
+<path d="M118,340 L158,305 L195,268 L232,228 L272,190" fill="none" stroke="#5DBF7A" stroke-width="8" stroke-linecap="round"/>
+<circle cx="118" cy="340" r="7" fill="#5DBF7A" stroke="#F0EAD6" stroke-width="1.5"/>
+<circle cx="158" cy="305" r="5" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/>
+<circle cx="195" cy="268" r="5" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/>
+<circle cx="232" cy="228" r="5" fill="#1A1D16" stroke="#5DBF7A" stroke-width="2.5"/>
+<text x="108" y="344" text-anchor="end" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">Kibera Terminus</text>
+<text x="148" y="309" text-anchor="end" fill="#8A8878" font-size="7.5" font-family="system-ui">Langata</text>
+<text x="185" y="272" text-anchor="end" fill="#8A8878" font-size="7.5" font-family="system-ui">Adams Arcade</text>
+<text x="222" y="232" text-anchor="end" fill="#8A8878" font-size="7.5" font-family="system-ui">Upperhill</text>
 <!-- CBD interchange -->
-<circle cx="272" cy="183" r="18" fill="rgba(200,168,75,0.15)"/>
-<circle cx="272" cy="183" r="12" fill="#C8A84B" stroke="#F0EAD6" stroke-width="2"/>
-<text x="272" y="187" text-anchor="middle" fill="#5A5E52" font-size="7" font-weight="bold">CBD</text>
-<!-- Matatu steel note -->
-<rect x="20" y="306" width="264" height="38" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1"/>
-<text x="152" y="342" text-anchor="middle" fill="#C8A84B" font-size="8.5" font-weight="600" font-family="system-ui">Track material: matatu-sourced recycled steel</text>
-<text x="152" y="337" text-anchor="middle" fill="#A0A898" font-size="8" font-family="system-ui">Phase 2: 3,000km of rail from bought-back matatus</text>
-<rect x="295" y="306" width="229" height="38" fill="#21251C" rx="6" stroke="#5DBF7A" stroke-width="1"/>
-<text x="409" y="323" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="system-ui">Line 3 direct access to Kibera CBD</text>
-<text x="409" y="337" text-anchor="middle" fill="#A0A898" font-size="8" font-family="system-ui">First mass transit connection to Nairobi's largest settle...</text>
-<rect x="20" y="375" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/><text x="83" y="362" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">3 lines</text><text x="83" y="407" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Phase 2 network</text><text x="209" y="393" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">80 stations</text><text x="209" y="407" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">City-wide</text><text x="335" y="393" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">70%</text><text x="335" y="407" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Transit mode share target</text><text x="461" y="393" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Kibera</text><text x="461" y="407" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Directly connected</text>
-<text x="272" y="424" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Mast...</text>
+<circle cx="272" cy="190" r="18" fill="rgba(200,168,75,0.15)"/>
+<circle cx="272" cy="190" r="12" fill="#C8A84B" stroke="#F0EAD6" stroke-width="2"/>
+<text x="272" y="194" text-anchor="middle" fill="#5A5E52" font-size="7" font-weight="bold">CBD</text>
+<!-- Kibera note — right side, clear of termini -->
+<rect x="300" y="332" width="224" height="30" fill="#21251C" rx="5" stroke="#5DBF7A" stroke-width="1"/>
+<text x="412" y="345" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="600" font-family="system-ui">First mass transit connection to Nairobi's largest settlement</text>
+<!-- Matatu steel note — below Thika terminus, left side -->
+<rect x="20" y="332" width="272" height="30" fill="#21251C" rx="5" stroke="#C8A84B" stroke-width="1"/>
+<text x="156" y="345" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="600" font-family="system-ui">Track material: matatu-sourced recycled steel</text>
+<!-- Stats bar -->
+<rect x="20" y="376" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">3 lines</text>
+<text x="83" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Phase 2 network</text>
+<text x="209" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">80 stations</text>
+<text x="209" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">City-wide</text>
+<text x="335" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">70%</text>
+<text x="335" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Transit mode share target</text>
+<text x="461" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Kibera</text>
+<text x="461" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Directly connected</text>
+<text x="272" y="424" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
 </svg></template>
 <template id="viz-tpl-mass_rail-panel"><div class="vsect">Benchmark City</div>
 <a class="bench-link" href="https://www.medellin.gov.co/" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇴</div><div><div class="cmp-cn">Medellín — Metro + Metrocable</div><div class="cmp-sy">Opened 1995 · Transformed from most dangerous city · Rail as equity infrastructure</div></div><div class="ext-ico">↗</div></a>
@@ -6467,7 +6501,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="vp-title">Priority Drainage Retrofit — 5 Road Corridors</div>
 <div class="vp-sub">Every major 2026 flood-hit road gets redesigned drainage as standard — not an afterthought</div>
 <div class="bench-list">
-<div class="bench-item"><span class="bi-ico">🛣️</span><div><div class="bi-city">Why roads flood — and what the fix looks like</div><div class="bi-desc">Nairobi's existing road drainage was designed for rainfall intensities typical of the 1960s–70s. Climate change has increased peak rainfall by 30–40%. The fix: widen culverts to 50-year storm capacity, add IoT water-level sensors at each river crossing, and plant reed beds to filter solids before outfall. Cost per km: approx. KES 15–25M. Cheaper than flood damage per event. <a href="https://www.kenha.co.ke/" target="_blank" rel="noopener">KENHA road standards ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🛣️</span><div><div class="bi-city">Why roads flood — and what the fix looks like</div><div class="bi-desc">Nairobi's existing road drainage was designed for rainfall intensities typical of the 1960s–70s. Climate change has increased peak rainfall by 30–40%. The fix: widen culverts to 50-year storm capacity, add IoT water-level sensors at each river crossing, and plant reed beds to filter solids before outfall. Cost per km: approx. KES 15–25M. Cheaper than flood damage per event. <a href="https://www.scribd.com/document/476523627/Part-2-Drainage-Design-Manual" target="_blank" rel="noopener">KENHA Drainage Design Manual ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇳🇱</span><div><div class="bi-city">Rotterdam — Road drainage as flood infrastructure</div><div class="bi-desc">Rotterdam retrofitted all major roads with integrated water management between 2008–2020. Every road redesign includes: permeable surface sections, subsurface storage tanks, and outlet connections to the canal system. Zero major urban flooding since 2013. <a href="https://www.rotterdam.nl/wonen-leven/benthempleinwaterplein/" target="_blank" rel="noopener">Rotterdam water management ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — Cheonggyecheon River restoration + road drainage</div><div class="bi-desc">Seoul removed an elevated highway above a buried river and restored both the river and the surrounding road drainage system simultaneously. Result: 639% increase in biodiversity, 2.5°C temperature reduction, and zero flood events in the restored corridor since 2005. <a href="https://www.landscapeperformance.org/case-study-briefs/cheonggyecheon-stream-restoration-project" target="_blank" rel="noopener">Cheonggyecheon restoration ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kenya — KENHA road drainage standards update needed</div><div class="bi-desc">Kenya's road drainage design standards (Road Design Manual) have not been updated since 1987. A mandatory update to require 50-year storm capacity drainage on all Class A and B roads — with enforcement by KeRRA and KENHA — is the single regulatory change that would prevent most urban flooding on major roads. <a href="https://www.kenha.co.ke/" target="_blank" rel="noopener">KENHA ↗</a></div></div></div>
@@ -7196,7 +7230,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="vp-title">Climate Resilience Programme</div>
 <div class="vp-sub">Every Nairobi resident is protected from climate risk — not just those who can afford to move</div>
 <div class="bench-list"><div class="bench-item"><span class="bi-ico">🏚️</span><div><div class="bi-city">Settlement Climate-Proofing — Mathare, Kibera, Mukuru first</div><div class="bi-desc">The 3 million+ residents of Nairobi's informal settlements face the highest climate risk — floods, heat, air pollution, and water insecurity — with the lowest adaptive capacity. Settlement climate-proofing integrates drainage, green space, solar power, and structural reinforcement into the in-situ upgrading programme. Not separate — the same programme, climate-proofed by design. <a href="https://www.worldbank.org/en/topic/urbandevelopment" target="_blank" rel="noopener">World Bank Urban Resilience ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🌡️</span><div><div class="bi-city">Heat Resilience — Nairobi is warming faster than the global average</div><div class="bi-desc">Nairobi's average temperature has increased 1.2°C since 1970 — faster than the global average. The urban heat island effect adds a further 2–4°C in dense areas. Heat resilience measures: shade trees along all major corridors, white/green roofs mandatory on commercial buildings, public cooling centres in every ward (doubling as emergency flood shelters), and water features in all new parks. <a href="https://www.c40.org/what-we-do/scaling-up-climate-action/adaptation-water/" target="_blank" rel="noopener">C40 Urban Heat Action ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🌡️</span><div><div class="bi-city">Heat Resilience — Nairobi is warming faster than the global average</div><div class="bi-desc">Nairobi's average temperature has increased 1.2°C since 1970 — faster than the global average. The urban heat island effect adds a further 2–4°C in dense areas. Heat resilience measures: shade trees along all major corridors, white/green roofs mandatory on commercial buildings, public cooling centres in every ward (doubling as emergency flood shelters), and water features in all new parks. <a href="https://www.c40.org/what-we-do/scaling-up-climate-action/adaptation-water/" target="_blank" rel="noopener">Heat Reshaping Urban Life ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">Disaster-Resilient Infrastructure Standards</div><div class="bi-desc">All NCG public infrastructure built from 2026 onwards must meet 50-year climate standards — not the current 20-year standard. Roads, bridges, drainage, buildings. The additional upfront cost (estimated 8–12% premium) is recovered within 10 years through reduced maintenance and disaster response costs. Every rand spent on prevention saves 7 in response. <a href="https://www.undrr.org/implementing-sendai-framework" target="_blank" rel="noopener">UNDRR Sendai Framework ↗</a></div></div></div>
 </div></div>
 <div class="vp-section">
@@ -8273,7 +8307,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div></div>
 <div class="vp-section">
 <div class="vp-title">Global Benchmarks</div>
-<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇫🇷</span><div><div class="bi-city">Paris — 15-Minute City in practice</div><div class="bi-desc">Paris Mayor Anne Hidalgo ran her entire 2020 re-election campaign on the 15-Minute City concept and won. The policy: converting 60% of Paris car parking to cycling, walking, and green space; building 1,000 neighbourhood services within walking distance of every resident; and redesigning 30km of streets for people, not cars. Paris is 2 years into implementation. <a href="https://www.c40.org/other/inclusive-vibrant-neighbourhoods" target="_blank" rel="noopener">Paris en Commun ↗</a></div></div></div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🇫🇷</span><div><div class="bi-city">Paris — 15-Minute City in practice</div><div class="bi-desc">Paris Mayor Anne Hidalgo ran her entire 2020 re-election campaign on the 15-Minute City concept and won. The policy: converting 60% of Paris car parking to cycling, walking, and green space; building 1,000 neighbourhood services within walking distance of every resident; and redesigning 30km of streets for people, not cars. Paris is 2 years into implementation. <a href="https://issuu.com/jonathan.hann/docs/mobility_20for_20all_issuu/s/14688235" target="_blank" rel="noopener">Paris en Commun ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — 5 secondary city centres</div><div class="bi-desc">Seoul decentralised from 1 CBD to 5 urban centres (Gangnam, Yeongdeungpo, Cheongnyangni, Jamsil, Mapo) in the 1980s–1990s. Each centre has a full mix of offices, retail, entertainment, and residential. The result: more balanced commute patterns, lower housing costs in secondary centres, and stronger neighbourhood identity. <a href="https://www.seoulsolution.kr/en/content/case-studies" target="_blank" rel="noopener">Seoul Metropolitan Government ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🇺🇸</span><div><div class="bi-city">Detroit — innovation district regeneration</div><div class="bi-desc">Detroit's innovation district (New Center area) reversed decades of urban decline through mixed-use development, anchor institution investment (Wayne State University + Henry Ford Health), and deliberate co-working + residential mixed zoning. From 40% vacancy to 90% occupancy in 8 years. <a href="https://www.detroitmi.gov/" target="_blank" rel="noopener">City of Detroit ↗</a></div></div></div>
 </div></div></template>
@@ -8359,68 +8393,58 @@ document.addEventListener('DOMContentLoaded', function() {
 <template id="viz-tpl-environment_adv-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16"/>
 <text x="20" y="26" fill="#F0EAD6" font-size="12" font-weight="700" font-family="Georgia,serif">Advanced Environment — Rivers, Dandora &amp; Clean City</text>
-<text x="20" y="42" fill="#A0A898" font-size="9" font-family="system-ui">Nairobi River Phase 1 · Dandora closure · IoT mo...</text>
-<rect x="20" y="52" width="504" height="300" fill="#21251C" rx="6"/>
-
-<!-- NAIROBI RIVER RESTORATION (main feature) -->
-<text x="42" y="74" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">NAIROBI RIVER RESTORATION — Phase 1:...</text>
-
+<text x="20" y="42" fill="#A0A898" font-size="9" font-family="system-ui">Nairobi River Phase 1 · Dandora closure · IoT monitoring · Climate data platform</text>
+<rect x="20" y="52" width="504" height="148" fill="#21251C" rx="6"/>
+<!-- NAIROBI RIVER RESTORATION -->
+<text x="32" y="70" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">NAIROBI RIVER RESTORATION — Phase 1: CBD to Westlands (5km)</text>
+<text x="270" y="88" text-anchor="middle" fill="#A06030" font-size="7.5" font-family="system-ui">Current: 95% sewage · Zero aquatic life</text>
 <!-- River current (brown) -->
-<path d="M 32 130 Q 100 138 180 145 Q 260 152 340 150 Q 400 148 512 145" stroke="#A06030" stroke-width="12" fill="none" opacity="0.7"/>
-<text x="160" y="168" fill="#A06030" font-size="7.5" font-family="system-ui">Current: 95% sewag...</text>
-
-<!-- River target (blue) -->
-<path d="M 32 200 Q 100 208 180 215 Q 260 222 340 220 Q 400 218 512 215" stroke="#378ADD" stroke-width="12" fill="none" opacity="0.7"/>
-<text x="160" y="238" fill="#378ADD" font-size="7.5" font-family="system-ui">Target 2035: clean ·...</text>
-
+<path d="M 32 100 Q 100 108 180 115 Q 260 122 340 120 Q 400 118 512 115" stroke="#A06030" stroke-width="12" fill="none" opacity="0.7"/>
+<!-- Sewage outfall marks -->
+<text x="130" y="118" fill="#E85050" font-size="11" text-anchor="middle">✕</text>
+<text x="240" y="124" fill="#E85050" font-size="11" text-anchor="middle">✕</text>
+<text x="350" y="122" fill="#E85050" font-size="11" text-anchor="middle">✕</text>
+<text x="240" y="135" fill="#E85050" font-size="6.5" text-anchor="middle" font-family="system-ui">outfalls removed</text>
 <!-- Phase 1 label -->
-<rect x="32" y="175" width="90" height="18" fill="#2F342A" stroke="#C8A84B" stroke-width="1" rx="2"/>
-<text x="77" y="188" fill="#C8A84B" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">PHASE 1: 5km</text>
-
-<!-- Sewage outfalls (red X marks) -->
-<text x="130" y="148" fill="#E85050" font-size="11" text-anchor="middle">✕.........</text>
-<text x="240" y="154" fill="#E85050" font-size="11" text-anchor="middle">✕.........</text>
-<text x="350" y="152" fill="#E85050" font-size="11" text-anchor="middle">✕.........</text>
-<text x="240" y="165" fill="#E85050" font-size="6.5" text-anchor="middle" font-family="system-ui">outfal...</text>
-
+<rect x="32" y="140" width="90" height="18" fill="#2F342A" stroke="#C8A84B" stroke-width="1" rx="2"/>
+<text x="77" y="153" fill="#C8A84B" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">PHASE 1: 5km</text>
+<!-- River target (blue) -->
+<path d="M 32 160 Q 100 168 180 175 Q 260 182 340 180 Q 400 178 512 175" stroke="#378ADD" stroke-width="12" fill="none" opacity="0.7"/>
+<text x="270" y="175" text-anchor="middle" fill="#378ADD" font-size="7.5" font-family="system-ui">Target 2035: clean · fish returning · riparian park</text>
 <!-- Green banks -->
-<text x="78" y="215" fill="#5DBF7A" font-size="10">🌿...............</text>
-<text x="160" y="220" fill="#5DBF7A" font-size="10">🌿...............</text>
-<text x="240" y="220" fill="#5DBF7A" font-size="10">🌿...............</text>
-<text x="320" y="218" fill="#5DBF7A" font-size="10">🌿...............</text>
-<text x="400" y="214" fill="#5DBF7A" font-size="10">🌿...............</text>
-
+<text x="78" y="190" fill="#5DBF7A" font-size="10">🌿</text>
+<text x="160" y="190" fill="#5DBF7A" font-size="10">🌿</text>
+<text x="240" y="190" fill="#5DBF7A" font-size="10">🌿</text>
+<text x="320" y="190" fill="#5DBF7A" font-size="10">🌿</text>
+<text x="400" y="190" fill="#5DBF7A" font-size="10">🌿</text>
 <!-- DANDORA TRANSFORMATION -->
-<text x="42" y="258" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">DANDORA TRANSFORMATION — Dumpsite →... M...</text>
-
-<rect x="32" y="266" width="210" height="70" fill="#E85050" opacity="0.1" rx="4" stroke="#E85050" stroke-width="1"/>
-<text x="137" y="285" fill="#E85050" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">DANDORA TODAY</text>
-<text x="137" y="300" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">2,000t/day · Open burning</text>
-<text x="137" y="313" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">6,000 informal pickers</text>
-<text x="137" y="326" fill="#E85050" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">Lead 10× safe levels in children</text>
-
-<text x="272" y="300" fill="#C8A84B" font-size="14" font-weight="700" text-anchor="middle" font-family="Georgia,serif">→...</text>
-
-<rect x="302" y="266" width="210" height="70" fill="#5DBF7A" opacity="0.1" rx="4" stroke="#5DBF7A" stroke-width="1"/>
-<text x="407" y="285" fill="#5DBF7A" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">DANDORA 2035</text>
-<text x="407" y="300" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">400t/day MRF · Closed + capped</text>
-<text x="407" y="313" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">10,000 formal jobs · PPE · NHIF</text>
-<text x="407" y="326" fill="#5DBF7A" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">Training centre + cooperative HQ</text>
-
-<!-- LEGEND -->
-<rect x="20" y="362" width="504" height="128" fill="#21251C" rx="6"/>
-<text x="32" y="378" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The IoT Monitoring Network — 200 Sensor...</text>
-<text x="32" y="394" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📡 200 low-cost environmental IoT sensors: air q...</text>
-<text x="32" y="409" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📊 Open Climate Data Platform: all data public,...</text>
-<text x="32" y="424" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌡️ Urban heat island mapping: identifies which...</text>
-<text x="32" y="439" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📏 Nairobi River gauge network: real-time floo...</text>
-<text x="32" y="462" fill="#A0A898" font-size="7.5" font-family="system-ui">Nairobi River: 30 years of failed promises. The 2055...</text>
-<text x="32" y="474" fill="#A0A898" font-size="7.5" font-family="system-ui">Benchmarks: Stockholm Hammarby remediation · Seou...</text>
+<text x="20" y="220" fill="#F0EAD6" font-size="8.5" font-weight="700" font-family="system-ui">DANDORA TRANSFORMATION — Dumpsite → Materials Recovery Facility</text>
+<rect x="20" y="228" width="218" height="72" fill="#E85050" opacity="0.1" rx="4" stroke="#E85050" stroke-width="1"/>
+<text x="129" y="247" fill="#E85050" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">DANDORA TODAY</text>
+<text x="129" y="262" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">2,000t/day · Open burning</text>
+<text x="129" y="275" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">6,000 informal pickers</text>
+<text x="129" y="290" fill="#E85050" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">Lead 10× safe levels in children</text>
+<text x="272" y="268" fill="#C8A84B" font-size="14" font-weight="700" text-anchor="middle" font-family="Georgia,serif">→</text>
+<rect x="306" y="228" width="218" height="72" fill="#5DBF7A" opacity="0.1" rx="4" stroke="#5DBF7A" stroke-width="1"/>
+<text x="415" y="247" fill="#5DBF7A" font-size="9" font-weight="700" text-anchor="middle" font-family="system-ui">DANDORA 2035</text>
+<text x="415" y="262" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">400t/day MRF · Closed + capped</text>
+<text x="415" y="275" fill="#C4BFA8" font-size="7.5" text-anchor="middle" font-family="system-ui">10,000 formal jobs · PPE · NHIF</text>
+<text x="415" y="290" fill="#5DBF7A" font-size="7.5" font-weight="700" text-anchor="middle" font-family="system-ui">Training centre + cooperative HQ</text>
+<!-- IoT section -->
+<rect x="20" y="312" width="504" height="168" fill="#21251C" rx="6"/>
+<text x="32" y="330" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">The IoT Monitoring Network — 200 Sensors, 1 Dashboard</text>
+<text x="32" y="348" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📡 200 low-cost environmental IoT sensors: air quality (PM2.5, NOx) · water quality · noise · temperature</text>
+<text x="32" y="364" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📊 Open Climate Data Platform: all data public, real-time, machine-readable · feeds AI city manager</text>
+<text x="32" y="380" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🌡️ Urban heat island mapping: identifies which wards need priority tree-planting and cooling</text>
+<text x="32" y="396" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📏 Nairobi River gauge network: real-time flood warning · feeds 72-hour pre-flood waste clearance</text>
+<text x="32" y="420" fill="#A0A898" font-size="7.5" font-family="system-ui">Nairobi River: 30 years of failed promises. The 2055 plan is different — because Dandora MRF makes closure viable.</text>
+<text x="32" y="436" fill="#A0A898" font-size="7.5" font-family="system-ui">Benchmarks: Stockholm Hammarby remediation · Seoul Cheonggyecheon · Curitiba environmental record</text>
+<text x="272" y="470" text-anchor="middle" fill="#6A7060" font-size="7.5" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
 </svg></template>
 <template id="viz-tpl-environment_adv-panel"><div class="vp-section">
 <div class="vp-title">Advanced Environment</div>
 <div class="vp-sub">Fixing Nairobi's most visible environmental failures — and turning them into assets</div>
-<div class="bench-list"><div class="bench-item"><span class="bi-ico">🗑️</span><div><div class="bi-city">Dandora — the hardest and most important environmental fix</div><div class="bi-desc">The Dandora dumpsite has been "about to close" for 30 years. Every administration announces closure; none delivers it. The 2055 plan is different because it includes the economic alternative: the Dandora Materials Recovery Facility employs more people than the dumpsite, produces more revenue, and processes more waste. The economics make closure viable. The political will is the remaining variable. <a href="https://www.nema.go.ke/" target="_blank" rel="noopener">NEMA — National Environment Management Authority ↗</a></div></div></div>
+<div class="bench-list"><div class="bench-item"><span class="bi-ico">🗑️</span><div><div class="bi-city">Dandora — the hardest and most important environmental fix</div><div class="bi-desc">The Dandora dumpsite has been "about to close" for 30 years. Every administration announces closure; none delivers it. The 2055 plan is different because it includes the economic alternative: the Dandora Materials Recovery Facility employs more people than the dumpsite, produces more revenue, and processes more waste. The economics make closure viable. The political will is the remaining variable. <a href="https://www.nema.go.ke/" target="_blank" rel="noopener">Dandora Dumpsite ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🌊</span><div><div class="bi-city">Nairobi River — Phase 1: First 5km Sewage-Free</div><div class="bi-desc">The Nairobi River runs entirely brown — 95% of its flow is untreated sewage. The Nairobi Rivers Regeneration Programme is already 30% complete. Phase 1 of the 2055 plan: connect all settlements along the first 5km of the river to the sewer network, remove all sewage outfall pipes, and restore the first 5km to swimming quality by 2028. The visible transformation of 5km builds the political momentum for the full 20km. <a href="https://www.nairobiriver.org/" target="_blank" rel="noopener">Nairobi River Basin Programme ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">📡</span><div><div class="bi-city">IoT Environmental Monitoring — knowing what we're dealing with</div><div class="bi-desc">200 low-cost environmental monitoring sensors: air quality (PM2.5, NOx, CO), water quality (Nairobi River tributaries), soil contamination (Dandora vicinity), noise (CBD and residential), and temperature (urban heat island mapping). All data public, real-time, machine-readable. The Open Climate Data Platform publishes it all. You can't improve what you don't measure. <a href="https://aqicn.org/city/nairobi/" target="_blank" rel="noopener">Nairobi Air Quality Index ↗</a></div></div></div>
 </div></div>
@@ -9195,8 +9219,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="vp-sub">The solution is not relocating markets away from footfall — it is bringing good design to where the market already is</div>
 <div class="bench-list">
 <div class="bench-item"><span class="bi-ico">🗺️</span><div><div class="bi-city">The Desire-Line Principle — Markets Must Be On the Path</div><div class="bi-desc">Nairobi's roadside markets exist because people are already walking that road. The market follows the footfall — not the other way around. Every formal market that has failed in Nairobi (Muthurwa, Gikomba relocation attempts, various county market projects) has failed for the same reason: it was placed where planners thought it should be, not where people actually walk. The 2055 market programme locks in a non-negotiable siting rule: every new or upgraded market must be on a documented pedestrian desire line with minimum 2,000 daily footfall. <a href="https://www.wri.org/insights/urban-transformations-durban-informal-workers-design-marketplaces-instead-getting" target="_blank" rel="noopener">Urban Africa Lab — market anthropology ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">The Trading Forecourt — Separating Market from Carriageway</div><div class="bi-desc">The road encroachment problem is solved by design, not by force. A 6–10m paved trading forecourt with canopy, drainage, and demarcated stall zones sits between the road carriageway and the main market structure. Traders remain where their customers are. The road remains clear. The forecourt handles the transition. This is standard practice in Dar es Salaam's Kariakoo, in Singapore's hawker centres, and in Cape Town's Greenmarket Square — all of which are dense, popular, and traffic-safe. <a href="https://www.wsup.com/impact/kenya/" target="_blank" rel="noopener">WSUP Kenya urban markets ↗</a></div></div></div>
-<div class="bench-item"><span class="bi-ico">❄️</span><div><div class="bi-city">Shared Cold Storage — Solving the 30–40% Produce Loss Problem</div><div class="bi-desc">An individual food trader in Nairobi cannot afford a refrigeration unit. The result: 30–40% of fresh produce is lost to spoilage, which simultaneously reduces trader income and raises food prices for consumers. Shared cold storage — one unit per 50 food traders, managed by the ward trader cooperative — solves this at a fraction of the individual cost. Operating on solar power from the market microgrid. Accessible by any registered market trader at KES 20/day. The model is proven in Kampala's St. Balikuddembe market and in Dakar's Marché Kermel. <a href="https://www.fao.org/markets-and-agrifood-systems/en/" target="_blank" rel="noopener">FAO — urban food market systems ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🏗️</span><div><div class="bi-city">The Trading Forecourt — Separating Market from Carriageway</div><div class="bi-desc">The road encroachment problem is solved by design, not by force. A 6–10m paved trading forecourt with canopy, drainage, and demarcated stall zones sits between the road carriageway and the main market structure. Traders remain where their customers are. The road remains clear. The forecourt handles the transition. This is standard practice in Dar es Salaam's Kariakoo, in Singapore's hawker centres, and in Cape Town's Greenmarket Square — all of which are dense, popular, and traffic-safe. <a href="https://globaldesigningcities.org/publication/global-street-design-guide/designing-streets-people/designing-people-business/siting-guidance/" target="_blank" rel="noopener">Global Street Design Guide ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">❄️</span><div><div class="bi-city">Shared Cold Storage — Solving the 30–40% Produce Loss Problem</div><div class="bi-desc">An individual food trader in Nairobi cannot afford a refrigeration unit. The result: 30–40% of fresh produce is lost to spoilage, which simultaneously reduces trader income and raises food prices for consumers. Shared cold storage — one unit per 50 food traders, managed by the ward trader cooperative — solves this at a fraction of the individual cost. Operating on solar power from the market microgrid. Accessible by any registered market trader at KES 20/day. The model is proven in Kampala's St. Balikuddembe market and in Dakar's Marché Kermel. <a href="https://www.ctc-n.org/news/nigeria-coldhubs-pay-you-store-model-reducing-food-waste-empowering-women-entrepreneurs" target="_blank" rel="noopener">Shared Cold Storage ↗</a></div></div></div>
 <div class="bench-item"><span class="bi-ico">🤝</span><div><div class="bi-city">Trader-Led Design — The Anthropological Approach</div><div class="bi-desc">Every ward market design process starts with a 3-month trader mapping exercise: who trades what, where, when, and to whom. Trading relationships (complementary goods, shared customer bases, supply chain connections) are mapped and preserved in the new layout. Trader associations have veto power over stall allocation. No trader is displaced without an equivalent spot in the new design. The market is designed from the ground up by the people who will use it — not handed to them finished. <a href="https://www.urbanlandmark.org.za/" target="_blank" rel="noopener">Urban Landmark — SA informal market research ↗</a></div></div></div>
 </div></div>
 <div class="vp-section">
@@ -9299,6 +9323,291 @@ document.addEventListener('DOMContentLoaded', function() {
     <div id="vizSearchResults"></div>
   </div>
 </div>
+
+
+<!-- ═══ SECONDARY_CENTRES: 5 Secondary Urban Centres ═══ -->
+<template id="viz-tpl-secondary_centres-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="430" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">5 Secondary Urban Centres</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Westlands · Kasarani · Karen · Embakasi · Ruiru — full-service nodes reducing CBD pressure</text>
+<!-- CBD centre -->
+<circle cx="272" cy="210" r="28" fill="rgba(200,168,75,0.15)"/>
+<circle cx="272" cy="210" r="18" fill="#C8A84B" stroke="#F0EAD6" stroke-width="2"/>
+<text x="272" y="207" text-anchor="middle" fill="#1A1D16" font-size="7.5" font-weight="700" font-family="system-ui">NAIROBI</text>
+<text x="272" y="218" text-anchor="middle" fill="#1A1D16" font-size="7.5" font-weight="700" font-family="system-ui">CBD</text>
+<!-- Connectors to 5 centres -->
+<line x1="272" y1="190" x2="185" y2="95" stroke="#6A7060" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="272" y1="190" x2="420" y2="108" stroke="#6A7060" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="272" y1="228" x2="148" y2="330" stroke="#6A7060" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="272" y1="228" x2="400" y2="315" stroke="#6A7060" stroke-width="1.5" stroke-dasharray="5,4"/>
+<line x1="290" y1="210" x2="462" y2="210" stroke="#6A7060" stroke-width="1.5" stroke-dasharray="5,4"/>
+<!-- 1: Westlands (NW) -->
+<circle cx="170" cy="90" r="20" fill="rgba(93,191,122,0.15)" stroke="#5DBF7A" stroke-width="2"/>
+<text x="170" y="87" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">WESTLANDS</text>
+<text x="170" y="98" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Finance &amp; Tech</text>
+<text x="170" y="62" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🏗️ Innovation District</text>
+<text x="170" y="73" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🏥 Regional clinic</text>
+<!-- 2: Kasarani (NE) -->
+<circle cx="420" cy="100" r="20" fill="rgba(55,138,221,0.15)" stroke="#378ADD" stroke-width="2"/>
+<text x="420" y="97" text-anchor="middle" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">KASARANI</text>
+<text x="420" y="108" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Sports &amp; Education</text>
+<text x="420" y="72" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🏟️ Kasarani precinct</text>
+<text x="420" y="83" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🎓 University cluster</text>
+<!-- 3: Karen (SW) -->
+<circle cx="134" cy="334" r="20" fill="rgba(232,132,74,0.15)" stroke="#E8844A" stroke-width="2"/>
+<text x="134" y="331" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui">KAREN</text>
+<text x="134" y="342" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Heritage &amp; Ecology</text>
+<text x="134" y="360" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🌿 Green quarter</text>
+<text x="134" y="371" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🛍️ Retail anchor</text>
+<!-- 4: Embakasi (SE) -->
+<circle cx="404" cy="318" r="20" fill="rgba(139,121,232,0.15)" stroke="#8B79E8" stroke-width="2"/>
+<text x="404" y="315" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">EMBAKASI</text>
+<text x="404" y="326" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Industrial &amp; Logistics</text>
+<text x="404" y="344" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🏭 EV manufacturing</text>
+<text x="404" y="355" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🚌 Bus depot hub</text>
+<!-- 5: Ruiru (far E) -->
+<circle cx="462" cy="210" r="20" fill="rgba(63,191,176,0.15)" stroke="#3FBFB0" stroke-width="2"/>
+<text x="462" y="207" text-anchor="middle" fill="#3FBFB0" font-size="8" font-weight="700" font-family="system-ui">RUIRU</text>
+<text x="462" y="218" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Corridor Growth</text>
+<text x="498" y="196" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">🏘️ Affordable</text>
+<text x="498" y="207" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">housing</text>
+<!-- Each centre label -->
+<text x="272" y="168" text-anchor="middle" fill="#8A8878" font-size="8" font-family="system-ui">Each centre: offices · retail · health · education · park</text>
+<!-- 15-min city rings (dashed) -->
+<circle cx="170" cy="90" r="40" fill="none" stroke="#5DBF7A" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.4"/>
+<circle cx="420" cy="100" r="40" fill="none" stroke="#378ADD" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.4"/>
+<circle cx="134" cy="334" r="40" fill="none" stroke="#E8844A" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.4"/>
+<circle cx="404" cy="318" r="40" fill="none" stroke="#8B79E8" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.4"/>
+<!-- Stats bar -->
+<rect x="20" y="376" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">5</text>
+<text x="83" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">New city centres</text>
+<text x="209" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">15 min</text>
+<text x="209" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Walk to essentials</text>
+<text x="335" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">40%</text>
+<text x="335" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">CBD commute reduction</text>
+<text x="461" y="394" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">2035</text>
+<text x="461" y="409" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Full activation target</text>
+<text x="272" y="424" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
+</svg></template>
+<template id="viz-tpl-secondary_centres-panel"><div class="panel-inner">
+<div class="p-section"><div class="p-label">BENCHMARK CITY</div>
+<div class="bench-item"><span class="bi-ico">🇰🇷</span><div><div class="bi-city">Seoul — 5 Urban Sub-Centres</div><div class="bi-desc">Seoul decentralised from a single CBD to 5 major sub-centres (Gangnam, Yeouido, Mapo, Jamsil, Changdong) over 20 years, reducing commute times by 35% and CBD congestion by 40%. The model works when each sub-centre has genuine employment, not just housing.</div><div class="bi-link"><a href="https://www.seoulsolution.kr/en/content/case-studies" target="_blank" rel="noopener">Seoul Metropolitan Government ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇫🇷</span><div><div class="bi-city">Paris — 15-Minute City</div><div class="bi-desc">Mayor Hidalgo's 15-minute city plan restructured Paris into neighbourhood clusters where every essential service is within 15 minutes on foot or cycle. Mixed-use zoning changes were the key legal enabler — the same reform Nairobi's 2055 plan requires.</div><div class="bi-link"><a href="https://issuu.com/jonathan.hann/docs/mobility_20for_20all_issuu/s/14688235" target="_blank" rel="noopener">Paris en Commun ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇪🇹</span><div><div class="bi-city">Addis Ababa — Corridor Development</div><div class="bi-desc">Ethiopia's new corridor development plan linked satellite towns to Addis via BRT, creating genuine sub-centres. Nairobi's BRT network, aligned with the 5 secondary centres, replicates this integrated transit-led urban growth model.</div><div class="bi-link"><a href="https://www.worldbank.org/en/topic/urbandevelopment" target="_blank" rel="noopener">World Bank Urban Development ↗</a></div></div></div>
+</div>
+<div class="p-section"><div class="p-label">DESIGN LESSONS</div>
+<ol class="p-list"><li>Employment, not just housing — a sub-centre only works if people can work there, not just sleep there. Each Nairobi centre needs anchor employers: a hospital, a government office, a tech hub, a market.</li><li>Mixed-use zoning is the legal prerequisite — Nairobi's current zoning code prohibits mixing residential and commercial uses. The code change happens in Phase 1, enabling organic development in each centre.</li><li>Transit connection is non-negotiable — each of the 5 centres sits on a BRT corridor or rail line. Without fast, reliable transit to the CBD, the decentralisation fails.</li><li>Westlands is the anchor — already an established commercial node, Westlands gets the Innovation District as its defining employer. It demonstrates the model by 2028, pulling the other four.</li></ol>
+</div></div></template>
+
+<!-- ═══ WORLD_CLASS_SPACES: World-Class Public Spaces ═══ -->
+<template id="viz-tpl-world_class_spaces-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="430" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">World-Class Public Spaces</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Uhuru Park redesign · Ward parks ×85 · Riverfront · Cross-class design principle</text>
+<!-- Uhuru Park focal piece (left) -->
+<rect x="20" y="58" width="240" height="220" fill="#21251C" rx="8" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="140" y="76" text-anchor="middle" fill="#5DBF7A" font-size="9" font-weight="700" font-family="system-ui">UHURU PARK REDESIGN</text>
+<text x="140" y="88" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Nairobi's Central Park</text>
+<!-- Lake -->
+<ellipse cx="110" cy="150" rx="55" ry="35" fill="rgba(55,138,221,0.25)" stroke="#378ADD" stroke-width="1.5"/>
+<text x="110" y="154" text-anchor="middle" fill="#378ADD" font-size="7.5" font-family="system-ui">Uhuru Lake</text>
+<!-- Amphitheatre -->
+<path d="M 175 140 Q 215 128 240 150 Q 215 172 175 160 Z" fill="rgba(200,168,75,0.15)" stroke="#C8A84B" stroke-width="1"/>
+<text x="205" y="148" text-anchor="middle" fill="#C8A84B" font-size="6.5" font-family="system-ui">Amphitheatre</text>
+<!-- Cycling path ring -->
+<ellipse cx="130" cy="160" rx="90" ry="65" fill="none" stroke="#5DBF7A" stroke-width="2" stroke-dasharray="6,4"/>
+<text x="60" y="228" fill="#5DBF7A" font-size="6.5" font-family="system-ui">Perimeter cycling path</text>
+<!-- Features list -->
+<text x="32" y="104" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Lake restoration</text>
+<text x="32" y="116" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Open-air amphitheatre</text>
+<text x="32" y="250" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Free entry · No dress code</text>
+<text x="32" y="262" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Cross-class design</text>
+<text x="32" y="274" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Solar lighting 24/7</text>
+<!-- Ward park prototype (right) -->
+<rect x="274" y="58" width="250" height="220" fill="#21251C" rx="8" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="399" y="76" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="system-ui">WARD PARK PROTOTYPE</text>
+<text x="399" y="88" text-anchor="middle" fill="#8A8878" font-size="7.5" font-family="system-ui">Standard for all 85 wards</text>
+<!-- Park layout grid -->
+<rect x="290" y="98" width="216" height="120" fill="#1D2218" rx="4"/>
+<!-- Green areas -->
+<rect x="296" y="104" width="60" height="50" fill="rgba(93,191,122,0.3)" rx="3"/>
+<text x="326" y="133" text-anchor="middle" fill="#5DBF7A" font-size="6.5" font-family="system-ui">Grass</text>
+<rect x="362" y="104" width="60" height="50" fill="rgba(93,191,122,0.2)" rx="3"/>
+<text x="392" y="133" text-anchor="middle" fill="#8A8878" font-size="6.5" font-family="system-ui">Garden</text>
+<rect x="296" y="160" width="126" height="50" fill="rgba(55,138,221,0.15)" rx="3"/>
+<text x="359" y="189" text-anchor="middle" fill="#378ADD" font-size="6.5" font-family="system-ui">Basketball court</text>
+<rect x="428" y="160" width="72" height="50" fill="rgba(200,168,75,0.15)" rx="3"/>
+<text x="464" y="189" text-anchor="middle" fill="#C8A84B" font-size="6.5" font-family="system-ui">Play area</text>
+<!-- Features -->
+<text x="290" y="240" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Outdoor gym · free · 12 stations</text>
+<text x="290" y="252" fill="#C4BFA8" font-size="7.5" font-family="system-ui">✓ Community library · 5am–11pm</text>
+<text x="290" y="264" fill="#C4BFA8" font-size="7.5" font-family="system-ui">★ Accessible ramps · no fees ever</text>
+<!-- Cross-class principle banner -->
+<rect x="20" y="292" width="504" height="42" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1"/>
+<text x="272" y="309" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="system-ui">THE CROSS-CLASS DESIGN PRINCIPLE</text>
+<text x="272" y="325" text-anchor="middle" fill="#C4BFA8" font-size="8" font-family="system-ui">Every space designed so a Kibera resident and a Westlands resident are equally welcome · No VIP · No paid admission</text>
+<!-- Stats bar -->
+<rect x="20" y="348" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="366" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">85</text>
+<text x="83" y="381" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Ward parks by 2035</text>
+<text x="209" y="366" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">5</text>
+<text x="209" y="381" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Anchor civic spaces</text>
+<text x="335" y="366" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">Free</text>
+<text x="335" y="381" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Always · All wards</text>
+<text x="461" y="366" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">HDPE</text>
+<text x="461" y="381" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Recycled materials</text>
+<text x="272" y="403" text-anchor="middle" fill="#6A7060" font-size="7.5" font-family="system-ui">Prototype: aerial plan view · final designs by community co-design committee per ward</text>
+<text x="272" y="420" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
+</svg></template>
+<template id="viz-tpl-world_class_spaces-panel"><div class="panel-inner">
+<div class="p-section"><div class="p-label">BENCHMARK CITY</div>
+<div class="bench-item"><span class="bi-ico">🇺🇸</span><div><div class="bi-city">New York — Central Park as Social Equaliser</div><div class="bi-desc">Central Park's 1858 design deliberately put a world-class public space accessible to all New Yorkers regardless of income. The park generates $1B in annual economic value and remains free. Nairobi's Uhuru Park redesign adopts this model — same quality for every resident.</div><div class="bi-link"><a href="https://www.centralparknyc.org/" target="_blank" rel="noopener">Central Park Conservancy ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇨🇴</span><div><div class="bi-city">Medellín — Urban Acupuncture</div><div class="bi-desc">Medellín transformed its most violent comunas by building world-class public spaces — cable cars, parks, and libraries — in the areas that needed investment most. Violence dropped 60% in targeted areas. Nairobi's settlement-first ward park programme follows this evidence directly.</div><div class="bi-link"><a href="https://www.medellin.gov.co/" target="_blank" rel="noopener">Alcaldía de Medellín ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇫🇮</span><div><div class="bi-city">Helsinki — Public Space and Happiness</div><div class="bi-desc">Helsinki consistently ranks as the world's happiest city, and researchers link this directly to its universal access to high-quality public space. Every neighbourhood has a park, a library, and a community centre within 10 minutes walk — the standard Nairobi 2055 wards adopt.</div><div class="bi-link"><a href="https://www.hel.fi/en/" target="_blank" rel="noopener">City of Helsinki ↗</a></div></div></div>
+</div>
+<div class="p-section"><div class="p-label">DESIGN LESSONS</div>
+<ol class="p-list"><li>Quality must be identical across wards — the moment a Mathare park has worse equipment than a Westlands park, the cross-class principle is broken. NCG procurement sets a single standard for all 85.</li><li>Community co-design is the process, not just the outcome — ward residents choose their park's specific features within a quality standard. This ensures local ownership and reduces vandalism to near-zero.</li><li>Recycled HDPE infrastructure cuts cost by 40% — plastic benches, paths, and play equipment sourced from the Dandora MRF are cheaper and more durable than imported steel. The circular economy funds the public space.</li><li>The riverfront is the biggest opportunity — 5km of Nairobi River, once restored, becomes Nairobi's answer to the Seoul Cheonggyecheon: a linear park through the city centre that all residents can walk.</li></ol>
+</div></div></template>
+
+<!-- ═══ AIR_TAXI_INFRA: Air Taxi Infrastructure ═══ -->
+<template id="viz-tpl-air_taxi_infra-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="430" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Air Taxi Infrastructure — Vertiport Network</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Vertiports at Wilson Airport · JKIA · Upperhill · Westlands · Phase 3: 2040–2055</text>
+<!-- Phase label -->
+<rect x="20" y="58" width="504" height="20" fill="#8B79E8" opacity="0.15" rx="4"/>
+<text x="272" y="72" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">PHASE 3 INFRASTRUCTURE · 2040–2055 · eVTOL technology maturity required</text>
+<!-- Airspace grid (background) -->
+<line x1="20" y1="90" x2="524" y2="90" stroke="#2A2E25" stroke-width="1"/>
+<line x1="20" y1="130" x2="524" y2="130" stroke="#2A2E25" stroke-width="1"/>
+<line x1="20" y1="170" x2="524" y2="170" stroke="#2A2E25" stroke-width="1"/>
+<line x1="20" y1="210" x2="524" y2="210" stroke="#2A2E25" stroke-width="1"/>
+<line x1="20" y1="250" x2="524" y2="250" stroke="#2A2E25" stroke-width="1"/>
+<line x1="20" y1="290" x2="524" y2="290" stroke="#2A2E25" stroke-width="1"/>
+<line x1="100" y1="82" x2="100" y2="330" stroke="#2A2E25" stroke-width="1"/>
+<line x1="180" y1="82" x2="180" y2="330" stroke="#2A2E25" stroke-width="1"/>
+<line x1="260" y1="82" x2="260" y2="330" stroke="#2A2E25" stroke-width="1"/>
+<line x1="340" y1="82" x2="340" y2="330" stroke="#2A2E25" stroke-width="1"/>
+<line x1="420" y1="82" x2="420" y2="330" stroke="#2A2E25" stroke-width="1"/>
+<text x="272" y="100" text-anchor="middle" fill="#3A3E35" font-size="7" font-family="system-ui">NAIROBI AIRSPACE GRID — eVTOL corridors (150–600m altitude)</text>
+<!-- Flight corridors -->
+<line x1="140" y1="160" x2="272" y2="200" stroke="#8B79E8" stroke-width="2" stroke-dasharray="8,4" opacity="0.7"/>
+<line x1="420" y1="310" x2="272" y2="200" stroke="#378ADD" stroke-width="2" stroke-dasharray="8,4" opacity="0.7"/>
+<line x1="272" y1="120" x2="272" y2="200" stroke="#C8A84B" stroke-width="2" stroke-dasharray="8,4" opacity="0.7"/>
+<line x1="390" y1="150" x2="272" y2="200" stroke="#5DBF7A" stroke-width="2" stroke-dasharray="8,4" opacity="0.7"/>
+<!-- Vertiport: Wilson Airport (W) -->
+<rect x="86" y="140" width="108" height="48" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="95" y="156" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">✈ WILSON AIRPORT</text>
+<text x="95" y="168" fill="#C4BFA8" font-size="7" font-family="system-ui">Vertiport A · 8 pads</text>
+<text x="95" y="180" fill="#A0A898" font-size="6.5" font-family="system-ui">General aviation anchor</text>
+<!-- Vertiport: JKIA (SE) -->
+<rect x="340" y="292" width="108" height="48" fill="#21251C" rx="6" stroke="#378ADD" stroke-width="1.5"/>
+<text x="348" y="308" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">✈ JKIA</text>
+<text x="348" y="320" fill="#C4BFA8" font-size="7" font-family="system-ui">Vertiport B · 12 pads</text>
+<text x="348" y="332" fill="#A0A898" font-size="6.5" font-family="system-ui">International connector</text>
+<!-- Vertiport: Upperhill (Centre) -->
+<rect x="208" y="180" width="128" height="48" fill="#21251C" rx="6" stroke="#8B79E8" stroke-width="2"/>
+<text x="272" y="196" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">⬡ UPPERHILL HUB</text>
+<text x="272" y="208" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="system-ui">Vertiport C · 20 pads · CBD node</text>
+<text x="272" y="220" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Primary urban vertiport</text>
+<!-- Vertiport: Westlands (NE) -->
+<rect x="316" y="112" width="108" height="48" fill="#21251C" rx="6" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="325" y="128" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">⬡ WESTLANDS</text>
+<text x="325" y="140" fill="#C4BFA8" font-size="7" font-family="system-ui">Vertiport D · 8 pads</text>
+<text x="325" y="152" fill="#A0A898" font-size="6.5" font-family="system-ui">Innovation District node</text>
+<!-- eVTOL aircraft icons -->
+<text x="200" y="175" fill="#8B79E8" font-size="14" font-family="system-ui">🛸</text>
+<text x="300" y="145" fill="#5DBF7A" font-size="12" font-family="system-ui">🚁</text>
+<!-- Timeline -->
+<rect x="20" y="298" width="504" height="38" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="32" y="313" fill="#A0A898" font-size="7.5" font-family="system-ui">2030: Regulatory framework + Wilson pilot vertiport · 2035: Upperhill hub operational · 2040: Full 4-vertiport network</text>
+<text x="32" y="328" fill="#8A8878" font-size="7" font-family="system-ui">Uses: emergency medical · VIP/business transit · Tourism · Future: settlement rapid-response in flood events</text>
+<!-- Stats bar -->
+<rect x="20" y="350" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="368" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">4</text>
+<text x="83" y="383" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Vertiports Phase 3</text>
+<text x="209" y="368" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">48</text>
+<text x="209" y="383" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Total landing pads</text>
+<text x="335" y="368" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">eVTOL</text>
+<text x="335" y="383" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Electric vertical take-off</text>
+<text x="461" y="368" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">2040</text>
+<text x="461" y="383" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Operational target</text>
+<text x="272" y="410" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
+</svg></template>
+<template id="viz-tpl-air_taxi_infra-panel"><div class="panel-inner">
+<div class="p-section"><div class="p-label">BENCHMARK CITY</div>
+<div class="bench-item"><span class="bi-ico">🇦🇪</span><div><div class="bi-city">Dubai — World's First Autonomous Air Taxi Route</div><div class="bi-desc">Dubai launched the world's first licensed autonomous air taxi service in 2023, with Joby Aviation operating between Dubai International Airport and Palm Jumeirah. The regulatory framework developed by GCAA is the direct model for Kenya Civil Aviation Authority's 2030 eVTOL regulations.</div><div class="bi-link"><a href="https://www.jobyaviation.com/" target="_blank" rel="noopener">Joby Aviation ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇷🇼</span><div><div class="bi-city">Rwanda — Zipline Drone Delivery Network</div><div class="bi-desc">Rwanda built the world's most advanced drone delivery network for medical supplies, covering 80% of the country. The CAA regulatory framework and the public acceptance model are directly applicable to Nairobi's air taxi corridor planning, particularly for emergency medical use cases.</div><div class="bi-link"><a href="https://www.zipline.com/" target="_blank" rel="noopener">Zipline ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇺🇸</span><div><div class="bi-city">Los Angeles — Urban Air Mobility Blueprint</div><div class="bi-desc">Los Angeles published the world's first Urban Air Mobility blueprint in 2021, identifying vertiport locations, airspace corridors, and noise standards. Wilson Airport's designation as Nairobi's primary vertiport follows the LA model of using existing general aviation airports as the launch point.</div><div class="bi-link"><a href="https://www.lawa.org/en/lawa-environment/urban-air-mobility" target="_blank" rel="noopener">LA World Airports ↗</a></div></div></div>
+</div>
+<div class="p-section"><div class="p-label">DESIGN LESSONS</div>
+<ol class="p-list"><li>This is a Phase 3 technology — eVTOL aircraft only become commercially viable at scale after 2035. Nairobi's plan correctly stages this as infrastructure-readiness in Phase 2 (reserving vertiport sites, establishing regulations) with operational launch in Phase 3.</li><li>Emergency medical use comes first — the immediate case for air taxis in Nairobi is emergency response to settlements where ambulances cannot enter. A 3-minute flight from Mathare to KNH costs less than a life lost in traffic.</li><li>Wilson Airport is the natural anchor — it has an existing runway, maintenance facilities, and proximity to Upperhill CBD. Converting its general aviation terminal to a vertiport requires minimal new infrastructure.</li><li>Noise and community acceptance are the real challenges — eVTOL aircraft are significantly quieter than helicopters but still require community engagement, particularly in residential areas near flight corridors.</li></ol>
+</div></div></template>
+
+<!-- ═══ URBAN_VILLAGES: Climate-Resilient Urban Villages ═══ -->
+<template id="viz-tpl-urban_villages-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="430" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Climate-Resilient Urban Villages</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Self-sufficient neighbourhood clusters · Local food · Solar power · Water recycling · Crisis Response Phase 2</text>
+<!-- Central village diagram -->
+<circle cx="272" cy="195" r="80" fill="rgba(93,191,122,0.06)" stroke="#5DBF7A" stroke-width="1" stroke-dasharray="4,4"/>
+<circle cx="272" cy="195" r="50" fill="rgba(93,191,122,0.1)" stroke="#5DBF7A" stroke-width="1.5"/>
+<!-- Community core -->
+<rect x="244" y="167" width="56" height="56" fill="#21251C" rx="8" stroke="#5DBF7A" stroke-width="2"/>
+<text x="272" y="188" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">VILLAGE</text>
+<text x="272" y="200" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">CORE</text>
+<text x="272" y="213" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">200–500 HH</text>
+<!-- Solar (top) -->
+<rect x="240" y="96" width="64" height="32" fill="#21251C" rx="5" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="272" y="110" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700" font-family="system-ui">☀ SOLAR ARRAY</text>
+<text x="272" y="122" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">20kW · battery storage</text>
+<line x1="272" y1="128" x2="272" y2="167" stroke="#C8A84B" stroke-width="1.5"/>
+<!-- Water (right) -->
+<rect x="358" y="168" width="72" height="54" fill="#21251C" rx="5" stroke="#378ADD" stroke-width="1.5"/>
+<text x="394" y="184" text-anchor="middle" fill="#378ADD" font-size="7.5" font-weight="700" font-family="system-ui">💧 WATER</text>
+<text x="394" y="196" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Rainwater harvest</text>
+<text x="394" y="208" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Greywater recycle</text>
+<text x="394" y="220" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Borehole backup</text>
+<line x1="358" y1="195" x2="323" y2="195" stroke="#378ADD" stroke-width="1.5"/>
+<!-- Food (bottom) -->
+<rect x="228" y="268" width="88" height="44" fill="#21251C" rx="5" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="272" y="283" text-anchor="middle" fill="#5DBF7A" font-size="7.5" font-weight="700" font-family="system-ui">🌿 FOOD GARDEN</text>
+<text x="272" y="295" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Rooftop + vertical farm</text>
+<text x="272" y="307" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">30% local food supply</text>
+<line x1="272" y1="268" x2="272" y2="223" stroke="#5DBF7A" stroke-width="1.5"/>
+<!-- Waste (left) -->
+<rect x="108" y="168" width="76" height="54" fill="#21251C" rx="5" stroke="#E8844A" stroke-width="1.5"/>
+<text x="146" y="184" text-anchor="middle" fill="#E8844A" font-size="7.5" font-weight="700" font-family="system-ui">♻ WASTE</text>
+<text x="146" y="196" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">MRF cooperative</text>
+<text x="146" y="208" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Biogas from organic</text>
+<text x="146" y="220" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="system-ui">Zero to landfill</text>
+<line x1="184" y1="195" x2="244" y2="195" stroke="#E8844A" stroke-width="1.5"/>
+<!-- Crisis mode banner -->
+<rect x="20" y="330" width="504" height="36" fill="rgba(232,80,80,0.1)" rx="5" stroke="#E85050" stroke-width="1"/>
+<text x="272" y="345" text-anchor="middle" fill="#E85050" font-size="8.5" font-weight="700" font-family="system-ui">⚡ CRISIS RESPONSE MODE — Village becomes autonomous unit within 2 hours</text>
+<text x="272" y="360" text-anchor="middle" fill="#C4BFA8" font-size="7.5" font-family="system-ui">72hrs independent power · 2 weeks food buffer · Community shelter for 500 · Medical first response cache</text>
+<!-- Stats bar -->
+<rect x="20" y="378" width="504" height="44" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="396" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">85</text>
+<text x="83" y="411" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Wards targetted</text>
+<text x="209" y="396" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">20kW</text>
+<text x="209" y="411" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Solar per village</text>
+<text x="335" y="396" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">72hr</text>
+<text x="335" y="411" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Crisis autonomy</text>
+<text x="461" y="396" text-anchor="middle" fill="#C8A84B" font-size="13" font-weight="700" font-family="Georgia,serif">2035</text>
+<text x="461" y="411" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Full rollout target</text>
+<text x="272" y="424" text-anchor="middle" fill="#6A7060" font-size="7" font-family="system-ui">Nairobi 2055 Transformation Master Plan · Schematic illustration</text>
+</svg></template>
+<template id="viz-tpl-urban_villages-panel"><div class="panel-inner">
+<div class="p-section"><div class="p-label">BENCHMARK CITY</div>
+<div class="bench-item"><span class="bi-ico">🇩🇪</span><div><div class="bi-city">Freiburg — Vauban Eco-District</div><div class="bi-desc">Freiburg's Vauban district pioneered the self-sufficient neighbourhood model — passive-house buildings, solar energy surplus, car-free streets, local food production, and community governance. Built on a former military base in the 1990s, it now exports energy to the grid. Nairobi's urban villages adapt this for informal settlement conditions.</div><div class="bi-link"><a href="https://www.vauban.de/" target="_blank" rel="noopener">Vauban District ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇰🇪</span><div><div class="bi-city">Kibera — Community Solar Pilots (Existing)</div><div class="bi-desc">Multiple community solar installations in Kibera already demonstrate the viability of off-grid community energy in informal settlements. The 2055 plan scales what already works — solar microgrids, community ownership, prepaid access — across all 85 wards at village cluster scale.</div><div class="bi-link"><a href="https://www.solaraid.org/" target="_blank" rel="noopener">SolarAid Kenya ↗</a></div></div></div>
+<div class="bench-item"><span class="bi-ico">🇸🇬</span><div><div class="bi-city">Singapore — Community in Bloom Urban Farming</div><div class="bi-desc">Singapore's national urban farming programme produces 30% of domestic vegetable needs from vertical and rooftop farms within HDB estates. The integration with community life — residents tend plots, cooperatives manage distribution — is directly applicable to Nairobi's ward-level food gardens.</div><div class="bi-link"><a href="https://www.nparks.gov.sg/gardening/community-in-bloom" target="_blank" rel="noopener">Singapore NParks ↗</a></div></div></div>
+</div>
+<div class="p-section"><div class="p-label">DESIGN LESSONS</div>
+<ol class="p-list"><li>Crisis autonomy is the killer feature — in Nairobi's flood and infrastructure failure context, a neighbourhood that can operate independently for 72 hours is not just sustainable, it saves lives. The crisis resilience function justifies the investment to donors and government.</li><li>Settlement-first prioritisation — the most vulnerable wards (Mathare, Kibera, Mukuru) get urban villages first. Their lack of existing infrastructure is actually an advantage: there is less to retrofit and more space for solar and food systems.</li><li>Community ownership is non-negotiable — the village systems must be owned by a registered cooperative, not managed by a government agency. When residents own the solar panels and the water system, maintenance happens.</li><li>Biogas closes the loop — organic waste from the food garden feeds the biogas digester, which powers the village core and the MRF. The circular model eliminates energy import costs and makes the village genuinely self-sufficient.</li></ol>
+</div></div></template>
 
 </body>
 
