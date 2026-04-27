@@ -2701,7 +2701,7 @@ function getVizKey(title){
   if(t.includes('BRT')||t.includes('BUS RAPID TRANSIT')) return 'BRT';
   if(t.includes('RIVER GREEN')||t.includes('GREEN CORRIDOR')||t.includes('NAIROBI RIVER')||t.includes('RIVER RESTORATION')||t.includes('RIVER PHASE')) return 'RIVER';
   if(t.includes('IN-SITU')||t.includes('INFORMAL SETTLEMENT UPGRADING')||t.includes('SETTLEMENT UPGRADING')) return 'INSITU';
-  if(t.includes('E-MKOKOTENI')||t.includes('ELECTRIC CARGO TRIKE')||t.includes('HANDCART BUYBACK')) return 'E_MKOKOTENI';
+  if(t.includes('E-MKOKOTENI')||t.includes('ELECTRIC CARGO TRIKE')||t.includes('HANDCART BUYBACK')||t.includes('MKOKOTENI E-TRIKE')||t.includes('CARGO E-TRIKE NETWORK')) return 'E_MKOKOTENI';
   if(t.includes('MKOKOTENI')||t.includes('E-TRIKE')||t.includes('HANDCART')) return 'MKOKOTENI_ETRIKE';
   if(t.includes('CARGO E-TRIKE')||t.includes('HANDCART')||t.includes('EV CARGO TRIKE')||t.includes('MKOKOTENI')) return 'EV_CARGO_TRIKE';
   if(t.includes('MATATU BUYBACK')||t.includes('SCRAP METAL PARTNERSHIP')||t.includes('MATATU CIRCULAR')) return 'MATATU';
@@ -10111,6 +10111,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="lsn"><span class="lsn-n">3</span><span><strong>Local assembly is the economic multiplier</strong> — if trikes are imported (China, India), the economic benefit is limited. The Embakasi EV Manufacturing Hub assembles trikes from Kenyan steel (matatu-sourced scrap) and Chinese/Indian powertrains. Each locally assembled trike generates 3× the economic value of an import.</span></div>
 <div class="lsn"><span class="lsn-n">4</span><span><strong>Settlement connectivity is the killer application</strong> — matatu minibuses and city buses cannot enter Mathare's 1.5m-wide lanes. Cargo e-trikes can. The combination of BRT trunk routes + e-trike last-mile creates a genuine door-to-door supply chain for the first time in informal settlements.</span></div></template>
 
+<script src="viz-patch.js"></script>
 </body>
 
 <template id="viz-tpl-cultural_heritage-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
