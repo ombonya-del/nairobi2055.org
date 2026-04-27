@@ -3037,7 +3037,10 @@ const VIZ={
     getPanel:()=>document.getElementById('viz-tpl-act2055-panel').innerHTML},
   EV_CARGO_TRIKE:{title:'Cargo E-Trike Network — Replacing the Handcart',subtitle:'80,000 operators formalised · EV tricycle buyback · Last-mile settlement logistics',
     getMap:()=>document.getElementById('viz-tpl-ev_cargo_trike-map').innerHTML,
-    getPanel:()=>document.getElementById('viz-tpl-ev_cargo_trike-panel').innerHTML}
+    getPanel:()=>document.getElementById('viz-tpl-ev_cargo_trike-panel').innerHTML},
+  E_MKOKOTENI:{title:'E-Mkokoteni — Electric Cargo Trike Programme',subtitle:'Voluntary buyback · 5,000 handcarts · Solar-charged · Cooperative ownership · Last-mile freight',
+    getMap:()=>document.getElementById('viz-tpl-e_mkokoteni-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-e_mkokoteni-panel').innerHTML}
 };
 function showVizEl(el){
   showViz(el.dataset.pid,el.dataset.sc,parseInt(el.dataset.ph),parseInt(el.dataset.i));
@@ -11394,7 +11397,4 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="vsect vsect2">Also Compare</div>
 <a class="also-link" href="https://www.ifrc.org/emergency-response" target="_blank" rel="noopener"><span class="also-ico">🌍</span><span><strong>IFRC Emergency Response Units</strong> — modular pre-packaged emergency response capacities that deploy within 24 hours. Nairobi's surge protocol adapts the ERU modular concept to a permanent standing capacity rather than a deployed external team.</span><span class="ext-ico" style="margin-left:auto">↗</span></a>
 <div class="viz-note"><strong>The March 2026 lesson at full scale:</strong> 71 people died because the response was sequential, uncoordinated, and slow. The surge protocol replaces that with a pre-planned, pre-authorized, pre-resourced response that begins before the peak of the event. Every element was designed by asking: what should have happened in March 2026 that didn't?</div></template>
-</html>,
-  E_MKOKOTENI:{title:'E-Mkokoteni — Electric Cargo Trike Programme',subtitle:'5,000 handcarts · EV cargo trike buyback · Solar-charged · Cooperative · Last-mile freight',
-    getMap:()=>document.getElementById('viz-tpl-e_mkokoteni-map').innerHTML,
-    getPanel:()=>document.getElementById('viz-tpl-e_mkokoteni-panel').innerHTML}
+</html>
