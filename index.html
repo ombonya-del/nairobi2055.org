@@ -2701,6 +2701,7 @@ function getVizKey(title){
   if(t.includes('BRT')||t.includes('BUS RAPID TRANSIT')) return 'BRT';
   if(t.includes('RIVER GREEN')||t.includes('GREEN CORRIDOR')||t.includes('NAIROBI RIVER')||t.includes('RIVER RESTORATION')||t.includes('RIVER PHASE')) return 'RIVER';
   if(t.includes('IN-SITU')||t.includes('INFORMAL SETTLEMENT UPGRADING')||t.includes('SETTLEMENT UPGRADING')) return 'INSITU';
+  if(t.includes('MKOKOTENI E-TRIKE TRANSITION')||t.includes('VEHICLE TRANSITION')||t.includes('MKOKOTENI TRIKE')) return 'MKOKOTENI_TECH';
   if(t.includes('E-MKOKOTENI')||t.includes('ELECTRIC CARGO TRIKE')||t.includes('HANDCART BUYBACK')||t.includes('MKOKOTENI E-TRIKE')||t.includes('CARGO E-TRIKE NETWORK')) return 'E_MKOKOTENI';
   if(t.includes('MKOKOTENI')||t.includes('E-TRIKE')||t.includes('HANDCART')) return 'MKOKOTENI_ETRIKE';
   if(t.includes('CARGO E-TRIKE')||t.includes('HANDCART')||t.includes('EV CARGO TRIKE')||t.includes('MKOKOTENI')) return 'EV_CARGO_TRIKE';
@@ -3038,6 +3039,9 @@ const VIZ={
   EV_CARGO_TRIKE:{title:'Cargo E-Trike Network — Replacing the Handcart',subtitle:'80,000 operators formalised · EV tricycle buyback · Last-mile settlement logistics',
     getMap:()=>document.getElementById('viz-tpl-ev_cargo_trike-map').innerHTML,
     getPanel:()=>document.getElementById('viz-tpl-ev_cargo_trike-panel').innerHTML},
+  MKOKOTENI_TECH:{title:'Mkokoteni E-Trike Transition — The Vehicle',subtitle:'Technical comparison · Embakasi assembly · Hire-purchase economics · 4× more productive',
+    getMap:()=>document.getElementById('viz-tpl-mkokoteni_tech-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-mkokoteni_tech-panel').innerHTML},
   E_MKOKOTENI:{title:'E-Mkokoteni — Electric Cargo Trike Programme',subtitle:'Voluntary buyback · 5,000 handcarts · Solar-charged · Cooperative ownership · Last-mile freight',
     getMap:()=>document.getElementById('viz-tpl-e_mkokoteni-map').innerHTML,
     getPanel:()=>document.getElementById('viz-tpl-e_mkokoteni-panel').innerHTML}
@@ -9634,71 +9638,60 @@ document.addEventListener('DOMContentLoaded', function() {
 <template id="viz-tpl-e_mkokoteni-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16" rx="10"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">E-Mkokoteni Transition — The Handcart Worker's Journey</text>
-<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Who mkokoteni operators are · Their daily reality · The buyback · What changes for them personally</text>
-<rect x="20" y="54" width="504" height="20" fill="rgba(200,168,75,0.15)" rx="4"/>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Who mkokoteni operators are · Their daily reality · The buyback moment · What changes for them</text>
+<rect x="20" y="54" width="504" height="20" fill="rgba(200,168,75,0.12)" rx="4"/>
 <text x="272" y="68" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">THE MKOKOTENI IS NOT A VEHICLE — it is a livelihood. 80,000 people depend on it today.</text>
-
-<!-- Who is the mkokoteni operator? -->
-<rect x="20" y="84" width="504" height="116" fill="#21251C" rx="7"/>
+<rect x="20" y="84" width="504" height="100" fill="#21251C" rx="7"/>
 <text x="272" y="102" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="Georgia,serif">WHO IS THE MKOKOTENI OPERATOR?</text>
-<text x="36" y="120" fill="#C4BFA8" font-size="8.5" font-family="system-ui">👤 Primarily men aged 20–45 · Often migrants from rural Kenya · No formal employment · No safety net</text>
-<text x="36" y="136" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🕐 Works 10–14 hours daily pushing loads of 100–300kg through Nairobi's traffic and hills</text>
-<text x="36" y="152" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💰 Earns KES 400–800/day · No NHIF · No NSSF · One injury = total loss of income</text>
-<text x="36" y="168" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🛒 Owns or rents the mkokoteni (wooden/steel frame, 4 wheels, rope pulls) · essential urban freight</text>
-<text x="36" y="184" fill="#E85050" font-size="8.5" font-weight="600" font-family="system-ui">⚠ Invisible to the formal economy · not counted in transport statistics · no policy protection</text>
-
-<!-- Before vs After: one operator's day -->
-<rect x="20" y="212" width="240" height="168" fill="#21251C" rx="6" stroke="#E85050" stroke-width="1.2"/>
-<text x="140" y="230" text-anchor="middle" fill="#E85050" font-size="9" font-weight="700" font-family="system-ui">IBRAHIM'S DAY TODAY</text>
-<text x="140" y="246" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Mkokoteni operator · Gikomba market</text>
-<text x="32" y="264" fill="#C4BFA8" font-size="8" font-family="system-ui">4:30am — walks 3km to pick up mkokoteni</text>
-<text x="32" y="278" fill="#C4BFA8" font-size="8" font-family="system-ui">5am — loads 180kg of fabric bales</text>
-<text x="32" y="292" fill="#C4BFA8" font-size="8" font-family="system-ui">5:30am — pushes 2km through traffic</text>
-<text x="32" y="306" fill="#C4BFA8" font-size="8" font-family="system-ui">Noon — 4th trip · back aching severely</text>
-<text x="32" y="320" fill="#C4BFA8" font-size="8" font-family="system-ui">6pm — earns KES 600 · no receipt · no record</text>
-<text x="32" y="334" fill="#E85050" font-size="8" font-weight="600" font-family="system-ui">Rain = no work · Injury = family crisis</text>
-<text x="32" y="355" fill="#E85050" font-size="7.5" font-family="system-ui">Age 35 · body wearing down · no pension</text>
-<text x="32" y="367" fill="#E85050" font-size="7.5" font-family="system-ui">No legal identity as a transport worker</text>
-
-<text x="272" y="300" text-anchor="middle" fill="#C8A84B" font-size="22" font-family="system-ui">→</text>
-
-<rect x="284" y="212" width="240" height="168" fill="#21251C" rx="6" stroke="#78BF45" stroke-width="1.5"/>
-<text x="404" y="230" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="system-ui">IBRAHIM'S DAY IN 2030</text>
-<text x="404" y="246" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">E-Mkokoteni operator · Gikomba Coop</text>
-<text x="296" y="264" fill="#C4BFA8" font-size="8" font-family="system-ui">6am — unlocks trike at solar depot</text>
-<text x="296" y="278" fill="#C4BFA8" font-size="8" font-family="system-ui">App assigns 6 deliveries · GPS routed</text>
-<text x="296" y="292" fill="#C4BFA8" font-size="8" font-family="system-ui">200kg capacity · no physical strain</text>
-<text x="296" y="306" fill="#C4BFA8" font-size="8" font-family="system-ui">M-Pesa payment on every delivery</text>
-<text x="296" y="320" fill="#C4BFA8" font-size="8" font-family="system-ui">3pm — KES 1,200 earned · receipt auto</text>
-<text x="296" y="334" fill="#78BF45" font-size="8" font-weight="600" font-family="system-ui">Rain = delivery carries on regardless</text>
-<text x="296" y="355" fill="#78BF45" font-size="7.5" font-family="system-ui">NHIF card · NSSF pension building</text>
-<text x="296" y="367" fill="#78BF45" font-size="7.5" font-family="system-ui">Registered cooperative member · counted</text>
-
-<!-- The buyback moment -->
-<rect x="20" y="392" width="504" height="48" fill="rgba(200,168,75,0.1)" rx="6" stroke="#C8A84B" stroke-width="1"/>
-<text x="272" y="410" text-anchor="middle" fill="#C8A84B" font-size="9.5" font-weight="700" font-family="Georgia,serif">THE MKOKOTENI BUYBACK — The Transition Moment</text>
-<text x="272" y="428" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Old mkokoteni surrendered → scrapped or repurposed as community furniture → Ibrahim receives his e-trike on hire-purchase</text>
-<text x="272" y="443" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">The mkokoteni frame lives on — reborn as park benches, market stalls, school furniture in the ward</text>
-
-<!-- Stats bar -->
-<rect x="20" y="452" width="504" height="40" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
-<text x="83" y="468" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">80,000</text>
-<text x="83" y="482" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Workers formalised</text>
-<text x="209" y="468" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">10–14hrs</text>
-<text x="209" y="482" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Today's working day</text>
-<text x="335" y="468" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">+100%</text>
-<text x="335" y="482" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Income increase Day 1</text>
-<text x="461" y="468" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">Dignity</text>
-<text x="461" y="482" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">The real measure</text>
+<text x="32" y="120" fill="#C4BFA8" font-size="8.5" font-family="system-ui">👤 Men aged 20–45 · Often rural migrants · No formal employment · No social safety net of any kind</text>
+<text x="32" y="136" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🕐 10–14 hours daily pushing loads of 100–300kg through Nairobi's traffic, hills, and rain</text>
+<text x="32" y="152" fill="#C4BFA8" font-size="8.5" font-family="system-ui">💰 Earns KES 400–800/day · No NHIF · No NSSF · No receipt · No record of contribution</text>
+<text x="32" y="168" fill="#E85050" font-size="8.5" font-weight="600" font-family="system-ui">⚠ Invisible to the formal economy · uncounted in transport data · no policy protection</text>
+<rect x="20" y="198" width="240" height="180" fill="#21251C" rx="6" stroke="#E85050" stroke-width="1.2"/>
+<text x="140" y="216" text-anchor="middle" fill="#E85050" font-size="9" font-weight="700" font-family="system-ui">IBRAHIM TODAY</text>
+<text x="140" y="230" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Mkokoteni operator · Gikomba market</text>
+<text x="32" y="248" fill="#C4BFA8" font-size="8" font-family="system-ui">4:30am — walks 3km to collect mkokoteni</text>
+<text x="32" y="262" fill="#C4BFA8" font-size="8" font-family="system-ui">5am — loads 180kg fabric bales by hand</text>
+<text x="32" y="276" fill="#C4BFA8" font-size="8" font-family="system-ui">5:30am — pushes 2km through CBD traffic</text>
+<text x="32" y="290" fill="#C4BFA8" font-size="8" font-family="system-ui">Noon — 4th trip, back severely strained</text>
+<text x="32" y="304" fill="#C4BFA8" font-size="8" font-family="system-ui">6pm — KES 600 · no receipt · no record</text>
+<text x="32" y="320" fill="#E85050" font-size="8" font-weight="600" font-family="system-ui">Rain = no work · Injury = family crisis</text>
+<text x="32" y="338" fill="#E85050" font-size="7.5" font-family="system-ui">Age 35 · body wearing down · no pension</text>
+<text x="32" y="350" fill="#E85050" font-size="7.5" font-family="system-ui">No legal identity as a transport worker</text>
+<text x="272" y="292" text-anchor="middle" fill="#C8A84B" font-size="22" font-family="system-ui">→</text>
+<rect x="284" y="198" width="240" height="180" fill="#21251C" rx="6" stroke="#78BF45" stroke-width="1.5"/>
+<text x="404" y="216" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="system-ui">IBRAHIM IN 2030</text>
+<text x="404" y="230" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">E-Trike operator · Gikomba Cooperative</text>
+<text x="296" y="248" fill="#C4BFA8" font-size="8" font-family="system-ui">6am — unlocks trike at solar depot</text>
+<text x="296" y="262" fill="#C4BFA8" font-size="8" font-family="system-ui">App assigns 6 deliveries · GPS routed</text>
+<text x="296" y="276" fill="#C4BFA8" font-size="8" font-family="system-ui">200kg capacity · no physical strain</text>
+<text x="296" y="290" fill="#C4BFA8" font-size="8" font-family="system-ui">M-Pesa payment auto on each delivery</text>
+<text x="296" y="304" fill="#C4BFA8" font-size="8" font-family="system-ui">3pm — KES 1,200 · auto receipt</text>
+<text x="296" y="320" fill="#78BF45" font-size="8" font-weight="600" font-family="system-ui">Rain = delivery continues regardless</text>
+<text x="296" y="338" fill="#78BF45" font-size="7.5" font-family="system-ui">NHIF card · NSSF pension building daily</text>
+<text x="296" y="350" fill="#78BF45" font-size="7.5" font-family="system-ui">Registered · counted · protected</text>
+<rect x="20" y="390" width="504" height="50" fill="rgba(200,168,75,0.08)" rx="6" stroke="#C8A84B" stroke-width="1"/>
+<text x="272" y="408" text-anchor="middle" fill="#C8A84B" font-size="9.5" font-weight="700" font-family="Georgia,serif">THE BUYBACK MOMENT</text>
+<text x="272" y="424" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Old mkokoteni surrendered → scrapped or repurposed as community furniture → e-trike on hire-purchase</text>
+<text x="272" y="438" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">The mkokoteni frame lives on — reborn as park benches and market stalls in the ward it served</text>
+<rect x="20" y="452" width="504" height="36" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="466" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">80,000</text>
+<text x="83" y="480" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Workers formalised</text>
+<text x="209" y="466" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">10–14hrs</text>
+<text x="209" y="480" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Today's working day</text>
+<text x="335" y="466" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">+100%</text>
+<text x="335" y="480" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Income increase Day 1</text>
+<text x="461" y="466" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">Dignity</text>
+<text x="461" y="480" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">The real measure</text>
 </svg></template>
 <template id="viz-tpl-e_mkokoteni-panel"><div class="vsect">Global Benchmark</div>
-<a class="bench-link" href="https://www.ilo.org/wcmsp5/groups/public/---africa/---ro-abidjan/---sro-nairobi/documents/publication/wcms_616508.pdf" target="_blank" rel="noopener"><div class="cmp-flag">🌍</div><div><div class="cmp-cn">ILO — Informal Transport Workers in Sub-Saharan Africa</div><div class="cmp-sy">ILO data shows handcart and cycle-cargo workers are the most invisible segment of urban transport — unregistered, unprotected, uncounted. Formalisation through cooperatives is the only proven route to sustained income improvement and social protection access.</div></div><div class="ext-ico">↗</div></a>
-<a class="bench-link" href="https://www.boda.co.ke/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Kenya — Boda Boda Formalisation Precedent</div><div class="cmp-sy">The boda boda sector was once entirely informal. Cooperative registration + NTSA licensing + NHIF access transformed it into a recognised transport sector. Mkokoteni operators can follow the exact same legislative pathway — the legal framework already exists.</div></div><div class="ext-ico">↗</div></a>
-<a class="bench-link" href="https://www.wiego.org/informal-economy/occupational-groups/waste-pickers" target="_blank" rel="noopener"><div class="cmp-flag">🇧🇷</div><div><div class="cmp-cn">Brazil — Catadores Cooperative Model</div><div class="cmp-sy">Brazil formalised 800,000 informal waste pickers (catadores) through cooperative registration, giving them legal status, social protection, and collective bargaining power. The model is directly applicable to Nairobi's mkokoteni operators — same invisibility, same solution.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.ilo.org/africa/areas-of-work/informal-economy/lang--en/index.htm" target="_blank" rel="noopener"><div class="cmp-flag">🌍</div><div><div class="cmp-cn">ILO — Informal Transport Workers in Sub-Saharan Africa</div><div class="cmp-sy">ILO data shows handcart and cargo workers are the most invisible segment of urban transport — unregistered, unprotected, uncounted. Cooperative registration is the only proven route to sustained income improvement and social protection access in this sector.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.ntsa.go.ke/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Kenya — Boda Boda Formalisation Precedent</div><div class="cmp-sy">The boda boda sector was once entirely informal — unregistered, uninsured, uncounted. NTSA licensing + cooperative registration + NHIF access transformed it into a recognised transport sector. Mkokoteni operators can follow the exact same legal pathway. The framework already exists.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.wiego.org/informal-economy/occupational-groups/waste-pickers" target="_blank" rel="noopener"><div class="cmp-flag">🇧🇷</div><div><div class="cmp-cn">Brazil — Catadores Cooperative Model</div><div class="cmp-sy">Brazil formalised 800,000 informal waste pickers through cooperative registration, giving them legal status, social protection, and collective bargaining. The model is directly applicable to Nairobi's mkokoteni operators — same invisibility, same vulnerability, same solution.</div></div><div class="ext-ico">↗</div></a>
 <div class="vsect2">4 Design Lessons</div>
-<div class="lsn"><span class="lsn-n">1</span><span><strong>The mkokoteni is not the problem — the invisibility is</strong> — Ibrahim is doing essential urban freight work. The problem is that Nairobi's economy benefits from his labour while giving him nothing in return. The e-trike transition fixes the return, not the work.</span></div>
-<div class="lsn"><span class="lsn-n">2</span><span><strong>The boda boda pathway shows it can be done</strong> — in 2005, boda bodas were completely informal. Today they are registered, licensed, and partially insured. Mkokoteni operators can follow the same NTSA + cooperative + NHIF pathway within the existing legal framework.</span></div>
-<div class="lsn"><span class="lsn-n">3</span><span><strong>The old mkokoteni frame has cultural value</strong> — don't just scrap them. The buyback programme repurposes surrendered frames as community furniture — park benches, market stalls, school chairs — keeping the mkokoteni's story visible in the ward it served.</span></div>
+<div class="lsn"><span class="lsn-n">1</span><span><strong>The mkokoteni is not the problem — the invisibility is</strong> — Ibrahim is doing essential urban freight work. The problem is Nairobi's economy benefits from his labour while giving him nothing in return. The e-trike transition fixes the return, not the work itself.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span><strong>The boda boda pathway shows it can be done</strong> — in 2005, boda bodas were completely informal. Today they are registered, licensed, and partially insured via NTSA + cooperative + NHIF. Mkokoteni operators follow the same pathway within the existing legal framework.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span><strong>The old mkokoteni has cultural value — don't just scrap it</strong> — surrendered frames repurposed as community furniture (benches, market stalls, school chairs) keep the mkokoteni's story visible in the ward it served for decades.</span></div>
 <div class="lsn"><span class="lsn-n">4</span><span><strong>Dignity is the real measure, not productivity</strong> — a man who spent 14 hours pushing 300kg up Nairobi's hills deserves to finish his working day without physical damage, with a receipt, and with his contribution to the city formally recognised.</span></div></template>
 <!-- ═══ ACT2055: Nairobi 2055 Act ═══ -->
 <template id="viz-tpl-act2055-map"><svg viewBox="0 0 544 460" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
@@ -10014,83 +10007,148 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ═══ EV_CARGO_TRIKE: Cargo E-Trike replacing handcart ═══ -->
 <template id="viz-tpl-ev_cargo_trike-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16" rx="10"/>
-<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Cargo E-Trike Network — City Logistics Infrastructure</text>
-<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">80,000 operators · EV-powered · BRT-integrated · Ward cooperative model · Settlement last-mile</text>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Cargo E-Trike Network — City Logistics System</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">80,000 operators · 5 hub zones · 85 ward cooperatives · BRT last-mile feeder</text>
 <rect x="20" y="54" width="504" height="20" fill="rgba(120,191,69,0.15)" rx="4"/>
-<text x="272" y="68" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="system-ui">OPTIMISTIC · PHASE 1 · Integrated with BRT trunk network as the last-mile feeder system</text>
-
-<!-- Network map: showing 5 cargo hubs and routes -->
-<rect x="20" y="84" width="504" height="200" fill="#21251C" rx="7"/>
-<text x="272" y="102" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="Georgia,serif">CARGO E-TRIKE NETWORK — 5 Hub Zones + 85 Ward Cooperatives</text>
-
-<!-- Hub circles -->
-<circle cx="272" cy="168" r="22" fill="rgba(120,191,69,0.2)" stroke="#78BF45" stroke-width="2"/>
-<text x="272" y="164" text-anchor="middle" fill="#78BF45" font-size="7.5" font-weight="700" font-family="system-ui">CBD</text>
-<text x="272" y="175" text-anchor="middle" fill="#78BF45" font-size="7" font-family="system-ui">CHARGING HUB</text>
-
-<!-- Spokes to 5 zones -->
-<line x1="272" y1="146" x2="200" y2="112" stroke="#78BF45" stroke-width="2" stroke-dasharray="4,3"/>
-<line x1="272" y1="146" x2="355" y2="112" stroke="#78BF45" stroke-width="2" stroke-dasharray="4,3"/>
-<line x1="250" y1="168" x2="155" y2="168" stroke="#78BF45" stroke-width="2" stroke-dasharray="4,3"/>
-<line x1="294" y1="168" x2="389" y2="168" stroke="#78BF45" stroke-width="2" stroke-dasharray="4,3"/>
-<line x1="272" y1="190" x2="272" y2="252" stroke="#78BF45" stroke-width="2" stroke-dasharray="4,3"/>
-
-<!-- Zone nodes -->
-<rect x="148" y="98" width="104" height="36" fill="#1A1D16" rx="5" stroke="#C8A84B" stroke-width="1.2"/>
-<text x="200" y="113" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">WESTLANDS ZONE</text>
-<text x="200" y="125" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Gikomba · Wakulima market</text>
-
-<rect x="318" y="98" width="104" height="36" fill="#1A1D16" rx="5" stroke="#E8844A" stroke-width="1.2"/>
-<text x="370" y="113" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui">EASTLANDS ZONE</text>
-<text x="370" y="125" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Buruburu · Korogocho</text>
-
-<rect x="108" y="150" width="90" height="36" fill="#1A1D16" rx="5" stroke="#8B79E8" stroke-width="1.2"/>
-<text x="153" y="165" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">KIBERA ZONE</text>
-<text x="153" y="177" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Settlement last-mile</text>
-
-<rect x="346" y="150" width="96" height="36" fill="#1A1D16" rx="5" stroke="#378ADD" stroke-width="1.2"/>
-<text x="394" y="165" text-anchor="middle" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">KASARANI ZONE</text>
-<text x="394" y="177" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Industrial corridor</text>
-
-<rect x="222" y="240" width="100" height="36" fill="#1A1D16" rx="5" stroke="#5DBF7A" stroke-width="1.2"/>
-<text x="272" y="255" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">SOUTH B / JKIA ZONE</text>
-<text x="272" y="267" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Airport logistics · exports</text>
-
-<!-- What the network moves -->
-<rect x="20" y="298" width="504" height="80" fill="#21251C" rx="6" stroke="#6A7060" stroke-width="1"/>
-<text x="32" y="316" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">WHAT THE NETWORK MOVES — Urban Freight by Category</text>
-<text x="32" y="334" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📦 Market goods: Gikomba → households · cold-chain boxes for perishables · daily 200kg per trike</text>
-<text x="32" y="350" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏗️ Building materials into settlement lanes (no truck access) · cement, steel rods, timber</text>
-<text x="32" y="366" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📱 E-commerce last-mile (Jumia, etc.) · food delivery from BRT stations · medical supplies</text>
-
-<!-- Cooperative governance -->
-<rect x="20" y="392" width="504" height="58" fill="#21251C" rx="6" stroke="#78BF45" stroke-width="1"/>
-<text x="32" y="410" fill="#78BF45" font-size="9" font-weight="700" font-family="system-ui">COOPERATIVE GOVERNANCE MODEL</text>
-<text x="32" y="427" fill="#C4BFA8" font-size="8.5" font-family="system-ui">85 ward cooperatives · collective charging rates · M-Pesa billing · GPS route optimisation · NHIF + NSSF</text>
-<text x="32" y="443" fill="#A0A898" font-size="7.5" font-family="system-ui">Hire-purchase: KES 500/day over 3 years · KES 1,200/day average revenue · KES 700/day net profit from Day 1</text>
-
-<!-- Stats bar -->
-<rect x="20" y="460" width="504" height="32" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
-<text x="83" y="472" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">80,000</text>
-<text x="83" y="484" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Operators networked</text>
-<text x="209" y="472" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">200kg</text>
-<text x="209" y="484" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Capacity per trike</text>
-<text x="335" y="472" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">85 wards</text>
-<text x="335" y="484" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Cooperative coverage</text>
-<text x="461" y="472" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">Local</text>
-<text x="461" y="484" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Assembled Embakasi</text>
+<text x="272" y="68" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="system-ui">OPTIMISTIC · PHASE 1 · Integrated with BRT as last-mile feeder · 85 ward cooperatives</text>
+<rect x="20" y="84" width="504" height="196" fill="#21251C" rx="7"/>
+<text x="272" y="102" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="Georgia,serif">NETWORK MAP — 5 Hub Zones + 85 Ward Cooperatives</text>
+<circle cx="272" cy="172" r="24" fill="rgba(120,191,69,0.2)" stroke="#78BF45" stroke-width="2"/>
+<text x="272" y="168" text-anchor="middle" fill="#78BF45" font-size="7.5" font-weight="700" font-family="system-ui">CBD HUB</text>
+<text x="272" y="180" text-anchor="middle" fill="#78BF45" font-size="6.5" font-family="system-ui">CHARGING</text>
+<line x1="272" y1="148" x2="200" y2="114" stroke="#78BF45" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="272" y1="148" x2="355" y2="114" stroke="#78BF45" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="248" y1="172" x2="148" y2="172" stroke="#78BF45" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="296" y1="172" x2="396" y2="172" stroke="#78BF45" stroke-width="1.5" stroke-dasharray="5,3"/>
+<line x1="272" y1="196" x2="272" y2="258" stroke="#78BF45" stroke-width="1.5" stroke-dasharray="5,3"/>
+<rect x="148" y="100" width="104" height="34" fill="#1A1D16" rx="5" stroke="#C8A84B" stroke-width="1.2"/>
+<text x="200" y="114" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700" font-family="system-ui">WESTLANDS</text>
+<text x="200" y="126" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Gikomba · Wakulima</text>
+<rect x="296" y="100" width="104" height="34" fill="#1A1D16" rx="5" stroke="#E8844A" stroke-width="1.2"/>
+<text x="348" y="114" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700" font-family="system-ui">EASTLANDS</text>
+<text x="348" y="126" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Buruburu · Korogocho</text>
+<rect x="96" y="155" width="96" height="34" fill="#1A1D16" rx="5" stroke="#8B79E8" stroke-width="1.2"/>
+<text x="144" y="169" text-anchor="middle" fill="#8B79E8" font-size="8" font-weight="700" font-family="system-ui">KIBERA</text>
+<text x="144" y="181" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Settlement last-mile</text>
+<rect x="352" y="155" width="96" height="34" fill="#1A1D16" rx="5" stroke="#378ADD" stroke-width="1.2"/>
+<text x="400" y="169" text-anchor="middle" fill="#378ADD" font-size="8" font-weight="700" font-family="system-ui">KASARANI</text>
+<text x="400" y="181" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Industrial corridor</text>
+<rect x="222" y="246" width="100" height="34" fill="#1A1D16" rx="5" stroke="#5DBF7A" stroke-width="1.2"/>
+<text x="272" y="260" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">SOUTH B / JKIA</text>
+<text x="272" y="272" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Airport logistics</text>
+<rect x="20" y="294" width="504" height="72" fill="#21251C" rx="6" stroke="#6A7060" stroke-width="1"/>
+<text x="32" y="312" fill="#F0EAD6" font-size="9" font-weight="700" font-family="system-ui">WHAT THE NETWORK MOVES — Urban Freight Categories</text>
+<text x="32" y="330" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📦 Market goods: Gikomba → households · Cold-chain boxes for perishables · 200kg per trike daily</text>
+<text x="32" y="346" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏗️ Building materials into settlement lanes too narrow for trucks · cement, steel, timber</text>
+<text x="32" y="362" fill="#C4BFA8" font-size="8.5" font-family="system-ui">📱 E-commerce last-mile (Jumia) · Food delivery from BRT stations · Medical supplies in settlements</text>
+<rect x="20" y="380" width="504" height="52" fill="#21251C" rx="6" stroke="#78BF45" stroke-width="1"/>
+<text x="32" y="398" fill="#78BF45" font-size="9" font-weight="700" font-family="system-ui">85 WARD COOPERATIVES — Governance Model</text>
+<text x="32" y="414" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Collective charging rates · M-Pesa billing · GPS route optimisation · NHIF + NSSF · Hire-purchase trike ownership</text>
+<text x="32" y="428" fill="#A0A898" font-size="7.5" font-family="system-ui">KES 500/day over 3 yrs on KES 1,200/day avg revenue → KES 700/day net profit from Day 1</text>
+<rect x="20" y="444" width="504" height="36" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="458" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">80,000</text>
+<text x="83" y="472" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Operators in network</text>
+<text x="209" y="458" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">200kg</text>
+<text x="209" y="472" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Trike capacity</text>
+<text x="335" y="458" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">85 wards</text>
+<text x="335" y="472" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Cooperative coverage</text>
+<text x="461" y="458" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">Local</text>
+<text x="461" y="472" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Assembled Embakasi</text>
 </svg></template>
 <template id="viz-tpl-ev_cargo_trike-panel"><div class="vsect">Global Benchmark</div>
-<a class="bench-link" href="https://www.worldbank.org/en/topic/transport/brief/urban-freight-and-logistics" target="_blank" rel="noopener"><div class="cmp-flag">🇮🇳</div><div><div class="cmp-cn">India — EV Cargo Trike Formalisation (Delhi, Mumbai)</div><div class="cmp-sy">Structured buyback programmes replacing cycle rickshaws with e-cargo trikes · Income up 3× · Injuries down 80% · Cooperative ownership model proven most sustainable</div></div><div class="ext-ico">↗</div></a>
-<a class="bench-link" href="https://www.ternbicycles.com/en/cargo" target="_blank" rel="noopener"><div class="cmp-flag">🇳🇱</div><div><div class="cmp-cn">Netherlands — Cargo E-Bike Urban Logistics</div><div class="cmp-sy">Amsterdam replaced 30% of van deliveries with cargo e-trikes within 5 years · Last-mile in dense areas is cheaper by trike than van · directly applicable to Nairobi settlements</div></div><div class="ext-ico">↗</div></a>
-<a class="bench-link" href="https://www.jumia.com.ke/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Jumia Kenya — Last-Mile Delivery Partnership</div><div class="cmp-sy">Jumia already relies on informal cargo networks for Nairobi last-mile · Formalising operators into a GPS-tracked cooperative fleet turns an informal dependency into a contracted logistics partnership</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.worldbank.org/en/topic/transport/brief/urban-freight-and-logistics" target="_blank" rel="noopener"><div class="cmp-flag">🇮🇳</div><div><div class="cmp-cn">India — EV Cargo Trike Formalisation (Delhi, Mumbai)</div><div class="cmp-sy">Structured buyback programmes replacing cycle rickshaws with e-cargo trikes · Income up 3× · Injuries down 80% · Cooperative ownership model proven most sustainable over individual ownership</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.ternbicycles.com/en/cargo" target="_blank" rel="noopener"><div class="cmp-flag">🇳🇱</div><div><div class="cmp-cn">Netherlands — Cargo E-Bike Last-Mile Logistics</div><div class="cmp-sy">Amsterdam replaced 30% of van deliveries with cargo e-trikes within 5 years · Last-mile in dense urban areas is cheaper by trike than by van · Directly applicable to Nairobi's settlement lanes where vehicles cannot enter</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.jumia.com.ke/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Jumia Kenya — Last-Mile Dependency</div><div class="cmp-sy">Jumia already relies on informal cargo networks for Nairobi last-mile delivery · Formalising operators into a GPS-tracked cooperative fleet turns an informal dependency into a contracted logistics partnership worth KES 2B+ annually</div></div><div class="ext-ico">↗</div></a>
 <div class="vsect2">4 Design Lessons</div>
-<div class="lsn"><span class="lsn-n">1</span><span><strong>Hire-purchase not grants</strong> — operators who pay KES 500/day on hire-purchase maintain trikes properly. Free trike programmes have 60%+ abandonment rates. The commercial model works from Day 1.</span></div>
-<div class="lsn"><span class="lsn-n">2</span><span><strong>The cooperative is the unit</strong> — 85 ward cooperatives handle route allocation, bulk charging, M-Pesa billing, and collective insurance. Individual operators gain stability; cooperatives gain negotiating power with markets and BRT operators.</span></div>
-<div class="lsn"><span class="lsn-n">3</span><span><strong>Settlement lanes are the killer application</strong> — matatus and city buses cannot enter Mathare's 1.5m lanes. Cargo e-trikes can reach every door. BRT trunk + e-trike last-mile = Nairobi's first complete door-to-door supply chain.</span></div>
-<div class="lsn"><span class="lsn-n">4</span><span><strong>Local assembly multiplies value</strong> — trikes assembled at the Embakasi EV Manufacturing Hub from locally-sourced matatu scrap steel generate 3× the economic value of imported units.</span></div></template>
+<div class="lsn"><span class="lsn-n">1</span><span><strong>Hire-purchase not grants</strong> — operators who pay KES 500/day maintain trikes properly. Free trike programmes have 60%+ abandonment rates internationally. The commercial model works from Day 1 at current earnings levels.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span><strong>The cooperative is the unit, not the individual</strong> — 85 ward cooperatives handle route allocation, bulk charging, M-Pesa billing, and collective insurance. Individual operators gain stability; cooperatives gain negotiating power with markets and BRT operators.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span><strong>Settlement lanes are the killer application</strong> — matatus and city buses cannot enter Mathare's 1.5m lanes. Cargo e-trikes can. BRT trunk route + e-trike last-mile = Nairobi's first complete door-to-door supply chain for settlements.</span></div>
+<div class="lsn"><span class="lsn-n">4</span><span><strong>Local assembly multiplies economic value</strong> — trikes assembled at the Embakasi EV Manufacturing Hub from locally-sourced matatu scrap steel generate 3× the economic value of imported units and create 500+ manufacturing jobs.</span></div></template>
 
 <script src="viz-patch.js"></script>
+
+<!-- ═══ MKOKOTENI_TECH: The Vehicle Transition ═══ -->
+<template id="viz-tpl-mkokoteni_tech-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="500" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mkokoteni → E-Trike: The Vehicle Transition</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Technical comparison · Assembly at Embakasi · Hire-purchase economics · The machine that changes everything</text>
+<rect x="20" y="54" width="504" height="20" fill="rgba(93,191,122,0.12)" rx="4"/>
+<text x="272" y="68" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">SAME OPERATOR · SAME ROUTES · ENTIRELY DIFFERENT MACHINE · 4× MORE PRODUCTIVE</text>
+<rect x="20" y="84" width="238" height="200" fill="#21251C" rx="7" stroke="#E85050" stroke-width="1.2"/>
+<text x="139" y="104" text-anchor="middle" fill="#E85050" font-size="10" font-weight="700" font-family="system-ui">MKOKOTENI (TODAY)</text>
+<text x="139" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Wooden/steel frame · 4 wheels · human-powered</text>
+<line x1="40" y1="145" x2="248" y2="145" stroke="#E85050" stroke-width="0.5" opacity=".3"/>
+<text x="32" y="158" fill="#C4BFA8" font-size="8" font-family="system-ui">Power:</text>
+<text x="100" y="158" fill="#E85050" font-size="8" font-family="system-ui">Human muscle only</text>
+<text x="32" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">Capacity:</text>
+<text x="100" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">50–100kg practical max</text>
+<text x="32" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">Speed:</text>
+<text x="100" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">3–5 km/h loaded</text>
+<text x="32" y="200" fill="#C4BFA8" font-size="8" font-family="system-ui">Weather:</text>
+<text x="100" y="200" fill="#E85050" font-size="8" font-family="system-ui">Rain stops work entirely</text>
+<text x="32" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Payment:</text>
+<text x="100" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Cash · no receipt</text>
+<text x="32" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">Cost:</text>
+<text x="100" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">KES 3,000–8,000 purchase</text>
+<text x="32" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">Daily trips:</text>
+<text x="100" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">3–5 (physical limit)</text>
+<text x="32" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">Track record:</text>
+<text x="100" y="256" fill="#E85050" font-size="8" font-family="system-ui">None. Invisible.</text>
+<text x="32" y="270" fill="#C4BFA8" font-size="8" font-family="system-ui">Safety:</text>
+<text x="100" y="270" fill="#E85050" font-size="8" font-family="system-ui">No lights · no brakes</text>
+<rect x="286" y="84" width="238" height="200" fill="#21251C" rx="7" stroke="#5DBF7A" stroke-width="1.5"/>
+<text x="405" y="104" text-anchor="middle" fill="#5DBF7A" font-size="10" font-weight="700" font-family="system-ui">CARGO E-TRIKE (2030)</text>
+<text x="405" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Steel frame · 3 wheels · 48V electric motor</text>
+<line x1="296" y1="145" x2="514" y2="145" stroke="#5DBF7A" stroke-width="0.5" opacity=".3"/>
+<text x="298" y="158" fill="#C4BFA8" font-size="8" font-family="system-ui">Power:</text>
+<text x="366" y="158" fill="#5DBF7A" font-size="8" font-family="system-ui">48V electric · solar depot</text>
+<text x="298" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">Capacity:</text>
+<text x="366" y="172" fill="#5DBF7A" font-size="8" font-family="system-ui">200kg + cold-chain box</text>
+<text x="298" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">Speed:</text>
+<text x="366" y="186" fill="#5DBF7A" font-size="8" font-family="system-ui">25 km/h · 80km range</text>
+<text x="298" y="200" fill="#C4BFA8" font-size="8" font-family="system-ui">Weather:</text>
+<text x="366" y="200" fill="#5DBF7A" font-size="8" font-family="system-ui">All-weather canopy cab</text>
+<text x="298" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Payment:</text>
+<text x="366" y="214" fill="#5DBF7A" font-size="8" font-family="system-ui">M-Pesa · auto receipt</text>
+<text x="298" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">Cost:</text>
+<text x="366" y="228" fill="#5DBF7A" font-size="8" font-family="system-ui">KES 180K → KES 500/day HP</text>
+<text x="298" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">Daily trips:</text>
+<text x="366" y="242" fill="#5DBF7A" font-size="8" font-family="system-ui">12–15 (app-dispatched)</text>
+<text x="298" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">Track record:</text>
+<text x="366" y="256" fill="#5DBF7A" font-size="8" font-family="system-ui">GPS log · credit history</text>
+<text x="298" y="270" fill="#C4BFA8" font-size="8" font-family="system-ui">Safety:</text>
+<text x="366" y="270" fill="#5DBF7A" font-size="8" font-family="system-ui">LED lights · disc brakes</text>
+<text x="261" y="192" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="system-ui">→</text>
+<rect x="20" y="298" width="504" height="90" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1"/>
+<text x="272" y="316" text-anchor="middle" fill="#C8A84B" font-size="9.5" font-weight="700" font-family="Georgia,serif">MADE IN NAIROBI — Embakasi EV Manufacturing Hub</text>
+<text x="32" y="334" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏭 Frame: locally-sourced steel from matatu scrap buyback → same circular economy, different product</text>
+<text x="32" y="350" fill="#C4BFA8" font-size="8.5" font-family="system-ui">⚡ Drivetrain: 48V motor + lithium battery assembled at Embakasi from imported components</text>
+<text x="32" y="366" fill="#C4BFA8" font-size="8.5" font-family="system-ui">☀️ Charging: solar-powered depot network (same hubs as EV city bus fleet) · overnight full charge</text>
+<text x="32" y="380" fill="#A0A898" font-size="7.5" font-family="system-ui">Each locally assembled trike generates 3× the economic value of an imported unit · 500+ manufacturing jobs by 2030</text>
+<rect x="20" y="400" width="504" height="52" fill="rgba(93,191,122,0.06)" rx="6" stroke="#5DBF7A" stroke-width="1"/>
+<text x="272" y="418" text-anchor="middle" fill="#5DBF7A" font-size="9.5" font-weight="700" font-family="Georgia,serif">THE HIRE-PURCHASE ECONOMICS — Why It Works</text>
+<text x="272" y="436" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Trike costs KES 180,000 · Hire-purchase: KES 500/day for 3 years · Average daily revenue: KES 1,200</text>
+<text x="272" y="450" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="system-ui">Net profit from Day 1: KES 700/day · Owner-operator after 3 years · Zero debt · Full asset</text>
+<rect x="20" y="462" width="504" height="30" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">4×</text>
+<text x="83" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">More productive</text>
+<text x="209" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">200kg</text>
+<text x="209" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">vs 50–100kg today</text>
+<text x="335" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">KES 700</text>
+<text x="335" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Net profit Day 1</text>
+<text x="461" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">Local</text>
+<text x="461" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Built in Nairobi</text>
+</svg></template>
+<template id="viz-tpl-mkokoteni_tech-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.elektrokar.pl/en/" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇳</div><div><div class="cmp-cn">China — Electric Cargo Trike Manufacturing at Scale</div><div class="cmp-sy">China produces 30M+ electric cargo trikes annually at a unit cost of USD 800–1,200. The technology is mature, reliable, and adaptable for African road conditions. Nairobi's Embakasi hub assembles Chinese drivetrains into locally-fabricated frames — capturing maximum local value while using proven technology.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.unep.org/resources/report/electric-vehicles-africa" target="_blank" rel="noopener"><div class="cmp-flag">🌍</div><div><div class="cmp-cn">UNEP — Electric Vehicles in Africa: The Opportunity</div><div class="cmp-sy">UNEP identifies cargo e-trikes as the single highest-impact EV category for African cities — greater emissions reduction per dollar than cars or buses, directly serving the informal economy. Kenya's 16% import duty exemption on EV components makes the economics even stronger.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://roam-electric.com/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Roam Electric — Nairobi EV Manufacturing Proof</div><div class="cmp-sy">Roam Electric already assembles electric motorcycles (boda bodas) in Nairobi, proving that local EV assembly in Kenya is commercially viable. The Embakasi cargo trike hub scales this model — same supply chain, same workforce, larger vehicle, higher margins.</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect2">4 Design Lessons</div>
+<div class="lsn"><span class="lsn-n">1</span><span><strong>48V is the right voltage for this application</strong> — 48V systems are lighter, safer (below shock hazard threshold), cheaper to maintain, and can be charged from solar panels without complex inverters. 72V gives more speed but creates unnecessary complexity for urban cargo work.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span><strong>The frame must be locally fabricated</strong> — a Chinese imported frame severs the circular economy link. Matatu scrap steel → trike frame is the value chain that makes this intervention genuinely transformative for Nairobi's manufacturing sector, not just its transport sector.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span><strong>Cold-chain box attachment is the premium product</strong> — the standard trike cargo platform is the base. The insulated cold-chain box attachment (for perishables from Gikomba and Marikiti) is the premium tier that doubles revenue per trip. Cooperative cooperatives own the boxes collectively.</span></div>
+<div class="lsn"><span class="lsn-n">4</span><span><strong>GPS + M-Pesa integration creates the credit history</strong> — an operator with 2 years of GPS delivery logs and M-Pesa transaction history has a formal financial track record for the first time in his life. This unlocks bank accounts, business loans, and housing finance that were previously inaccessible.</span></div></template>
+
 </body>
 
 <template id="viz-tpl-cultural_heritage-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
