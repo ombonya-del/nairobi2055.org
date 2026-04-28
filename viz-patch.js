@@ -4,6 +4,8 @@
   if(!window.VIZ||!window.getVizKey) return;
 
 
+
+
   // Inject MKOKOTENI_TECH template if missing
   if(!document.getElementById('viz-tpl-mkokoteni_tech-map')){
     var m=document.createElement('template');
@@ -13,12 +15,16 @@
   }
 
 
+
+
   if(!document.getElementById('viz-tpl-mkokoteni_tech-panel')){
     var p=document.createElement('template');
     p.id='viz-tpl-mkokoteni_tech-panel';
     p.innerHTML='<div class="vsect">Global Benchmark</div><a class="bench-link" href="https://roam-electric.com/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Roam Electric — Nairobi EV Assembly Proof</div><div class="cmp-sy">Roam already assembles electric motorcycles in Nairobi, proving local EV assembly in Kenya is commercially viable. The Embakasi cargo trike hub scales this model — same supply chain, larger vehicle, higher margins per unit.</div></div><div class="ext-ico">↗</div></a><a class="bench-link" href="https://www.unep.org/resources/report/electric-vehicles-africa" target="_blank" rel="noopener"><div class="cmp-flag">🌍</div><div><div class="cmp-cn">UNEP — Electric Vehicles in Africa</div><div class="cmp-sy">UNEP identifies cargo e-trikes as the highest-impact EV category for African cities — greater emissions reduction per dollar than cars or buses. Kenya’s 16% import duty exemption on EV components makes the economics stronger still.</div></div><div class="ext-ico">↗</div></a><a class="bench-link" href="https://www.ctc-n.org/news/nigeria-coldhubs" target="_blank" rel="noopener"><div class="cmp-flag">🇳🇬</div><div><div class="cmp-cn">Nigeria — ColdHubs Cold-Chain Last-Mile</div><div class="cmp-sy">ColdHubs demonstrated solar-powered cold storage + e-trike last-mile delivery reaches informal markets profitably. The cold-chain attachment box — the premium tier for Gikomba perishables — doubles revenue per trip.</div></div><div class="ext-ico">↗</div></a><div class="vsect2">4 Design Lessons</div><div class="lsn"><span class="lsn-n">1</span><span><strong>48V is the right voltage</strong> — lighter, safer (below shock hazard), cheaper to maintain, chargeable from solar without complex inverters. 72V gives more speed but unnecessary complexity for urban cargo work at Nairobi scale.</span></div><div class="lsn"><span class="lsn-n">2</span><span><strong>Local frame fabrication is non-negotiable</strong> — an imported frame severs the circular economy link. Matatu scrap steel → trike frame is the value chain that makes this intervention transformative for Nairobi manufacturing, not just transport.</span></div><div class="lsn"><span class="lsn-n">3</span><span><strong>Cold-chain box is the premium product</strong> — the standard cargo platform is the base. The insulated cold-chain box for Gikomba and Marikiti perishables doubles revenue per trip. Ward cooperatives own the boxes collectively.</span></div><div class="lsn"><span class="lsn-n">4</span><span><strong>GPS + M-Pesa builds the first credit history</strong> — 2 years of delivery logs and M-Pesa transactions gives an operator a formal financial record for the first time. This unlocks bank accounts, business loans, and housing finance previously inaccessible.</span></div>';
     document.body.appendChild(p);
   }
+
+
 
 
   // VIZ entries
@@ -34,6 +40,16 @@
     VIZ[k]={title:e.t,subtitle:e.s,
       getMap:function(){return(document.getElementById('viz-tpl-'+e.m+'-map')||{}).innerHTML||'';},
       getPanel:function(){return(document.getElementById('viz-tpl-'+e.m+'-panel')||{}).innerHTML||'';}
-    };
-  });
-
+  // Override getVizKey - must intercept BEFORE orig for conflicting titles
+  var _origGVK=window.getVizKey;
+  window.getVizKey=function(t){
+    if(!t) return null;
+    var u=t.toUpperCase();
+    // These exact P-data titles must be intercepted BEFORE orig is called
+    if(u==='CARGO E-TRIKE NETWORK — HANDCART FORMALISATION'||u==='CARGO E-TRIKE NETWORK -- HANDCART FORMALISATION') return 'EV_CARGO_TRIKE';
+    if(u.includes('MKOKOTENI E-TRIKE TRANSITION')||u.includes('MKOKOTENI TRIKE')) return 'MKOKOTENI_TECH';
+    if(u.includes('HANDCART FORMALISATION')) return 'EV_CARGO_TRIKE';
+    if(u.includes('E-MKOKOTENI')||u.includes('HANDCART BUYBACK')) return 'E_MKOKOTENI';
+    if(u.includes('NAIROBI 2055 ACT')||u.includes('STATUTORY ENTRENCHMENT')||u.includes('MASTERPLAN BILL')) return 'ACT2055';
+    return _origGVK(t);
+  };
