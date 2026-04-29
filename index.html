@@ -9665,73 +9665,67 @@ document.addEventListener('DOMContentLoaded', function() {
 <line x1="107" y1="172" x2="225" y2="172" stroke="#6A7060" stroke-width="1"/>
 <line x1="107" y1="180" x2="225" y2="180" stroke="#6A7060" stroke-width="1"/>
 <line x1="107" y1="188" x2="225" y2="188" stroke="#6A7060" stroke-width="1"/>
-<!-- Axle -->
-<line x1="108" y1="200" x2="224" y2="200" stroke="#8A7060" stroke-width="2"/>
-<!-- 4 Wheels -->
-<circle cx="118" cy="205" r="13" fill="none" stroke="#C8A84B" stroke-width="3"/>
-<circle cx="118" cy="205" r="4" fill="#C8A84B"/>
-<circle cx="152" cy="205" r="13" fill="none" stroke="#C8A84B" stroke-width="3"/>
-<circle cx="152" cy="205" r="4" fill="#C8A84B"/>
-<circle cx="186" cy="205" r="13" fill="none" stroke="#C8A84B" stroke-width="3"/>
-<circle cx="186" cy="205" r="4" fill="#C8A84B"/>
-<circle cx="220" cy="205" r="13" fill="none" stroke="#C8A84B" stroke-width="3"/>
-<circle cx="220" cy="205" r="4" fill="#C8A84B"/>
+<!-- Single axle across the width -->
+<line x1="110" y1="202" x2="222" y2="202" stroke="#8A7060" stroke-width="2.5"/>
+<!-- 2 Wheels — left and right ends of axle -->
+<circle cx="116" cy="206" r="14" fill="none" stroke="#C8A84B" stroke-width="3"/>
+<circle cx="116" cy="206" r="4" fill="#C8A84B"/>
+<line x1="107" y1="197" x2="125" y2="215" stroke="#8A7060" stroke-width="1"/>
+<line x1="125" y1="197" x2="107" y2="215" stroke="#8A7060" stroke-width="1"/>
+<circle cx="216" cy="206" r="14" fill="none" stroke="#C8A84B" stroke-width="3"/>
+<circle cx="216" cy="206" r="4" fill="#C8A84B"/>
+<line x1="207" y1="197" x2="225" y2="215" stroke="#8A7060" stroke-width="1"/>
+<line x1="225" y1="197" x2="207" y2="215" stroke="#8A7060" stroke-width="1"/>
 <!-- Labels -->
 <text x="165" y="235" text-anchor="middle" fill="#E85050" font-size="7" font-family="Georgia,serif">50–100kg max · human-powered</text>
 <text x="80" y="152" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">pull handles</text>
 <line x1="80" y1="155" x2="80" y2="164" stroke="#6A7060" stroke-width="1"/>
 <text x="165" y="153" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">cargo bed</text>
-<text x="135" y="213" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">wheel</text>
+<text x="166" y="230" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">2 wheels · 1 axle</text>
 
 <!-- ARROW -->
 <text x="272" y="185" text-anchor="middle" fill="#C8A84B" font-size="28" font-family="Georgia,serif">→</text>
 <text x="272" y="202" text-anchor="middle" fill="#C8A84B" font-size="7" font-family="Georgia,serif">buyback</text>
 
-<!-- === E-TRIKE ILLUSTRATION (right side) === -->
-<!-- Front wheel fork -->
-<line x1="318" y1="190" x2="330" y2="206" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
-<!-- Cab body -->
-<rect x="330" y="148" width="70" height="52" fill="#1E3A20" rx="6" stroke="#78BF45" stroke-width="2"/>
-<!-- Windscreen -->
-<rect x="337" y="154" width="30" height="26" fill="rgba(55,138,221,0.25)" rx="3" stroke="#378ADD" stroke-width="1.5"/>
-<!-- Roof panel (solar) -->
-<rect x="328" y="143" width="74" height="8" fill="#2A4A2C" rx="3" stroke="#5DBF7A" stroke-width="1"/>
-<text x="365" y="150" text-anchor="middle" fill="#5DBF7A" font-size="6" font-family="Georgia,serif">☀ SOLAR</text>
-<!-- Cargo box -->
-<rect x="400" y="148" width="108" height="52" fill="#1A2E1E" rx="4" stroke="#78BF45" stroke-width="2"/>
-<!-- Cargo box lid detail -->
-<line x1="400" y1="165" x2="508" y2="165" stroke="#78BF45" stroke-width="1" opacity=".5"/>
-<text x="454" y="160" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="Georgia,serif">200kg</text>
-<text x="454" y="173" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">CARGO BOX</text>
-<text x="454" y="185" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">cold-chain ready</text>
-<!-- Frame connecting cab to cargo -->
-<line x1="400" y1="160" x2="400" y2="200" stroke="#78BF45" stroke-width="2"/>
-<line x1="330" y1="200" x2="508" y2="200" stroke="#3A5A3C" stroke-width="2"/>
+<!-- === E-TRIKE ILLUSTRATION (right side) — simple 3-wheeler === -->
+<!-- Roof / canopy -->
+<rect x="308" y="142" width="80" height="7" fill="#2A4A2C" rx="3" stroke="#78BF45" stroke-width="1.5"/>
+<!-- Cab body (tuk-tuk style box) -->
+<rect x="308" y="149" width="80" height="50" fill="#1E3A20" rx="5" stroke="#78BF45" stroke-width="2"/>
+<!-- Windscreen opening -->
+<rect x="316" y="156" width="32" height="24" fill="rgba(55,138,221,0.2)" rx="2" stroke="#378ADD" stroke-width="1"/>
+<!-- Side window -->
+<rect x="352" y="159" width="18" height="18" fill="rgba(55,138,221,0.15)" rx="2" stroke="#378ADD" stroke-width="1"/>
+<!-- Front fork -->
+<line x1="312" y1="199" x2="298" y2="214" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
+<!-- Cargo box (attached at rear of cab) -->
+<rect x="388" y="149" width="112" height="50" fill="#1A2E1E" rx="4" stroke="#78BF45" stroke-width="2"/>
+<!-- Cargo box simple label -->
+<text x="444" y="171" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="Georgia,serif">CARGO</text>
+<text x="444" y="184" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">200kg</text>
+<!-- Frame / chassis line -->
+<line x1="308" y1="199" x2="500" y2="199" stroke="#3A5A3C" stroke-width="2.5"/>
 <!-- Rear axle -->
-<line x1="415" y1="200" x2="495" y2="200" stroke="#5DBF7A" stroke-width="2.5"/>
-<!-- 3 Wheels: 1 front, 2 rear -->
-<circle cx="330" cy="210" r="16" fill="none" stroke="#78BF45" stroke-width="3"/>
-<circle cx="330" cy="210" r="5" fill="#78BF45"/>
-<line x1="322" y1="202" x2="338" y2="218" stroke="#5DBF7A" stroke-width="1"/>
-<line x1="338" y1="202" x2="322" y2="218" stroke="#5DBF7A" stroke-width="1"/>
-<circle cx="424" cy="210" r="16" fill="none" stroke="#78BF45" stroke-width="3"/>
-<circle cx="424" cy="210" r="5" fill="#78BF45"/>
-<circle cx="490" cy="210" r="16" fill="none" stroke="#78BF45" stroke-width="3"/>
-<circle cx="490" cy="210" r="5" fill="#78BF45"/>
-<!-- Motor / battery indicator on frame -->
-<rect x="370" y="192" width="28" height="14" fill="#1A2E1E" rx="3" stroke="#C8A84B" stroke-width="1.5"/>
-<text x="384" y="202" text-anchor="middle" fill="#C8A84B" font-size="7" font-weight="700" font-family="Georgia,serif">48V</text>
-<!-- GPS dot -->
-<circle cx="340" cy="143" r="4" fill="#E8844A"/>
-<text x="340" y="137" text-anchor="middle" fill="#E8844A" font-size="6" font-family="Georgia,serif">GPS</text>
-<!-- Charging port -->
-<rect x="396" y="194" width="8" height="10" fill="#378ADD" rx="1"/>
-<text x="400" y="218" text-anchor="middle" fill="#378ADD" font-size="6" font-family="Georgia,serif">⚡</text>
-<!-- Labels -->
-<text x="365" y="233" text-anchor="middle" fill="#78BF45" font-size="7" font-family="Georgia,serif">48V electric · 25km/h · 80km range</text>
-<text x="330" y="137" text-anchor="start" fill="#A0A898" font-size="7" font-family="Georgia,serif">canopy cab</text>
-<text x="495" y="210" text-anchor="start" fill="#A0A898" font-size="7" font-family="Georgia,serif">rear wheels</text>
-<text x="305" y="212" text-anchor="end" fill="#A0A898" font-size="7" font-family="Georgia,serif">front wheel</text>
+<line x1="410" y1="199" x2="490" y2="199" stroke="#5DBF7A" stroke-width="2"/>
+<!-- Front wheel (1) -->
+<circle cx="298" cy="218" r="15" fill="none" stroke="#78BF45" stroke-width="3"/>
+<circle cx="298" cy="218" r="4" fill="#78BF45"/>
+<line x1="290" y1="210" x2="306" y2="226" stroke="#5DBF7A" stroke-width="1"/>
+<line x1="306" y1="210" x2="290" y2="226" stroke="#5DBF7A" stroke-width="1"/>
+<!-- Rear wheel left (2) -->
+<circle cx="418" cy="210" r="15" fill="none" stroke="#78BF45" stroke-width="3"/>
+<circle cx="418" cy="210" r="4" fill="#78BF45"/>
+<line x1="410" y1="202" x2="426" y2="218" stroke="#5DBF7A" stroke-width="1"/>
+<line x1="426" y1="202" x2="410" y2="218" stroke="#5DBF7A" stroke-width="1"/>
+<!-- Rear wheel right (3) -->
+<circle cx="482" cy="210" r="15" fill="none" stroke="#78BF45" stroke-width="3"/>
+<circle cx="482" cy="210" r="4" fill="#78BF45"/>
+<line x1="474" y1="202" x2="490" y2="218" stroke="#5DBF7A" stroke-width="1"/>
+<line x1="490" y1="202" x2="474" y2="218" stroke="#5DBF7A" stroke-width="1"/>
+<!-- Labels — minimal -->
+<text x="348" y="233" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">driver cab</text>
+<text x="444" y="233" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">cargo bed</text>
+<text x="390" y="233" text-anchor="middle" fill="#78BF45" font-size="7" font-family="Georgia,serif">electric · 3-wheel</text>
 
 <!-- WHO OPERATES THIS -->
 <rect x="20" y="296" width="504" height="72" fill="#21251C" rx="7"/>
@@ -10159,73 +10153,73 @@ document.addEventListener('DOMContentLoaded', function() {
 <template id="viz-tpl-mkokoteni_tech-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
 <rect width="544" height="500" fill="#1A1D16" rx="10"/>
 <text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Mkokoteni → E-Trike: The Vehicle Transition</text>
-<text x="20" y="44" fill="#A0A898" font-size="9" font-family="system-ui">Technical comparison · Assembly at Embakasi · Hire-purchase economics · The machine that changes everything</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="Georgia,serif">Technical comparison · Assembly at Embakasi · Hire-purchase economics · The machine that changes everything</text>
 <rect x="20" y="54" width="504" height="20" fill="rgba(93,191,122,0.12)" rx="4"/>
-<text x="272" y="68" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="system-ui">SAME OPERATOR · SAME ROUTES · ENTIRELY DIFFERENT MACHINE · 4× MORE PRODUCTIVE</text>
+<text x="272" y="68" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="Georgia,serif">SAME OPERATOR · SAME ROUTES · ENTIRELY DIFFERENT MACHINE · 4× MORE PRODUCTIVE</text>
 <rect x="20" y="84" width="238" height="200" fill="#21251C" rx="7" stroke="#E85050" stroke-width="1.2"/>
-<text x="139" y="104" text-anchor="middle" fill="#E85050" font-size="10" font-weight="700" font-family="system-ui">MKOKOTENI (TODAY)</text>
-<text x="139" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Wooden/steel frame · 4 wheels · human-powered</text>
+<text x="139" y="104" text-anchor="middle" fill="#E85050" font-size="10" font-weight="700" font-family="Georgia,serif">MKOKOTENI (TODAY)</text>
+<text x="139" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="Georgia,serif">Wooden/steel frame · 4 wheels · human-powered</text>
 <line x1="40" y1="145" x2="248" y2="145" stroke="#E85050" stroke-width="0.5" opacity=".3"/>
-<text x="32" y="158" fill="#C4BFA8" font-size="8" font-family="system-ui">Power:</text>
-<text x="100" y="158" fill="#E85050" font-size="8" font-family="system-ui">Human muscle only</text>
-<text x="32" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">Capacity:</text>
-<text x="100" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">50–100kg practical max</text>
-<text x="32" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">Speed:</text>
-<text x="100" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">3–5 km/h loaded</text>
-<text x="32" y="200" fill="#C4BFA8" font-size="8" font-family="system-ui">Weather:</text>
-<text x="100" y="200" fill="#E85050" font-size="8" font-family="system-ui">Rain stops work entirely</text>
-<text x="32" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Payment:</text>
-<text x="100" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Cash · no receipt</text>
-<text x="32" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">Cost:</text>
-<text x="100" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">KES 3,000–8,000 purchase</text>
-<text x="32" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">Daily trips:</text>
-<text x="100" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">3–5 (physical limit)</text>
-<text x="32" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">Track record:</text>
-<text x="100" y="256" fill="#E85050" font-size="8" font-family="system-ui">None. Invisible.</text>
-<text x="32" y="270" fill="#C4BFA8" font-size="8" font-family="system-ui">Safety:</text>
-<text x="100" y="270" fill="#E85050" font-size="8" font-family="system-ui">No lights · no brakes</text>
+<text x="32" y="158" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Power:</text>
+<text x="100" y="158" fill="#E85050" font-size="8" font-family="Georgia,serif">Human muscle only</text>
+<text x="32" y="172" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Capacity:</text>
+<text x="100" y="172" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">50–100kg practical max</text>
+<text x="32" y="186" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Speed:</text>
+<text x="100" y="186" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">3–5 km/h loaded</text>
+<text x="32" y="200" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Weather:</text>
+<text x="100" y="200" fill="#E85050" font-size="8" font-family="Georgia,serif">Rain stops work entirely</text>
+<text x="32" y="214" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Payment:</text>
+<text x="100" y="214" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Cash · no receipt</text>
+<text x="32" y="228" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Cost:</text>
+<text x="100" y="228" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">KES 3,000–8,000 purchase</text>
+<text x="32" y="242" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Daily trips:</text>
+<text x="100" y="242" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">3–5 (physical limit)</text>
+<text x="32" y="256" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Track record:</text>
+<text x="100" y="256" fill="#E85050" font-size="8" font-family="Georgia,serif">None. Invisible.</text>
+<text x="32" y="270" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Safety:</text>
+<text x="100" y="270" fill="#E85050" font-size="8" font-family="Georgia,serif">No lights · no brakes</text>
 <rect x="286" y="84" width="238" height="200" fill="#21251C" rx="7" stroke="#5DBF7A" stroke-width="1.5"/>
-<text x="405" y="104" text-anchor="middle" fill="#5DBF7A" font-size="10" font-weight="700" font-family="system-ui">CARGO E-TRIKE (2030)</text>
-<text x="405" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="system-ui">Steel frame · 3 wheels · 48V electric motor</text>
+<text x="405" y="104" text-anchor="middle" fill="#5DBF7A" font-size="10" font-weight="700" font-family="Georgia,serif">CARGO E-TRIKE (2030)</text>
+<text x="405" y="118" text-anchor="middle" fill="#A0A898" font-size="7.5" font-family="Georgia,serif">Steel frame · 3 wheels · 48V electric motor</text>
 <line x1="296" y1="145" x2="514" y2="145" stroke="#5DBF7A" stroke-width="0.5" opacity=".3"/>
-<text x="298" y="158" fill="#C4BFA8" font-size="8" font-family="system-ui">Power:</text>
-<text x="366" y="158" fill="#5DBF7A" font-size="8" font-family="system-ui">48V electric · solar depot</text>
-<text x="298" y="172" fill="#C4BFA8" font-size="8" font-family="system-ui">Capacity:</text>
-<text x="366" y="172" fill="#5DBF7A" font-size="8" font-family="system-ui">200kg + cold-chain box</text>
-<text x="298" y="186" fill="#C4BFA8" font-size="8" font-family="system-ui">Speed:</text>
-<text x="366" y="186" fill="#5DBF7A" font-size="8" font-family="system-ui">25 km/h · 80km range</text>
-<text x="298" y="200" fill="#C4BFA8" font-size="8" font-family="system-ui">Weather:</text>
-<text x="366" y="200" fill="#5DBF7A" font-size="8" font-family="system-ui">All-weather canopy cab</text>
-<text x="298" y="214" fill="#C4BFA8" font-size="8" font-family="system-ui">Payment:</text>
-<text x="366" y="214" fill="#5DBF7A" font-size="8" font-family="system-ui">M-Pesa · auto receipt</text>
-<text x="298" y="228" fill="#C4BFA8" font-size="8" font-family="system-ui">Cost:</text>
-<text x="366" y="228" fill="#5DBF7A" font-size="8" font-family="system-ui">KES 180K → KES 500/day HP</text>
-<text x="298" y="242" fill="#C4BFA8" font-size="8" font-family="system-ui">Daily trips:</text>
-<text x="366" y="242" fill="#5DBF7A" font-size="8" font-family="system-ui">12–15 (app-dispatched)</text>
-<text x="298" y="256" fill="#C4BFA8" font-size="8" font-family="system-ui">Track record:</text>
-<text x="366" y="256" fill="#5DBF7A" font-size="8" font-family="system-ui">GPS log · credit history</text>
-<text x="298" y="270" fill="#C4BFA8" font-size="8" font-family="system-ui">Safety:</text>
-<text x="366" y="270" fill="#5DBF7A" font-size="8" font-family="system-ui">LED lights · disc brakes</text>
-<text x="261" y="192" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="system-ui">→</text>
+<text x="298" y="158" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Power:</text>
+<text x="366" y="158" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">48V electric · solar depot</text>
+<text x="298" y="172" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Capacity:</text>
+<text x="366" y="172" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">200kg + cold-chain box</text>
+<text x="298" y="186" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Speed:</text>
+<text x="366" y="186" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">25 km/h · 80km range</text>
+<text x="298" y="200" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Weather:</text>
+<text x="366" y="200" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">All-weather canopy cab</text>
+<text x="298" y="214" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Payment:</text>
+<text x="366" y="214" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">M-Pesa · auto receipt</text>
+<text x="298" y="228" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Cost:</text>
+<text x="366" y="228" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">KES 180K → KES 500/day HP</text>
+<text x="298" y="242" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Daily trips:</text>
+<text x="366" y="242" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">12–15 (app-dispatched)</text>
+<text x="298" y="256" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Track record:</text>
+<text x="366" y="256" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">GPS log · credit history</text>
+<text x="298" y="270" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Safety:</text>
+<text x="366" y="270" fill="#5DBF7A" font-size="8" font-family="Georgia,serif">LED lights · disc brakes</text>
+<text x="261" y="192" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="Georgia,serif">→</text>
 <rect x="20" y="298" width="504" height="90" fill="#21251C" rx="7" stroke="#C8A84B" stroke-width="1"/>
 <text x="272" y="316" text-anchor="middle" fill="#C8A84B" font-size="9.5" font-weight="700" font-family="Georgia,serif">MADE IN NAIROBI — Embakasi EV Manufacturing Hub</text>
-<text x="32" y="334" fill="#C4BFA8" font-size="8.5" font-family="system-ui">🏭 Frame: locally-sourced steel from matatu scrap buyback → same circular economy, different product</text>
-<text x="32" y="350" fill="#C4BFA8" font-size="8.5" font-family="system-ui">⚡ Drivetrain: 48V motor + lithium battery assembled at Embakasi from imported components</text>
-<text x="32" y="366" fill="#C4BFA8" font-size="8.5" font-family="system-ui">☀️ Charging: solar-powered depot network (same hubs as EV city bus fleet) · overnight full charge</text>
-<text x="32" y="380" fill="#A0A898" font-size="7.5" font-family="system-ui">Each locally assembled trike generates 3× the economic value of an imported unit · 500+ manufacturing jobs by 2030</text>
+<text x="32" y="334" fill="#C4BFA8" font-size="8.5" font-family="Georgia,serif">🏭 Frame: locally-sourced steel from matatu scrap buyback → same circular economy, different product</text>
+<text x="32" y="350" fill="#C4BFA8" font-size="8.5" font-family="Georgia,serif">⚡ Drivetrain: 48V motor + lithium battery assembled at Embakasi from imported components</text>
+<text x="32" y="366" fill="#C4BFA8" font-size="8.5" font-family="Georgia,serif">☀️ Charging: solar-powered depot network (same hubs as EV city bus fleet) · overnight full charge</text>
+<text x="32" y="380" fill="#A0A898" font-size="7.5" font-family="Georgia,serif">Each locally assembled trike generates 3× the economic value of an imported unit · 500+ manufacturing jobs by 2030</text>
 <rect x="20" y="400" width="504" height="52" fill="rgba(93,191,122,0.06)" rx="6" stroke="#5DBF7A" stroke-width="1"/>
 <text x="272" y="418" text-anchor="middle" fill="#5DBF7A" font-size="9.5" font-weight="700" font-family="Georgia,serif">THE HIRE-PURCHASE ECONOMICS — Why It Works</text>
-<text x="272" y="436" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="system-ui">Trike costs KES 180,000 · Hire-purchase: KES 500/day for 3 years · Average daily revenue: KES 1,200</text>
-<text x="272" y="450" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="system-ui">Net profit from Day 1: KES 700/day · Owner-operator after 3 years · Zero debt · Full asset</text>
+<text x="272" y="436" text-anchor="middle" fill="#C4BFA8" font-size="8.5" font-family="Georgia,serif">Trike costs KES 180,000 · Hire-purchase: KES 500/day for 3 years · Average daily revenue: KES 1,200</text>
+<text x="272" y="450" text-anchor="middle" fill="#5DBF7A" font-size="8.5" font-weight="600" font-family="Georgia,serif">Net profit from Day 1: KES 700/day · Owner-operator after 3 years · Zero debt · Full asset</text>
 <rect x="20" y="462" width="504" height="30" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
 <text x="83" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">4×</text>
-<text x="83" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">More productive</text>
+<text x="83" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">More productive</text>
 <text x="209" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">200kg</text>
-<text x="209" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">vs 50–100kg today</text>
+<text x="209" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">vs 50–100kg today</text>
 <text x="335" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">KES 700</text>
-<text x="335" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Net profit Day 1</text>
+<text x="335" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Net profit Day 1</text>
 <text x="461" y="476" text-anchor="middle" fill="#C8A84B" font-size="11" font-weight="700" font-family="Georgia,serif">Local</text>
-<text x="461" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="system-ui">Built in Nairobi</text>
+<text x="461" y="486" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Built in Nairobi</text>
 </svg></template>
 <template id="viz-tpl-mkokoteni_tech-panel"><div class="vsect">Global Benchmark</div>
 <a class="bench-link" href="https://www.elektrokar.pl/en/" target="_blank" rel="noopener"><div class="cmp-flag">🇨🇳</div><div><div class="cmp-cn">China — Electric Cargo Trike Manufacturing at Scale</div><div class="cmp-sy">China produces 30M+ electric cargo trikes annually at a unit cost of USD 800–1,200. The technology is mature, reliable, and adaptable for African road conditions. Nairobi's Embakasi hub assembles Chinese drivetrains into locally-fabricated frames — capturing maximum local value while using proven technology.</div></div><div class="ext-ico">↗</div></a>
