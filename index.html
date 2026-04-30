@@ -2706,7 +2706,8 @@ function getVizKey(title){
   if(t.includes('HANDCART FORMALISATION')||t.includes('CARGO E-TRIKE NETWORK')) return 'EV_CARGO_TRIKE';
   if(t.includes('MKOKOTENI')||t.includes('E-TRIKE')||t.includes('HANDCART')) return 'MKOKOTENI_ETRIKE';
   if(t.includes('CARGO E-TRIKE')||t.includes('HANDCART')||t.includes('EV CARGO TRIKE')||t.includes('MKOKOTENI')) return 'EV_CARGO_TRIKE';
-  if(t.includes('MATATU BUYBACK')||t.includes('SCRAP METAL PARTNERSHIP')||t.includes('MATATU CIRCULAR')) return 'MATATU';
+  if(t.includes('SCRAP METAL PARTNERSHIP')||t.includes('SCRAP STEEL')||t.includes('MATATUS TO RAIL')) return 'SCRAP_STEEL';
+  if(t.includes('MATATU BUYBACK')||t.includes('MATATU CIRCULAR')) return 'MATATU';
   if(t.includes('MOBILITY-AS-A-SERVICE')||t.includes('MAAS')||t.includes('MOBILITY AS A SERVICE')) return 'MAAS';
   // ── Governance (Pillar 2) ───────────────────────────────────
   if(t.includes('WORLD-CLASS PUBLIC SPACES')||t.includes('WORLD CLASS PUBLIC')) return 'WORLD_CLASS_SPACES';
@@ -2946,6 +2947,9 @@ const VIZ={
   MATATU:{title:'Matatu Buyback — Circular Economy Pipeline',subtitle:'Voluntary Buyback · MOA Partnership · Matatu Steel → Rail Tracks',
     getMap:()=>document.getElementById('viz-tpl-matatu-map').innerHTML,
     getPanel:()=>document.getElementById('viz-tpl-matatu-panel').innerHTML},
+  SCRAP_STEEL:{title:'Scrap Metal Partnership — Matatus to Rail Steel',subtitle:'3,000 matatus · 1,350 tonnes steel · 18km of rail track · 300 processing jobs',
+    getMap:()=>document.getElementById('viz-tpl-scrap_steel-map').innerHTML,
+    getPanel:()=>document.getElementById('viz-tpl-scrap_steel-panel').innerHTML},
   CULTURAL_HERITAGE:{title:'Nairobi Cultural Heritage Map — 40 Protected Sites',
     subtitle:'Music · Art · Architecture · Ritual Sites · Living Heritage',
     getMap:()=>document.getElementById('viz-tpl-cultural_heritage-map').innerHTML,
@@ -10244,6 +10248,111 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="lsn"><span class="lsn-n">3</span><span><strong>Cold-chain box attachment is the premium product</strong> — the standard trike cargo platform is the base. The insulated cold-chain box attachment (for perishables from Gikomba and Marikiti) is the premium tier that doubles revenue per trip. Cooperative cooperatives own the boxes collectively.</span></div>
 <div class="lsn"><span class="lsn-n">4</span><span><strong>GPS + M-Pesa integration creates the credit history</strong> — an operator with 2 years of GPS delivery logs and M-Pesa transaction history has a formal financial track record for the first time in his life. This unlocks bank accounts, business loans, and housing finance that were previously inaccessible.</span></div></template>
 
+
+<!-- ═══ SCRAP_STEEL: Scrap Metal Partnership ═══ -->
+<template id="viz-tpl-scrap_steel-map"><svg viewBox="0 0 544 500" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
+<rect width="544" height="500" fill="#1A1D16" rx="10"/>
+<text x="20" y="28" fill="#F0EAD6" font-size="13" font-weight="700" font-family="Georgia,serif">Scrap Metal Partnership — Matatus to Rail Steel</text>
+<text x="20" y="44" fill="#A0A898" font-size="9" font-family="Georgia,serif">Buyback fleet → metal salvage → rolled into rail tracks · Circular economy · Local manufacturing</text>
+<rect x="20" y="54" width="504" height="18" fill="rgba(200,168,75,0.12)" rx="4"/>
+<text x="272" y="67" text-anchor="middle" fill="#C8A84B" font-size="7.5" font-weight="700" font-family="Georgia,serif">OPTIMISTIC · PHASE 2 · Every retired matatu becomes infrastructure for the next generation of transit</text>
+
+<!-- Flow diagram: Matatu → Shredder → Rolled Steel → Rail Track -->
+<rect x="20" y="82" width="504" height="130" fill="#21251C" rx="7"/>
+<text x="272" y="100" text-anchor="middle" fill="#F0EAD6" font-size="9.5" font-weight="700" font-family="Georgia,serif">THE CIRCULAR PIPELINE — From Road to Rail</text>
+
+<!-- Step 1: Matatu -->
+<rect x="32" y="112" width="96" height="84" fill="#1A1D16" rx="5" stroke="#E8844A" stroke-width="1.5"/>
+<text x="80" y="129" text-anchor="middle" fill="#E8844A" font-size="8" font-weight="700" font-family="Georgia,serif">1. RETIRE</text>
+<text x="80" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Old matatu</text>
+<text x="80" y="155" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">surrendered</text>
+<text x="80" y="167" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">~450kg steel</text>
+<text x="80" y="179" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">per vehicle</text>
+<text x="80" y="191" text-anchor="middle" fill="#E8844A" font-size="6.5" font-weight="700" font-family="Georgia,serif">3,000 buses</text>
+
+<!-- Arrow 1 -->
+<text x="140" y="160" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="Georgia,serif">→</text>
+
+<!-- Step 2: Processing -->
+<rect x="152" y="112" width="96" height="84" fill="#1A1D16" rx="5" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="200" y="129" text-anchor="middle" fill="#C8A84B" font-size="8" font-weight="700" font-family="Georgia,serif">2. PROCESS</text>
+<text x="200" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Shredded &amp;</text>
+<text x="200" y="155" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">sorted by grade</text>
+<text x="200" y="167" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">Dandora facility</text>
+<text x="200" y="179" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">300 jobs created</text>
+<text x="200" y="191" text-anchor="middle" fill="#C8A84B" font-size="6.5" font-weight="700" font-family="Georgia,serif">Embakasi plant</text>
+
+<!-- Arrow 2 -->
+<text x="260" y="160" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="Georgia,serif">→</text>
+
+<!-- Step 3: Rolling mill -->
+<rect x="272" y="112" width="96" height="84" fill="#1A1D16" rx="5" stroke="#78BF45" stroke-width="1.5"/>
+<text x="320" y="129" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="Georgia,serif">3. ROLL</text>
+<text x="320" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Steel rolled to</text>
+<text x="320" y="155" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">rail profile</text>
+<text x="320" y="167" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">UIC 60 standard</text>
+<text x="320" y="179" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">Kenyan steel</text>
+<text x="320" y="191" text-anchor="middle" fill="#78BF45" font-size="6.5" font-weight="700" font-family="Georgia,serif">1.35m gauge</text>
+
+<!-- Arrow 3 -->
+<text x="380" y="160" text-anchor="middle" fill="#C8A84B" font-size="18" font-family="Georgia,serif">→</text>
+
+<!-- Step 4: Rail track -->
+<rect x="392" y="112" width="116" height="84" fill="#1A1D16" rx="5" stroke="#5DBF7A" stroke-width="2"/>
+<text x="450" y="129" text-anchor="middle" fill="#5DBF7A" font-size="8" font-weight="700" font-family="Georgia,serif">4. TRACK</text>
+<text x="450" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Laid on BRT</text>
+<text x="450" y="155" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Thika corridor</text>
+<text x="450" y="167" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">3,000 buses =</text>
+<text x="450" y="179" text-anchor="middle" fill="#C4BFA8" font-size="7" font-family="Georgia,serif">1,350 tonnes rail</text>
+<text x="450" y="191" text-anchor="middle" fill="#5DBF7A" font-size="6.5" font-weight="700" font-family="Georgia,serif">~18km of track</text>
+
+<!-- Economics panel -->
+<rect x="20" y="224" width="240" height="120" fill="#21251C" rx="6" stroke="#C8A84B" stroke-width="1"/>
+<text x="140" y="242" text-anchor="middle" fill="#C8A84B" font-size="9" font-weight="700" font-family="Georgia,serif">THE ECONOMICS</text>
+<text x="32" y="260" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">3,000 matatus × 450kg steel = 1,350t</text>
+<text x="32" y="274" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Rail steel price: ~$800/tonne</text>
+<text x="32" y="288" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Import substitute value: $1.08M</text>
+<text x="32" y="302" fill="#78BF45" font-size="8" font-weight="700" font-family="Georgia,serif">Locally produced → 40% cost saving</text>
+<text x="32" y="318" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Processing: 300 permanent jobs</text>
+<text x="32" y="330" fill="#C4BFA8" font-size="7.5" font-family="Georgia,serif">Dandora · Embakasi · Industrial Area</text>
+
+<!-- MOA Partnership -->
+<rect x="272" y="224" width="252" height="120" fill="#21251C" rx="6" stroke="#78BF45" stroke-width="1"/>
+<text x="398" y="242" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="Georgia,serif">MOA PARTNERSHIP</text>
+<text x="284" y="260" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">Ministry of Agriculture scrap network</text>
+<text x="284" y="274" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">provides collection logistics</text>
+<text x="284" y="288" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">KRA: duty waiver on processing</text>
+<text x="284" y="302" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">KEBS: certifies Kenyan-rolled rail</text>
+<text x="284" y="316" fill="#C8A84B" font-size="8" font-weight="700" font-family="Georgia,serif">"Made in Kenya" rail track</text>
+<text x="284" y="330" fill="#A0A898" font-size="7.5" font-family="Georgia,serif">Govt procurement preference: 30% cost</text>
+
+<!-- What makes this unique -->
+<rect x="20" y="356" width="504" height="60" fill="rgba(120,191,69,0.08)" rx="6" stroke="#78BF45" stroke-width="1"/>
+<text x="272" y="374" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="Georgia,serif">WHY THIS IS DIFFERENT FROM THE MATATU BUYBACK</text>
+<text x="272" y="390" text-anchor="middle" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">The Matatu Buyback retires vehicles and replaces operators with BRT buses — the human transition.</text>
+<text x="272" y="406" text-anchor="middle" fill="#C4BFA8" font-size="8" font-family="Georgia,serif">The Scrap Metal Partnership is what happens to the steel afterwards — the material transition.</text>
+
+<!-- Stats bar -->
+<rect x="20" y="428" width="504" height="36" fill="#21251C" rx="5" stroke="#6A7060" stroke-width="1"/>
+<text x="83" y="442" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">3,000</text>
+<text x="83" y="456" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Matatus scrapped</text>
+<text x="209" y="442" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">1,350t</text>
+<text x="209" y="456" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Steel recovered</text>
+<text x="335" y="442" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">~18km</text>
+<text x="335" y="456" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">Rail track produced</text>
+<text x="461" y="442" text-anchor="middle" fill="#C8A84B" font-size="12" font-weight="700" font-family="Georgia,serif">300</text>
+<text x="461" y="456" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">New processing jobs</text>
+<text x="272" y="480" text-anchor="middle" fill="#3A3F32" font-size="7" font-family="Georgia,serif">Nairobi 2055 Transformation Master Plan · Circular Economy + Mass Transit</text>
+</svg></template>
+<template id="viz-tpl-scrap_steel-panel"><div class="vsect">Global Benchmark</div>
+<a class="bench-link" href="https://www.railway-technology.com/features/featurescrap-steel-recycling-rail-tracks/" target="_blank" rel="noopener"><div class="cmp-flag">🇩🇪</div><div><div class="cmp-cn">Germany — Scrap-to-Rail Steel Programme</div><div class="cmp-sy">Deutsche Bahn's rail renewal programme recycles 95% of retired rail tracks and integrates scrap steel from decommissioned rolling stock into new track production. The circular loop means track replacement costs 35% less than importing virgin steel. Nairobi's matatu scrap pipeline replicates this at city-programme scale.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.worldbank.org/en/topic/transport/brief/railways" target="_blank" rel="noopener"><div class="cmp-flag">🇮🇳</div><div><div class="cmp-cn">India — Rail Steel Localisation Programme</div><div class="cmp-sy">Indian Railways mandated that 70% of rail steel be locally sourced by 2025. The result: SAIL (Steel Authority of India) now produces UIC-certified rail at 40% below global market prices. Kenya's KEBS can certify Embakasi-rolled rail under the same UIC 60 standard, opening the same cost advantage.</div></div><div class="ext-ico">↗</div></a>
+<a class="bench-link" href="https://www.dandoradumpsite.org/" target="_blank" rel="noopener"><div class="cmp-flag">🇰🇪</div><div><div class="cmp-cn">Kenya — Dandora Site Transformation Precedent</div><div class="cmp-sy">Dandora is already Nairobi's de facto recycling hub — informal waste pickers extract 80% of recyclables before formal collection. Formalising a matatu scrap processing facility at Dandora builds on existing skills, supply chains, and community knowledge rather than starting from scratch.</div></div><div class="ext-ico">↗</div></a>
+<div class="vsect2">4 Design Lessons</div>
+<div class="lsn"><span class="lsn-n">1</span><span><strong>The steel in 3,000 matatus is a infrastructure asset, not waste</strong> — each decommissioned matatu carries approximately 450kg of structural steel. Aggregated across the buyback programme, that is 1,350 tonnes — enough to lay 18km of standard gauge track. The pipeline must be designed before the first buyback happens, not after.</span></div>
+<div class="lsn"><span class="lsn-n">2</span><span><strong>MOA partnership is the collection logistics solution</strong> — the Ministry of Agriculture already operates a national scrap and agricultural equipment collection network. Plugging decommissioned matatus into this existing logistics infrastructure eliminates the need to build a new collection system from scratch.</span></div>
+<div class="lsn"><span class="lsn-n">3</span><span><strong>KEBS certification is the make-or-break step</strong> — Kenyan-rolled rail is worthless without certification. KEBS needs to be brought in at the design stage, not after production begins. The UIC 60 standard is internationally recognised and achievable with mid-tier rolling equipment at the Embakasi manufacturing hub.</span></div>
+<div class="lsn"><span class="lsn-n">4</span><span><strong>This is not the Matatu Buyback — it is what happens next</strong> — the Buyback is about the human transition (operators to BRT). The Scrap Metal Partnership is about the material transition (vehicle steel to rail track). Both are essential; neither replaces the other. The storytelling must keep them distinct.</span></div></template>
 </body>
 
 <template id="viz-tpl-cultural_heritage-map"><svg viewBox="0 0 544 440" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">

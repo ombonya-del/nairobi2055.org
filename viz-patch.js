@@ -1,4 +1,4 @@
-// Nairobi 2055 — viz-patch.js v6
+// Nairobi 2055 — viz-patch.js v6 (Georgia fonts + illustrated vehicles)
 (function(){
   var orig = window.getVizKey;
   window.getVizKey = function(t){
@@ -11,6 +11,14 @@
     return orig ? orig(t) : null;
   };
 
+  function injectTemplate(id, html){
+    if(document.getElementById(id)) return;
+    var t = document.createElement('template');
+    t.id = id;
+    t.innerHTML = html;
+    document.body.appendChild(t);
+  }
+
   function addVIZ(key, title, sub, mapId, panelId){
     if(!window.VIZ || window.VIZ[key]) return;
     window.VIZ[key]={title:title,subtitle:sub,
@@ -20,9 +28,10 @@
   }
 
   document.addEventListener('DOMContentLoaded',function(){
-    addVIZ('EV_CARGO_TRIKE','Cargo E-Trike Network — City Logistics System','80,000 operators · 5 hub zones · 85 ward cooperatives','viz-tpl-ev_cargo_trike-map','viz-tpl-ev_cargo_trike-panel');
-    addVIZ('E_MKOKOTENI','E-Mkokoteni — The Handcart Worker Journey','Who mkokoteni operators are · The vehicles · The transition','viz-tpl-e_mkokoteni-map','viz-tpl-e_mkokoteni-panel');
-    addVIZ('MKOKOTENI_TECH','Mkokoteni E-Trike Transition — The Vehicle','Side-by-side specs · Embakasi assembly · Hire-purchase economics','viz-tpl-mkokoteni_tech-map','viz-tpl-mkokoteni_tech-panel');
-    addVIZ('ACT2055','Nairobi 2055 Act — Statutory Entrenchment','County Assembly · National Assembly · Senate','viz-tpl-act2055-map','viz-tpl-act2055-panel');
+    // Only inject templates if missing (index.html has them already)
+    addVIZ('EV_CARGO_TRIKE','Cargo E-Trike Network — City Logistics System','80,000 operators · 5 hub zones · 85 ward cooperatives · BRT last-mile feeder','viz-tpl-ev_cargo_trike-map','viz-tpl-ev_cargo_trike-panel');
+    addVIZ('E_MKOKOTENI','E-Mkokoteni — The Handcart Worker’s Journey','Who mkokoteni operators are · The vehicles · The transition · Dignity as the measure','viz-tpl-e_mkokoteni-map','viz-tpl-e_mkokoteni-panel');
+    addVIZ('MKOKOTENI_TECH','Mkokoteni E-Trike Transition — The Vehicle','Side-by-side specs · Embakasi assembly · Hire-purchase economics · Cooperative model','viz-tpl-mkokoteni_tech-map','viz-tpl-mkokoteni_tech-panel');
+    addVIZ('ACT2055','Nairobi 2055 Act — Statutory Entrenchment','County Assembly · National Assembly · Senate · Binding all future administrations','viz-tpl-act2055-map','viz-tpl-act2055-panel');
   });
 })();
