@@ -1,4 +1,4 @@
-// Nairobi 2055 — viz-patch.js v6 (Georgia fonts + illustrated vehicles)
+——···// Nairobi 2055 — viz-patch.js v6 (Georgia fonts + illustrated vehicles)
 (function(){
   var orig = window.getVizKey;
   window.getVizKey = function(t){
