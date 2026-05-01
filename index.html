@@ -15,7 +15,7 @@
   --text:#F0EAD6;--text2:#C4BFA8;--text3:#8A8878;--text4:#5C5C4E;
   --gold:#C8A84B;--done:#5DBF7A;
 }
-body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,sans-serif;font-size:13px;line-height:1.5;min-height:100vh}
+body{background:var(--bg);color:var(--text);font-family:Georgia,serif;font-size:13px;line-height:1.5;min-height:100vh}
 .serif{font-family:Georgia,'Times New Roman',serif}
 .hdr{background:linear-gradient(160deg,#131610,#1A1D16);padding:16px 22px 14px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--border);flex-wrap:wrap;position:sticky;top:0;z-index:50}
 .logo-main{font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--gold);letter-spacing:-.02em}
@@ -266,7 +266,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .edit-title{font-family:Georgia,serif;font-size:16px;color:var(--text);margin-bottom:4px}
 .edit-row{display:flex;gap:8px;align-items:center}
 .edit-lbl{font-size:10px;color:var(--text3);width:140px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.edit-row input{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:5px;font-size:10px;font-family:system-ui}
+.edit-row input{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 8px;border-radius:5px;font-size:10px;font-family:Georgia,serif}
 .edit-row input:focus{outline:none;border-color:var(--gold)}
 .edit-save{background:var(--gold);color:#131610;border:none;padding:7px 18px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer;align-self:flex-start;margin-top:4px}
 .edit-cancel{background:transparent;color:var(--text3);border:1px solid var(--border);padding:7px 14px;border-radius:6px;font-size:11px;cursor:pointer;margin-top:4px}
@@ -334,7 +334,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .add-prof-form.open{display:block}
 .apf-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 .apf-field label{display:block;font-size:8px;color:var(--text4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px;font-weight:700}
-.apf-field input,.apf-field select,.apf-field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 9px;border-radius:5px;font-size:11px;outline:none;transition:border-color .15s;font-family:system-ui}
+.apf-field input,.apf-field select,.apf-field textarea{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:6px 9px;border-radius:5px;font-size:11px;outline:none;transition:border-color .15s;font-family:Georgia,serif}
 .apf-field textarea{resize:vertical;min-height:60px}
 .apf-field input:focus,.apf-field select:focus,.apf-field textarea:focus{border-color:var(--gold)}
 .apf-btns{display:flex;gap:8px}
@@ -367,7 +367,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .lg-logo span{color:#C8A84B}
 .lg-sub{font-size:11px;color:#8A8878;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:40px}
 .lg-label{font-size:9px;color:#8A8878;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:8px}
-.lg-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;padding:13px 16px;border-radius:8px;font-size:15px;outline:none;transition:border-color .15s;box-sizing:border-box;font-family:system-ui;letter-spacing:.08em}
+.lg-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;padding:13px 16px;border-radius:8px;font-size:15px;outline:none;transition:border-color .15s;box-sizing:border-box;font-family:Georgia,serif;letter-spacing:.08em}
 .lg-input:focus{border-color:#C8A84B}
 .lg-btn{width:100%;margin-top:12px;background:#C8A84B;color:#131610;border:none;padding:13px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;font-family:Georgia,serif;letter-spacing:.04em;transition:opacity .15s}
 .lg-btn:hover{opacity:.88}
@@ -399,7 +399,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .lg-divider span{font-size:9px;color:#5C5C4E;text-transform:uppercase;letter-spacing:.1em}
 .preview-code-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;
   padding:13px 16px;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;
-  box-sizing:border-box;font-family:system-ui;letter-spacing:.12em;text-transform:uppercase}
+  box-sizing:border-box;font-family:Georgia,serif;letter-spacing:.12em;text-transform:uppercase}
 .preview-code-input:focus{border-color:#C8A84B}
 .lg-btn-preview{width:100%;margin-top:8px;background:#21251C;color:#C8A84B;
   border:1px solid #C8A84B;padding:11px;border-radius:8px;font-size:12px;
@@ -664,6 +664,19 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 /* ── SEARCH BUTTON (inline with Preview Codes) ── */
 #vizSearchBtn{background:transparent;border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:all .15s}
 #vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:rgba(200,168,75,.5)}
+
+/* ── Panel font override — all viz panel content uses Georgia ── */
+#vPanel,#vPanel *,
+.vsect,.lsn,.lsn span,.cmp-tbl,.cmp-tbl th,.cmp-tbl td,
+.bench-link,.bench-link div,.cmp-cn,.cmp-sy,.ext-ico,.cmp-flag,
+.viz-note,.vp-section,.vp-title,.vp-sub,.bench-item,.bench-list,
+.bi-city,.bi-desc,.bi-ico,.also-link,.also-link span,
+.inv-card,.inv-name,.inv-sub,.inv-tags,.inv-tag,.inv-ticket,.inv-sect-title,
+.cons-card,.cons-name,.cons-type,.cons-desc,.cons-proj,.cons-tags,.cons-avail,
+.dpanel,.dpanel *,.ivf,.ivt,.ivd,.ritem,.atg,.iblk,.iamt,.ilbl,.ibr,
+.mti,.mtt,.mty,.mtbtns,.kdg,.kdi,.kdv,.kdl,.ppb,.ppbl,.ppbr{
+  font-family:Georgia,serif !important;
+}
 </style>
 </head>
 <body>
@@ -9651,98 +9664,125 @@ document.addEventListener('DOMContentLoaded', function() {
 <rect x="20" y="78" width="504" height="210" fill="#21251C" rx="7"/>
 <text x="136" y="96" text-anchor="middle" fill="#E85050" font-size="9" font-weight="700" font-family="Georgia,serif">MKOKOTENI (TODAY)</text>
 <text x="400" y="96" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="Georgia,serif">CARGO E-TRIKE (2030)</text>
-<line x1="264" y1="84" x2="264" y2="286" stroke="#3A3F32" stroke-width="1" stroke-dasharray="4,3"/>
+<line x1="264" y1="84" x2="264" y2="285" stroke="#3A3F32" stroke-width="1" stroke-dasharray="4,3"/>
 
-<!-- ═══ MKOKOTENI — 2 wheels, 1 axle, 3/4 view ═══ -->
-<line x1="90" y1="163" x2="42" y2="147" stroke="#C8A84B" stroke-width="3" stroke-linecap="round"/>
-<line x1="90" y1="174" x2="42" y2="160" stroke="#C8A84B" stroke-width="3" stroke-linecap="round"/>
-<circle cx="42" cy="147" r="4" fill="#C8A84B"/>
-<circle cx="42" cy="160" r="4" fill="#C8A84B"/>
-<rect x="90" y="155" width="118" height="34" fill="#2A2F22" rx="3" stroke="#C8A84B" stroke-width="2"/>
-<line x1="105" y1="160" x2="105" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="120" y1="160" x2="120" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="135" y1="160" x2="135" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="150" y1="160" x2="150" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="165" y1="160" x2="165" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="180" y1="160" x2="180" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="195" y1="160" x2="195" y2="185" stroke="#6A7060" stroke-width="1"/>
-<line x1="93" y1="168" x2="204" y2="168" stroke="#6A7060" stroke-width="1"/>
-<line x1="93" y1="177" x2="204" y2="177" stroke="#6A7060" stroke-width="1"/>
-<!-- Single axle -->
-<line x1="96" y1="199" x2="213" y2="196" stroke="#8A7060" stroke-width="3"/>
-<!-- Near wheel — left, large, foreground -->
-<circle cx="105" cy="204" r="17" fill="none" stroke="#C8A84B" stroke-width="3"/>
-<circle cx="105" cy="204" r="5" fill="#C8A84B"/>
-<line x1="96" y1="195" x2="114" y2="213" stroke="#7A6040" stroke-width="1.2"/>
-<line x1="114" y1="195" x2="96" y2="213" stroke="#7A6040" stroke-width="1.2"/>
-<line x1="88" y1="204" x2="122" y2="204" stroke="#7A6040" stroke-width="1.2"/>
-<!-- Far wheel — right, smaller, depth -->
-<circle cx="203" cy="199" r="13" fill="none" stroke="#C8A84B" stroke-width="2.5" opacity="0.75"/>
-<circle cx="203" cy="199" r="4" fill="#C8A84B" opacity="0.75"/>
-<line x1="196" y1="192" x2="210" y2="206" stroke="#7A6040" stroke-width="1" opacity="0.6"/>
-<line x1="210" y1="192" x2="196" y2="206" stroke="#7A6040" stroke-width="1" opacity="0.6"/>
+<!-- ═══ MKOKOTENI — side view: pull handles + bed + 2 wheels on 1 axle ═══ -->
+<!-- Pull handles — two parallel rods extending left -->
+<line x1="92" y1="162" x2="44" y2="147" stroke="#C8A84B" stroke-width="3" stroke-linecap="round"/>
+<line x1="92" y1="173" x2="44" y2="160" stroke="#C8A84B" stroke-width="3" stroke-linecap="round"/>
+<circle cx="44" cy="147" r="4" fill="#C8A84B"/>
+<circle cx="44" cy="160" r="4" fill="#C8A84B"/>
+<!-- Cargo bed frame -->
+<rect x="92" y="155" width="116" height="34" fill="#2A2F22" rx="3" stroke="#C8A84B" stroke-width="2"/>
+<!-- Crosshatch goods -->
+<line x1="107" y1="160" x2="107" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="122" y1="160" x2="122" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="137" y1="160" x2="137" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="152" y1="160" x2="152" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="167" y1="160" x2="167" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="182" y1="160" x2="182" y2="185" stroke="#5A6050" stroke-width="1"/>
+<line x1="95" y1="168" x2="205" y2="168" stroke="#5A6050" stroke-width="1"/>
+<line x1="95" y1="177" x2="205" y2="177" stroke="#5A6050" stroke-width="1"/>
+<!-- Chassis drops -->
+<line x1="106" y1="189" x2="106" y2="197" stroke="#8A7060" stroke-width="2"/>
+<line x1="198" y1="189" x2="198" y2="197" stroke="#8A7060" stroke-width="2"/>
+<!-- Single axle bar -->
+<line x1="97" y1="200" x2="212" y2="197" stroke="#8A7060" stroke-width="3"/>
+<!-- Near wheel (left — larger, foreground) -->
+<circle cx="107" cy="206" r="16" fill="none" stroke="#C8A84B" stroke-width="3"/>
+<circle cx="107" cy="206" r="5" fill="#C8A84B"/>
+<line x1="98" y1="197" x2="116" y2="215" stroke="#7A6040" stroke-width="1.2"/>
+<line x1="116" y1="197" x2="98" y2="215" stroke="#7A6040" stroke-width="1.2"/>
+<line x1="91" y1="206" x2="123" y2="206" stroke="#7A6040" stroke-width="1.2"/>
+<!-- Far wheel (right — smaller, background) -->
+<circle cx="202" cy="200" r="13" fill="none" stroke="#C8A84B" stroke-width="2.5" opacity="0.75"/>
+<circle cx="202" cy="200" r="4" fill="#C8A84B" opacity="0.75"/>
+<line x1="194" y1="192" x2="210" y2="208" stroke="#7A6040" stroke-width="1" opacity="0.6"/>
+<line x1="210" y1="192" x2="194" y2="208" stroke="#7A6040" stroke-width="1" opacity="0.6"/>
 <!-- Labels -->
-<text x="50" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">pull handles</text>
-<text x="149" y="150" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">cargo bed</text>
-<text x="148" y="230" text-anchor="middle" fill="#E85050" font-size="7" font-family="Georgia,serif">50–100kg · human-powered</text>
-<text x="153" y="242" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">1 axle · 2 wheels</text>
+<text x="52" y="143" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">pull handles</text>
+<text x="150" y="150" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">cargo bed</text>
+<text x="150" y="232" text-anchor="middle" fill="#E85050" font-size="7" font-family="Georgia,serif">50–100kg · human-powered</text>
+<text x="152" y="243" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">1 axle · 2 wheels</text>
 
 <!-- ═══ ARROW ═══ -->
-<text x="264" y="183" text-anchor="middle" fill="#C8A84B" font-size="28" font-family="Georgia,serif">→</text>
+<text x="264" y="182" text-anchor="middle" fill="#C8A84B" font-size="26" font-family="Georgia,serif">→</text>
 <text x="264" y="200" text-anchor="middle" fill="#C8A84B" font-size="7" font-family="Georgia,serif">buyback</text>
 
-<!-- ═══ CARGO E-TRIKE — proper tuk-tuk profile ═══ -->
-<!-- Front single wheel -->
-<circle cx="298" cy="213" r="19" fill="none" stroke="#78BF45" stroke-width="3"/>
-<circle cx="298" cy="213" r="6" fill="#78BF45"/>
-<line x1="289" y1="204" x2="307" y2="222" stroke="#5DBF7A" stroke-width="1.2"/>
-<line x1="307" y1="204" x2="289" y2="222" stroke="#5DBF7A" stroke-width="1.2"/>
-<line x1="279" y1="213" x2="317" y2="213" stroke="#5DBF7A" stroke-width="1.2"/>
-<!-- Front fork / steering column -->
-<line x1="298" y1="194" x2="313" y2="162" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
+<!-- ═══ CARGO E-TRIKE — realistic Bajaj-style tuk-tuk profile ═══ -->
+<!-- FRONT SINGLE WHEEL -->
+<circle cx="296" cy="213" r="18" fill="none" stroke="#78BF45" stroke-width="3"/>
+<circle cx="296" cy="213" r="5" fill="#78BF45"/>
+<line x1="287" y1="204" x2="305" y2="222" stroke="#5DBF7A" stroke-width="1.2"/>
+<line x1="305" y1="204" x2="287" y2="222" stroke="#5DBF7A" stroke-width="1.2"/>
+<line x1="278" y1="213" x2="314" y2="213" stroke="#5DBF7A" stroke-width="1.2"/>
+<!-- Front fork — angled back like a real tuk-tuk -->
+<line x1="296" y1="195" x2="318" y2="168" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
 <!-- Handlebars -->
-<line x1="307" y1="158" x2="336" y2="158" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
-<circle cx="307" cy="158" r="4" fill="#78BF45"/>
-<circle cx="336" cy="158" r="4" fill="#78BF45"/>
-<!-- CAB BODY — dome/bubble shape using bezier curve (not a rectangle) -->
-<path d="M 313,212 L 321,168 Q 346,142 382,140 L 403,142 L 403,212 Z" fill="#1E3A20" stroke="#78BF45" stroke-width="2"/>
-<!-- Windscreen inside the sloped front -->
-<polygon points="319,170 334,166 330,194 317,196" fill="rgba(55,138,221,0.3)" stroke="#378ADD" stroke-width="1.5"/>
-<!-- Solar roof strip across top of cab -->
-<path d="M 322,140 L 403,142 L 403,147 L 322,145 Z" fill="#2A4A2C" stroke="#5DBF7A" stroke-width="1"/>
-<text x="362" y="147" text-anchor="middle" fill="#5DBF7A" font-size="6" font-family="Georgia,serif">☀ SOLAR</text>
-<!-- GPS on cab roof -->
-<circle cx="404" cy="141" r="4" fill="#E8844A"/>
-<text x="410" y="140" fill="#E8844A" font-size="6" font-family="Georgia,serif" text-anchor="start">GPS</text>
-<!-- CARGO BOX — distinct from cab: lower ceiling, wider, open-bay feel -->
-<rect x="403" y="166" width="104" height="46" fill="#1A2E1E" rx="3" stroke="#78BF45" stroke-width="2"/>
-<line x1="403" y1="180" x2="507" y2="180" stroke="#78BF45" stroke-width="1" opacity="0.5"/>
-<text x="455" y="175" text-anchor="middle" fill="#78BF45" font-size="8" font-weight="700" font-family="Georgia,serif">200kg</text>
-<text x="455" y="187" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">CARGO BOX</text>
-<text x="455" y="198" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">cold-chain ready</text>
-<!-- Chassis floor line -->
-<line x1="313" y1="212" x2="507" y2="212" stroke="#3A5A3C" stroke-width="2.5"/>
-<!-- 48V battery badge on chassis -->
-<rect x="370" y="196" width="30" height="13" fill="#1A2E1E" rx="3" stroke="#C8A84B" stroke-width="1.5"/>
-<text x="385" y="206" text-anchor="middle" fill="#C8A84B" font-size="7" font-weight="700" font-family="Georgia,serif">48V</text>
+<line x1="310" y1="165" x2="336" y2="162" stroke="#78BF45" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="310" cy="165" r="3.5" fill="#78BF45"/>
+<circle cx="336" cy="162" r="3.5" fill="#78BF45"/>
+
+<!-- DRIVER CAB — tuk-tuk bubble dome shape, NOT rectangular -->
+<!-- Cab outline: short sloped nose, rounded roof, open back -->
+<path d="M 318,212 
+         L 326,176 
+         Q 336,152 360,146 
+         Q 384,142 404,145 
+         L 404,212 Z" 
+      fill="#1E3A20" stroke="#78BF45" stroke-width="2"/>
+<!-- Windscreen — follows sloped front face -->
+<path d="M 322,178 L 332,172 L 340,166 L 350,163 L 350,195 L 322,200 Z"
+      fill="rgba(55,138,221,0.35)" stroke="#378ADD" stroke-width="1.5"/>
+<!-- Roof line detail -->
+<line x1="360" y1="144" x2="404" y2="144" stroke="#5DBF7A" stroke-width="1.5" opacity="0.6"/>
+
+<!-- SOLAR PANEL on roof -->
+<rect x="362" y="138" width="44" height="7" fill="#2A4A2C" rx="2" stroke="#5DBF7A" stroke-width="1"/>
+<text x="384" y="145" text-anchor="middle" fill="#5DBF7A" font-size="6" font-family="Georgia,serif">☀ SOLAR</text>
+
+<!-- GPS beacon on cab roof -->
+<circle cx="408" cy="143" r="4" fill="#E8844A"/>
+<text x="414" y="141" fill="#E8844A" font-size="6" font-family="Georgia,serif" text-anchor="start">GPS</text>
+
+<!-- CARGO BOX — clearly separate from cab, open-top style -->
+<rect x="404" y="158" width="102" height="54" fill="#1A2E1E" rx="3" stroke="#78BF45" stroke-width="2"/>
+<!-- Interior detail — cargo box open top view -->
+<line x1="404" y1="172" x2="506" y2="172" stroke="#78BF45" stroke-width="1" opacity="0.4"/>
+<line x1="404" y1="185" x2="506" y2="185" stroke="#78BF45" stroke-width="0.8" opacity="0.3"/>
+<text x="455" y="169" text-anchor="middle" fill="#78BF45" font-size="9" font-weight="700" font-family="Georgia,serif">200kg</text>
+<text x="455" y="181" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">CARGO BOX</text>
+<text x="455" y="192" text-anchor="middle" fill="#A0A898" font-size="6" font-family="Georgia,serif">cold-chain ready</text>
+<text x="455" y="204" text-anchor="middle" fill="#5DBF7A" font-size="6" font-family="Georgia,serif">⚡ 80km range</text>
+
+<!-- Chassis floor rail -->
+<line x1="314" y1="212" x2="506" y2="212" stroke="#3A5A3C" stroke-width="2.5"/>
+
+<!-- 48V battery on chassis between cab and box -->
+<rect x="370" y="195" width="32" height="13" fill="#1A2E1E" rx="3" stroke="#C8A84B" stroke-width="1.5"/>
+<text x="386" y="205" text-anchor="middle" fill="#C8A84B" font-size="7" font-weight="700" font-family="Georgia,serif">48V</text>
+<!-- Charging port -->
+<rect x="408" y="196" width="7" height="10" fill="#378ADD" rx="1.5"/>
+
 <!-- REAR AXLE — single axle, 2 wheels -->
-<line x1="420" y1="212" x2="496" y2="212" stroke="#5DBF7A" stroke-width="3"/>
-<!-- Near rear wheel — larger, foreground -->
-<circle cx="430" cy="217" r="18" fill="none" stroke="#78BF45" stroke-width="3"/>
-<circle cx="430" cy="217" r="5" fill="#78BF45"/>
-<line x1="421" y1="208" x2="439" y2="226" stroke="#5DBF7A" stroke-width="1.2"/>
-<line x1="439" y1="208" x2="421" y2="226" stroke="#5DBF7A" stroke-width="1.2"/>
-<line x1="412" y1="217" x2="448" y2="217" stroke="#5DBF7A" stroke-width="1.2"/>
-<!-- Far rear wheel — smaller, background depth -->
+<line x1="425" y1="212" x2="497" y2="212" stroke="#5DBF7A" stroke-width="3"/>
+<!-- Near rear wheel (larger, foreground left) -->
+<circle cx="434" cy="218" r="18" fill="none" stroke="#78BF45" stroke-width="3"/>
+<circle cx="434" cy="218" r="5" fill="#78BF45"/>
+<line x1="425" y1="209" x2="443" y2="227" stroke="#5DBF7A" stroke-width="1.2"/>
+<line x1="443" y1="209" x2="425" y2="227" stroke="#5DBF7A" stroke-width="1.2"/>
+<line x1="416" y1="218" x2="452" y2="218" stroke="#5DBF7A" stroke-width="1.2"/>
+<!-- Far rear wheel (smaller, background right) -->
 <circle cx="490" cy="214" r="14" fill="none" stroke="#78BF45" stroke-width="2.5" opacity="0.75"/>
 <circle cx="490" cy="214" r="4" fill="#78BF45" opacity="0.75"/>
 <line x1="482" y1="206" x2="498" y2="222" stroke="#5DBF7A" stroke-width="1" opacity="0.6"/>
 <line x1="498" y1="206" x2="482" y2="222" stroke="#5DBF7A" stroke-width="1" opacity="0.6"/>
+
 <!-- Labels -->
-<text x="286" y="242" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">front wheel</text>
-<text x="358" y="144" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">canopy cab</text>
-<text x="456" y="243" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">rear axle · 2 wheels</text>
-<text x="400" y="256" text-anchor="middle" fill="#78BF45" font-size="7" font-family="Georgia,serif">48V electric · 25km/h · 80km range</text>
+<text x="284" y="241" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">front wheel</text>
+<text x="355" y="149" text-anchor="middle" fill="#A0A898" font-size="7" font-family="Georgia,serif">driver cab</text>
+<text x="456" y="240" text-anchor="middle" fill="#A0A898" font-size="6.5" font-family="Georgia,serif">rear axle · 2 wheels</text>
+<text x="360" y="256" text-anchor="middle" fill="#78BF45" font-size="7" font-family="Georgia,serif">48V electric · 25km/h</text>
 
 <!-- ═══ IBRAHIM'S TRANSFORMATION ═══ -->
 <rect x="20" y="298" width="504" height="72" fill="#21251C" rx="7"/>
