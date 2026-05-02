@@ -2680,12 +2680,13 @@ function setView(v){state.view=v;state.actP=null;render();}
 
 // ─── VISUALIZATION SYSTEM ───────────────────────────────────────────────────
 function getVizKey(title){
-  if(title.includes('CARGO E-TRIKE NETWORK')||title.includes('HANDCART FORMALISATION')) return 'EV_CARGO_TRIKE';
-  if(title.includes('E-MKOKOTENI')||title.includes('HANDCART BUYBACK')) return 'E_MKOKOTENI';
-  if(title.includes('MKOKOTENI E-TRIKE TRANSITION')||title.includes('VEHICLE TRANSITION')) return 'MKOKOTENI_TECH';
   
   if(!title) return null;
   const t=title.toUpperCase();
+  if(t.includes('CARGO E-TRIKE NETWORK')||t.includes('HANDCART FORMALISATION')) return 'EV_CARGO_TRIKE';
+  if(t.includes('E-MKOKOTENI')||t.includes('HANDCART BUYBACK')) return 'E_MKOKOTENI';
+  if(t.includes('MKOKOTENI E-TRIKE TRANSITION')||t.includes('VEHICLE TRANSITION')) return 'MKOKOTENI_TECH';
+
 
   if(t.includes('NAIROBI TECH HUB NETWORK')||t.includes('TECH HUB NETWORK')||t.includes('12 INNOVATION NODE')) return 'TECH_HUB_NET';
   if(t.includes('DIGITAL INFRASTRUCTURE INVESTMENT')||t.includes('CITYWIDE CONNECTIVITY')) return 'DIGITAL_INFRA';
