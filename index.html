@@ -3046,9 +3046,16 @@ const VIZ={
   ACT2055:{title:'Nairobi 2055 Act — Statutory Entrenchment',subtitle:'County Assembly · National Assembly · Senate · Political risk shield · Investor protection',
     getMap:()=>document.getElementById('viz-tpl-act2055-map').innerHTML,
     getPanel:()=>document.getElementById('viz-tpl-act2055-panel').innerHTML},
-  EV_CARGO_TRIKE:{title:'Cargo E-Trike Network — City Logistics System',subtitle:'80,000 operators · 5 hub zones · 85 ward cooperatives',getMap:()=>document.getElementById('viz-tpl-ev_cargo_trike-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-ev_cargo_trike-panel').innerHTML},
-  E_MKOKOTENI:{title:'E-Mkokoteni — The Handcart Worker’s Journey',subtitle:'Who mkokoteni operators are · Ibrahim’s day · The buyback · Dignity',getMap:()=>document.getElementById('viz-tpl-e_mkokoteni-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-e_mkokoteni-panel').innerHTML},
-  MKOKOTENI_TECH:{title:'Mkokoteni → E-Trike: The Vehicle Transition',subtitle:'Technical comparison · Embakasi assembly · Hire-purchase economics',getMap:()=>document.getElementById('viz-tpl-mkokoteni_tech-map').innerHTML,getPanel:()=>document.getElementById('viz-tpl-mkokoteni_tech-panel').innerHTML},
+  EV_CARGO_TRIKE:{title:'Cargo E-Trike Network — City Logistics System',subtitle:'80,000 operators · 5 hub zones · 85 ward cooperatives',
+    getMap:function(){var e=document.getElementById('viz-tpl-ev_cargo_trike-map');return e?e.innerHTML:'';},
+    getPanel:function(){var e=document.getElementById('viz-tpl-ev_cargo_trike-panel');return e?e.innerHTML:'';}},
+  E_MKOKOTENI:{title:'E-Mkokoteni — The Handcart Worker’s Journey',subtitle:'Who mkokoteni operators are · Ibrahim’s day · The buyback · Dignity',
+    getMap:function(){var e=document.getElementById('viz-tpl-e_mkokoteni-map');return e?e.innerHTML:'';},
+    getPanel:function(){var e=document.getElementById('viz-tpl-e_mkokoteni-panel');return e?e.innerHTML:'';}},
+  MKOKOTENI_TECH:{title:'Mkokoteni → E-Trike: The Vehicle Transition',subtitle:'Technical comparison · Embakasi assembly · Hire-purchase economics',
+    getMap:function(){var e=document.getElementById('viz-tpl-mkokoteni_tech-map');return e?e.innerHTML:'';},
+    getPanel:function(){var e=document.getElementById('viz-tpl-mkokoteni_tech-panel');return e?e.innerHTML:'';}
+  },
 };
 function showVizEl(el){
   showViz(el.dataset.pid,el.dataset.sc,parseInt(el.dataset.ph),parseInt(el.dataset.i));
