@@ -665,8 +665,18 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 #vizSearchBtn{background:transparent;border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:all .15s}
 #vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:rgba(200,168,75,.5)}
 
-/* ── Panel font override — all viz panel content uses system-ui ── */
-
+/* ── Panel font override — all viz panel content uses Georgia ── */
+#vPanel,#vPanel *,
+.vsect,.lsn,.lsn span,.cmp-tbl,.cmp-tbl th,.cmp-tbl td,
+.bench-link,.bench-link div,.cmp-cn,.cmp-sy,.ext-ico,.cmp-flag,
+.viz-note,.vp-section,.vp-title,.vp-sub,.bench-item,.bench-list,
+.bi-city,.bi-desc,.bi-ico,.also-link,.also-link span,
+.inv-card,.inv-name,.inv-sub,.inv-tags,.inv-tag,.inv-ticket,.inv-sect-title,
+.cons-card,.cons-name,.cons-type,.cons-desc,.cons-proj,.cons-tags,.cons-avail,
+.dpanel,.dpanel *,.ivf,.ivt,.ivd,.ritem,.atg,.iblk,.iamt,.ilbl,.ibr,
+.mti,.mtt,.mty,.mtbtns,.kdg,.kdi,.kdv,.kdl,.ppb,.ppbl,.ppbr{
+  font-family:system-ui,-apple-system,sans-serif !important;
+}
 </style>
 </head>
 <body>
