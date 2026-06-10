@@ -3658,6 +3658,9 @@ window.savePreviewNames = function(){
     localStorage.setItem('n2055_admin','1');
     localStorage.setItem('n2055_admin_persist','1');
     _adminSetThisLoad = true;
+    // Hide gate immediately — #loginGate is in the DOM before this script tag
+    var _gate = document.getElementById('loginGate');
+    if(_gate) _gate.classList.add('hidden');
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
   }
@@ -3665,12 +3668,12 @@ window.savePreviewNames = function(){
   if(localStorage.getItem(KEY)==='1') {
     // Clear admin flag unless admin was set in this exact page load
     if(!_adminSetThisLoad && localStorage.getItem('n2055_admin_persist')!=='1') localStorage.removeItem('n2055_admin');
+    // Hide gate immediately — loginGate is before this script in the DOM
+    var _gate2 = document.getElementById('loginGate');
+    if(_gate2) _gate2.classList.add('hidden');
+    // Wait for full DOM before touching elements that are defined after this script
     document.addEventListener('DOMContentLoaded',()=>{
-      // Show admin badge if already in admin session
-      const badge = document.getElementById('admin-badge');
-      if(badge && isAdmin()) badge.style.display='flex';
-      const gate = document.getElementById('loginGate');
-      if(gate) gate.classList.add('hidden');
+      if(typeof applyAdminMode==='function') applyAdminMode();
     });
   } else {
     // Not authenticated — inject preview section and check for active preview session
