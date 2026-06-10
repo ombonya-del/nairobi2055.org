@@ -623,6 +623,56 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 #vizSearchBtn{background:transparent;border:1px solid var(--border);border-radius:6px;padding:5px 11px;font-size:10px;font-weight:600;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:all .15s}
 #vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:rgba(200,168,75,.5)}
 
+/* ── PREVIEW SESSION ──────────────────────────────────────── */
+#previewTimer{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+  background:rgba(19,22,16,.92);border:1px solid var(--gold);border-radius:20px;
+  padding:6px 18px;font-size:11px;color:var(--gold);font-weight:700;
+  z-index:8000;display:none;gap:8px;align-items:center;backdrop-filter:blur(6px)}
+#previewTimer.active{display:flex}
+#previewTimer .pt-label{color:var(--text3);font-weight:400;font-size:10px}
+#previewTimer .pt-urgent{color:#E85050}
+.preview-watermark{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);
+  font-size:9px;color:rgba(200,168,75,.25);font-weight:700;letter-spacing:.15em;
+  z-index:7999;pointer-events:none;white-space:nowrap;text-transform:uppercase}
+#sessionExpired{position:fixed;inset:0;background:#131610;z-index:9998;
+  display:none;align-items:center;justify-content:center;flex-direction:column}
+#sessionExpired.active{display:flex}
+.se-icon{font-size:48px;margin-bottom:16px}
+.se-title{font-family:Georgia,serif;font-size:28px;color:#F0EAD6;margin-bottom:8px}
+.se-sub{font-size:12px;color:#8A8878;margin-bottom:24px;text-align:center;max-width:400px;line-height:1.6}
+.se-contact{font-size:11px;color:#C8A84B;font-weight:700}
+/* ── PREVIEW LOGIN ────────────────────────────────────────── */
+.lg-divider{display:flex;align-items:center;gap:10px;margin:14px 0}
+.lg-divider::before,.lg-divider::after{content:'';flex:1;height:1px;background:#3A3F32}
+.lg-divider span{font-size:9px;color:#5C5C4E;text-transform:uppercase;letter-spacing:.1em}
+.preview-code-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;
+  padding:13px 16px;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;
+  box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.preview-code-input:focus{border-color:#C8A84B}
+.lg-btn-preview{width:100%;margin-top:8px;background:#21251C;color:#C8A84B;
+  border:1px solid #C8A84B;padding:11px;border-radius:8px;font-size:12px;
+  font-weight:700;cursor:pointer;transition:all .15s}
+.lg-btn-preview:hover{background:#C8A84B;color:#131610}
+.preview-admin-panel{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:16px;margin-bottom:16px}
+.preview-admin-title{font-family:Georgia,serif;font-size:14px;color:var(--gold);margin-bottom:12px;font-weight:700}
+.preview-code-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border)}
+.preview-code-row:first-of-type{border-top:none}
+.pc-code{font-family:monospace;font-size:11px;color:var(--gold);background:var(--bg3);padding:3px 8px;border-radius:4px;letter-spacing:.1em;font-weight:700;flex-shrink:0}
+.pc-name-input{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 9px;border-radius:5px;font-size:11px;outline:none}
+.pc-name-input:focus{border-color:var(--gold)}
+.pc-status{font-size:9px;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0}
+.pc-active{background:#5DBF7A22;color:#5DBF7A;border:1px solid #5DBF7A44}
+.pc-unused{background:var(--bg3);color:var(--text4);border:1px solid var(--border)}
+.pc-expired{background:#E8505022;color:#E85050;border:1px solid #E8505044}
+.save-codes-btn{background:var(--gold);color:#131610;border:none;padding:8px 16px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer;margin-top:10px}
+.copy-code-btn{background:transparent;border:1px solid var(--border);color:var(--text4);padding:3px 8px;border-radius:4px;font-size:8px;cursor:pointer;transition:all .12s;flex-shrink:0}
+.copy-code-btn:hover{border-color:var(--gold);color:var(--gold)}
+/* on mobile, lift the preview timer above the bottom nav */
+@media(max-width:640px){
+  #previewTimer{bottom:74px}
+  .preview-watermark{bottom:124px}
+}
+
 /* ── Panel font override — removed, classes use own font-family definitions ── */
 
 /* ── MOBILE BOTTOM NAV ───────────────────────────────────────────── */
@@ -691,7 +741,38 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   </div>
 </div>
 
+<!-- Session Expired overlay -->
+<div id="sessionExpired">
+  <div class="se-icon">⏱</div>
+  <div class="se-title">Preview Session Expired</div>
+  <div class="se-sub">Your 25-minute preview window has ended. Thank you for reviewing the Nairobi 2055 Transformation Master Plan.<br>Contact the administrator to renew your access.</div>
+  <div class="se-contact">nairobi2055.org</div>
+</div>
 
+<!-- Preview timer pill -->
+<div id="previewTimer">
+  <span class="pt-label">Preview</span>
+  <span id="ptTime">25:00</span>
+</div>
+
+<!-- Preview watermark -->
+<div id="previewWatermark" class="preview-watermark" style="display:none">PREVIEW — NAIROBI 2055</div>
+
+<!-- Preview Codes Admin Modal -->
+<div id="previewCodesModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9000;align-items:center;justify-content:center">
+  <div style="background:var(--bg);border:1px solid var(--border2);border-radius:14px;padding:24px;width:min(520px,94vw);max-height:80vh;overflow-y:auto">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <div style="font-family:Georgia,serif;font-size:18px;color:var(--gold)">Preview Access Codes</div>
+      <button onclick="document.getElementById('previewCodesModal').style.display='none'" style="background:none;border:none;color:var(--text4);font-size:18px;cursor:pointer">✕</button>
+    </div>
+    <div style="font-size:11px;color:var(--text3);margin-bottom:14px;line-height:1.6">Share these one-time codes with peer reviewers. Each code grants 25 minutes of access. Optionally add a name for tracking.</div>
+    <div class="preview-admin-panel">
+      <div class="preview-admin-title">Active Codes</div>
+      <div id="pcRows"></div>
+    </div>
+    <button class="save-codes-btn" onclick="savePreviewNames()">Save Names</button>
+  </div>
+</div>
 
 <div id="vizOv" class="viz-ov" style="display:none" onclick="if(event.target===this)closeViz()">
 <div class="viz-modal" onclick="event.stopPropagation()">
@@ -3390,11 +3471,146 @@ function deleteProf(id){
 }
 
 
+// ── PREVIEW ACCESS CODES ─────────────────────────────────────
+const PREVIEW_CODES = [
+  {code:'NBO-2055-A1',name:'',used:false,expired:false},
+  {code:'NBO-2055-B2',name:'',used:false,expired:false},
+  {code:'NBO-2055-C3',name:'',used:false,expired:false},
+  {code:'NBO-2055-D4',name:'',used:false,expired:false},
+  {code:'NBO-2055-E5',name:'',used:false,expired:false},
+  {code:'NBO-2055-F6',name:'',used:false,expired:false},
+  {code:'NBO-2055-G7',name:'',used:false,expired:false},
+  {code:'NBO-2055-H8',name:'',used:false,expired:false},
+  {code:'NBO-2055-J9',name:'',used:false,expired:false},
+  {code:'NBO-2055-K0',name:'',used:false,expired:false}
+];
+const PREVIEW_DURATION = 25 * 60 * 1000;
+const PREVIEW_KEY = 'n2055_preview';
+
+function getPreviewCodes(){
+  try{ const s=localStorage.getItem('n2055_codes'); if(s) return JSON.parse(s); } catch(e){}
+  return PREVIEW_CODES.map(c=>({...c}));
+}
+function savePreviewCodes(codes){ localStorage.setItem('n2055_codes', JSON.stringify(codes)); }
+
+function getPreviewSession(){
+  try{ const s=localStorage.getItem(PREVIEW_KEY); if(s) return JSON.parse(s); } catch(e){}
+  return null;
+}
+function savePreviewSession(data){ localStorage.setItem(PREVIEW_KEY, JSON.stringify(data)); }
+
+var _previewInterval = null;
+
+function startPreviewSession(code){
+  const session = {code:code, startTime:Date.now(), expires:Date.now()+PREVIEW_DURATION};
+  savePreviewSession(session);
+  // Mark code as used
+  const codes = getPreviewCodes();
+  const c = codes.find(x=>x.code.toUpperCase()===code.toUpperCase());
+  if(c){ c.used=true; c.usedAt=Date.now(); }
+  savePreviewCodes(codes);
+  activatePreviewUI(session.expires);
+}
+
+function activatePreviewUI(expiresAt){
+  const gate = document.getElementById('loginGate');
+  if(gate) gate.classList.add('hidden');
+  const timer = document.getElementById('previewTimer');
+  const wm = document.getElementById('previewWatermark');
+  if(timer) timer.classList.add('active');
+  if(wm) wm.style.display='block';
+
+  function tick(){
+    const rem = expiresAt - Date.now();
+    if(rem <= 0){ expireSession(); return; }
+    const m = Math.floor(rem/60000);
+    const s = Math.floor((rem%60000)/1000);
+    const ts = document.getElementById('ptTime');
+    if(ts){
+      ts.textContent = m+':'+(s<10?'0':'')+s;
+      if(rem < 5*60*1000) ts.classList.add('pt-urgent');
+    }
+  }
+  tick();
+  if(_previewInterval) clearInterval(_previewInterval);
+  _previewInterval = setInterval(tick, 1000);
+}
+
+function expireSession(){
+  if(_previewInterval){ clearInterval(_previewInterval); _previewInterval=null; }
+  localStorage.removeItem(PREVIEW_KEY);
+  const timer = document.getElementById('previewTimer');
+  const wm = document.getElementById('previewWatermark');
+  if(timer) timer.classList.remove('active');
+  if(wm) wm.style.display='none';
+  const exp = document.getElementById('sessionExpired');
+  if(exp) exp.classList.add('active');
+}
+
+function checkPreviewCode(code){
+  const codes = getPreviewCodes();
+  const c = codes.find(x=>x.code.toUpperCase()===code.toUpperCase());
+  if(!c) return {ok:false,msg:'Code not found. Check spelling and try again.'};
+  if(c.expired) return {ok:false,msg:'This code has already expired.'};
+  if(c.used) return {ok:false,msg:'This code has already been used.'};
+  return {ok:true};
+}
+
+window.lgSubmitPreview = function(){
+  const inp = document.getElementById('lgPreviewCode');
+  if(!inp) return;
+  const code = inp.value.trim();
+  if(!code){ showPreviewErr('Please enter your access code.'); return; }
+  const result = checkPreviewCode(code);
+  if(!result.ok){ showPreviewErr(result.msg); inp.select(); return; }
+  startPreviewSession(code);
+};
+
+function showPreviewErr(msg){
+  const e = document.getElementById('lgPreviewErr');
+  if(e){ e.textContent=msg; setTimeout(()=>{ e.textContent=''; },3000); }
+}
+
+function openPreviewCodesModal(){
+  const modal = document.getElementById('previewCodesModal');
+  if(!modal) return;
+  modal.style.display='flex';
+  const codes = getPreviewCodes();
+  const rows = document.getElementById('pcRows');
+  if(!rows) return;
+  rows.innerHTML = codes.map((c,i)=>`
+    <div class="preview-code-row">
+      <span class="pc-code">${c.code}</span>
+      <input class="pc-name-input" id="pcName${i}" value="${c.name||''}" placeholder="Reviewer name (optional)">
+      <span class="pc-status ${c.expired?'pc-expired':c.used?'pc-active':'pc-unused'}">${c.expired?'EXPIRED':c.used?'USED':'UNUSED'}</span>
+      <button class="copy-code-btn" onclick="pcCopyCode('${c.code}')">Copy</button>
+    </div>
+  `).join('');
+}
+
+window.pcCopyCode = function(code){
+  navigator.clipboard.writeText(code).then(()=>showToast('Code copied!')).catch(()=>{
+    const ta=document.createElement('textarea');
+    ta.value=code; document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta); showToast('Code copied!');
+  });
+};
+
+window.savePreviewNames = function(){
+  const codes = getPreviewCodes();
+  codes.forEach((c,i)=>{
+    const inp=document.getElementById('pcName'+i);
+    if(inp) c.name=inp.value.trim();
+  });
+  savePreviewCodes(codes);
+  showToast('Names saved');
+};
+
 // ── LOGIN GATE ────────────────────────────────────────────────
 (function(){
   const KEY = 'n2055_auth';
   function check(pwd){ return pwd === atob('S0BOUm8qMjA1NQ=='); }
-  function checkAdmin(){ 
+  function checkAdmin(){
     const params = new URLSearchParams(window.location.search);
     return params.get('admin') === atob('Qm9tQE5vbUA=');
   }
@@ -3404,6 +3620,26 @@ function deleteProf(id){
     // Clear admin flag — password login = public access only
     localStorage.removeItem('n2055_admin');
   }
+
+  // Inject preview code section into login gate
+  function injectPreviewSection(){
+    const wrap = document.querySelector('#loginGate .lg-wrap');
+    if(!wrap || document.getElementById('lgPreviewSection')) return;
+    const sec = document.createElement('div');
+    sec.id = 'lgPreviewSection';
+    sec.innerHTML = `
+      <div class="lg-divider"><span>or use preview code</span></div>
+      <input class="preview-code-input" id="lgPreviewCode" type="text" placeholder="NBO-2055-XXXX" maxlength="12"
+        onkeydown="if(event.key==='Enter')lgSubmitPreview()"
+        oninput="this.value=this.value.toUpperCase()"/>
+      <button class="lg-btn-preview" onclick="lgSubmitPreview()">Access Preview →</button>
+      <div class="lg-err" id="lgPreviewErr" style="margin-top:6px"></div>
+    `;
+    const footer = wrap.querySelector('.lg-footer');
+    if(footer) wrap.insertBefore(sec, footer);
+    else wrap.appendChild(sec);
+  }
+
   window.lgSubmit = function(){
     const v = document.getElementById('lgPwd').value;
     if(check(v)){ unlock(); }
@@ -3417,7 +3653,7 @@ function deleteProf(id){
   };
   // Admin bypass via URL parameter
   var _adminSetThisLoad = false;
-  if(checkAdmin()){ 
+  if(checkAdmin()){
     localStorage.setItem(KEY,'1');
     localStorage.setItem('n2055_admin','1');
     localStorage.setItem('n2055_admin_persist','1');
@@ -3435,6 +3671,18 @@ function deleteProf(id){
       if(badge && isAdmin()) badge.style.display='flex';
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
+    });
+  } else {
+    // Not authenticated — inject preview section and check for active preview session
+    document.addEventListener('DOMContentLoaded',()=>{
+      injectPreviewSection();
+      // Resume active preview session if not expired
+      const session = getPreviewSession();
+      if(session && session.expires > Date.now()){
+        activatePreviewUI(session.expires);
+      } else if(session){
+        localStorage.removeItem(PREVIEW_KEY);
+      }
     });
   }
 })();
@@ -3481,6 +3729,23 @@ function applyAdminMode(){
   var ctrls=document.querySelector('.ctrls');
   if(ctrls && srchBtn && !ctrls.contains(srchBtn)){
     ctrls.appendChild(srchBtn);
+  }
+
+  // Preview Codes button — admin only
+  if(admin){
+    var pcBtn=document.getElementById('previewCodesBtn');
+    if(!pcBtn){
+      pcBtn=document.createElement('button');
+      pcBtn.id='previewCodesBtn';
+      pcBtn.className='sb';
+      pcBtn.style.cssText='font-size:10px;padding:5px 10px;background:var(--bg2);color:var(--gold);border:1px solid var(--gold)';
+      pcBtn.innerHTML='🔑 Preview Codes';
+      pcBtn.onclick=openPreviewCodesModal;
+    }
+    if(ctrls && !ctrls.contains(pcBtn)) ctrls.appendChild(pcBtn);
+  } else {
+    var pcBtn=document.getElementById('previewCodesBtn');
+    if(pcBtn) pcBtn.remove();
   }
 }
 
