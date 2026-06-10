@@ -818,6 +818,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 </div>
 </div>
 <div class="hdr">
+  <img src="icon-192.png" alt="Nairobi 2055" style="width:36px;height:36px;border-radius:8px;flex-shrink:0">
   <div>
     <span class="logo-main">Nairobi</span><span class="logo-sub"> 2055</span>
     <span class="logo-tag">Transformation Master Plan · Est. 2025</span>
@@ -2619,7 +2620,7 @@ function dpHTML(pid){
     +'</div></div>';
 }
 
-function closeDP(){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());document.querySelectorAll('.pcard').forEach(el=>el.classList.remove('act'));}
+function closeDP(){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());document.querySelectorAll('.pcard').forEach(el=>el.classList.remove('act'));pushHistory();}
 
 // ─── PILLARS VIEW ────────────────────────────────────────────────────────────
 function renderPillars(){
@@ -2659,6 +2660,7 @@ function togP(pid){
   const grid=document.getElementById('pgrid');
   if(grid){const dp=document.createElement('div');dp.innerHTML=dpHTML(pid);grid.after(dp.firstChild);}
   document.getElementById('dpanel-'+pid)?.scrollIntoView({behavior:'smooth',block:'nearest'});
+  pushHistory();
 }
 
 // ─── TIMELINE VIEW ───────────────────────────────────────────────────────────
@@ -2752,9 +2754,29 @@ function render(){
   else renderProgress();
   if(typeof updateMobNav==='function') updateMobNav();
 }
-function setSc(s){state.sc=s;if(state.actP){const pid=state.actP;state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();}
-function setPh(p){state.ph=p;if(state.actP){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();}
-function setView(v){state.view=v;state.actP=null;render();}
+// ─── HISTORY / PWA NAVIGATION ────────────────────────────────────────────────
+function pushHistory(){
+  const s=state;
+  const params=new URLSearchParams({v:s.view,sc:s.sc,ph:s.ph});
+  if(s.actP) params.set('p',s.actP);
+  const snap={view:s.view,sc:s.sc,ph:s.ph,actP:s.actP||null};
+  history.pushState(snap,'','?'+params.toString());
+}
+function restoreFromHistory(snap){
+  state.view=snap.view||'pillars';
+  state.sc=snap.sc||'opt';
+  state.ph=snap.ph||1;
+  state.actP=snap.actP||null;
+  render();
+}
+window.addEventListener('popstate',e=>{
+  if(e.state) restoreFromHistory(e.state);
+  else{state.view='pillars';state.sc='opt';state.ph=1;state.actP=null;render();}
+});
+
+function setSc(s){state.sc=s;if(state.actP){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();pushHistory();}
+function setPh(p){state.ph=p;if(state.actP){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();pushHistory();}
+function setView(v){state.view=v;state.actP=null;render();pushHistory();}
 
 
 // ─── VISUALIZATION SYSTEM ───────────────────────────────────────────────────
