@@ -1,7 +1,7 @@
 // Nairobi 2055 — Service Worker
 // Cache-first strategy: app shell cached on install, served offline
 
-const CACHE_NAME = 'nairobi2055-v4';
+const CACHE_NAME = 'nairobi2055-v5';
 const ASSETS = [
   '/',
   '/index.html',
