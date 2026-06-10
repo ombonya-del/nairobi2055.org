@@ -1,0 +1,37 @@
+{
+  "name": "Nairobi 2055 — Transformation Master Plan",
+  "short_name": "Nairobi 2055",
+  "description": "Africa's boldest urban transformation plan — 10 Pillars, 4 Scenarios, 3 Phases, 280+ Interventions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A1D16",
+  "theme_color": "#1A1D16",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["government", "news", "productivity"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='24' fill='%231A1D16'/><text y='130' x='96' text-anchor='middle' font-size='110' font-family='Georgia,serif' fill='%23C8A84B'>⬡</text></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Pillars",
+      "short_name": "Pillars",
+      "description": "View all 10 transformation pillars",
+      "url": "/?view=pillars",
+      "icons": []
+    },
+    {
+      "name": "Progress",
+      "short_name": "Progress",
+      "description": "Track milestone progress",
+      "url": "/?view=progress",
+      "icons": []
+    }
+  ]
+}

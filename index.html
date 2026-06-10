@@ -7,6 +7,12 @@
   <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nairobi 2055 — Transformation Master Plan</title>
+<meta name="theme-color" content="#1A1D16">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Nairobi 2055">
+<link rel="manifest" href="manifest.json">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -375,51 +381,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .lg-footer{margin-top:48px;font-size:9px;color:#3A3F32;text-align:center;letter-spacing:.08em}
 
 
-/* ── PREVIEW SESSION ──────────────────────────────────────── */
-#previewTimer{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
-  background:rgba(19,22,16,.92);border:1px solid var(--gold);border-radius:20px;
-  padding:6px 18px;font-size:11px;color:var(--gold);font-weight:700;
-  z-index:8000;display:none;gap:8px;align-items:center;backdrop-filter:blur(6px)}
-#previewTimer.active{display:flex}
-#previewTimer .pt-label{color:var(--text3);font-weight:400;font-size:10px}
-#previewTimer .pt-urgent{color:#E85050}
-.preview-watermark{position:fixed;bottom:58px;left:50%;transform:translateX(-50%);
-  font-size:9px;color:rgba(200,168,75,.25);font-weight:700;letter-spacing:.15em;
-  z-index:7999;pointer-events:none;white-space:nowrap;text-transform:uppercase}
-#sessionExpired{position:fixed;inset:0;background:#131610;z-index:9998;
-  display:none;align-items:center;justify-content:center;flex-direction:column}
-#sessionExpired.active{display:flex}
-.se-icon{font-size:48px;margin-bottom:16px}
-.se-title{font-family:Georgia,serif;font-size:28px;color:#F0EAD6;margin-bottom:8px}
-.se-sub{font-size:12px;color:#8A8878;margin-bottom:24px;text-align:center;max-width:400px;line-height:1.6}
-.se-contact{font-size:11px;color:#C8A84B;font-weight:700}
-/* ── PREVIEW LOGIN ────────────────────────────────────────── */
-.lg-divider{display:flex;align-items:center;gap:10px;margin:14px 0}
-.lg-divider::before,.lg-divider::after{content:'';flex:1;height:1px;background:#3A3F32}
-.lg-divider span{font-size:9px;color:#5C5C4E;text-transform:uppercase;letter-spacing:.1em}
-.preview-code-input{width:100%;background:#21251C;border:1px solid #3A3F32;color:#F0EAD6;
-  padding:13px 16px;border-radius:8px;font-size:13px;outline:none;transition:border-color .15s;
-  box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif;letter-spacing:.12em;text-transform:uppercase}
-.preview-code-input:focus{border-color:#C8A84B}
-.lg-btn-preview{width:100%;margin-top:8px;background:#21251C;color:#C8A84B;
-  border:1px solid #C8A84B;padding:11px;border-radius:8px;font-size:12px;
-  font-weight:700;cursor:pointer;transition:all .15s}
-.lg-btn-preview:hover{background:#C8A84B;color:#131610}
-
-.preview-admin-panel{background:var(--bg2);border:1px solid var(--gold);border-radius:10px;padding:16px;margin-bottom:16px}
-.preview-admin-title{font-family:Georgia,serif;font-size:14px;color:var(--gold);margin-bottom:12px;font-weight:700}
-.preview-code-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px solid var(--border)}
-.preview-code-row:first-of-type{border-top:none}
-.pc-code{font-family:monospace;font-size:11px;color:var(--gold);background:var(--bg3);padding:3px 8px;border-radius:4px;letter-spacing:.1em;font-weight:700;flex-shrink:0}
-.pc-name-input{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:5px 9px;border-radius:5px;font-size:11px;outline:none}
-.pc-name-input:focus{border-color:var(--gold)}
-.pc-status{font-size:9px;padding:2px 7px;border-radius:3px;font-weight:700;flex-shrink:0}
-.pc-active{background:#5DBF7A22;color:#5DBF7A;border:1px solid #5DBF7A44}
-.pc-unused{background:var(--bg3);color:var(--text4);border:1px solid var(--border)}
-.pc-expired{background:#E8505022;color:#E85050;border:1px solid #E8505044}
-.save-codes-btn{background:var(--gold);color:#131610;border:none;padding:8px 16px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer;margin-top:10px}
-.copy-code-btn{background:transparent;border:1px solid var(--border);color:var(--text4);padding:3px 8px;border-radius:4px;font-size:8px;cursor:pointer;transition:all .12s;flex-shrink:0}
-.copy-code-btn:hover{border-color:var(--gold);color:var(--gold)}
 
 
 /* ── VIZ PANEL — benchmark sections ─────────────────────────── */
@@ -458,9 +419,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 }
 
 
-/* Preview code section — hidden unless ?preview=1 in URL */
-.preview-section-hidden{display:none!important}
-.preview-section-visible{display:block!important}
 
 
 /* ── VOICES TAB ─────────────────────────────────────────── */
@@ -666,6 +624,56 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 #vizSearchBtn:hover{background:var(--bg3);color:var(--gold);border-color:rgba(200,168,75,.5)}
 
 /* ── Panel font override — removed, classes use own font-family definitions ── */
+
+/* ── MOBILE BOTTOM NAV ───────────────────────────────────────────── */
+.mob-nav{display:none;position:fixed;bottom:0;left:0;right:0;
+  background:rgba(26,29,22,0.97);border-top:1px solid var(--border2);
+  z-index:500;height:64px;padding:0 4px env(safe-area-inset-bottom,8px);
+  align-items:flex-start;justify-content:space-around;
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.mob-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:3px;padding:8px 2px 0;cursor:pointer;
+  border:none;background:transparent;color:var(--text3);
+  -webkit-tap-highlight-color:transparent;transition:color .15s;min-width:0}
+.mob-nav-ico{font-size:19px;line-height:1}
+.mob-nav-lbl{font-size:9px;font-weight:600;letter-spacing:.01em;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;max-width:56px;text-align:center;color:inherit}
+.mob-nav-item.mn-active{color:var(--gold)}
+.mob-nav-item.mn-filter-has{color:var(--gold)}
+
+/* filter sheet overlay */
+.mob-sheet-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:600;
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}
+.mob-sheet-ov.open{display:block}
+/* filter sheet */
+.mob-sheet{position:fixed;bottom:0;left:0;right:0;background:#21251C;
+  border-top:1px solid var(--border2);border-radius:20px 20px 0 0;z-index:700;
+  padding-bottom:env(safe-area-inset-bottom,0);
+  transform:translateY(100%);transition:transform .3s cubic-bezier(.32,1,.23,1)}
+.mob-sheet.open{transform:translateY(0)}
+.mob-sheet-handle{width:38px;height:4px;background:var(--border2);
+  border-radius:2px;margin:10px auto 0}
+.mob-sheet-title{font-size:10px;color:var(--text4);text-transform:uppercase;
+  letter-spacing:.14em;font-weight:700;padding:14px 20px 6px}
+.mob-sheet-section{padding:4px 18px 14px}
+.mob-sheet-lbl{font-size:9px;color:var(--text4);text-transform:uppercase;
+  letter-spacing:.1em;font-weight:700;margin-bottom:8px}
+.mob-sheet-btns{display:flex;gap:6px;flex-wrap:wrap}
+.mob-sheet-btns button{font-size:12px;padding:8px 14px}
+.mob-sheet-done{width:calc(100% - 36px);margin:2px 18px 16px;background:var(--gold);
+  color:#131610;border:none;padding:13px;border-radius:9px;font-size:13px;
+  font-weight:700;cursor:pointer;letter-spacing:.02em;font-family:Georgia,serif}
+
+/* mobile-only overrides */
+@media(max-width:640px){
+  .mob-nav{display:flex}
+  .ctrls{display:none}
+  .main{padding-bottom:88px}
+  .footer{padding-bottom:88px}
+  .voices-wrap{padding-bottom:100px}
+  #admin-badge{bottom:74px}
+  .toast{bottom:74px;right:12px}
+}
 </style>
 </head>
 <body>
@@ -679,41 +687,11 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
     <!-- preview section injected by JS when ?preview=1 -->
-    <div class="lg-footer">Private access only · nairobi2055.org</div>
+    <div class="lg-footer">nairobi2055.org</div>
   </div>
 </div>
 
 
-<div id="sessionExpired">
-  <div class="se-icon">⏱️</div>
-  <div class="se-title">Preview Session Expired</div>
-  <div class="se-sub">Your 25-minute preview window for the Nairobi 2055 Transformation Master Plan has ended.<br>To request continued access or provide feedback, please contact the project team directly.</div>
-  <div class="se-contact">nairobi2055.org · Confidential Preview</div>
-</div>
-
-<div id="previewTimer">
-  <span class="pt-label">Preview</span>
-  <span id="ptCount">25:00</span>
-  <span class="pt-label">remaining</span>
-</div>
-<div class="preview-watermark" id="previewWatermark"></div>
-
-
-<div id="previewCodesModal" style="display:none;position:fixed;inset:0;background:rgba(10,12,8,.88);z-index:9000;align-items:center;justify-content:center;backdrop-filter:blur(4px)">
-  <div style="background:#21251C;border:1px solid #C8A84B;border-radius:14px;width:100%;max-width:560px;padding:22px;margin:16px;max-height:90vh;overflow-y:auto">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-      <div style="font-family:Georgia,serif;font-size:16px;color:#F0EAD6;font-weight:700">🔑 Preview Access Codes</div>
-      <button onclick="document.getElementById('previewCodesModal').style.display='none'" style="margin-left:auto;background:#2F342A;border:1px solid #3A3F32;color:#8A8878;width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:14px">✕</button>
-    </div>
-    <div style="font-size:9px;color:#8A8878;margin-bottom:14px">Each code gives one person a 25-minute timed preview. Edit names, then share the code privately. The code can be reused within the session window.</div>
-    <div id="pcModalRows"></div>
-    <div style="display:flex;gap:8px;margin-top:14px">
-      <button onclick="savePreviewNamesModal()" style="background:#C8A84B;color:#131610;border:none;padding:8px 18px;border-radius:6px;font-weight:700;font-size:11px;cursor:pointer">✓ Save Names</button>
-      <button onclick="document.getElementById('previewCodesModal').style.display='none'" style="background:transparent;border:1px solid #3A3F32;color:#8A8878;padding:8px 12px;border-radius:6px;font-size:11px;cursor:pointer">Close</button>
-    </div>
-    <div style="margin-top:10px;font-size:9px;color:#5C5C4E">Tip: Share the URL nairobi2055.org with each person along with their unique code</div>
-  </div>
-</div>
 
 <div id="vizOv" class="viz-ov" style="display:none" onclick="if(event.target===this)closeViz()">
 <div class="viz-modal" onclick="event.stopPropagation()">
@@ -2671,6 +2649,7 @@ function render(){
   else if(state.view==='partners') renderPartners();
   else if(state.view==='voices') renderVoices();
   else renderProgress();
+  if(typeof updateMobNav==='function') updateMobNav();
 }
 function setSc(s){state.sc=s;if(state.actP){const pid=state.actP;state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();}
 function setPh(p){state.ph=p;if(state.actP){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());}render();}
@@ -3446,36 +3425,6 @@ function deleteProf(id){
     // Clean the URL so the code isn't visible in the address bar
     window.history.replaceState({}, document.title, window.location.pathname);
   }
-  // Show preview section only when URL has ?preview=1
-  if(new URLSearchParams(window.location.search).get('preview')==='1'){
-    document.addEventListener('DOMContentLoaded',()=>{
-      const gate = document.getElementById('loginGate');
-      if(!gate) return;
-      // Preview mode: hide password, show only preview code
-      const sub = gate.querySelector('.lg-sub');
-      if(sub) sub.textContent = 'Confidential Preview Access';
-      const pwdLabel = gate.querySelector('.lg-label');
-      const pwdInput = gate.querySelector('#lgPwd');
-      const pwdBtn   = gate.querySelector('.lg-btn');
-      if(pwdLabel) pwdLabel.style.display = 'none';
-      if(pwdInput) pwdInput.style.display = 'none';
-      if(pwdBtn)   pwdBtn.style.display   = 'none';
-      if(!document.getElementById('previewSection')){
-        const ps = document.createElement('div');
-        ps.id = 'previewSection';
-        ps.innerHTML =
-          '<div class="lg-label">Enter Your Preview Code</div>' +
-          '<input class="preview-code-input" id="lgPreviewCode" type="text" ' +
-            'placeholder="e.g. NRB2055-A1" onkeydown="if(event.key===\'Enter\')lgSubmitPreview()"/>' +
-          '<button class="lg-btn-preview" onclick="lgSubmitPreview()">Enter Preview →</button>';
-        const footer = gate.querySelector('.lg-footer');
-        const wrap   = gate.querySelector('.lg-wrap');
-        if(footer) wrap.insertBefore(ps, footer);
-        else wrap.appendChild(ps);
-        if(footer) footer.textContent = 'Preview access · 25-minute session · nairobi2055.org';
-      }
-    });
-  }
   // Auto-unlock if already authenticated
   if(localStorage.getItem(KEY)==='1') {
     // Clear admin flag unless admin was set in this exact page load
@@ -3486,9 +3435,6 @@ function deleteProf(id){
       if(badge && isAdmin()) badge.style.display='flex';
       const gate = document.getElementById('loginGate');
       if(gate) gate.classList.add('hidden');
-      // Check if active preview session needs timer resumed
-      const sess = getPreviewSession && getPreviewSession();
-      if(sess && sess.expires > Date.now()) activatePreviewUI(sess);
     });
   }
 })();
@@ -3531,284 +3477,58 @@ function applyAdminMode(){
     srchBtn.onclick=openVizSearch;
   }
 
-  // Preview codes button in controls bar
-  let pcBtn = document.getElementById('preview-codes-btn');
-  if(admin){
-    if(!pcBtn){
-      pcBtn = document.createElement('button');
-      pcBtn.id = 'preview-codes-btn';
-      pcBtn.className = 'vb';
-      pcBtn.style.cssText = 'background:rgba(200,168,75,.12);border-color:#C8A84B44;color:#C8A84B;font-size:10px';
-      pcBtn.textContent = '🔑 Preview Codes';
-      pcBtn.onclick = openPreviewCodesModal;
-      const ctrls = document.querySelector('.ctrls');
-      if(ctrls) ctrls.appendChild(pcBtn);
-    }
-    pcBtn.style.display = '';
-  } else {
-    if(pcBtn) pcBtn.remove(); // Remove entirely — not just hidden
-  }
-  // Insert search button on the same row as Preview Codes (or alone if no Preview Codes)
+  // Insert search button into controls bar
   var ctrls=document.querySelector('.ctrls');
   if(ctrls && srchBtn && !ctrls.contains(srchBtn)){
-    var pcRef=document.getElementById('preview-codes-btn');
-    if(pcRef) ctrls.insertBefore(srchBtn,pcRef);
-    else ctrls.appendChild(srchBtn);
+    ctrls.appendChild(srchBtn);
   }
 }
 
-function openPreviewCodesModal(){
-  // Load customisations from localStorage
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
 
-  // Build the table rows — one per code
-  var rows = '';
-  Object.keys(PREVIEW_CODES).forEach(function(code) {
-    var name = saved[code] || PREVIEW_CODES[code];
-    var safeName = name.replace(/"/g, '&quot;');
-    var btnStyle = 'padding:2px 7px;border-radius:4px;cursor:pointer;font-size:9px;white-space:nowrap;';
-    var resetBtn = '<button data-code="' + code + '" data-action="reset" style="background:rgba(200,80,80,0.15);border:1px solid rgba(200,80,80,0.3);color:#E85050;' + btnStyle + '">&#8635; Reset</button>';
-    var copyBtn  = '<button data-code="' + code + '" data-action="copy"  style="background:rgba(93,191,122,0.15);border:1px solid rgba(93,191,122,0.3);color:#5DBF7A;' + btnStyle + '">&#128203; Copy link</button>';
-    var genBtn   = '<button data-code="' + code + '" data-action="gen"   style="background:rgba(200,168,75,0.15);border:1px solid rgba(200,168,75,0.3);color:#C8A84B;' + btnStyle + '">&#8853; New code</button>';
-    rows += '<tr style="border-bottom:1px solid #2A2E26">'
-      + '<td style="padding:6px 4px;font-size:10px;font-family:monospace;color:#C8A84B;white-space:nowrap">' + code + '</td>'
-      + '<td style="padding:6px 4px"><input id="pc-name-' + code + '" value="' + name + '" style="background:#2A2E26;border:1px solid #3A3F32;border-radius:4px;color:#F0EAD6;padding:3px 6px;font-size:10px;width:100%;min-width:120px"/></td>'
-      + '<td style="padding:6px 4px;white-space:nowrap">'
-      + '<div style="display:flex;gap:4px;align-items:center">'
-      + copyBtn + genBtn + resetBtn
-      + '</div></td>'
-      + '</tr>';
+// ── MOBILE NAV ─────────────────────────────────────────────────────────────
+function openMobSheet(){
+  document.getElementById('mobSheet').classList.add('open');
+  document.getElementById('mobSheetOv').classList.add('open');
+  _syncMobSheet();
+}
+function closeMobSheet(){
+  document.getElementById('mobSheet').classList.remove('open');
+  document.getElementById('mobSheetOv').classList.remove('open');
+}
+function _syncMobSheet(){
+  // Mirror scenario state onto sheet buttons
+  const scMap={opt:'#3DBF78',rea:'',dis:'',cri:''};
+  ['opt','rea','dis','cri'].forEach(s=>{
+    const btn=document.getElementById('msc-'+s);
+    const src=document.getElementById('sc-'+s);
+    if(btn&&src){btn.className=src.className;btn.style.cssText=src.style.cssText;}
   });
-
-  var modal = document.getElementById('previewCodesModal');
-  modal.querySelector('#pcModalRows').innerHTML = '<table style="width:100%;border-collapse:collapse">'
-    + '<thead><tr>'
-    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">CODE</th>'
-    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">RECIPIENT NAME</th>'
-    + '<th style="text-align:left;font-size:9px;color:#8A8878;padding:0 4px 6px;font-weight:600">ACTIONS</th>'
-    + '</tr></thead>'
-    + '<tbody>' + rows + '</tbody></table>';
-  modal.style.display = 'flex';
-  // Wire up buttons via delegation — remove old listener first to prevent stacking
-  var rowsEl = modal.querySelector('#pcModalRows');
-  var newRows = rowsEl.cloneNode(true);
-  rowsEl.parentNode.replaceChild(newRows, rowsEl);
-  newRows.addEventListener('click', function(e) {
-    var btn = e.target.closest('[data-action]');
-    if (!btn) return;
-    var code = btn.dataset.code;
-    var action = btn.dataset.action;
-    if (action === 'reset') pcResetCode(code);
-    else if (action === 'gen') pcGenCode(code);
-    else if (action === 'copy') {
-      var name = (document.getElementById('pc-name-' + code) || {value: PREVIEW_CODES[code]}).value;
-      pcCopyCode(code, name);
-    }
+  // Mirror phase state onto sheet buttons
+  [1,2,3].forEach(p=>{
+    const btn=document.getElementById('mph-'+p);
+    const src=document.getElementById('ph-'+p);
+    if(btn&&src) btn.className=src.className;
   });
+  // Filter badge on ⚙ button
+  const filterBtn=document.getElementById('mn-filter');
+  if(filterBtn) filterBtn.classList.toggle('mn-filter-has', state.sc!=='opt'||state.ph!==1);
 }
-
-function savePreviewNamesModal(){
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
-  Object.keys(PREVIEW_CODES).forEach(function(code) {
-    var inp = document.getElementById('pc-name-' + code);
-    if (inp) saved[code] = inp.value.trim() || PREVIEW_CODES[code];
+function updateMobNav(){
+  ['pillars','timeline','progress','partners','voices'].forEach(v=>{
+    const btn=document.getElementById('mn-'+v);
+    if(btn) btn.classList.toggle('mn-active', state.view===v);
   });
-  localStorage.setItem('n2055_preview_names', JSON.stringify(saved));
-  showToast('Names saved');
+  _syncMobSheet();
 }
-
-function pcCopyCode(code, name) {
-  // Save name first
-  savePreviewNamesModal();
-  var url = 'https://nairobi2055.org?preview=1&code=' + code;
-  var nl = '\n';
-  var msg = 'Hi ' + name + ',' + nl + nl
-    + 'Here is your private preview link for the Nairobi 2055 Transformation Master Plan:' + nl + nl
-    + url + nl + nl
-    + 'Your access code: ' + code + nl
-    + 'You have 25 minutes to explore the plan. Please keep this link confidential.' + nl + nl
-    + 'Nairobi 2055 Team';
-  function doCopy(){var ta=document.createElement('textarea');ta.value=msg;ta.style.cssText='position:fixed;top:0;left:0;opacity:0;pointer-events:none';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);showToast('\u2713 Copied for '+name+' \u2014 paste into email or WhatsApp');}
-  if(navigator.clipboard&&document.hasFocus()){navigator.clipboard.writeText(msg).then(function(){showToast('\u2713 Copied for '+name+' \u2014 paste into email or WhatsApp');}).catch(doCopy);}else{doCopy();}
-}
-
-function pcGenCode(oldCode) {
-  // Generate a new random code and replace the old one
-  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  var newCode = 'NRB' + new Date().getFullYear() + '-';
-  for (var i = 0; i < 2; i++) newCode += chars[Math.floor(Math.random() * chars.length)];
-  newCode += Math.floor(Math.random() * 10);
-  // Save the mapping
-  var saved = {};
-  try { saved = JSON.parse(localStorage.getItem('n2055_preview_names') || '{}'); } catch {}
-  var name = (document.getElementById('pc-name-' + oldCode) || {}).value || PREVIEW_CODES[oldCode] || 'Peer Reviewer';
-  delete saved[oldCode];
-  saved[newCode] = name;
-  // Clear any active session for old code
-  var sessions = {};
-  try { sessions = JSON.parse(localStorage.getItem('n2055_preview') || '{}'); } catch {}
-  delete sessions[oldCode];
-  localStorage.setItem('n2055_preview_names', JSON.stringify(saved));
-  localStorage.setItem('n2055_preview', JSON.stringify(sessions));
-  // Update PREVIEW_CODES in memory
-  PREVIEW_CODES[newCode] = name;
-  delete PREVIEW_CODES[oldCode];
-  showToast('New code generated: ' + newCode + ' — refresh codes panel to see it');
-  openPreviewCodesModal();
-}
-
-function pcResetCode(code) {
-  // Clear the active session for this code so it can be reused
-  var sessions = {};
-  try { sessions = JSON.parse(localStorage.getItem('n2055_preview') || '{}'); } catch {}
-  delete sessions[code];
-  localStorage.setItem('n2055_preview', JSON.stringify(sessions));
-  showToast('Code ' + code + ' reset — can be used again for a fresh 25-min session');
-}
-
-
-
-
-// ── PREVIEW ACCESS SYSTEM ───────────────────────────────────
-const PREVIEW_CODES = {"NRB2055-A1": "Peer Reviewer A", "NRB2055-B2": "Peer Reviewer B", "NRB2055-C3": "Peer Reviewer C", "NRB2055-D4": "Peer Reviewer D", "NRB2055-E5": "Peer Reviewer E", "NRB2055-F6": "Peer Reviewer F", "NRB2055-G7": "Peer Reviewer G", "NRB2055-H8": "Peer Reviewer H", "NRB2055-J9": "Peer Reviewer J", "NRB2055-K0": "Peer Reviewer K"};
-const PREVIEW_DURATION = 25 * 60 * 1000; // 25 minutes in ms
-const PREVIEW_KEY = 'n2055_preview';
-let previewTimer = null;
-
-function getPreviewSession(){
-  try{ return JSON.parse(localStorage.getItem(PREVIEW_KEY)||'null'); }catch{return null;}
-}
-function savePreviewSession(data){
-  try{ localStorage.setItem(PREVIEW_KEY, JSON.stringify(data)); }catch{}
-}
-
-function startPreviewSession(code, name){
-  const now = Date.now();
-  const session = { code, name, startTime: now, expires: now + PREVIEW_DURATION };
-  savePreviewSession(session);
-  activatePreviewUI(session);
-}
-
-function activatePreviewUI(session){
-  // Load saved name for this code if admin updated it
-  let displayName = session.name;
-  try{
-    const saved = JSON.parse(localStorage.getItem('n2055_preview_names')||'{}');
-    if(saved[session.code]) displayName = saved[session.code];
-  }catch{}
-  // Watermark
-  const wm = document.getElementById('previewWatermark');
-  if(wm) wm.textContent = 'CONFIDENTIAL PREVIEW · ' + displayName + ' · NAIROBI 2055';
-  
-  // Timer
-  const timerEl = document.getElementById('previewTimer');
-  const countEl = document.getElementById('ptCount');
-  if(timerEl) timerEl.classList.add('active');
-  
-  function tick(){
-    const remaining = session.expires - Date.now();
-    if(remaining <= 0){
-      clearInterval(previewTimer);
-      expireSession();
-      return;
-    }
-    const mins = Math.floor(remaining/60000);
-    const secs = Math.floor((remaining%60000)/1000);
-    const label = mins + ':' + String(secs).padStart(2,'0');
-    if(countEl){
-      countEl.textContent = label;
-      countEl.className = remaining < 5*60000 ? 'pt-urgent' : '';
-    }
-  }
-  tick();
-  previewTimer = setInterval(tick, 1000);
-}
-
-function expireSession(){
-  // Clear session
-  localStorage.removeItem(PREVIEW_KEY);
-  localStorage.removeItem('n2055_auth');
-  // Show expired screen
-  const exp = document.getElementById('sessionExpired');
-  if(exp) exp.classList.add('active');
-  // Hide dashboard
-  document.getElementById('main').style.display='none';
-}
-
-function checkPreviewCode(code){
-  const upper = code.toUpperCase().trim();
-  return PREVIEW_CODES[upper] || null;
-}
-
-window.lgSubmitPreview = function(){
-  const v = document.getElementById('lgPreviewCode').value;
-  const name = checkPreviewCode(v);
-  if(name){
-    // Valid code — check if already used/expired
-    const existing = getPreviewSession();
-    if(existing && existing.expires > Date.now()){
-      // Resume active session (any code resumes current session)
-      document.getElementById('loginGate').classList.add('hidden');
-      localStorage.setItem('n2055_auth','1');
-      localStorage.removeItem('n2055_admin');
-      activatePreviewUI(existing);
-    } else {
-      // Fresh session
-      document.getElementById('loginGate').classList.add('hidden');
-      localStorage.setItem('n2055_auth','1');
-      localStorage.removeItem('n2055_admin'); // preview = not admin
-      startPreviewSession(v.toUpperCase().trim(), name);
-    }
-  } else {
-    const e = document.getElementById('lgErr');
-    e.textContent = 'Invalid preview code. Please check and try again.';
-    setTimeout(()=>e.textContent='', 3000);
-  }
-};
-
-// On page load — check for active preview session
+// Swipe-down to close the filter sheet
 (function(){
-  const session = getPreviewSession();
-  if(session && session.expires > Date.now()){
-    document.addEventListener('DOMContentLoaded',()=>{
-      const gate = document.getElementById('loginGate');
-      if(gate) gate.classList.add('hidden');
-      activatePreviewUI(session);
-    });
-  } else if(session && session.expires <= Date.now()){
-    localStorage.removeItem(PREVIEW_KEY);
-    localStorage.removeItem('n2055_auth');
-  }
+  let startY=0;
+  document.addEventListener('touchstart',e=>{if(document.getElementById('mobSheet').classList.contains('open'))startY=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',e=>{
+    if(!document.getElementById('mobSheet').classList.contains('open'))return;
+    if(e.changedTouches[0].clientY-startY>60)closeMobSheet();
+  },{passive:true});
 })();
-
-
-function savePreviewNames(){
-  // Names are display-only in this version — stored in localStorage
-  const updates = {};
-  Object.keys({"NRB2055-A1": "Peer Reviewer A", "NRB2055-B2": "Peer Reviewer B", "NRB2055-C3": "Peer Reviewer C", "NRB2055-D4": "Peer Reviewer D", "NRB2055-E5": "Peer Reviewer E", "NRB2055-F6": "Peer Reviewer F", "NRB2055-G7": "Peer Reviewer G", "NRB2055-H8": "Peer Reviewer H", "NRB2055-J9": "Peer Reviewer J", "NRB2055-K0": "Peer Reviewer K"}).forEach(code => {
-    const inp = document.getElementById('pcn-'+code);
-    if(inp) updates[code] = inp.value;
-  });
-  localStorage.setItem('n2055_preview_names', JSON.stringify(updates));
-  // Show confirmation
-  const btn = document.querySelector('.save-codes-btn');
-  if(btn){ btn.textContent='✓ Saved!'; setTimeout(()=>btn.textContent='✓ Save Names',1500); }
-}
-
-
-function copyCode(btn, code){
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(code).then(()=>{
-      btn.textContent='Copied!';
-      setTimeout(()=>btn.textContent='Copy',1500);
-    });
-  } else {
-    btn.textContent='Copied!';
-    setTimeout(()=>btn.textContent='Copy',1500);
-  }
-}
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
 render();if(typeof applyLinkOverrides!=="undefined")applyLinkOverrides();applyAdminMode();
@@ -4580,6 +4300,17 @@ document.addEventListener('DOMContentLoaded', function() {
   var inp = document.getElementById('vizSearchInput');
   if (inp) inp.addEventListener('input', function() { renderVizResults(this.value); _vsActive = -1; });
 })();
+
+// ── SERVICE WORKER REGISTRATION ────────────────────────────
+if('serviceWorker' in navigator){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').then(function(reg){
+      console.log('SW registered:', reg.scope);
+    }).catch(function(err){
+      console.log('SW registration failed:', err);
+    });
+  });
+}
 
 </script>
 <template id="viz-tpl-land_reg-map"><svg viewBox="0 0 544 370" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
@@ -9269,6 +9000,50 @@ document.addEventListener('DOMContentLoaded', function() {
   <span class="ab-label">⬡ Admin</span>
   <button class="ab-logout" onclick="adminLogout()">Log out</button>
 </div>
+<!-- ── MOBILE BOTTOM NAV ────────────────────────────────────── -->
+<div class="mob-sheet-ov" id="mobSheetOv" onclick="closeMobSheet()"></div>
+<div class="mob-sheet" id="mobSheet">
+  <div class="mob-sheet-handle"></div>
+  <div class="mob-sheet-title">Filters</div>
+  <div class="mob-sheet-section">
+    <div class="mob-sheet-lbl">Scenario</div>
+    <div class="mob-sheet-btns" id="mob-sc-btns">
+      <button class="sb so" id="msc-opt" onclick="setSc('opt')" style="background:#3DBF78">🚀 Optimistic</button>
+      <button class="sb" id="msc-rea" onclick="setSc('rea')">📊 Realistic</button>
+      <button class="sb" id="msc-dis" onclick="setSc('dis')">⚡ Disruption</button>
+      <button class="sb" id="msc-cri" onclick="setSc('cri')">🌊 Crisis</button>
+    </div>
+  </div>
+  <div class="mob-sheet-section">
+    <div class="mob-sheet-lbl">Phase</div>
+    <div class="mob-sheet-btns" id="mob-ph-btns">
+      <button class="pb po" id="mph-1" onclick="setPh(1)">Phase 1 · 2025–35</button>
+      <button class="pb" id="mph-2" onclick="setPh(2)">Phase 2 · 2035–45</button>
+      <button class="pb" id="mph-3" onclick="setPh(3)">Phase 3 · 2045–55</button>
+    </div>
+  </div>
+  <button class="mob-sheet-done" onclick="closeMobSheet()">Done</button>
+</div>
+<nav class="mob-nav" id="mobNav" aria-label="Main navigation">
+  <button class="mob-nav-item mn-active" id="mn-pillars" onclick="setView('pillars')">
+    <span class="mob-nav-ico">⬡</span><span class="mob-nav-lbl">Pillars</span>
+  </button>
+  <button class="mob-nav-item" id="mn-timeline" onclick="setView('timeline')">
+    <span class="mob-nav-ico">↔</span><span class="mob-nav-lbl">Timeline</span>
+  </button>
+  <button class="mob-nav-item" id="mn-progress" onclick="setView('progress')">
+    <span class="mob-nav-ico">◎</span><span class="mob-nav-lbl">Progress</span>
+  </button>
+  <button class="mob-nav-item" id="mn-partners" onclick="setView('partners')">
+    <span class="mob-nav-ico">🤝</span><span class="mob-nav-lbl">Partners</span>
+  </button>
+  <button class="mob-nav-item" id="mn-voices" onclick="setView('voices')">
+    <span class="mob-nav-ico">🗣</span><span class="mob-nav-lbl">Voices</span>
+  </button>
+  <button class="mob-nav-item" id="mn-filter" onclick="openMobSheet()">
+    <span class="mob-nav-ico">⚙</span><span class="mob-nav-lbl">Filters</span>
+  </button>
+</nav>
 <!-- Build: 2026-04-07T19:30 -->
 <!-- Voices Modal — always in DOM, shown/hidden by JS -->
 <div id="vc-modal-overlay" class="vc-modal-overlay" style="display:none" onclick="vcOverlayClick(event)">
