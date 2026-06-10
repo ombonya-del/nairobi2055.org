@@ -8,6 +8,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nairobi 2055 — Transformation Master Plan</title>
 <meta name="theme-color" content="#1A1D16">
+<script>
+// Early admin bypass — runs in <head> before any HTML is rendered
+(function(){
+  try {
+    var p = new URLSearchParams(window.location.search);
+    var v = p.get('admin');
+    if(v && v === atob('Qm9tQE5vbUA=')){
+      localStorage.setItem('n2055_auth','1');
+      localStorage.setItem('n2055_admin','1');
+      localStorage.setItem('n2055_admin_persist','1');
+      // Inject style to hide gate before it renders — no DOM manipulation needed
+      document.write('<style>#loginGate{display:none!important}</style>');
+      window.history.replaceState({},document.title,window.location.pathname);
+    } else if(localStorage.getItem('n2055_auth')==='1'){
+      document.write('<style>#loginGate{display:none!important}</style>');
+    }
+  } catch(e){}
+})();
+</script>
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
