@@ -39,7 +39,29 @@
       "purpose": "maskable"
     }
   ],
-  "screenshots": [],
+  "screenshots": [
+    {
+      "src": "screenshot-mobile-1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "The 10 transformation pillars"
+    },
+    {
+      "src": "screenshot-mobile-2.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Africa's boldest urban transformation"
+    },
+    {
+      "src": "screenshot-desktop-1.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Nairobi 2055 — Transformation Master Plan"
+    }
+  ],
   "shortcuts": [
     {
       "name": "Pillars",
