@@ -15,7 +15,7 @@
      A city full of PEOPLE. Self-contained, ~54s seamless loop (8 scenes).
      ============================================================ */
   :root{
-    --t:54s;
+    --t:75s;
     --navy:#1A1D16; --navy2:#21251C;
     --gold:#C8A84B; --cream:#F0EAD6; --muted:#A0A898;
     --green:#5DBF7A; --teal:#3FBFB0; --blue:#378ADD;
@@ -26,6 +26,9 @@
   html,body{height:100%;background:#000;overflow:hidden;font-family:'Georgia','Times New Roman',serif}
   .stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#000}
   .frame{position:relative;width:100vw;height:56.25vw;max-height:100vh;max-width:177.78vh;overflow:hidden;background:var(--navy)}
+  .frame.paused *{animation-play-state:paused!important}
+  .ctrls{position:absolute;left:0;right:0;top:8.5%;z-index:60;display:flex;justify-content:center;gap:10px;pointer-events:none}
+  .ctrls button{pointer-events:auto}
   .scene{position:absolute;inset:0;opacity:0;will-change:opacity}
   .layer{position:absolute;inset:0}
 
@@ -45,27 +48,27 @@
   .s3{animation:vis3 var(--t) linear infinite}.s4{animation:vis4 var(--t) linear infinite}
   .s5{animation:vis5 var(--t) linear infinite}.s6{animation:vis6 var(--t) linear infinite}
   .s7{animation:vis7 var(--t) linear infinite}.s8{animation:vis8 var(--t) linear infinite}
-  @keyframes vis1{0%{opacity:0}2.4%{opacity:1}11.9%{opacity:1}14.5%{opacity:0}100%{opacity:0}}
-  @keyframes vis2{0%,11.9%{opacity:0}14.5%{opacity:1}24.6%{opacity:1}27.2%{opacity:0}100%{opacity:0}}
-  @keyframes vis3{0%,24.6%{opacity:0}27.2%{opacity:1}37.2%{opacity:1}39.8%{opacity:0}100%{opacity:0}}
-  @keyframes vis4{0%,37.2%{opacity:0}39.8%{opacity:1}49.9%{opacity:1}52.5%{opacity:0}100%{opacity:0}}
-  @keyframes vis5{0%,49.9%{opacity:0}52.5%{opacity:1}62.5%{opacity:1}65.1%{opacity:0}100%{opacity:0}}
-  @keyframes vis6{0%,62.5%{opacity:0}65.1%{opacity:1}75.1%{opacity:1}77.7%{opacity:0}100%{opacity:0}}
-  @keyframes vis7{0%,75.1%{opacity:0}77.7%{opacity:1}87.8%{opacity:1}90.4%{opacity:0}100%{opacity:0}}
-  @keyframes vis8{0%,87.8%{opacity:0}90.4%{opacity:1}100%{opacity:1}}
+  @keyframes vis1{0%,0.3%{opacity:0}2.0%{opacity:1}10.7%{opacity:1}12.4%{opacity:0}100%{opacity:0}}
+  @keyframes vis2{0%,10.9%{opacity:0}12.7%{opacity:1}24.0%{opacity:1}25.7%{opacity:0}100%{opacity:0}}
+  @keyframes vis3{0%,23.6%{opacity:0}25.3%{opacity:1}37.3%{opacity:1}39.1%{opacity:0}100%{opacity:0}}
+  @keyframes vis4{0%,36.3%{opacity:0}38.0%{opacity:1}48.0%{opacity:1}49.7%{opacity:0}100%{opacity:0}}
+  @keyframes vis5{0%,46.9%{opacity:0}48.7%{opacity:1}60.0%{opacity:1}61.7%{opacity:0}100%{opacity:0}}
+  @keyframes vis6{0%,58.9%{opacity:0}60.7%{opacity:1}72.0%{opacity:1}73.7%{opacity:0}100%{opacity:0}}
+  @keyframes vis7{0%,70.9%{opacity:0}72.7%{opacity:1}82.7%{opacity:1}84.4%{opacity:0}100%{opacity:0}}
+  @keyframes vis8{0%,80%{opacity:0}82%{opacity:1}100%{opacity:1}}
 
   .r1{opacity:0;animation:rv1 var(--t) ease-out infinite}.r2{opacity:0;animation:rv2 var(--t) ease-out infinite}
   .r3{opacity:0;animation:rv3 var(--t) ease-out infinite}.r4{opacity:0;animation:rv4 var(--t) ease-out infinite}
   .r5{opacity:0;animation:rv5 var(--t) ease-out infinite}.r6{opacity:0;animation:rv6 var(--t) ease-out infinite}
   .r7{opacity:0;animation:rv7 var(--t) ease-out infinite}.r8{opacity:0;animation:rv8 var(--t) ease-out infinite}
-  @keyframes rv1{0%,3.5%{opacity:0;transform:translateY(20px)}5.6%{opacity:1;transform:none}11.4%{opacity:1}12.9%{opacity:0}100%{opacity:0}}
-  @keyframes rv2{0%,15.6%{opacity:0;transform:translateY(20px)}17.7%{opacity:1;transform:none}24.0%{opacity:1}25.5%{opacity:0}100%{opacity:0}}
-  @keyframes rv3{0%,28.3%{opacity:0;transform:translateY(20px)}30.3%{opacity:1;transform:none}36.7%{opacity:1}38.1%{opacity:0}100%{opacity:0}}
-  @keyframes rv4{0%,40.9%{opacity:0;transform:translateY(20px)}43.0%{opacity:1;transform:none}49.3%{opacity:1}50.8%{opacity:0}100%{opacity:0}}
-  @keyframes rv5{0%,53.6%{opacity:0;transform:translateY(20px)}55.6%{opacity:1;transform:none}61.9%{opacity:1}63.4%{opacity:0}100%{opacity:0}}
-  @keyframes rv6{0%,66.2%{opacity:0;transform:translateY(20px)}68.2%{opacity:1;transform:none}74.6%{opacity:1}76.1%{opacity:0}100%{opacity:0}}
-  @keyframes rv7{0%,78.8%{opacity:0;transform:translateY(20px)}80.9%{opacity:1;transform:none}87.2%{opacity:1}88.7%{opacity:0}100%{opacity:0}}
-  @keyframes rv8{0%,91.5%{opacity:0;transform:translateY(26px) scale(.96)}93.5%{opacity:1;transform:none}100%{opacity:1}}
+  @keyframes rv1{0%,2.0%{opacity:0;transform:translateY(20px)}4.3%{opacity:1;transform:none}10.3%{opacity:1}11.6%{opacity:0}100%{opacity:0}}
+  @keyframes rv2{0%,12.7%{opacity:0;transform:translateY(20px)}14.9%{opacity:1;transform:none}23.6%{opacity:1}24.9%{opacity:0}100%{opacity:0}}
+  @keyframes rv3{0%,25.3%{opacity:0;transform:translateY(20px)}27.6%{opacity:1;transform:none}36.9%{opacity:1}38.3%{opacity:0}100%{opacity:0}}
+  @keyframes rv4{0%,38.0%{opacity:0;transform:translateY(20px)}40.3%{opacity:1;transform:none}47.6%{opacity:1}48.9%{opacity:0}100%{opacity:0}}
+  @keyframes rv5{0%,48.7%{opacity:0;transform:translateY(20px)}50.9%{opacity:1;transform:none}59.6%{opacity:1}60.9%{opacity:0}100%{opacity:0}}
+  @keyframes rv6{0%,60.7%{opacity:0;transform:translateY(20px)}62.9%{opacity:1;transform:none}71.6%{opacity:1}72.9%{opacity:0}100%{opacity:0}}
+  @keyframes rv7{0%,72.7%{opacity:0;transform:translateY(20px)}74.9%{opacity:1;transform:none}82.3%{opacity:1}83.6%{opacity:0}100%{opacity:0}}
+  @keyframes rv8{0%,88%{opacity:0;transform:translateY(26px) scale(.96)}92%{opacity:1;transform:none}100%{opacity:1}}
 
   .sky-night{background:radial-gradient(140% 120% at 50% 120%,#3a3320 0%,#23261b 42%,#14160f 100%)}
   .sky-dawn {background:linear-gradient(180deg,#181a22 0%,#3a3550 36%,#7a5a55 64%,#c98a4b 86%,#e8b56a 100%)}
@@ -103,22 +106,29 @@
 
   /* transport: matatu→rail morph (seated on the transit corridor) + street vehicles */
   .matatu{position:absolute;left:50%;top:56%;width:30%;transform:translateX(-50%);animation:matatuOut var(--t) ease-in infinite}
-  @keyframes matatuOut{0%,14.8%{opacity:0;transform:translate(-90%,0)}16%{opacity:1;transform:translate(-50%,0)}19%{opacity:1;transform:translate(-50%,0)}20.5%{opacity:0;transform:translate(-50%,0) scale(.9)}100%{opacity:0}}
-  .rail{position:absolute;left:-46%;top:58%;width:50%;animation:railIn var(--t) cubic-bezier(.25,.7,.35,1) infinite}
-  @keyframes railIn{0%,19.5%{opacity:0;transform:translateX(-120%)}20.5%{opacity:1}21.7%{opacity:1;transform:translateX(20%)}24%{opacity:1;transform:translateX(110%)}24.8%{opacity:0;transform:translateX(150%)}100%{opacity:0}}
+  @keyframes matatuOut{0%,13.7%{opacity:0;transform:translate(-90%,0)}15.1%{opacity:1;transform:translate(-50%,0)}17.7%{opacity:1;transform:translate(-50%,0)}19.1%{opacity:0;transform:translate(-50%,0)}100%{opacity:0}}
+  .rail{position:absolute;left:-46%;top:58%;width:50%;animation:railIn var(--t) cubic-bezier(.34,.55,.5,1) infinite}
+  @keyframes railIn{0%,18.0%{opacity:0;transform:translateX(-120%)}18.7%{opacity:1;transform:translateX(-90%)}20.7%{opacity:1;transform:translateX(120%)}22.4%{opacity:1;transform:translateX(280%)}23.7%{opacity:1;transform:translateX(360%)}24.0%{opacity:0;transform:translateX(360%)}100%{opacity:0}}
   .eboda{position:absolute;left:0;top:77%;width:13%;animation:bodaMove var(--t) linear infinite}
-  @keyframes bodaMove{0%,14.6%{opacity:0;transform:translateX(-140%)}15.6%{opacity:1}24%{opacity:1;transform:translateX(600%)}24.8%{opacity:0;transform:translateX(660%)}100%{opacity:0}}
+  @keyframes bodaMove{0%,14.0%{opacity:0;transform:translateX(-140%)}15.0%{opacity:1}22.5%{opacity:1;transform:translateX(600%)}23.5%{opacity:0;transform:translateX(660%)}100%{opacity:0}}
   .etrike{position:absolute;right:0;top:79%;width:15%;animation:trikeMove var(--t) linear infinite}
-  @keyframes trikeMove{0%,15%{opacity:0;transform:translateX(140%)}16%{opacity:1}24%{opacity:1;transform:translateX(-560%)}24.8%{opacity:0;transform:translateX(-620%)}100%{opacity:0}}
+  @keyframes trikeMove{0%,14.5%{opacity:0;transform:translateX(140%)}15.5%{opacity:1}22.5%{opacity:1;transform:translateX(-560%)}23.5%{opacity:0;transform:translateX(-620%)}100%{opacity:0}}
   .sparks{animation:twinkle 1.1s ease-in-out infinite}
   @keyframes note{0%{opacity:0;transform:translateY(0)}20%{opacity:1}100%{opacity:0;transform:translateY(-70px)}}
   /* health + governance motion */
   @keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   @keyframes heliFly{0%{transform:translate(-220px,40px)}100%{transform:translate(1520px,-20px)}}
-  @keyframes stamp{0%,83%{opacity:0;transform:translateY(-60px) scale(1.6)}84.9%{opacity:1;transform:translateY(0) scale(1)}85.7%{transform:translateY(0) scale(1.09)}86.5%,100%{opacity:1;transform:translateY(0) scale(1)}}
-  @keyframes gavel{0%,80%{transform:rotate(-30deg)}82%{transform:rotate(8deg)}84%,100%{transform:rotate(-3deg)}}
-  @keyframes checkpop{0%,78.5%{opacity:0;transform:scale(.2)}80.5%{opacity:1;transform:scale(1.15)}82.5%,100%{opacity:1;transform:scale(1)}}
-  @keyframes flash{0%,87.8%{opacity:0}90.4%{opacity:.85}94%{opacity:0}100%{opacity:0}}
+  @keyframes stamp{0%,77.3%{opacity:0;transform:translateY(-60px) scale(1.6)}78.7%{opacity:1;transform:translateY(0) scale(1)}79.6%{transform:translateY(0) scale(1.09)}80.7%,100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes checkpop{0%,76.0%{opacity:0;transform:scale(.2)}78.0%{opacity:1;transform:scale(1.15)}79.6%,100%{opacity:1;transform:scale(1)}}
+  /* closing recap montage — plays under the closing line "Nairobi. Twenty fifty-five…" */
+  @keyframes m1{0%,82.8%{opacity:0}83.3%{opacity:1}84.3%{opacity:1}84.8%{opacity:0}100%{opacity:0}}
+  @keyframes m2{0%,84.3%{opacity:0}84.8%{opacity:1}85.8%{opacity:1}86.3%{opacity:0}100%{opacity:0}}
+  @keyframes m3{0%,85.8%{opacity:0}86.3%{opacity:1}87.2%{opacity:1}87.7%{opacity:0}100%{opacity:0}}
+  @keyframes m4{0%,87.2%{opacity:0}87.7%{opacity:1}88.7%{opacity:1}89.2%{opacity:0}100%{opacity:0}}
+  @keyframes m5{0%,88.7%{opacity:0}89.2%{opacity:1}90.2%{opacity:1}90.7%{opacity:0}100%{opacity:0}}
+  @keyframes m6{0%,90.2%{opacity:0}90.7%{opacity:1}92.4%{opacity:1}92.7%{opacity:0}100%{opacity:0}}
+  @keyframes blackout{0%,93.1%{opacity:0}94.7%{opacity:1}100%{opacity:1}}
+  @keyframes urlin{0%,95.3%{opacity:0}96.9%{opacity:1}100%{opacity:1}}
 
   @media(max-width:760px){.cap .h{font-size:5.6vw}.cap .k,.cap .s{font-size:2.3vw}.replay{font-size:2.3vw}}
 </style>
@@ -189,6 +199,7 @@
         <circle cx="-28" cy="0" r="3" fill="#5DBF7A" style="animation:beacon .8s infinite;animation-delay:.4s"/>
       </g></g>
     </svg>
+    <div class="layer" style="background:linear-gradient(180deg,rgba(8,10,6,.62) 0%,rgba(8,10,6,.32) 28%,transparent 50%);z-index:39"></div>
     <div class="cap r1" style="top:30%">
       <div class="k">Transformation Master Plan · 2025 → 2055</div>
       <div class="h"><em>Africa's</em> boldest urban transformation</div>
@@ -282,7 +293,7 @@
     <div class="cap r2" style="top:11%">
       <div class="k">Pillar · Green Mass Transport</div>
       <div class="h">The matatu fleet, <em>reborn as rail</em></div>
-      <div class="s">Mass rail &amp; BRT · 50,000 e-bodas on battery-swap · cargo e-trikes replacing the mkokoteni</div>
+      <div class="s">The matatu buyback scheme → mass rail &amp; BRT · 50,000 e-bodas on battery-swap · cargo e-trikes for the mkokoteni</div>
     </div>
   </div>
 
@@ -338,33 +349,30 @@
         <g style="animation:laundry 2.4s ease-in-out infinite;animation-delay:.3s"><rect x="1144" y="556" width="18" height="26" fill="#3FBFB0"/></g>
       </g>
     </svg>
-    <!-- residents: a lane full of life — vendors, kids, a football game (lifted clear of the bottom bar) -->
+    <!-- residents on a dusty lane — everyone grounded on the same line -->
     <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice">
-     <g transform="translate(0,-96)">
-      <!-- fruit & veg stall with striped awning + vendor -->
+      <rect x="0" y="822" width="1600" height="78" fill="#a98a5e"/><rect x="0" y="822" width="1600" height="6" fill="#8f7349"/>
+      <!-- fruit & veg stall + vendor -->
       <g>
-        <rect x="120" y="800" width="150" height="14" fill="#5a4a3a"/>
-        <g><rect x="120" y="772" width="25" height="28" fill="#E85050"/><rect x="145" y="772" width="25" height="28" fill="#F0EAD6"/><rect x="170" y="772" width="25" height="28" fill="#E85050"/><rect x="195" y="772" width="25" height="28" fill="#F0EAD6"/><rect x="220" y="772" width="25" height="28" fill="#E85050"/><rect x="245" y="772" width="25" height="28" fill="#F0EAD6"/></g>
-        <rect x="126" y="814" width="10" height="70" fill="#5a4a3a"/><rect x="254" y="814" width="10" height="70" fill="#5a4a3a"/>
-        <g><circle cx="150" cy="820" r="9" fill="#E8844A"/><circle cx="172" cy="820" r="9" fill="#E8844A"/><circle cx="194" cy="822" r="9" fill="#E85050"/><circle cx="216" cy="820" r="9" fill="#5DBF7A"/><circle cx="238" cy="822" r="9" fill="#C8A84B"/></g>
-        <g transform="translate(290,884)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#5DBF7A"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
+        <rect x="120" y="724" width="150" height="14" fill="#5a4a3a"/>
+        <g><rect x="120" y="696" width="25" height="28" fill="#E85050"/><rect x="145" y="696" width="25" height="28" fill="#F0EAD6"/><rect x="170" y="696" width="25" height="28" fill="#E85050"/><rect x="195" y="696" width="25" height="28" fill="#F0EAD6"/><rect x="220" y="696" width="25" height="28" fill="#E85050"/><rect x="245" y="696" width="25" height="28" fill="#F0EAD6"/></g>
+        <rect x="126" y="738" width="10" height="84" fill="#5a4a3a"/><rect x="254" y="738" width="10" height="84" fill="#5a4a3a"/>
+        <g><circle cx="150" cy="744" r="9" fill="#E8844A"/><circle cx="172" cy="744" r="9" fill="#E8844A"/><circle cx="194" cy="746" r="9" fill="#E85050"/><circle cx="216" cy="744" r="9" fill="#5DBF7A"/><circle cx="238" cy="746" r="9" fill="#C8A84B"/></g>
+        <g transform="translate(300,778)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#5DBF7A"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
       </g>
-      <!-- customer at the stall -->
-      <g transform="translate(350,884) scale(.95)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E85888"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-
+      <!-- customer -->
+      <g transform="translate(362,782) scale(.95)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E85888"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
       <!-- kids playing football -->
-      <g transform="translate(620,884) scale(.62)" style="animation:kick .5s ease-in-out infinite"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#378ADD"/><rect x="-18" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="8" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-      <g transform="translate(820,884) scale(.6)" style="animation:walk .6s ease-in-out infinite"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E8844A"/><rect x="-18" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="8" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-      <g style="animation:ball 2.6s ease-in-out infinite"><circle cx="690" cy="876" r="11" fill="#F0EAD6" stroke="#1A1D16" stroke-width="2"/></g>
-
-      <!-- residents going about the lane (some crossing) -->
-      <g style="animation:rideR 17s linear infinite"><g transform="translate(0,860)"><g style="animation:walk 1.4s ease-in-out infinite"><g><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#8B79E8"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g></g></g></g>
-      <g style="animation:rideL 21s linear infinite"><g transform="translate(0,866) scale(.92)"><g style="animation:walk 1.6s ease-in-out infinite"><g><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#3FBFB0"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g></g></g></g>
-      <!-- woman carrying goods on head (static, characterful) -->
-      <g transform="translate(1080,860)"><rect x="-20" y="-78" width="40" height="16" rx="4" fill="#E85050"/><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#C8A84B"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-      <g transform="translate(1300,862)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#378ADD"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-      <g transform="translate(1460,864) scale(.9)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E85050"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
-     </g>
+      <g transform="translate(620,790) scale(.62)" style="animation:kick .5s ease-in-out infinite"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#378ADD"/><rect x="-18" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="8" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
+      <g transform="translate(820,792) scale(.6)" style="animation:walk .6s ease-in-out infinite"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E8844A"/><rect x="-18" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="8" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
+      <g style="animation:ball 2.6s ease-in-out infinite"><circle cx="690" cy="806" r="11" fill="#F0EAD6" stroke="#1A1D16" stroke-width="2"/></g>
+      <!-- crossing residents -->
+      <g style="animation:rideR 17s linear infinite"><g transform="translate(0,778)"><g style="animation:walk 1.4s ease-in-out infinite"><g><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#8B79E8"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g></g></g></g>
+      <g style="animation:rideL 21s linear infinite"><g transform="translate(0,782) scale(.92)"><g style="animation:walk 1.6s ease-in-out infinite"><g><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#3FBFB0"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g></g></g></g>
+      <!-- woman carrying goods on head -->
+      <g transform="translate(1080,778)"><rect x="-20" y="-78" width="40" height="16" rx="4" fill="#E85050"/><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#C8A84B"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
+      <g transform="translate(1300,780)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#378ADD"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
+      <g transform="translate(1460,782) scale(.9)"><circle cx="0" cy="-58" r="15" fill="#6b4a32"/><rect x="-16" y="-44" width="32" height="58" rx="13" fill="#E85050"/><rect x="-14" y="14" width="11" height="30" rx="4" fill="#2c2620"/><rect x="3" y="14" width="11" height="30" rx="4" fill="#2c2620"/></g>
     </svg>
     <div class="cap r3" style="top:11%">
       <div class="k">Pillar · Urban Design &amp; Infrastructure</div>
@@ -550,7 +558,7 @@
     <div class="cap r5" style="top:11%">
       <div class="k">Pillar · Healthy Living &amp; Emergency Response</div>
       <div class="h">Care that <em>reaches everyone</em></div>
-      <div class="s">$500M into KNH &amp; Pumwani · rooftop helipads, air ambulances &amp; city-wide helicopter EMS</div>
+      <div class="s">$500M into KNH &amp; Pumwani · cancer centres, chemo wards &amp; modern equipment · rooftop helipads &amp; air ambulances</div>
     </div>
   </div>
 
@@ -784,43 +792,177 @@
     </div>
   </div>
 
-  <!-- ============ SCENE 8 — LOCKUP ============ -->
+  <!-- ============ SCENE 8 — closing settle (no title lockup; ending is black + URL) ============ -->
   <div class="scene s8">
-    <div class="layer" style="background:radial-gradient(130% 110% at 50% 36%,#2a2c20 0%,#1A1D16 64%,#101109 100%)"></div>
-    <!-- gold light-bloom hitting on the musical climax as the lockup reveals -->
-    <div class="layer" style="background:radial-gradient(circle at 50% 42%,rgba(255,221,150,.55),transparent 58%);mix-blend-mode:screen;z-index:38;animation:flash var(--t) ease-out infinite"></div>
-    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax slice" style="opacity:.5">
-      <g fill="#C8A84B">
-        <rect x="120" y="700" width="60" height="200"/><rect x="220" y="680" width="50" height="220"/>
-        <rect x="760" y="640" width="160" height="260"/><rect x="816" y="440" width="40" height="460"/>
-        <polygon points="780,406 892,406 836,452"/><rect x="830" y="378" width="12" height="30"/><circle cx="836" cy="372" r="7"/>
-        <rect x="1000" y="690" width="58" height="210"/><rect x="1120" y="670" width="64" height="230"/><rect x="1360" y="700" width="60" height="200"/>
-      </g>
-    </svg>
-    <div class="cap r8" style="top:30%">
-      <div class="s" style="color:var(--gold);font-size:1.1vw;letter-spacing:.4em;text-transform:uppercase">Transformation Master Plan</div>
-      <div class="h" style="font-size:5.2vw;letter-spacing:.01em;margin-top:.25em">Nairobi <em>2055</em></div>
-      <div class="s" style="margin-top:1.1em">10 Pillars · 280+ Interventions · $200B+ scope · 2025 → 2055</div>
-    </div>
-    <div class="hint">Now see how we get there<span class="arrow">↓</span></div>
+    <div class="layer" style="background:radial-gradient(130% 110% at 50% 42%,#23261b 0%,#161811 60%,#0c0e08 100%)"></div>
   </div>
 
   <div class="prog"><i></i></div>
   <div class="vignette"></div>
   <div class="bar top"></div>
   <div class="bar bot"></div>
-  <button class="replay" onclick="replay()">↻ Replay</button>
-  <button class="replay" id="soundBtn" style="right:auto;left:3%" onclick="toggleSound()">🔊 Sound on</button>
+  <!-- ===== closing recap montage (quick cuts under the music swell) ===== -->
+  <!-- M1 · mass transit -->
+  <div class="layer" style="z-index:46;animation:m1 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="m1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#181a22"/><stop offset=".42" stop-color="#3a3550"/><stop offset=".7" stop-color="#7a5a55"/><stop offset="1" stop-color="#c98a4b"/></linearGradient></defs>
+      <rect width="1600" height="900" fill="url(#m1sky)"/>
+      <g fill="#2a2c20" opacity=".92"><rect x="120" y="330" width="90" height="330"/><rect x="240" y="280" width="70" height="380"/><rect x="1250" y="320" width="96" height="340"/><rect x="1430" y="280" width="80" height="380"/><rect x="980" y="300" width="46" height="360"/><polygon points="950,282 1056,282 1003,330"/><rect x="997" y="258" width="12" height="26"/></g>
+      <g fill="#F0EAD6" opacity=".85"><rect x="138" y="360" width="9" height="13"/><rect x="262" y="320" width="9" height="13"/><rect x="1268" y="350" width="9" height="13"/><rect x="1450" y="320" width="9" height="13"/></g>
+      <rect x="0" y="600" width="1600" height="22" fill="#5A5E52"/><g fill="#3a3d34"><rect x="160" y="622" width="22" height="150"/><rect x="560" y="622" width="22" height="150"/><rect x="980" y="622" width="22" height="150"/><rect x="1400" y="622" width="22" height="150"/></g>
+      <rect x="0" y="762" width="1600" height="138" fill="#3a7a4f"/>
+      <g transform="translate(330,452)">
+        <rect x="0" y="0" width="940" height="150" rx="75" fill="#F0EAD6"/><path d="M0 75 Q 22 0 95 0 L95 150 Q 22 150 0 75Z" fill="#C8A84B"/>
+        <g fill="#1d2747"><rect x="160" y="42" width="92" height="60" rx="12"/><rect x="282" y="42" width="92" height="60" rx="12"/><rect x="404" y="42" width="92" height="60" rx="12"/><rect x="526" y="42" width="92" height="60" rx="12"/><rect x="648" y="42" width="92" height="60" rx="12"/><rect x="770" y="42" width="92" height="60" rx="12"/></g>
+        <rect x="42" y="58" width="48" height="34" rx="8" fill="#3FBFB0"/><rect x="0" y="150" width="940" height="9" fill="#9c8638"/>
+        <rect x="190" y="8" width="560" height="24" rx="6" fill="#0c0e08"/><rect x="190" y="8" width="16" height="24" rx="6" fill="#5DBF7A"/>
+        <text x="478" y="26" text-anchor="middle" font-family="Segoe UI,Arial" font-size="15" font-weight="700" fill="#C8A84B" letter-spacing="2">THIKA · GITHURAI · CBD</text>
+      </g>
+      <g transform="translate(250,792)"><circle cx="-30" cy="34" r="20" fill="none" stroke="#1A1D16" stroke-width="6"/><circle cx="32" cy="34" r="20" fill="none" stroke="#1A1D16" stroke-width="6"/><path d="M-30 34 L2 6 L32 34 M2 6 L16 6" fill="none" stroke="#3FBFB0" stroke-width="6"/><g transform="translate(2,6)"><circle cx="0" cy="-30" r="12" fill="#6b4a32"/><rect x="-13" y="-19" width="26" height="26" rx="10" fill="#E8844A"/></g></g>
+      <g transform="translate(1180,800)"><circle cx="-28" cy="40" r="18" fill="none" stroke="#1A1D16" stroke-width="6"/><circle cx="60" cy="40" r="20" fill="none" stroke="#1A1D16" stroke-width="6"/><rect x="12" y="-6" width="86" height="46" rx="7" fill="#C8A84B"/><path d="M-28 40 L4 2 L40 2" fill="none" stroke="#378ADD" stroke-width="7"/></g>
+      <g fill="#140d12"><g transform="translate(720,800)"><circle cx="0" cy="0" r="16"/><rect x="-13" y="14" width="26" height="70" rx="10"/></g><g transform="translate(770,805) scale(.9)"><circle cx="0" cy="0" r="16"/><rect x="-13" y="14" width="26" height="70" rx="10"/></g></g>
+      <rect x="0" y="788" width="1600" height="112" fill="#000" opacity=".34"/>
+      <text x="800" y="850" text-anchor="middle" font-family="Segoe UI,Arial" font-size="44" font-weight="700" fill="#C8A84B" letter-spacing="7">MASS TRANSIT</text>
+      <text x="800" y="884" text-anchor="middle" font-family="Segoe UI,Arial" font-size="22" fill="#F0EAD6" letter-spacing="2">Matatu buyback → rail, BRT &amp; e-bodas</text>
+    </svg>
+  </div>
+  <!-- M2 · homes upgraded in place -->
+  <div class="layer" style="z-index:46;animation:m2 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="m2sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a3a"/><stop offset=".5" stop-color="#3f6f86"/><stop offset="1" stop-color="#cdeee4"/></linearGradient></defs>
+      <rect width="1600" height="900" fill="url(#m2sky)"/>
+      <path d="M0 340 Q 200 280 360 330 Q 520 270 700 340 Q 880 290 1040 340 Q 1240 280 1420 340 L1600 340 L1600 900 L0 900Z" fill="#6f9a86" opacity=".55"/>
+      <g opacity=".85"><rect x="80" y="430" width="160" height="200" fill="#caa477"/><rect x="260" y="410" width="150" height="220" fill="#b98c5e"/><rect x="1180" y="420" width="160" height="210" fill="#caa477"/><rect x="1380" y="410" width="160" height="220" fill="#d8b98e"/></g>
+      <g><rect x="120" y="560" width="280" height="340" fill="#d9b483"/><rect x="420" y="590" width="280" height="310" fill="#c79a64"/><rect x="720" y="550" width="280" height="350" fill="#e0c79a"/><rect x="1020" y="590" width="280" height="310" fill="#cfa873"/><rect x="1320" y="560" width="280" height="340" fill="#d9b483"/></g>
+      <g fill="#F0EAD6"><rect x="170" y="610" width="48" height="56"/><rect x="300" y="610" width="48" height="56"/><rect x="470" y="640" width="48" height="56"/><rect x="770" y="600" width="48" height="56"/><rect x="900" y="600" width="48" height="56"/><rect x="1070" y="640" width="48" height="56"/><rect x="1370" y="610" width="48" height="56"/><rect x="1500" y="610" width="48" height="56"/></g>
+      <g fill="#5DBF7A"><rect x="120" y="546" width="280" height="16"/><rect x="720" y="536" width="280" height="16"/><rect x="1320" y="546" width="280" height="16"/></g>
+      <g fill="#3FBFB0"><circle cx="560" cy="576" r="20"/><circle cx="1160" cy="576" r="20"/></g>
+      <g fill="#378ADD" opacity=".9"><rect x="470" y="566" width="70" height="24" rx="5"/><rect x="1060" y="566" width="70" height="24" rx="5"/></g>
+      <g><rect x="240" y="780" width="46" height="120" fill="#378ADD"/><rect x="540" y="800" width="46" height="100" fill="#E8844A"/><rect x="840" y="775" width="46" height="125" fill="#8B79E8"/><rect x="1140" y="800" width="46" height="100" fill="#E85050"/><rect x="1440" y="780" width="46" height="120" fill="#3FBFB0"/></g>
+      <g stroke="#5a4a3a" stroke-width="3"><line x1="410" y1="500" x2="700" y2="520"/></g>
+      <g><rect x="440" y="502" width="22" height="34" fill="#E85050"/><rect x="490" y="506" width="22" height="34" fill="#F0EAD6"/><rect x="540" y="510" width="22" height="34" fill="#378ADD"/><rect x="590" y="513" width="22" height="34" fill="#5DBF7A"/></g>
+      <g fill="#140d12"><g transform="translate(660,830)"><circle cx="0" cy="0" r="16"/><rect x="-13" y="14" width="26" height="64" rx="10"/></g><g transform="translate(1000,835) scale(.9)"><circle cx="0" cy="0" r="16"/><rect x="-13" y="14" width="26" height="64" rx="10"/></g></g>
+      <rect x="0" y="788" width="1600" height="112" fill="#000" opacity=".34"/>
+      <text x="800" y="850" text-anchor="middle" font-family="Segoe UI,Arial" font-size="44" font-weight="700" fill="#F0EAD6" letter-spacing="7">HOMES, IN PLACE</text>
+      <text x="800" y="884" text-anchor="middle" font-family="Segoe UI,Arial" font-size="22" fill="#F0EAD6" letter-spacing="2">Kibera &amp; Mathare, upgraded — not evicted</text>
+    </svg>
+  </div>
+  <!-- M3 · rivers & parks -->
+  <div class="layer" style="z-index:46;animation:m3 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="m3sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a3a"/><stop offset=".5" stop-color="#3f6f86"/><stop offset="1" stop-color="#cdeee4"/></linearGradient>
+        <linearGradient id="m3riv" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bdeee6"/><stop offset="1" stop-color="#2a8f9e"/></linearGradient></defs>
+      <rect width="1600" height="900" fill="url(#m3sky)"/>
+      <path d="M0 350 Q 220 290 400 350 Q 560 290 760 360 Q 980 290 1180 350 Q 1380 290 1600 350 L1600 520 L0 520Z" fill="#5f8f78" opacity=".5"/>
+      <path d="M0 520 Q 400 470 800 520 T 1600 510 L1600 900 L0 900Z" fill="#3f8f5e"/>
+      <path d="M0 620 Q 400 580 800 620 T 1600 610 L1600 900 L0 900Z" fill="#2f6f47"/>
+      <path d="M640 520 C 720 660 560 760 740 900 L900 900 C 840 760 960 660 860 520 Z" fill="url(#m3riv)"/>
+      <path d="M560 520 Q 760 470 980 520" stroke="#b98c5e" stroke-width="12" fill="none"/>
+      <g stroke="#b98c5e" stroke-width="5"><line x1="660" y1="506" x2="660" y2="540"/><line x1="780" y1="486" x2="780" y2="524"/><line x1="900" y1="506" x2="900" y2="540"/></g>
+      <g transform="translate(200,470)"><rect x="-10" y="40" width="20" height="100" fill="#5a3a22"/><circle cx="0" cy="10" r="84" fill="#4aa55f"/><circle cx="-50" cy="46" r="58" fill="#3f9152"/><circle cx="50" cy="46" r="58" fill="#56b96b"/></g>
+      <g transform="translate(1380,470)"><rect x="-10" y="40" width="20" height="100" fill="#5a3a22"/><circle cx="0" cy="10" r="84" fill="#4aa55f"/><circle cx="50" cy="46" r="58" fill="#56b96b"/></g>
+      <ellipse cx="430" cy="700" rx="120" ry="30" fill="#E8844A" opacity=".85"/>
+      <g transform="translate(390,684)"><circle cx="0" cy="-28" r="15" fill="#6b4a32"/><rect x="-16" y="-14" width="32" height="34" rx="12" fill="#378ADD"/></g>
+      <g transform="translate(470,688)"><circle cx="0" cy="-28" r="15" fill="#6b4a32"/><rect x="-16" y="-14" width="32" height="34" rx="12" fill="#E85050"/></g>
+      <g transform="translate(1140,720)"><circle cx="-30" cy="34" r="22" fill="none" stroke="#1A1D16" stroke-width="6"/><circle cx="34" cy="34" r="22" fill="none" stroke="#1A1D16" stroke-width="6"/><path d="M-30 34 L2 4 L34 34 M2 4 L18 4" fill="none" stroke="#E8844A" stroke-width="6"/><g transform="translate(2,4)"><circle cx="0" cy="-32" r="13" fill="#6b4a32"/><rect x="-14" y="-22" width="28" height="30" rx="11" fill="#378ADD"/></g></g>
+      <g stroke="#27303a" stroke-width="4" fill="none" opacity=".6"><path d="M520 220 q 18 -14 36 0 q 18 -14 36 0"/><path d="M660 196 q 14 -11 28 0 q 14 -11 28 0"/></g>
+      <rect x="0" y="788" width="1600" height="112" fill="#000" opacity=".34"/>
+      <text x="800" y="850" text-anchor="middle" font-family="Segoe UI,Arial" font-size="44" font-weight="700" fill="#F0EAD6" letter-spacing="7">RIVERS REBORN</text>
+      <text x="800" y="884" text-anchor="middle" font-family="Segoe UI,Arial" font-size="22" fill="#F0EAD6" letter-spacing="2">Clean rivers · parks for every neighbourhood</text>
+    </svg>
+  </div>
+  <!-- M4 · health, cancer care & air ambulance -->
+  <div class="layer" style="z-index:46;animation:m4 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="m4sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a3a"/><stop offset=".5" stop-color="#3f6f86"/><stop offset="1" stop-color="#cdeee4"/></linearGradient></defs>
+      <rect width="1600" height="900" fill="url(#m4sky)"/>
+      <path d="M0 430 Q 300 380 600 430 T 1200 425 Q 1400 395 1600 430 L1600 560 L0 560Z" fill="#6f9a86" opacity=".4"/>
+      <!-- KNH tower -->
+      <rect x="300" y="300" width="250" height="600" fill="#e3e9e8"/><rect x="300" y="300" width="250" height="18" fill="#3FBFB0"/>
+      <g fill="#9fc7cc" opacity=".85"><rect x="318" y="370" width="26" height="500"/><rect x="362" y="370" width="26" height="500"/><rect x="406" y="370" width="26" height="500"/><rect x="450" y="370" width="26" height="500"/><rect x="494" y="370" width="26" height="500"/></g>
+      <g fill="#E85050"><rect x="398" y="500" width="54" height="15"/><rect x="416" y="482" width="15" height="54"/></g>
+      <ellipse cx="425" cy="300" rx="46" ry="15" fill="#37414a"/><circle cx="425" cy="294" r="32" fill="#37414a"/><circle cx="425" cy="294" r="32" fill="none" stroke="#F0EAD6" stroke-width="3"/><text x="425" y="306" text-anchor="middle" font-family="Segoe UI,Arial" font-weight="700" font-size="32" fill="#F0EAD6">H</text>
+      <rect x="312" y="338" width="226" height="30" rx="4" fill="#1A1D16"/><text x="425" y="360" text-anchor="middle" font-family="Segoe UI,Arial" font-size="16" fill="#F0EAD6" letter-spacing="1">KENYATTA NATIONAL</text>
+      <!-- Cancer centre wing -->
+      <rect x="600" y="430" width="240" height="470" fill="#ece4e7"/><rect x="600" y="430" width="240" height="16" fill="#E85888"/>
+      <g fill="#cdb6c2" opacity=".8"><rect x="618" y="500" width="26" height="400"/><rect x="662" y="500" width="26" height="400"/><rect x="706" y="500" width="26" height="400"/><rect x="750" y="500" width="26" height="400"/><rect x="794" y="500" width="26" height="400"/></g>
+      <g transform="translate(720,545)"><path d="M0 -34 C 22 -54 48 -28 22 -6 C 14 2 -14 2 -22 -6 C -48 -28 -22 -54 0 -34 Z" fill="none" stroke="#E85888" stroke-width="9"/></g>
+      <rect x="610" y="465" width="220" height="28" rx="4" fill="#1A1D16"/><text x="720" y="486" text-anchor="middle" font-family="Segoe UI,Arial" font-size="15" fill="#F0EAD6" letter-spacing="1">CANCER CENTRE</text>
+      <!-- Pumwani tower -->
+      <rect x="890" y="360" width="230" height="540" fill="#e3e9e8"/><rect x="890" y="360" width="230" height="16" fill="#E85888"/>
+      <ellipse cx="1005" cy="360" rx="44" ry="15" fill="#37414a"/><circle cx="1005" cy="354" r="30" fill="#37414a"/><circle cx="1005" cy="354" r="30" fill="none" stroke="#F0EAD6" stroke-width="3"/><text x="1005" y="365" text-anchor="middle" font-family="Segoe UI,Arial" font-weight="700" font-size="30" fill="#F0EAD6">H</text>
+      <rect x="900" y="398" width="210" height="28" rx="4" fill="#1A1D16"/><text x="1005" y="419" text-anchor="middle" font-family="Segoe UI,Arial" font-size="15" fill="#F0EAD6" letter-spacing="1">PUMWANI MATERNITY</text>
+      <!-- air ambulance -->
+      <g transform="translate(1280,250)">
+        <rect x="-86" y="-7" width="72" height="14" rx="7" fill="#eef0ea"/><path d="M-84 -4 L-104 -20 L-96 6 Z" fill="#cdd2c8"/><ellipse cx="0" cy="0" rx="58" ry="30" fill="#f6f6f0"/><path d="M34 -14 Q 60 -10 58 8 L34 14 Z" fill="#bfe3ff"/><g fill="#E85050"><rect x="-16" y="-5" width="32" height="11"/><rect x="-5" y="-16" width="11" height="33"/></g><rect x="-4" y="-48" width="8" height="22" fill="#9aa0a0"/><rect x="-96" y="-50" width="192" height="7" rx="3" fill="#aab0b0"/>
+        <line x1="-40" y1="36" x2="44" y2="36" stroke="#888" stroke-width="5"/>
+      </g>
+      <rect x="0" y="900" width="1600" height="0"/>
+      <rect x="0" y="788" width="1600" height="112" fill="#000" opacity=".4"/>
+      <text x="800" y="850" text-anchor="middle" font-family="Segoe UI,Arial" font-size="44" font-weight="700" fill="#F0EAD6" letter-spacing="6">CARE FOR ALL</text>
+      <text x="800" y="884" text-anchor="middle" font-family="Segoe UI,Arial" font-size="22" fill="#F0EAD6" letter-spacing="1">Cancer centres &amp; chemo · helipads &amp; air ambulances</text>
+    </svg>
+  </div>
+  <!-- M5 · creative culture -->
+  <div class="layer" style="z-index:46;animation:m5 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <defs><linearGradient id="m5sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c2a3a"/><stop offset=".5" stop-color="#3f6f86"/><stop offset="1" stop-color="#d3e7df"/></linearGradient></defs>
+      <rect width="1600" height="900" fill="url(#m5sky)"/>
+      <g><rect x="40" y="330" width="320" height="570" fill="#9c6a54"/><rect x="380" y="288" width="300" height="612" fill="#8c867a"/><rect x="700" y="332" width="300" height="568" fill="#b08f68"/><rect x="1020" y="300" width="300" height="600" fill="#7d7a84"/><rect x="1340" y="330" width="260" height="570" fill="#9c6a54"/></g>
+      <g fill="#41505c" opacity=".9"><rect x="420" y="330" width="70" height="86"/><rect x="510" y="330" width="70" height="86"/><rect x="600" y="330" width="70" height="86"/><rect x="1040" y="340" width="64" height="80"/><rect x="1124" y="340" width="64" height="80"/><rect x="1208" y="340" width="64" height="80"/></g>
+      <g><polygon points="80,600 180,400 280,600" fill="#E85050"/><circle cx="160" cy="470" r="48" fill="#3FBFB0"/>
+        <rect x="724" y="392" width="172" height="240" fill="#E8844A"/><circle cx="810" cy="486" r="62" fill="#1A1D16"/><circle cx="788" cy="476" r="10" fill="#F0EAD6"/><circle cx="832" cy="476" r="10" fill="#F0EAD6"/><path d="M780 520 Q 810 548 840 520" stroke="#F0EAD6" stroke-width="7" fill="none"/>
+        <rect x="1040" y="560" width="240" height="110" fill="#8B79E8"/><circle cx="1100" cy="615" r="20" fill="#C8A84B"/><polygon points="1150,635 1180,580 1210,635" fill="#3FBFB0"/></g>
+      <rect x="420" y="296" width="240" height="34" rx="6" fill="#1A1D16"/><text x="540" y="322" text-anchor="middle" font-family="Segoe UI,Arial" font-size="21" fill="#C8A84B" letter-spacing="3">LIVE MUSIC</text>
+      <path d="M0 252 Q 400 300 800 258 T 1600 258" stroke="#7a746a" stroke-width="3" fill="none"/>
+      <g><polygon points="160,262 220,262 190,300" fill="#E85050"/><polygon points="320,270 380,270 350,308" fill="#5DBF7A"/><polygon points="560,262 620,262 590,300" fill="#378ADD"/><polygon points="840,262 900,262 870,300" fill="#C8A84B"/><polygon points="1120,268 1180,268 1150,306" fill="#E85888"/><polygon points="1400,262 1460,262 1430,300" fill="#3FBFB0"/></g>
+      <g fill="#140d12"><g transform="translate(700,720)"><circle cx="0" cy="0" r="24"/><rect x="-20" y="20" width="40" height="110" rx="16"/></g><g transform="translate(770,728) scale(.9)"><circle cx="0" cy="0" r="24"/><rect x="-20" y="20" width="40" height="110" rx="16"/></g><g transform="translate(840,722)"><circle cx="0" cy="0" r="24"/><rect x="-20" y="20" width="40" height="110" rx="16"/></g></g>
+      <rect x="0" y="788" width="1600" height="112" fill="#000" opacity=".34"/>
+      <text x="800" y="850" text-anchor="middle" font-family="Segoe UI,Arial" font-size="44" font-weight="700" fill="#F0EAD6" letter-spacing="6">A LIVING CULTURE</text>
+      <text x="800" y="884" text-anchor="middle" font-family="Segoe UI,Arial" font-size="22" fill="#F0EAD6" letter-spacing="2">Music, art &amp; the city's soul</text>
+    </svg>
+  </div>
+  <!-- M6 · the Act, passed -->
+  <div class="layer" style="z-index:46;animation:m6 var(--t) linear infinite">
+    <svg class="layer" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+      <rect width="1600" height="900" fill="#14160f"/>
+      <g fill="#e3d8b8" opacity=".5"><rect x="520" y="250" width="40" height="250"/><rect x="600" y="250" width="40" height="250"/><rect x="680" y="250" width="40" height="250"/><rect x="880" y="250" width="40" height="250"/><rect x="960" y="250" width="40" height="250"/><rect x="1040" y="250" width="40" height="250"/></g>
+      <polygon points="490,250 800,150 1110,250" fill="#e3d8b8" opacity=".5"/>
+      <g><rect x="280" y="455" width="320" height="50" rx="10" fill="#1A1D16" opacity=".9"/><text x="440" y="487" text-anchor="middle" font-family="Segoe UI,Arial" font-size="17" fill="#F0EAD6">COUNTY ASSEMBLY</text><g transform="translate(560,480)"><circle r="16" fill="#5DBF7A"/><path d="M-7 0 L-2 6 L8 -7" stroke="#1A1D16" stroke-width="4" fill="none"/></g></g>
+      <g><rect x="1000" y="455" width="320" height="50" rx="10" fill="#1A1D16" opacity=".9"/><text x="1150" y="487" text-anchor="middle" font-family="Segoe UI,Arial" font-size="17" fill="#F0EAD6">SENATE ✓</text><g transform="translate(1300,480)"><circle r="16" fill="#5DBF7A"/><path d="M-7 0 L-2 6 L8 -7" stroke="#1A1D16" stroke-width="4" fill="none"/></g></g>
+      <g transform="rotate(-3 800 470)">
+        <rect x="500" y="250" width="600" height="450" rx="10" fill="#f4ecd6" stroke="#cdbf9c" stroke-width="4"/>
+        <rect x="500" y="250" width="600" height="78" rx="10" fill="#1A1D16"/>
+        <text x="800" y="304" text-anchor="middle" font-family="Georgia,serif" font-size="42" font-weight="700" fill="#C8A84B" letter-spacing="1">NAIROBI 2055 ACT</text>
+        <g stroke="#a89e86" stroke-width="3"><line x1="540" y1="380" x2="1060" y2="380"/><line x1="540" y1="424" x2="1060" y2="424"/><line x1="540" y1="468" x2="1060" y2="468"/><line x1="540" y1="512" x2="980" y2="512"/></g>
+        <circle cx="600" cy="620" r="40" fill="#C8A84B"/><circle cx="600" cy="620" r="40" fill="none" stroke="#9c8638" stroke-width="4"/><text x="600" y="633" text-anchor="middle" font-size="32" fill="#1A1D16">★</text>
+        <path d="M680 622 q 18 -15 36 0 t 36 0" stroke="#1A1D16" stroke-width="3" fill="none"/>
+      </g>
+      <g transform="rotate(-14 880 470)"><rect x="640" y="380" width="480" height="170" rx="14" fill="none" stroke="#E85050" stroke-width="12"/><rect x="664" y="404" width="432" height="122" rx="8" fill="none" stroke="#E85050" stroke-width="4"/><text x="880" y="500" text-anchor="middle" font-family="Georgia,serif" font-size="96" font-weight="800" fill="#E85050" letter-spacing="6">PASSED</text></g>
+      <text x="800" y="844" text-anchor="middle" font-family="Segoe UI,Arial" font-size="26" fill="#C8A84B" letter-spacing="3">Politics-proofed — binding law across all three houses</text>
+    </svg>
+  </div>
+
+  <!-- ending: montage finishes -> fade to black -> beat -> URL lingers as the last thing on screen -->
+  <div class="layer" style="background:#000;z-index:54;animation:blackout var(--t) ease-out infinite"></div>
+  <div class="layer" style="z-index:55;display:flex;align-items:center;justify-content:center;animation:urlin var(--t) ease-out infinite">
+    <span style="color:#C8A84B;font-family:Georgia,'Times New Roman',serif;font-size:2.3vw;letter-spacing:.34em;font-weight:700">nairobi2055.org</span>
+  </div>
+  <div class="ctrls">
+    <button class="replay" style="position:static" onclick="replay()">⟲ Rewind</button>
+    <button class="replay" id="playBtn" style="position:static" onclick="togglePlay()">⏸ Pause</button>
+    <button class="replay" id="soundBtn" style="position:static" onclick="toggleSound()">🔊 Sound on</button>
+  </div>
 
 </div></div>
 
 <!-- Drop a free afro-futuristic track named nairobi-2055-score.mp3 into this folder to score the film -->
-<audio id="score" src="nairobi-2055-score-intro.mp3" preload="auto"></audio>
+<audio id="score" src="nairobi-2055-intro-mix.mp3" preload="auto"></audio>
 
 <script>
   const _audio=document.getElementById('score');
   const _btn=document.getElementById('soundBtn');
-  const TARGET_VOL=0.7, FADE_START=51600, FADE_MS=2400;
+  const TARGET_VOL=0.85, FADE_START=73000, FADE_MS=1500;
   let _fadeT=null,_fadeI=null;
   function scheduleFade(){
     clearTimeout(_fadeT); clearInterval(_fadeI);
@@ -837,8 +979,16 @@
   function toggleSound(){ _audio.muted=!_audio.muted; if(!_audio.muted){ _audio.play().catch(()=>{}); } setSoundLabel(); }
   function replay(){
     const f=document.getElementById('frame');
+    f.classList.remove('paused');
+    const pb=document.getElementById('playBtn'); if(pb) pb.textContent='⏸ Pause';
     f.querySelectorAll('*').forEach(n=>{n.style.animation='none';n.offsetHeight;n.style.animation='';});
     if(_audio){ try{ _audio.currentTime=0; _audio.volume=TARGET_VOL; if(!_audio.muted) _audio.play(); scheduleFade(); }catch(e){} }
+  }
+  function togglePlay(){
+    const f=document.getElementById('frame'), pb=document.getElementById('playBtn');
+    const paused=f.classList.toggle('paused');
+    if(paused){ _audio.pause(); pb.textContent='▶ Play'; }
+    else{ if(!_audio.muted){ _audio.play().catch(()=>{}); } pb.textContent='⏸ Pause'; }
   }
   // Try to start the score (works when launched from a user gesture, e.g. after unlock).
   window.addEventListener('load',()=>{

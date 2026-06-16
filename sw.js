@@ -1,7 +1,7 @@
 // Nairobi 2055 — Service Worker
 // Cache-first strategy: app shell cached on install, served offline
 
-const CACHE_NAME = 'nairobi2055-v19';
+const CACHE_NAME = 'nairobi2055-v20';
 const ASSETS = [
   '/',
   '/index.html',
@@ -10,7 +10,7 @@ const ASSETS = [
   '/icon-192.png',
   '/icon-512.png',
   '/nairobi-2055-cinematic.html',
-  '/nairobi-2055-score-intro.mp3'
+  '/nairobi-2055-intro-mix.mp3'
 ];
 
 // Install: cache all core assets
