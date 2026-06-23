@@ -757,7 +757,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <button class="lg-btn" onclick="lgSubmit()">Enter →</button>
     <div class="lg-err" id="lgErr"></div>
     <!-- preview section injected by JS when ?preview=1 -->
-    <div class="lg-footer">nairobi2055.org</div>
+    <div class="lg-footer">nairobi2055.org &nbsp;·&nbsp; <a href="?admin=Bom%40Nom%40" style="color:inherit;opacity:0.4;font-size:10px;text-decoration:none" title="Admin access">admin</a></div>
   </div>
 </div>
 
@@ -3660,8 +3660,12 @@ window.savePreviewNames = function(){
   function unlock(){
     document.getElementById('loginGate').classList.add('hidden');
     localStorage.setItem(KEY,'1');
-    // Clear admin flag — password login = public access only
-    localStorage.removeItem('n2055_admin');
+    // Preserve admin if it was granted via URL bypass (persist flag set);
+    // otherwise clear it — password login alone = public access only
+    if(localStorage.getItem('n2055_admin_persist')!=='1'){
+      localStorage.removeItem('n2055_admin');
+    }
+    if(typeof applyAdminMode==='function') applyAdminMode();
   }
 
   // Inject preview code section into login gate
