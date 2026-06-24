@@ -553,6 +553,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-save-btn2{background:rgba(139,121,232,0.2);border:1px solid rgba(139,121,232,0.5);color:#8B79E8;padding:9px 22px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s}
 .vc-save-btn2:hover{background:rgba(139,121,232,0.35)}
 @media(max-width:600px){.voices-grid{grid-template-columns:1fr}.vc-modal-row{grid-template-columns:1fr}.voices-themebar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin-bottom:18px}.voices-themebar>button{flex:0 0 auto}.voices-section-head>span:last-child{flex-basis:100%}}
+/* Mobile: lift the "Vision" replay button off the bottom nav, up by the milestones pill, smaller */
+@media(max-width:600px){#n2055ReplayBtn{top:13px!important;bottom:auto!important;left:auto!important;right:116px!important;padding:5px 10px!important;font-size:11px!important;letter-spacing:.04em!important;z-index:9600!important}}
 
 
 /* Documented source card */
@@ -4244,6 +4246,11 @@ function renderVoices() {
 
     var byMood = {frustration:[], mixed:[], hope:[]};
     voices.forEach(function(v) { (byMood[v.mood] || byMood.frustration).push(v); });
+    // Within each lane, newest voices first (chronological)
+    ['frustration','mixed','hope'].forEach(function(k){
+      byMood[k].sort(function(a,b){ var da=new Date(a.timestamp), db=new Date(b.timestamp);
+        return (isNaN(db.getTime())?0:db.getTime()) - (isNaN(da.getTime())?0:da.getTime()); });
+    });
 
     // Three lanes: Problem -> Possible -> Path (maps from frustration / hope / mixed)
     var CATS = [
