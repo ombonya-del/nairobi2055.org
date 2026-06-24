@@ -466,6 +466,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-other-btn:hover{background:rgba(200,168,75,0.25)}
 /* Grid */
 .voices-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-bottom:32px;align-items:start}
+.voices-themebar{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 22px}
+.voices-section-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:6px 0 14px;padding-bottom:9px}
 /* Base card */
 .voice-card{border-radius:12px;padding:0;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;height:fit-content;align-self:start}
 .voice-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.4)}
@@ -550,7 +552,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-cancel-btn{background:transparent;border:1px solid var(--border);color:var(--text2);padding:9px 20px;border-radius:7px;cursor:pointer;font-size:13px}
 .vc-save-btn2{background:rgba(139,121,232,0.2);border:1px solid rgba(139,121,232,0.5);color:#8B79E8;padding:9px 22px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s}
 .vc-save-btn2:hover{background:rgba(139,121,232,0.35)}
-@media(max-width:600px){.voices-grid{grid-template-columns:1fr}.vc-modal-row{grid-template-columns:1fr}}
+@media(max-width:600px){.voices-grid{grid-template-columns:1fr}.vc-modal-row{grid-template-columns:1fr}.voices-themebar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin-bottom:18px}.voices-themebar>button{flex:0 0 auto}.voices-section-head>span:last-child{flex-basis:100%}}
 
 
 /* Documented source card */
@@ -3911,6 +3913,7 @@ let _vcImgCounter  = 0;
 let _importPlatform = 'other';
 let _vcMode        = 'add';
 let _vcEditId      = null;
+let _vcThemeFilter = 'all';   // Voices secondary filter (theme); 'all' = no filter
 
 // ── Data helpers ─────────────────────────────────────────────────────────────
 function getVoices() {
@@ -4099,28 +4102,32 @@ function renderVoices() {
   var main = document.getElementById('main');
   if (!main) return;
   try {
-    var voices = getVoices();
+    var allVoices = getVoices();
+
+    // Themes present across ALL voices (so the filter chips never disappear)
+    var themesPresent = [];
+    allVoices.forEach(function(v){ if (v.theme && themesPresent.indexOf(v.theme) < 0) themesPresent.push(v.theme); });
+
+    // Apply the active secondary (theme) filter
+    var voices = (_vcThemeFilter === 'all')
+      ? allVoices
+      : allVoices.filter(function(v){ return v.theme === _vcThemeFilter; });
+
     var byMood = {frustration:[], mixed:[], hope:[]};
     voices.forEach(function(v) { (byMood[v.mood] || byMood.frustration).push(v); });
-    var interleaved = [];
-    var maxLen = Math.max(byMood.frustration.length, byMood.mixed.length, byMood.hope.length);
-    for (var i = 0; i < maxLen; i++) {
-      if (byMood.frustration[i]) interleaved.push(byMood.frustration[i]);
-      if (byMood.mixed[i])       interleaved.push(byMood.mixed[i]);
-      if (byMood.hope[i])        interleaved.push(byMood.hope[i]);
-    }
-    var cards = interleaved.map(renderVoiceCard).join('');
 
-    // Build header HTML pieces using separate vars to avoid escaping issues
+    // Three lanes: Problem -> Possible -> Path (maps from frustration / hope / mixed)
+    var CATS = [
+      { mood:'frustration', label:'What’s Broken',   color:'#E85888', blurb:'The honest diagnosis — what Nairobians say is failing right now.' },
+      { mood:'hope',        label:'What’s Possible',  color:'#5DBF7A', blurb:'The pull toward 2055 — benchmarks, wins and what good looks like.' },
+      { mood:'mixed',       label:'What It’ll Take',  color:'#C8A84B', blurb:'Critique paired with a way forward — ideas, trade-offs, the path.' }
+    ];
+    var MUT = '#9AA0AE';
+
     var hdrHtml = '<div class="voices-header">'
       + '<div class="vh-title">Nairobi&#x2019;s Voices &#x2014; Real Nairobians. Real Issues.</div>'
-      + '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026. Frustration and hope, unfiltered and side by side.</div>'
-      + '<div class="vh-legend">'
-      + '<span class="vhl-item" style="--lc:#E85888">&#9672; Frustration</span>'
-      + '<span class="vhl-item" style="--lc:#C8A84B">&#10231; Complex / Mixed</span>'
-      + '<span class="vhl-item" style="--lc:#5DBF7A">&#10022; Hope</span>'
-      + '<span class="vhl-note">All quotes sourced. Use &#8599; Source links to verify.</span>'
-      + '</div></div>';
+      + '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026 &#x2014; sorted into three lanes. All quotes sourced; use &#8599; Source links to verify.</div>'
+      + '</div>';
 
     var harvestHtml = isAdmin()
       ? '<div class="vc-import-bar">'
@@ -4133,8 +4140,40 @@ function renderVoices() {
         + '</div>'
       : '';
 
-    main.innerHTML = '<div class="voices-wrap">' + hdrHtml + harvestHtml
-      + '<div class="voices-grid">' + cards + '</div></div>';
+    // Secondary filter: theme chips (filters across all three lanes)
+    var chip = function(key, label){
+      var on = (_vcThemeFilter === key);
+      return '<button class="vc-theme-chip" data-theme-filter="' + key + '" '
+        + 'style="font:600 11px/1 system-ui,sans-serif;padding:7px 13px;border-radius:999px;cursor:pointer;'
+        + 'border:1px solid ' + (on ? '#8B79E8' : 'var(--border)') + ';'
+        + 'background:' + (on ? '#8B79E8' : 'transparent') + ';'
+        + 'color:' + (on ? '#fff' : MUT) + '">' + label + '</button>';
+    };
+    var chipsHtml = '<div class="voices-themebar">'
+      + chip('all', 'All themes')
+      + themesPresent.map(function(t){ var th = VOICE_THEMES[t] || {icon:'', label:t}; return chip(t, (th.icon ? th.icon + ' ' : '') + th.label); }).join('')
+      + '</div>';
+
+    // Three category sections, each its own grid
+    var sectionsHtml = CATS.map(function(c){
+      var list = byMood[c.mood] || [];
+      var head = '<div class="voices-section-head" style="display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:6px 0 14px;padding-bottom:9px;border-bottom:2px solid ' + c.color + '">'
+        + '<span style="font-family:Georgia,serif;font-size:19px;font-weight:700;color:var(--text1)">' + c.label + '</span>'
+        + '<span style="font:700 12px/1 system-ui,sans-serif;color:' + c.color + '">' + list.length + ' voice' + (list.length === 1 ? '' : 's') + '</span>'
+        + '<span style="font-size:12px;color:' + MUT + '">' + c.blurb + '</span>'
+        + '</div>';
+      var body = list.length
+        ? '<div class="voices-grid">' + list.map(renderVoiceCard).join('') + '</div>'
+        : '<div style="padding:14px 2px 26px;color:' + MUT + ';font-size:13px;font-style:italic">No voices in this lane' + (_vcThemeFilter !== 'all' ? ' for this theme' : '') + ' yet.</div>';
+      return '<section class="voices-section" style="margin-bottom:30px">' + head + body + '</section>';
+    }).join('');
+
+    main.innerHTML = '<div class="voices-wrap">' + hdrHtml + harvestHtml + chipsHtml + sectionsHtml + '</div>';
+
+    // Wire theme filter chips
+    main.querySelectorAll('[data-theme-filter]').forEach(function(b){
+      b.addEventListener('click', function(){ _vcThemeFilter = b.getAttribute('data-theme-filter'); renderVoices(); });
+    });
 
     // Wire up harvest buttons after innerHTML (avoids onclick escaping entirely)
     if (isAdmin()) {
