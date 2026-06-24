@@ -3914,6 +3914,7 @@ let _importPlatform = 'other';
 let _vcMode        = 'add';
 let _vcEditId      = null;
 let _vcThemeFilter = 'all';   // Voices secondary filter (theme); 'all' = no filter
+let _naiPeriod     = 'daily'; // NaiNew Index trend granularity: daily | weekly | monthly
 
 // ── Data helpers ─────────────────────────────────────────────────────────────
 function getVoices() {
@@ -4096,6 +4097,114 @@ function renderVoiceCard(v) {
 }
 
 // ── Voices tab renderer ───────────────────────────────────────────────────────
+// ── NaiNew Index ──────────────────────────────────────────────────────────────
+// A weighted average across the three moods (What's Possible=100, What It'll
+// Take=50, What's Broken=0) — a 0-100 read of "what Nairobians want" — plus the
+// themes driving it and a daily/weekly/monthly trend. Recomputed live from the
+// voices each render, so it self-updates as voices are added.
+function naiCompute(voices) {
+  var PTS = { hope:100, mixed:50, frustration:0 };
+  var sum = 0, n = 0, moodC = {frustration:0, mixed:0, hope:0}, themeC = {};
+  var buckets = {};
+  function pointsOf(m){ return (PTS[m] !== undefined) ? PTS[m] : 0; }
+  function bucketKey(d, period){
+    if (period === 'monthly') return d.toISOString().slice(0,7);
+    if (period === 'daily')   return d.toISOString().slice(0,10);
+    var dt = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+    var day = dt.getUTCDay() || 7; dt.setUTCDate(dt.getUTCDate() + 4 - day);
+    var ys = new Date(Date.UTC(dt.getUTCFullYear(), 0, 1));
+    var wk = Math.ceil((((dt - ys) / 86400000) + 1) / 7);
+    return dt.getUTCFullYear() + '-W' + (wk < 10 ? '0' + wk : wk);
+  }
+  voices.forEach(function(v){
+    var p = pointsOf(v.mood);
+    sum += p; n++;
+    if (moodC[v.mood] !== undefined) moodC[v.mood]++; else moodC.frustration++;
+    if (v.theme) themeC[v.theme] = (themeC[v.theme] || 0) + 1;
+    var d = v.timestamp ? new Date(v.timestamp) : null;
+    if (d && !isNaN(d.getTime())) {
+      var k = bucketKey(d, _naiPeriod);
+      if (!buckets[k]) buckets[k] = { s:0, c:0, t:d.getTime() };
+      buckets[k].s += p; buckets[k].c++;
+    }
+  });
+  var overall = n ? Math.round(sum / n) : 0;
+  var topThemes = Object.keys(themeC).sort(function(a,b){ return themeC[b] - themeC[a]; }).slice(0,3)
+    .map(function(t){ return { theme:t, pct: Math.round(themeC[t] / n * 100) }; });
+  var moodPct = {
+    frustration: n ? Math.round(moodC.frustration / n * 100) : 0,
+    mixed:       n ? Math.round(moodC.mixed / n * 100) : 0,
+    hope:        n ? Math.round(moodC.hope / n * 100) : 0
+  };
+  var series = Object.keys(buckets).map(function(k){
+    return { key:k, score: Math.round(buckets[k].s / buckets[k].c), t: buckets[k].t };
+  }).sort(function(a,b){ return a.t - b.t; });
+  return { overall:overall, n:n, topThemes:topThemes, moodPct:moodPct, series:series };
+}
+
+function naiSpark(series, color) {
+  if (!series.length) return '';
+  var w = 132, h = 36, n = series.length;
+  var coords = series.map(function(s,i){
+    var x = (n > 1) ? (i / (n - 1)) * (w - 6) + 3 : w / 2;
+    var y = h - 4 - (s.score / 100) * (h - 8);
+    return { x:x, y:y };
+  });
+  var line = '<polyline points="' + coords.map(function(c){ return c.x.toFixed(1) + ',' + c.y.toFixed(1); }).join(' ')
+    + '" fill="none" stroke="' + color + '" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>';
+  var dots = coords.map(function(c){ return '<circle cx="' + c.x.toFixed(1) + '" cy="' + c.y.toFixed(1) + '" r="2.2" fill="' + color + '"/>'; }).join('');
+  return '<svg width="' + w + '" height="' + h + '" viewBox="0 0 ' + w + ' ' + h + '" style="display:block;margin:6px 0">' + line + dots + '</svg>';
+}
+
+function naiCardHtml(d) {
+  var color = d.overall < 40 ? '#E85888' : (d.overall < 60 ? '#C8A84B' : '#5DBF7A');
+  var label = d.overall < 35 ? 'Frustrated' : (d.overall < 50 ? 'Restless' : (d.overall < 65 ? 'Hopeful-leaning' : 'Optimistic'));
+  var MUT = '#9AA0AE';
+  var moodBar = '<div style="display:flex;height:8px;border-radius:5px;overflow:hidden;margin:14px 0 6px;background:#222">'
+    + '<div style="width:' + d.moodPct.frustration + '%;background:#E85888"></div>'
+    + '<div style="width:' + d.moodPct.mixed + '%;background:#C8A84B"></div>'
+    + '<div style="width:' + d.moodPct.hope + '%;background:#5DBF7A"></div></div>';
+  var themesHtml = d.topThemes.length
+    ? d.topThemes.map(function(t){ var th = VOICE_THEMES[t.theme] || {icon:'', label:t.theme};
+        return '<span style="font:600 11px/1 system-ui,sans-serif;color:var(--text1);background:rgba(255,255,255,0.05);border:1px solid var(--border);padding:5px 10px;border-radius:999px">'
+          + (th.icon ? th.icon + ' ' : '') + th.label + ' <b style="color:' + MUT + '">' + t.pct + '%</b></span>'; }).join('')
+    : '<span style="color:' + MUT + ';font-size:12px">No themes yet</span>';
+  var toggle = ['daily','weekly','monthly'].map(function(p){ var on = (p === _naiPeriod);
+    return '<button data-nai-period="' + p + '" style="font:600 10px/1 system-ui,sans-serif;text-transform:uppercase;letter-spacing:.04em;padding:6px 9px;border-radius:6px;cursor:pointer;border:1px solid '
+      + (on ? color : 'var(--border)') + ';background:' + (on ? color : 'transparent') + ';color:' + (on ? '#14130f' : MUT) + '">' + p + '</button>'; }).join('');
+  var latest = d.series[d.series.length - 1], prev = d.series[d.series.length - 2];
+  var trendHtml = '';
+  if (latest) {
+    var pl = (_naiPeriod === 'daily' ? 'day' : _naiPeriod === 'weekly' ? 'week' : 'month');
+    if (prev) {
+      var delta = latest.score - prev.score;
+      var arrow = delta > 0 ? '▲' : (delta < 0 ? '▼' : '▬');
+      var tc = delta > 0 ? '#5DBF7A' : (delta < 0 ? '#E85888' : MUT);
+      trendHtml = '<div style="font:600 11px/1.4 system-ui,sans-serif;color:' + MUT + '">Latest ' + pl + ': <b style="color:var(--text1)">' + latest.score + '</b> <span style="color:' + tc + '">' + arrow + ' ' + Math.abs(delta) + '</span> vs prior</div>';
+    } else {
+      trendHtml = '<div style="font:600 11px/1.4 system-ui,sans-serif;color:' + MUT + '">Latest ' + pl + ': <b style="color:var(--text1)">' + latest.score + '</b> <span style="opacity:.7">(history builds as voices are added)</span></div>';
+    }
+  }
+  return '<div class="nai-card" style="background:var(--bg2);border:1px solid var(--border);border-left:4px solid ' + color + ';border-radius:10px;padding:18px 20px;margin-bottom:20px">'
+    + '<div style="display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start;justify-content:space-between">'
+    +   '<div style="min-width:150px">'
+    +     '<div style="font:700 11px/1 system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:' + MUT + '"><span style="color:var(--gold)">Nai.</span>Mpya Index <span style="opacity:.6;text-transform:none;letter-spacing:0">· what Nairobians want</span></div>'
+    +     '<div style="display:flex;align-items:baseline;gap:8px;margin-top:8px"><span style="font-family:Georgia,serif;font-size:44px;font-weight:700;color:' + color + ';line-height:1">' + d.overall + '</span><span style="font-size:13px;color:' + MUT + '">/100</span><span style="font:700 14px/1 system-ui,sans-serif;color:' + color + ';margin-left:4px">' + label + '</span></div>'
+    +     '<div style="font-size:11px;color:' + MUT + ';margin-top:5px">weighted across ' + d.n + ' voice' + (d.n === 1 ? '' : 's') + '</div>'
+    +   '</div>'
+    +   '<div style="flex:1;min-width:170px;max-width:260px">'
+    +     '<div style="display:flex;gap:6px;margin-bottom:2px">' + toggle + '</div>'
+    +     naiSpark(d.series, color)
+    +     trendHtml
+    +   '</div>'
+    + '</div>'
+    + moodBar
+    + '<div style="display:flex;justify-content:space-between;font:600 10px/1 system-ui,sans-serif;color:' + MUT + ';margin-bottom:12px"><span>' + d.moodPct.frustration + '% Broken</span><span>' + d.moodPct.mixed + '% Path</span><span>' + d.moodPct.hope + '% Possible</span></div>'
+    + '<div style="font:700 10px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:' + MUT + ';margin-bottom:8px">Top of mind</div>'
+    + '<div style="display:flex;flex-wrap:wrap;gap:7px">' + themesHtml + '</div>'
+    + '</div>';
+}
+
 function renderVoices() {
   _vcImgRegistry = {};
   _vcImgCounter  = 0;
@@ -4124,10 +4233,22 @@ function renderVoices() {
     ];
     var MUT = '#9AA0AE';
 
+    // Overall per-lane totals (stable — independent of the active theme filter) for the header legend
+    var allByMood = {frustration:0, mixed:0, hope:0};
+    allVoices.forEach(function(v){ var k = (allByMood[v.mood] !== undefined) ? v.mood : 'frustration'; allByMood[k]++; });
+
     var hdrHtml = '<div class="voices-header">'
       + '<div class="vh-title">Nairobi&#x2019;s Voices &#x2014; Real Nairobians. Real Issues.</div>'
       + '<div class="vh-sub">Real posts from real Nairobians on X, harvested April 2026 &#x2014; sorted into three lanes. All quotes sourced; use &#8599; Source links to verify.</div>'
+      + '<div class="vh-legend">'
+      + '<span class="vhl-item" style="--lc:#E85888">What&#x2019;s Broken <b>' + allByMood.frustration + '</b></span>'
+      + '<span class="vhl-item" style="--lc:#5DBF7A">What&#x2019;s Possible <b>' + allByMood.hope + '</b></span>'
+      + '<span class="vhl-item" style="--lc:#C8A84B">What It&#x2019;ll Take <b>' + allByMood.mixed + '</b></span>'
+      + '</div>'
       + '</div>';
+
+    // NaiNew Index — computed from ALL voices (city-wide, independent of theme filter)
+    var naiHtml = naiCardHtml(naiCompute(allVoices));
 
     var harvestHtml = isAdmin()
       ? '<div class="vc-import-bar">'
@@ -4168,11 +4289,16 @@ function renderVoices() {
       return '<section class="voices-section" style="margin-bottom:30px">' + head + body + '</section>';
     }).join('');
 
-    main.innerHTML = '<div class="voices-wrap">' + hdrHtml + harvestHtml + chipsHtml + sectionsHtml + '</div>';
+    main.innerHTML = '<div class="voices-wrap">' + hdrHtml + naiHtml + harvestHtml + chipsHtml + sectionsHtml + '</div>';
 
     // Wire theme filter chips
     main.querySelectorAll('[data-theme-filter]').forEach(function(b){
       b.addEventListener('click', function(){ _vcThemeFilter = b.getAttribute('data-theme-filter'); renderVoices(); });
+    });
+
+    // Wire NaiNew Index period toggle
+    main.querySelectorAll('[data-nai-period]').forEach(function(b){
+      b.addEventListener('click', function(){ _naiPeriod = b.getAttribute('data-nai-period'); renderVoices(); });
     });
 
     // Wire up harvest buttons after innerHTML (avoids onclick escaping entirely)
