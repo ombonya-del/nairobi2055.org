@@ -553,8 +553,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-save-btn2{background:rgba(139,121,232,0.2);border:1px solid rgba(139,121,232,0.5);color:#8B79E8;padding:9px 22px;border-radius:7px;cursor:pointer;font-size:13px;font-weight:700;transition:all .2s}
 .vc-save-btn2:hover{background:rgba(139,121,232,0.35)}
 @media(max-width:600px){.voices-grid{grid-template-columns:1fr}.vc-modal-row{grid-template-columns:1fr}.voices-themebar{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;margin-bottom:18px}.voices-themebar>button{flex:0 0 auto}.voices-section-head>span:last-child{flex-basis:100%}}
-/* Mobile: lift the "Vision" replay button off the bottom nav, up by the milestones pill, smaller */
-@media(max-width:600px){#n2055ReplayBtn{top:13px!important;bottom:auto!important;left:auto!important;right:116px!important;padding:5px 10px!important;font-size:11px!important;letter-spacing:.04em!important;z-index:9600!important}}
 
 
 /* Documented source card */
@@ -10396,6 +10394,29 @@ if('serviceWorker' in navigator){
 </div>
 <button id="n2055ReplayBtn" onclick="n2055PlayIntro()" title="Replay the vision"
   style="position:fixed;left:14px;bottom:14px;z-index:9000;display:none;background:rgba(26,29,22,.92);color:#C8A84B;border:1px solid rgba(200,168,75,.5);border-radius:30px;padding:9px 15px;font:600 13px/1 system-ui;letter-spacing:.06em;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.4)">▶ Vision</button>
+<script>
+(function(){
+  function authed(){try{return localStorage.getItem('n2055_auth')==='1';}catch(e){return false;}}
+  function placeVision(){
+    var rb=document.getElementById('n2055ReplayBtn'), pill=document.querySelector('.hpill');
+    if(!rb||!pill)return;
+    var mobile=window.matchMedia('(max-width:600px)').matches;
+    var base='align-items:center;background:rgba(26,29,22,.92);color:#C8A84B;border:1px solid rgba(200,168,75,.5);border-radius:30px;cursor:pointer;';
+    if(mobile){
+      var disp=authed()?'inline-flex':'none';
+      rb.style.cssText='position:static;display:'+disp+';margin-left:8px;padding:5px 11px;font:600 11px/1 system-ui;letter-spacing:.04em;'+base;
+      if(rb.previousElementSibling!==pill) pill.insertAdjacentElement('afterend', rb);
+    } else {
+      var disp2=authed()?'block':'none';
+      rb.style.cssText='position:fixed;left:14px;bottom:14px;z-index:9000;display:'+disp2+';padding:9px 15px;font:600 13px/1 system-ui;letter-spacing:.06em;box-shadow:0 4px 18px rgba(0,0,0,.4);'+base;
+      if(rb.parentElement!==document.body) document.body.appendChild(rb);
+    }
+  }
+  window.addEventListener('resize', placeVision);
+  document.addEventListener('DOMContentLoaded', placeVision);
+  setTimeout(placeVision,400); setTimeout(placeVision,1500);
+})();
+</script>
 <script>
 (function(){
   var DUR=74600, timer=null;
