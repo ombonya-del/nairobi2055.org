@@ -4808,6 +4808,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ── SERVICE WORKER REGISTRATION ────────────────────────────
 if('serviceWorker' in navigator){
+  var _hadController = !!navigator.serviceWorker.controller, _reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if (_reloaded) return; _reloaded = true;
+    // Auto-refresh once when a new deployment takes over (no more stale cache).
+    if (_hadController) window.location.reload();
+  });
   window.addEventListener('load', function(){
     navigator.serviceWorker.register('sw.js').then(function(reg){
       console.log('SW registered:', reg.scope);
