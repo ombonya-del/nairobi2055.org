@@ -3950,6 +3950,7 @@ let _importPlatform = 'other';
 let _vcMode        = 'add';
 let _vcEditId      = null;
 let _vcThemeFilter = 'all';   // Voices secondary filter (theme); 'all' = no filter
+let _vcLaneOpen    = {};      // Voices: which lanes are expanded on mobile (accordion)
 let _naiPeriod     = 'daily'; // NaiNew Index trend granularity: daily | weekly | monthly
 
 // ── Data helpers ─────────────────────────────────────────────────────────────
@@ -4324,9 +4325,19 @@ function renderVoices() {
         + '<div class="vlh-label" style="color:' + c.color + '">' + c.icon + ' ' + c.label + ' &middot; ' + list.length + '</div>'
         + '<div class="vlh-blurb">' + c.blurb + '</div>'
         + '</div>';
-      var body = list.length
-        ? '<div class="voices-lane-cards">' + list.map(renderVoiceCard).join('') + '</div>'
-        : '<div class="voices-lane-empty">No voices in this lane' + (_vcThemeFilter !== 'all' ? ' for this theme' : '') + ' yet.</div>';
+      // On mobile, collapse each lane to one voice so all three lanes are visible at
+      // once; tap "N more" to expand (accordion, like Halafu). Desktop shows all.
+      var mobile = !isDesktop();
+      var body;
+      if (!list.length) {
+        body = '<div class="voices-lane-empty">No voices in this lane' + (_vcThemeFilter !== 'all' ? ' for this theme' : '') + ' yet.</div>';
+      } else if (mobile && !_vcLaneOpen[c.mood] && list.length > 1) {
+        body = '<div class="voices-lane-cards">' + renderVoiceCard(list[0]) + '</div>'
+          + '<button data-lane-open="' + c.mood + '" style="width:100%;margin-top:10px;padding:10px;border:1px dashed ' + hexA(c.color, 0.55) + ';background:' + hexA(c.color, 0.07) + ';color:' + c.color + ';font:700 12px/1 system-ui,sans-serif;border-radius:8px;cursor:pointer">+ ' + (list.length - 1) + ' more voice' + (list.length - 1 === 1 ? '' : 's') + ' ↓</button>';
+      } else {
+        body = '<div class="voices-lane-cards">' + list.map(renderVoiceCard).join('') + '</div>'
+          + (mobile && list.length > 1 ? '<button data-lane-close="' + c.mood + '" style="width:100%;margin-top:10px;padding:10px;border:1px dashed ' + hexA(c.color, 0.4) + ';background:transparent;color:' + c.color + ';font:700 12px/1 system-ui,sans-serif;border-radius:8px;cursor:pointer">↑ Show less</button>' : '');
+      }
       return '<div class="voices-lane">' + head + body + '</div>';
     }).join('') + '</div>';
 
@@ -4335,6 +4346,14 @@ function renderVoices() {
     // Wire theme filter chips
     main.querySelectorAll('[data-theme-filter]').forEach(function(b){
       b.addEventListener('click', function(){ _vcThemeFilter = b.getAttribute('data-theme-filter'); renderVoices(); });
+    });
+
+    // Wire mobile lane accordion (expand / collapse)
+    main.querySelectorAll('[data-lane-open]').forEach(function(b){
+      b.addEventListener('click', function(){ _vcLaneOpen[b.getAttribute('data-lane-open')] = true; renderVoices(); });
+    });
+    main.querySelectorAll('[data-lane-close]').forEach(function(b){
+      b.addEventListener('click', function(){ _vcLaneOpen[b.getAttribute('data-lane-close')] = false; renderVoices(); });
     });
 
     // Wire NaiNew Index period toggle
