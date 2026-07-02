@@ -4327,7 +4327,7 @@ function renderVoices() {
         + '</div>';
       // On mobile, collapse each lane to one voice so all three lanes are visible at
       // once; tap "N more" to expand (accordion, like Halafu). Desktop shows all.
-      var mobile = !isDesktop();
+      var mobile = window.matchMedia('(max-width:760px)').matches;
       var body;
       if (!list.length) {
         body = '<div class="voices-lane-empty">No voices in this lane' + (_vcThemeFilter !== 'all' ? ' for this theme' : '') + ' yet.</div>';
