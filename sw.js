@@ -1,7 +1,7 @@
 // Nairobi 2055 — Service Worker
 // Cache-first strategy: app shell cached on install, served offline
 
-const CACHE_NAME = 'nairobi2055-v23';
+const CACHE_NAME = 'nairobi2055-v24';
 const ASSETS = [
   '/',
   '/index.html',
@@ -51,9 +51,10 @@ self.addEventListener('fetch', event => {
   );
 
   if (isHTML) {
-    // Network-first: get the latest page, fall back to cache only when offline
+    // Network-first with cache:'no-store' so we always bypass the browser/CDN HTTP
+    // cache and get the freshly deployed page; fall back to our cache only offline.
     event.respondWith(
-      fetch(event.request).then(response => {
+      fetch(event.request, { cache: 'no-store' }).then(response => {
         if (response.ok) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
