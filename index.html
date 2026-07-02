@@ -473,7 +473,32 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .voices-lane{display:flex;flex-direction:column;gap:12px;min-width:0}
 .voices-lane-head{padding:12px 14px;border-radius:9px 9px 4px 4px}
 .vlh-label{font:800 12px/1.15 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase}
-.vlh-chev{float:right;opacity:.75;font-weight:700;margin-left:8px}
+/* Accordion affordance: the chevron is a tinted circular badge (auto-colored to the
+   lane via currentColor) so it reads as a tappable control even without hover. */
+.vlh-chev{
+  float:right;margin-left:8px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:24px;height:24px;border-radius:999px;
+  font-size:15px;font-weight:800;line-height:1;
+  background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.14);           /* fallback */
+  background:color-mix(in srgb, currentColor 14%, transparent);
+  border-color:color-mix(in srgb, currentColor 34%, transparent);
+  transition:background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.voices-lane-head[role="button"]{transition:filter .15s ease}
+/* Hover (pointer devices only — avoids sticky hover on touch) */
+@media (hover:hover){
+  .voices-lane-head[role="button"]:hover{filter:brightness(1.05);cursor:pointer}
+  .voices-lane-head[role="button"]:hover .vlh-chev{
+    background:color-mix(in srgb, currentColor 30%, transparent);
+    transform:scale(1.1);box-shadow:0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+  }
+}
+/* Press feedback (works on touch) */
+.voices-lane-head[role="button"]:active{filter:brightness(.97)}
+.voices-lane-head[role="button"]:active .vlh-chev{
+  background:color-mix(in srgb, currentColor 34%, transparent);transform:scale(.94);
+}
 .voices-lane-head[role="button"]:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .vlh-blurb{font-size:11px;color:var(--text2);line-height:1.5;margin-top:5px}
 .voices-lane-cards{display:flex;flex-direction:column;gap:12px}
