@@ -473,6 +473,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .voices-lane{display:flex;flex-direction:column;gap:12px;min-width:0}
 .voices-lane-head{padding:12px 14px;border-radius:9px 9px 4px 4px}
 .vlh-label{font:800 12px/1.15 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.vlh-chev{float:right;opacity:.75;font-weight:700;margin-left:8px}
+.voices-lane-head[role="button"]:focus-visible{outline:2px solid currentColor;outline-offset:2px}
 .vlh-blurb{font-size:11px;color:var(--text2);line-height:1.5;margin-top:5px}
 .voices-lane-cards{display:flex;flex-direction:column;gap:12px}
 .voices-lane-empty{padding:14px 4px 24px;color:#9AA0AE;font-size:12px;font-style:italic}
@@ -4321,13 +4323,19 @@ function renderVoices() {
     var hexA = function(h, a){ var n = parseInt(h.slice(1), 16); return 'rgba(' + ((n>>16)&255) + ',' + ((n>>8)&255) + ',' + (n&255) + ',' + a + ')'; };
     var lanesHtml = '<div class="voices-lanes">' + CATS.map(function(c){
       var list = byMood[c.mood] || [];
-      var head = '<div class="voices-lane-head" style="background:' + hexA(c.color, 0.10) + ';border:1px solid ' + hexA(c.color, 0.28) + ';border-top:3px solid ' + c.color + '">'
-        + '<div class="vlh-label" style="color:' + c.color + '">' + c.icon + ' ' + c.label + ' &middot; ' + list.length + '</div>'
+      // On mobile, collapse each lane to one voice so all three lanes are visible at
+      // once; tap the lane head or "N more" to expand (accordion, like Halafu).
+      // Desktop shows all.
+      var mobile = window.matchMedia('(max-width:760px)').matches;
+      var canToggle = mobile && list.length > 1;          // header acts as accordion toggle
+      var isOpen = !!_vcLaneOpen[c.mood];
+      var chev = canToggle ? ' <span class="vlh-chev" aria-hidden="true">' + (isOpen ? '▾' : '▸') + '</span>' : '';
+      var head = '<div class="voices-lane-head"'
+        + (canToggle ? ' data-lane-toggle="' + c.mood + '" role="button" tabindex="0" aria-expanded="' + isOpen + '"' : '')
+        + ' style="background:' + hexA(c.color, 0.10) + ';border:1px solid ' + hexA(c.color, 0.28) + ';border-top:3px solid ' + c.color + (canToggle ? ';cursor:pointer;user-select:none' : '') + '">'
+        + '<div class="vlh-label" style="color:' + c.color + '">' + c.icon + ' ' + c.label + ' &middot; ' + list.length + chev + '</div>'
         + '<div class="vlh-blurb">' + c.blurb + '</div>'
         + '</div>';
-      // On mobile, collapse each lane to one voice so all three lanes are visible at
-      // once; tap "N more" to expand (accordion, like Halafu). Desktop shows all.
-      var mobile = window.matchMedia('(max-width:760px)').matches;
       var body;
       if (!list.length) {
         body = '<div class="voices-lane-empty">No voices in this lane' + (_vcThemeFilter !== 'all' ? ' for this theme' : '') + ' yet.</div>';
@@ -4348,12 +4356,27 @@ function renderVoices() {
       b.addEventListener('click', function(){ _vcThemeFilter = b.getAttribute('data-theme-filter'); renderVoices(); });
     });
 
-    // Wire mobile lane accordion (expand / collapse)
+    // Wire mobile lane accordion (expand / collapse).
+    // After re-render, bring the toggled lane's head back into view so collapsing
+    // returns you to the top of that lane (a "back to top" for free).
+    var laneScrollTo = function(mood){
+      requestAnimationFrame(function(){
+        var el = main.querySelector('[data-lane-toggle="' + mood + '"]')
+              || main.querySelector('[data-lane-open="' + mood + '"]');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    };
     main.querySelectorAll('[data-lane-open]').forEach(function(b){
       b.addEventListener('click', function(){ _vcLaneOpen[b.getAttribute('data-lane-open')] = true; renderVoices(); });
     });
     main.querySelectorAll('[data-lane-close]').forEach(function(b){
-      b.addEventListener('click', function(){ _vcLaneOpen[b.getAttribute('data-lane-close')] = false; renderVoices(); });
+      b.addEventListener('click', function(){ var m = b.getAttribute('data-lane-close'); _vcLaneOpen[m] = false; renderVoices(); laneScrollTo(m); });
+    });
+    // Tap (or Enter/Space on) the colored lane head to expand or collapse.
+    main.querySelectorAll('[data-lane-toggle]').forEach(function(b){
+      var toggle = function(){ var m = b.getAttribute('data-lane-toggle'); _vcLaneOpen[m] = !_vcLaneOpen[m]; renderVoices(); laneScrollTo(m); };
+      b.addEventListener('click', toggle);
+      b.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
     });
 
     // Wire NaiNew Index period toggle
