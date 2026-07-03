@@ -68,6 +68,7 @@ body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,
 .plan-ctrls{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;padding:12px 13px;background:var(--bg2);border:1px solid var(--border);border-radius:12px}
 .plan-cg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .plan-cg .clbl{width:100%;margin-bottom:2px}
+@media(min-width:761px){.plan-ctrls{flex-direction:row;flex-wrap:wrap;align-items:center;gap:10px 22px}.plan-cg .clbl{width:auto;margin-bottom:0}}
 .cg{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
 .cdiv{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
 button.sb{border:1px solid var(--border);background:var(--bg2);color:var(--text3);border-radius:30px;padding:5px 12px;font-size:11px;cursor:pointer;transition:all .18s;white-space:nowrap;font-weight:500}
@@ -926,19 +927,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   </div>
 </div>
 <div class="ctrls">
-  <div class="cg"><span class="clbl">Scenario</span>
-    <button class="sb so" id="sc-opt" onclick="setSc('opt')" style="background:#3DBF78">🚀 Optimistic</button>
-    <button class="sb" id="sc-rea" onclick="setSc('rea')">📊 Realistic</button>
-    <button class="sb" id="sc-dis" onclick="setSc('dis')">⚡ Disruption</button>
-    <button class="sb" id="sc-cri" onclick="setSc('cri')">🌊 Crisis</button>
-  </div>
-  <div class="cdiv"></div>
-  <div class="cg"><span class="clbl">Phase</span>
-    <button class="pb po" id="ph-1" onclick="setPh(1)">Phase 1 · 2025–35</button>
-    <button class="pb" id="ph-2" onclick="setPh(2)">Phase 2 · 2035–45</button>
-    <button class="pb" id="ph-3" onclick="setPh(3)">Phase 3 · 2045–55</button>
-  </div>
-  <div class="cdiv"></div>
   <div class="cg"><span class="clbl">View</span>
     <button class="vb vo" id="v-pillars" onclick="setView('pillars')">⬡ Plan</button>
     <button class="vb" id="v-tracker" onclick="setView('tracker')">◎ Tracker</button>
@@ -2706,7 +2694,6 @@ function closeDP(){state.actP=null;document.querySelectorAll('.dpanel').forEach(
 // Scenario + phase controls, shown inside the Plan view on mobile (desktop keeps
 // the top .ctrls bar). Built from state so active styling is always correct.
 function planControlsHTML(){
-  if(!window.matchMedia('(max-width:760px)').matches) return '';
   var sc=Object.keys(SC).map(function(k){
     var on=(k===state.sc);
     return '<button class="sb'+(on?' so':'')+'" onclick="setSc(\''+k+'\')"'+(on?' style="background:'+SC[k].col+'"':'')+'>'+SC[k].icon+' '+SC[k].name+'</button>';
