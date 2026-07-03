@@ -181,13 +181,30 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .tlphases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .tlphases.tl-accordion{grid-template-columns:1fr}
 .tl-acc-head{cursor:pointer;user-select:none}
-.tl-chev{float:right;opacity:.7;font-weight:700;margin-left:8px}
+/* Bigger tinted badge chevrons (mirror the Voices lanes), auto-colored per section */
+.tl-chev{float:right}
+.tl-chev,.ptab-acc-chev{
+  display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;margin-left:8px;
+  width:26px;height:26px;border-radius:999px;font-size:16px;font-weight:800;line-height:1;
+  background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.14);
+  background:color-mix(in srgb, currentColor 15%, transparent);
+  border-color:color-mix(in srgb, currentColor 36%, transparent);
+  transition:background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+@media (hover:hover){
+  .tl-acc-head:hover .tl-chev,.ptab-acc-head:hover .ptab-acc-chev{
+    background:color-mix(in srgb, currentColor 30%, transparent);
+    transform:scale(1.1);box-shadow:0 0 0 3px color-mix(in srgb, currentColor 12%, transparent);
+  }
+}
+.tl-acc-head:active .tl-chev,.ptab-acc-head:active .ptab-acc-chev{
+  background:color-mix(in srgb, currentColor 34%, transparent);transform:scale(.94);
+}
 /* Partners: mobile accordion replaces the off-screen horizontal tab bar */
 @media(max-width:760px){#partners-bar{display:none !important}}
 .ptab-acc{display:flex;flex-direction:column;gap:8px;margin-top:8px}
 .ptab-acc-head{width:100%;text-align:left;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
-.ptab-acc-head.open{border-color:var(--gold);color:var(--gold)}
-.ptab-acc-chev{opacity:.7;margin-left:8px}
+.ptab-acc-head.open{background:var(--bg3)}
 .ptab-acc-body{overflow-x:auto;padding-top:6px}
 .tlcol{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:15px}
 .tlch{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
@@ -2725,17 +2742,19 @@ function renderTimeline(){
   const mobile = window.matchMedia('(max-width:760px)').matches;
   // Hybrid: Phase 1 open by default on first mobile view, then toggles are independent.
   if(mobile && !_tlPhaseOpen._init){ _tlPhaseOpen = { _init:true, 1:true }; }
+  const TL_COLORS=['#3FBFB0','#C8A84B','#8B79E8'];   // Foundation=teal, Acceleration=gold, Maturity=purple
   let html='<div class="stitle">Timeline · '+scO.name+' Scenario · All Phases</div><div class="tlphases'+(mobile?' tl-accordion':'')+'">';
   PHS.forEach(ph=>{
     let t=0,d=0;
     P.forEach(p=>{const ms=p.data[state.sc]?.['p'+ph.id]?.ms||[];ms.forEach((_,i)=>{t++;if(state.prog[mk(state.sc,p.id,ph.id,i)]==='done')d++;});});
     const pct=t?Math.round((d/t)*100):0;
     const open = !mobile || !!_tlPhaseOpen[ph.id];
-    const chev = mobile ? '<span class="tl-chev">'+(open?'▾':'▸')+'</span>' : '';
-    html+='<div class="tlcol'+(mobile?' tl-acc':'')+'">'
+    const pcol = TL_COLORS[(ph.id-1)%TL_COLORS.length] || scO.col;
+    const chev = mobile ? '<span class="tl-chev" style="color:'+pcol+'">'+(open?'▾':'▸')+'</span>' : '';
+    html+='<div class="tlcol'+(mobile?' tl-acc':'')+'" style="border-left:3px solid '+pcol+'">'
       +'<div class="tlch'+(mobile?' tl-acc-head':'')+'"'+(mobile?' data-tl-phase="'+ph.id+'" role="button" tabindex="0" aria-expanded="'+open+'"':'')+'>'
-      +'<div class="tlcnum">Phase '+ph.id+chev+'</div><div class="tlcname">'+ph.name+'</div><div class="tlcyrs">'+ph.years+'</div><div class="tlctheme">'+ph.theme+'</div>'
-      +'<div class="tlprog"><div class="tlpt"><div class="tlpf" style="width:'+pct+'%;background:'+scO.col+'"></div></div><div class="tlpl">'+d+'/'+t+' milestones · '+pct+'%</div></div></div>';
+      +'<div class="tlcnum" style="color:'+pcol+'">Phase '+ph.id+chev+'</div><div class="tlcname">'+ph.name+'</div><div class="tlcyrs">'+ph.years+'</div><div class="tlctheme">'+ph.theme+'</div>'
+      +'<div class="tlprog"><div class="tlpt"><div class="tlpf" style="width:'+pct+'%;background:'+pcol+'"></div></div><div class="tlpl">'+d+'/'+t+' milestones · '+pct+'%</div></div></div>';
     html+='<div class="tl-acc-body"'+(open?'':' style="display:none"')+'>';
     P.forEach(p=>{
       const ms=p.data[state.sc]?.['p'+ph.id]?.ms||[];
@@ -3388,6 +3407,7 @@ const INV_HTML = `<div class="inv-section"><div class="inv-sect-title">🌿 Gree
 const PROF_SEED = [{id:1,name:'Yazmany Arboleda',org:'Artist / Community Designer',disc:'Architecture + Community',role:'Led participatory public art in Kibera and Mathare. Expert in community-co-design of public spaces. Role: Lead community co-design facilitator for ward green spaces and creative districts.',contact:'info@yazmany.com',avail:'Open'},{id:2,name:'Urko Sanchez Architects',org:'Architecture Studio',disc:'Architecture + Education',role:'Nairobi-based firm designing community schools and social infrastructure in informal settlements. Role: Settlement upgrading community centre and ECD centre design.',contact:'info@urkosanchez.com',avail:'Active'},{id:3,name:'Shahidi wa Leo / Kounkuey Design',org:'Design Collective',disc:'Community Design',role:'Cross-border design firm with deep Kibera experience. Designed Kibera Public Space Project — open space + market in settlement. Role: Prototype ward green space design for settlement wards.',contact:'info@kdeinit.org',avail:'Open'},{id:4,name:'Knight Frank Kenya',org:'Property Consultancy',disc:'Real Estate + Valuation',role:'Leading Kenya property advisory firm. Role: Digital land registry valuation standards, informal settlement plot valuation methodology for title deed programme.',contact:'nairobi@ke.knightfrank.com',avail:'Active'},{id:5,name:'Bondo Mwangi & Associates',org:'Structural Engineering',disc:'Engineering',role:'Senior structural engineering practice with informal settlement construction experience. Role: Settlement upgrading structural assessment and retrofitting advisory.',contact:'info@bmwangi.com',avail:'Open'},{id:6,name:'Ranken Engineering',org:'Civil + Water Engineering',disc:'Engineering + Water',role:'Nairobi civil engineering firm specialising in water and sewer reticulation. Prior Kibera water project experience. Role: In-situ settlement water + sewer installation design and supervision.',contact:'info@ranken.co.ke',avail:'Active'},{id:7,name:'Cytonn Investments',org:'Real Estate Finance',disc:'Finance + Real Estate',role:'Kenya\'s largest alternative investment manager. Deep Nairobi real estate market knowledge. Role: Community land trust bond structuring, diaspora REIT design for settlement upgrading finance.',contact:'info@cytonn.com',avail:'Active'},{id:8,name:'Intellecap',org:'Development Finance Advisory',disc:'Finance + Development',role:'Pan-African development finance advisory with Kenya presence. Role: Blended finance structuring for BRT, settlement upgrading, and green infrastructure programmes.',contact:'info@intellecap.com',avail:'Open'},{id:9,name:'Muungano wa Wanavijiji',org:'Settlement Community Organisation',disc:'Community Development',role:'Kenya\'s largest federation of informal settlement residents. Organised in Kibera, Mathare, Mukuru. Essential role: Community co-design committee leadership, resident voice in all settlement upgrading decisions.',contact:'info@muungano.net',avail:'Active'},{id:10,name:'Akiba Mashinani Trust (AMT)',org:'Community Land Trust',disc:'Community Finance',role:'Kenya\'s leading community land trust organisation. Pioneered community land ownership in informal settlements. Role: Title deed programme co-implementation, community land trust bond management.',contact:'info@akibafund.org',avail:'Active'},{id:11,name:'Mathare Social Justice Centre',org:'Advocacy + Community',disc:'Community Development',role:'Mathare-based human rights and community organising centre. Role: Anti-displacement legal advisory, community co-design facilitation in Mathare ward, urban rights advocacy.',contact:'info@matharesjc.org',avail:'Active'},{id:12,name:'Just A Band',org:'Music + Creative',disc:'Creative Economy',role:'Nairobi-based music and creative collective. Pioneer of Nairobi\'s digital creative economy. Role: Mathare Music District programming advisor, creative economy incubator curriculum.',contact:'info@justaband.com',avail:'Open'},{id:13,name:'Jam Art Factory',org:'Visual Art',disc:'Creative + Culture',role:'Nairobi\'s leading contemporary art gallery with settlement community programme. Role: Kibera Art Quarter curation advisory, public mural commissioning, settlement artist representation.',contact:'info@jamartfactory.com',avail:'Active'},{id:14,name:'Kuona Trust',org:'Visual Arts Support',disc:'Creative + Training',role:'Nairobi visual arts trust supporting emerging Kenyan artists. Role: Creative economy incubator management, artist training programme in constituency creative districts.',contact:'info@kuonatrust.org',avail:'Active'},{id:15,name:'Kenya Green Building Society',org:'Green Building',disc:'Environment + Construction',role:'Kenya\'s leading green building standards body. Role: Green building code development for settlement upgrading, new construction standards, certification programme.',contact:'info@kgbs.or.ke',avail:'Active'},{id:16,name:'African Wildlife Foundation',org:'Conservation + Urban',disc:'Environment',role:'Conservation organisation with urban-wildlife interface expertise around Nairobi National Park. Role: Biodiversity corridor design, Karura Forest expansion technical advisory.',contact:'info@awf.org',avail:'Active'},{id:17,name:'Nailab',org:'Tech Entrepreneurship',disc:'Tech + Youth',role:'Nairobi\'s leading technology accelerator. Role: Silicon Savannah 2.0 accelerator operator, GovTech startup programme management, innovation district anchor tenant.',contact:'info@nailab.co.ke',avail:'Active'},{id:18,name:'Mathare Youth Sports Association (MYSA)',org:'Youth + Sport',disc:'Sport + Community',role:'Kibera/Mathare-based sport-for-development organisation since 1987. 60+ professional players produced. Role: Ward sports programme blueprint, school sport curriculum design, settlement youth football league management.',contact:'info@mysakenya.org',avail:'Active'},{id:19,name:'Society for International Development (SID)',org:'Research + Policy',disc:'Research + Anthropology',role:'Nairobi-based development research institute. Role: Informal settlement social impact assessment, displacement risk monitoring, community wellbeing baseline studies.',contact:'info@sidint.net',avail:'Active'},{id:20,name:'African Population and Health Research Center (APHRC)',org:'Health Research',disc:'Research + Health',role:'Leading Africa health and population research centre. Role: Settlement health baseline studies, ECD programme impact evaluation, maternal health data for Pumwani investment case.',contact:'info@aphrc.org',avail:'Active'}];
 const PROF_KEY = 'n2055_profs';
 let profState = {tab:'consultants', filter:'All', search:'', editId:null};
+let _pAccOpen = 'consultants';   // Partners: which category is open on the mobile accordion (null = all folded)
 
 function loadProfs(){
   try{const s=localStorage.getItem(PROF_KEY); return s?JSON.parse(s):[...PROF_SEED];}
@@ -3411,7 +3431,8 @@ function discColor(d){return DISC_COLORS[d]||'#5C5C4E';}
 
 function renderPartners(){
   const main = document.getElementById('main');
-  const t = profState.tab;
+  const pMobile = window.matchMedia('(max-width:760px)').matches;
+  const t = pMobile ? _pAccOpen : profState.tab;   // mobile accordion can fold to nothing (null)
 
   let html = '<div class="stitle">Partners, Investors & Professionals · Nairobi 2055</div>';
   // Admin preview codes panel
@@ -3454,7 +3475,7 @@ function renderPartners(){
     html += '<div class="stitle" style="margin-bottom:12px">Investment Universe — 6 Sectors · $50K–$2B+ Ticket Sizes</div>';
     html += INV_HTML;
   }
-  else{
+  else if(t==='local'){
     // Local professionals tab
     const profs = loadProfs();
     const discs = ['All',...new Set(profs.map(p=>p.disc))].sort();
@@ -3512,13 +3533,14 @@ function renderPartners(){
   // Mobile: stack the three groups as an accordion (all headers visible, one open
   // at a time) instead of the off-screen horizontal tab bar. Desktop unchanged.
   const sectionBody = html;
-  const pMobile = window.matchMedia('(max-width:760px)').matches;
   if(pMobile){
+    const P_COLORS = { consultants:'#8B79E8', investors:'#5DBF7A', local:'#E8844A' };
     const pTabs = [['consultants','🏢 International Consultants'],['investors','💰 Investors by Sector'],['local','🇰🇪 Local & Regional Professionals']];
     html = __hbase + '<div class="ptab-acc">';
     pTabs.forEach(function(pt){
-      const active = (t===pt[0]);
-      html += '<button class="ptab-acc-head'+(active?' open':'')+'" data-ptab="'+pt[0]+'">'+pt[1]+'<span class="ptab-acc-chev">'+(active?'▾':'▸')+'</span></button>';
+      const active = (_pAccOpen===pt[0]);
+      const col = P_COLORS[pt[0]] || 'var(--gold)';
+      html += '<button class="ptab-acc-head'+(active?' open':'')+'" data-ptab="'+pt[0]+'" style="border-left:3px solid '+col+';color:'+(active?col:'var(--text)')+'">'+pt[1]+'<span class="ptab-acc-chev" style="color:'+col+'">'+(active?'▾':'▸')+'</span></button>';
       if(active) html += '<div class="ptab-acc-body">'+sectionBody+'</div>';
     });
     html += '</div>';
@@ -3529,7 +3551,12 @@ function renderPartners(){
   main.innerHTML = html;
   if(pMobile){
     main.querySelectorAll('[data-ptab]').forEach(function(b){
-      b.addEventListener('click', function(){ setPTab(b.getAttribute('data-ptab')); });
+      b.addEventListener('click', function(){
+        const key=b.getAttribute('data-ptab');
+        _pAccOpen = (_pAccOpen===key) ? null : key;   // click the open section to fold it
+        profState.tab = key;
+        renderPartners();
+      });
     });
   }
 }
