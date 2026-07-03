@@ -65,6 +65,9 @@ body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,
 .hstat .l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
 .ctrls{padding:11px 22px;display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg);align-items:center;overflow-x:auto}
 .clbl{font-size:9px;color:var(--text4);text-transform:uppercase;letter-spacing:.12em;margin-right:2px;white-space:nowrap;font-weight:700}
+.plan-ctrls{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;padding:12px 13px;background:var(--bg2);border:1px solid var(--border);border-radius:12px}
+.plan-cg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.plan-cg .clbl{width:100%;margin-bottom:2px}
 .cg{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
 .cdiv{width:1px;height:20px;background:var(--border);margin:0 4px;flex-shrink:0}
 button.sb{border:1px solid var(--border);background:var(--bg2);color:var(--text3);border-radius:30px;padding:5px 12px;font-size:11px;cursor:pointer;transition:all .18s;white-space:nowrap;font-weight:500}
@@ -900,7 +903,7 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
     <span class="logo-main">Nairobi</span><span class="logo-sub"> 2055</span>
     <span class="logo-tag">Transformation Master Plan · Est. 2025</span>
   </div>
-  <div class="hpill" onclick="setView('progress')">
+  <div class="hpill" onclick="setView('tracker')">
     <div class="hring">
       <svg width="34" height="34" viewBox="0 0 34 34">
         <circle cx="17" cy="17" r="13" fill="none" stroke="var(--bg3)" stroke-width="5"/>
@@ -937,9 +940,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   </div>
   <div class="cdiv"></div>
   <div class="cg"><span class="clbl">View</span>
-    <button class="vb vo" id="v-pillars" onclick="setView('pillars')">⬡ Pillars</button>
-    <button class="vb" id="v-timeline" onclick="setView('timeline')">↔ Timeline</button>
-    <button class="vb" id="v-progress" onclick="setView('progress')">◎ Progress</button>
+    <button class="vb vo" id="v-pillars" onclick="setView('pillars')">⬡ Plan</button>
+    <button class="vb" id="v-tracker" onclick="setView('tracker')">◎ Tracker</button>
   </div>
   <div class="cdiv"></div>
   <button class="vb partners-vb" id="v-partners" onclick="setView('partners')">🤝 Partners &amp; Investors</button>
@@ -2585,7 +2587,7 @@ function updateControls(){
     else{b.classList.remove('so');b.style.background='var(--bg2)';b.style.color='var(--text3)';b.style.borderColor='var(--border)';}
   });
   [1,2,3].forEach(p=>{const b=document.getElementById('ph-'+p);if(b){p===state.ph?b.classList.add('po'):b.classList.remove('po');}});
-  ['pillars','timeline','progress','partners'].forEach(v=>{const b=document.getElementById('v-'+v);if(b){v===state.view?b.classList.add('vo'):b.classList.remove('vo');}});
+  ['pillars','tracker','partners','voices'].forEach(v=>{const b=document.getElementById('v-'+v);if(b){v===state.view?b.classList.add('vo'):b.classList.remove('vo');}});
 }
 
 // ─── PHASE PROGRESS BAR ──────────────────────────────────────────────────────
@@ -2644,7 +2646,7 @@ function updMs(pid,sc,ph,mi,newSt){ if(!isAdmin()) return;
     const pctEl=cbar.querySelector('.ppbp');if(pctEl)pctEl.textContent=pct+'%';
   }
   showToast((newSt==='done'?'✓ Done: ':newSt==='in-progress'?'◑ In Progress: ':'○ Reset: ')+(m?.t?.slice(0,40)||'Milestone'),newSt);
-  if(state.view==='progress')renderProgress();
+  if(state.view==='tracker')renderTracker();
   renderMeta();
 }
 
@@ -2701,9 +2703,25 @@ function dpHTML(pid){
 function closeDP(){state.actP=null;document.querySelectorAll('.dpanel').forEach(el=>el.remove());document.querySelectorAll('.pcard').forEach(el=>el.classList.remove('act'));pushHistory();}
 
 // ─── PILLARS VIEW ────────────────────────────────────────────────────────────
+// Scenario + phase controls, shown inside the Plan view on mobile (desktop keeps
+// the top .ctrls bar). Built from state so active styling is always correct.
+function planControlsHTML(){
+  if(!window.matchMedia('(max-width:760px)').matches) return '';
+  var sc=Object.keys(SC).map(function(k){
+    var on=(k===state.sc);
+    return '<button class="sb'+(on?' so':'')+'" onclick="setSc(\''+k+'\')"'+(on?' style="background:'+SC[k].col+'"':'')+'>'+SC[k].icon+' '+SC[k].name+'</button>';
+  }).join('');
+  var ph=PHS.map(function(p){
+    var on=(p.id===state.ph);
+    return '<button class="pb'+(on?' po':'')+'" onclick="setPh('+p.id+')">Phase '+p.id+' · '+p.years+'</button>';
+  }).join('');
+  return '<div class="plan-ctrls">'
+    + '<div class="plan-cg"><span class="clbl">Scenario</span>'+sc+'</div>'
+    + '<div class="plan-cg"><span class="clbl">Phase</span>'+ph+'</div></div>';
+}
 function renderPillars(){
   const main=document.getElementById('main');
-  main.innerHTML='<div class="stitle">10 Strategic Pillars · '+SC[state.sc].name+' · Phase '+state.ph+' · '+PHS[state.ph-1].years+'</div><div class="pgrid" id="pgrid"></div>';
+  main.innerHTML=planControlsHTML()+'<div class="stitle">10 Strategic Pillars · '+SC[state.sc].name+' · Phase '+state.ph+' · '+PHS[state.ph-1].years+'</div><div class="pgrid" id="pgrid"></div>';
   const grid=document.getElementById('pgrid');
   P.forEach((p,idx)=>{
     const col=p.col;const d=p.data[state.sc]?.['p'+state.ph];
@@ -2743,8 +2761,7 @@ function togP(pid){
 
 // ─── TIMELINE VIEW ───────────────────────────────────────────────────────────
 let _tlPhaseOpen = {};   // Timeline: which phases are expanded on mobile (accordion)
-function renderTimeline(){
-  const main=document.getElementById('main');
+function timelineHTML(){
   const scO=SC[state.sc];
   const mobile = window.matchMedia('(max-width:760px)').matches;
   // Hybrid: Phase 1 open by default on first mobile view, then toggles are independent.
@@ -2776,19 +2793,22 @@ function renderTimeline(){
     html+='</div></div>';
   });
   html+='</div>';
-  main.innerHTML=html;
-  if(mobile){
-    main.querySelectorAll('[data-tl-phase]').forEach(function(h){
-      var toggle=function(){ var id=h.getAttribute('data-tl-phase'); _tlPhaseOpen[id]=!_tlPhaseOpen[id]; renderTimeline(); };
-      h.addEventListener('click', toggle);
-      h.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
-    });
-  }
+  return html;
 }
+function wireTimelineAccordion(){
+  const main=document.getElementById('main');
+  if(!window.matchMedia('(max-width:760px)').matches) return;
+  main.querySelectorAll('[data-tl-phase]').forEach(function(h){
+    var toggle=function(){ var id=h.getAttribute('data-tl-phase'); _tlPhaseOpen[id]=!_tlPhaseOpen[id]; (state.view==='tracker'?renderTracker():renderTimeline()); };
+    h.addEventListener('click', toggle);
+    h.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+  });
+}
+function renderTimeline(){ document.getElementById('main').innerHTML=timelineHTML(); wireTimelineAccordion(); }
+function renderTracker(){ document.getElementById('main').innerHTML=timelineHTML()+progressHTML(); wireTimelineAccordion(); }
 
 // ─── PROGRESS VIEW ───────────────────────────────────────────────────────────
-function renderProgress(){
-  const main=document.getElementById('main');
+function progressHTML(){
   const g=calcG();
   const circ=2*Math.PI*40;const off=circ-(g.pct/100)*circ;
   let html='<div class="prhero">'
@@ -2834,21 +2854,23 @@ function renderProgress(){
     }).join('');
   }
   html+='</div>';
-  main.innerHTML=html;
+  return html;
 }
+function renderProgress(){ document.getElementById('main').innerHTML=progressHTML(); }
 
-function clrAct(){state.activity=[];svA([]);if(state.view==='progress')renderProgress();}
+function clrAct(){state.activity=[];svA([]);if(state.view==='tracker')renderTracker();}
 
 // ─── MAIN RENDER & SETTERS ───────────────────────────────────────────────────
 function render(){
+  if(state.view==='timeline'||state.view==='progress') state.view='tracker';   // merged into Tracker
   updateControls();renderMeta();updateRing();
   const pb = document.getElementById('partners-bar');
   if(pb) pb.style.display = state.view==='partners' ? 'block' : 'none';
   if(state.view==='pillars') renderPillars();
-  else if(state.view==='timeline') renderTimeline();
+  else if(state.view==='tracker') renderTracker();
   else if(state.view==='partners') renderPartners();
   else if(state.view==='voices') renderVoices();
-  else renderProgress();
+  else renderPillars();
   if(typeof updateMobNav==='function') updateMobNav();
 }
 // ─── HISTORY / PWA NAVIGATION ────────────────────────────────────────────────
@@ -3956,7 +3978,7 @@ function _syncMobSheet(){
   if(filterBtn) filterBtn.classList.toggle('mn-filter-has', state.sc!=='opt'||state.ph!==1);
 }
 function updateMobNav(){
-  ['pillars','timeline','progress','partners','voices'].forEach(v=>{
+  ['pillars','tracker','partners','voices'].forEach(v=>{
     const btn=document.getElementById('mn-'+v);
     if(btn) btn.classList.toggle('mn-active', state.view===v);
   });
@@ -9787,22 +9809,16 @@ if('serviceWorker' in navigator){
 </div>
 <nav class="mob-nav" id="mobNav" aria-label="Main navigation">
   <button class="mob-nav-item mn-active" id="mn-pillars" onclick="setView('pillars')">
-    <span class="mob-nav-ico">⬡</span><span class="mob-nav-lbl">Pillars</span>
+    <span class="mob-nav-ico">⬡</span><span class="mob-nav-lbl">Plan</span>
   </button>
-  <button class="mob-nav-item" id="mn-timeline" onclick="setView('timeline')">
-    <span class="mob-nav-ico">↔</span><span class="mob-nav-lbl">Timeline</span>
-  </button>
-  <button class="mob-nav-item" id="mn-progress" onclick="setView('progress')">
-    <span class="mob-nav-ico">◎</span><span class="mob-nav-lbl">Progress</span>
+  <button class="mob-nav-item" id="mn-tracker" onclick="setView('tracker')">
+    <span class="mob-nav-ico">◎</span><span class="mob-nav-lbl">Tracker</span>
   </button>
   <button class="mob-nav-item" id="mn-partners" onclick="setView('partners')">
     <span class="mob-nav-ico">🤝</span><span class="mob-nav-lbl">Partners</span>
   </button>
   <button class="mob-nav-item" id="mn-voices" onclick="setView('voices')">
     <span class="mob-nav-ico">🗣</span><span class="mob-nav-lbl">Voices</span>
-  </button>
-  <button class="mob-nav-item" id="mn-filter" onclick="openMobSheet()">
-    <span class="mob-nav-ico">⚙</span><span class="mob-nav-lbl">Filters</span>
   </button>
 </nav>
 <!-- Build: 2026-04-07T19:30 -->
