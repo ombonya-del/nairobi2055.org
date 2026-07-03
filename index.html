@@ -179,6 +179,16 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .sc.ai{background:rgba(200,168,75,.12);border-color:rgba(200,168,75,.4);color:var(--gold)}
 .sc.at{background:var(--bg4);border-color:var(--border2);color:var(--text)}
 .tlphases{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.tlphases.tl-accordion{grid-template-columns:1fr}
+.tl-acc-head{cursor:pointer;user-select:none}
+.tl-chev{float:right;opacity:.7;font-weight:700;margin-left:8px}
+/* Partners: mobile accordion replaces the off-screen horizontal tab bar */
+@media(max-width:760px){#partners-bar{display:none !important}}
+.ptab-acc{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.ptab-acc-head{width:100%;text-align:left;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:13px;font-weight:700;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:inherit}
+.ptab-acc-head.open{border-color:var(--gold);color:var(--gold)}
+.ptab-acc-chev{opacity:.7;margin-left:8px}
+.ptab-acc-body{overflow-x:auto;padding-top:6px}
 .tlcol{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:15px}
 .tlch{margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 .tlcnum{font-size:8px;color:var(--text4);text-transform:uppercase;letter-spacing:.12em;margin-bottom:3px;font-weight:700}
@@ -2708,15 +2718,25 @@ function togP(pid){
 }
 
 // ─── TIMELINE VIEW ───────────────────────────────────────────────────────────
+let _tlPhaseOpen = {};   // Timeline: which phases are expanded on mobile (accordion)
 function renderTimeline(){
   const main=document.getElementById('main');
   const scO=SC[state.sc];
-  let html='<div class="stitle">Timeline · '+scO.name+' Scenario · All Phases</div><div class="tlphases">';
+  const mobile = window.matchMedia('(max-width:760px)').matches;
+  // Hybrid: Phase 1 open by default on first mobile view, then toggles are independent.
+  if(mobile && !_tlPhaseOpen._init){ _tlPhaseOpen = { _init:true, 1:true }; }
+  let html='<div class="stitle">Timeline · '+scO.name+' Scenario · All Phases</div><div class="tlphases'+(mobile?' tl-accordion':'')+'">';
   PHS.forEach(ph=>{
     let t=0,d=0;
     P.forEach(p=>{const ms=p.data[state.sc]?.['p'+ph.id]?.ms||[];ms.forEach((_,i)=>{t++;if(state.prog[mk(state.sc,p.id,ph.id,i)]==='done')d++;});});
     const pct=t?Math.round((d/t)*100):0;
-    html+='<div class="tlcol"><div class="tlch"><div class="tlcnum">Phase '+ph.id+'</div><div class="tlcname">'+ph.name+'</div><div class="tlcyrs">'+ph.years+'</div><div class="tlctheme">'+ph.theme+'</div><div class="tlprog"><div class="tlpt"><div class="tlpf" style="width:'+pct+'%;background:'+scO.col+'"></div></div><div class="tlpl">'+d+'/'+t+' milestones · '+pct+'%</div></div></div>';
+    const open = !mobile || !!_tlPhaseOpen[ph.id];
+    const chev = mobile ? '<span class="tl-chev">'+(open?'▾':'▸')+'</span>' : '';
+    html+='<div class="tlcol'+(mobile?' tl-acc':'')+'">'
+      +'<div class="tlch'+(mobile?' tl-acc-head':'')+'"'+(mobile?' data-tl-phase="'+ph.id+'" role="button" tabindex="0" aria-expanded="'+open+'"':'')+'>'
+      +'<div class="tlcnum">Phase '+ph.id+chev+'</div><div class="tlcname">'+ph.name+'</div><div class="tlcyrs">'+ph.years+'</div><div class="tlctheme">'+ph.theme+'</div>'
+      +'<div class="tlprog"><div class="tlpt"><div class="tlpf" style="width:'+pct+'%;background:'+scO.col+'"></div></div><div class="tlpl">'+d+'/'+t+' milestones · '+pct+'%</div></div></div>';
+    html+='<div class="tl-acc-body"'+(open?'':' style="display:none"')+'>';
     P.forEach(p=>{
       const ms=p.data[state.sc]?.['p'+ph.id]?.ms||[];
       if(!ms.length)return;
@@ -2727,10 +2747,17 @@ function renderTimeline(){
         html+='<div class="tlev '+cls+'"><div class="tlevd" style="background:'+(st==='done'?'#5DBF7A':st==='in-progress'?'#C8A84B':p.col+'33')+'"></div><span>'+m.y+' — '+m.t+'</span></div>';
       });
     });
-    html+='</div>';
+    html+='</div></div>';
   });
   html+='</div>';
   main.innerHTML=html;
+  if(mobile){
+    main.querySelectorAll('[data-tl-phase]').forEach(function(h){
+      var toggle=function(){ var id=h.getAttribute('data-tl-phase'); _tlPhaseOpen[id]=!_tlPhaseOpen[id]; renderTimeline(); };
+      h.addEventListener('click', toggle);
+      h.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+    });
+  }
 }
 
 // ─── PROGRESS VIEW ───────────────────────────────────────────────────────────
@@ -3416,7 +3443,8 @@ function renderPartners(){
     html += '<div style="font-size:9px;color:var(--text4);margin-top:8px">Names are stored locally. To reset a used code, clear browser data for this site.</div>';
     html += '</div>';
   }
-  // sub-tab bar rendered by #partners-bar element
+  // sub-tab bar rendered by #partners-bar element (desktop) or the accordion (mobile)
+  const __hbase = html; html = '';
 
   if(t==='consultants'){
     html += '<div class="stitle" style="margin-bottom:12px">12 Leading International Firms — Urban, Finance, Health, Tech, Environment</div>';
@@ -3481,7 +3509,29 @@ function renderPartners(){
     html += `<div style="margin-top:10px;font-size:9px;color:var(--text4)">${filtered.length} of ${profs.length} professionals shown${isAdmin() ? ' · Add and edit professionals using the button above' : ''}</div>`;
   }
 
+  // Mobile: stack the three groups as an accordion (all headers visible, one open
+  // at a time) instead of the off-screen horizontal tab bar. Desktop unchanged.
+  const sectionBody = html;
+  const pMobile = window.matchMedia('(max-width:760px)').matches;
+  if(pMobile){
+    const pTabs = [['consultants','🏢 International Consultants'],['investors','💰 Investors by Sector'],['local','🇰🇪 Local & Regional Professionals']];
+    html = __hbase + '<div class="ptab-acc">';
+    pTabs.forEach(function(pt){
+      const active = (t===pt[0]);
+      html += '<button class="ptab-acc-head'+(active?' open':'')+'" data-ptab="'+pt[0]+'">'+pt[1]+'<span class="ptab-acc-chev">'+(active?'▾':'▸')+'</span></button>';
+      if(active) html += '<div class="ptab-acc-body">'+sectionBody+'</div>';
+    });
+    html += '</div>';
+  } else {
+    html = __hbase + sectionBody;
+  }
+
   main.innerHTML = html;
+  if(pMobile){
+    main.querySelectorAll('[data-ptab]').forEach(function(b){
+      b.addEventListener('click', function(){ setPTab(b.getAttribute('data-ptab')); });
+    });
+  }
 }
 
 function setPTab(t){
