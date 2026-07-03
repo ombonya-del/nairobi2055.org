@@ -2704,8 +2704,10 @@ function planControlsHTML(){
     var on=(p.id===state.ph);
     return '<button class="pb'+(on?' po':'')+'" onclick="setPh('+p.id+')">Phase '+p.id+' · '+p.years+'</button>';
   }).join('');
+  var pcBtn=(typeof isAdmin==='function' && isAdmin() && !window.matchMedia('(max-width:760px)').matches)
+    ? '<button class="sb" onclick="openPreviewCodesModal()" style="margin-left:auto;font-size:10px;padding:5px 10px;background:var(--bg2);color:var(--gold);border:1px solid var(--gold)">🔑 Preview Codes</button>' : '';
   return '<div class="plan-ctrls">'
-    + '<div class="plan-cg"><span class="clbl">Scenario</span>'+sc+'</div>'
+    + '<div class="plan-cg"><span class="clbl">Scenario</span>'+sc+pcBtn+'</div>'
     + '<div class="plan-cg"><span class="clbl">Phase</span>'+ph+'</div></div>';
 }
 function renderPillars(){
@@ -3934,22 +3936,10 @@ function applyAdminMode(){
     ctrls.appendChild(srchBtn);
   }
 
-  // Preview Codes button — admin only
-  if(admin){
-    var pcBtn=document.getElementById('previewCodesBtn');
-    if(!pcBtn){
-      pcBtn=document.createElement('button');
-      pcBtn.id='previewCodesBtn';
-      pcBtn.className='sb';
-      pcBtn.style.cssText='font-size:10px;padding:5px 10px;background:var(--bg2);color:var(--gold);border:1px solid var(--gold)';
-      pcBtn.innerHTML='🔑 Preview Codes';
-      pcBtn.onclick=openPreviewCodesModal;
-    }
-    if(ctrls && !ctrls.contains(pcBtn)) ctrls.appendChild(pcBtn);
-  } else {
-    var pcBtn=document.getElementById('previewCodesBtn');
-    if(pcBtn) pcBtn.remove();
-  }
+  // Preview Codes button now lives at the right of the Plan scenario row (see planControlsHTML).
+  var oldPc=document.getElementById('previewCodesBtn');
+  if(oldPc) oldPc.remove();
+  if(state.view==='pillars') renderPillars();
 }
 
 
