@@ -10679,24 +10679,14 @@ if('serviceWorker' in navigator){
     var mobile=window.matchMedia('(max-width:600px)').matches;
     var base='align-items:center;background:rgba(26,29,22,.94);color:#C8A84B;border:1px solid rgba(200,168,75,.55);border-radius:30px;cursor:pointer;';
     if(rb){
-      if(mobile){
-        rb.style.cssText='position:static;display:'+(authed()?'inline-flex':'none')+';margin-left:8px;padding:5px 11px;font:600 11px/1 system-ui;letter-spacing:.04em;'+base;
-        if(rb.previousElementSibling!==pill) pill.insertAdjacentElement('afterend', rb);
-      } else {
-        rb.style.cssText='position:fixed;left:14px;bottom:14px;z-index:9000;display:'+(authed()?'block':'none')+';padding:9px 15px;font:600 13px/1 system-ui;letter-spacing:.06em;box-shadow:0 4px 18px rgba(0,0,0,.4);'+base;
-        if(rb.parentElement!==document.body) document.body.appendChild(rb);
-      }
+      rb.style.cssText='position:static;display:'+(authed()?'inline-flex':'none')+';margin-left:8px;padding:6px 13px;font:600 12px/1 system-ui;letter-spacing:.04em;'+base;
+      if(rb.previousElementSibling!==pill) pill.insertAdjacentElement('afterend', rb);
     }
     if(pwa){
       var pv=!!window.__pwaInstallable;
-      if(mobile){
-        pwa.style.cssText='position:static;display:'+(pv?'inline-flex':'none')+';margin-left:8px;gap:6px;padding:5px 11px;font:600 11px/1 system-ui;letter-spacing:.04em;'+base;
-        var anchor=(rb&&rb.previousElementSibling===pill)?rb:pill;
-        if(pwa.previousElementSibling!==anchor) anchor.insertAdjacentElement('afterend', pwa);
-      } else {
-        pwa.style.cssText='position:fixed;left:14px;bottom:58px;z-index:9500;display:'+(pv?'inline-flex':'none')+';gap:6px;padding:9px 15px;font:600 13px/1 system-ui;letter-spacing:.04em;box-shadow:0 4px 18px rgba(0,0,0,.45);'+base;
-        if(pwa.parentElement!==document.body) document.body.appendChild(pwa);
-      }
+      pwa.style.cssText='position:static;display:'+(pv?'inline-flex':'none')+';margin-left:8px;gap:6px;padding:6px 13px;font:600 12px/1 system-ui;letter-spacing:.04em;'+base;
+      var anchor=(rb&&rb.previousElementSibling===pill)?rb:pill;
+      if(pwa.previousElementSibling!==anchor) anchor.insertAdjacentElement('afterend', pwa);
     }
   };
   window.addEventListener('resize', window.placeVision);
