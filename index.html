@@ -2704,10 +2704,10 @@ function planControlsHTML(){
     var on=(p.id===state.ph);
     return '<button class="pb'+(on?' po':'')+'" onclick="setPh('+p.id+')">Phase '+p.id+' · '+p.years+'</button>';
   }).join('');
-  var pcBtn=(typeof isAdmin==='function' && isAdmin() && !window.matchMedia('(max-width:760px)').matches)
-    ? '<button class="sb" onclick="openPreviewCodesModal()" style="margin-left:auto;font-size:10px;padding:5px 10px;background:var(--bg2);color:var(--gold);border:1px solid var(--gold)">🔑 Preview Codes</button>' : '';
+  var srch=(!window.matchMedia('(max-width:760px)').matches)
+    ? '<button class="sb" onclick="openVizSearch()" title="Search cards (Ctrl+K)" style="margin-left:auto;font-size:10px;padding:5px 10px;display:inline-flex;align-items:center;gap:5px"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search Cards</button>' : '';
   return '<div class="plan-ctrls">'
-    + '<div class="plan-cg"><span class="clbl">Scenario</span>'+sc+pcBtn+'</div>'
+    + '<div class="plan-cg"><span class="clbl">Scenario</span>'+sc+srch+'</div>'
     + '<div class="plan-cg"><span class="clbl">Phase</span>'+ph+'</div></div>';
 }
 function renderPillars(){
@@ -3920,25 +3920,27 @@ function applyAdminMode(){
   // Edit Links button in viz modal
   const editBtn = document.querySelector('.edit-links-btn');
   if(editBtn) editBtn.style.display = admin ? '' : 'none';
-  // Search button — always visible, inserted before Preview Codes on same row
-  var srchBtn=document.getElementById('vizSearchBtn');
-  if(!srchBtn){
-    srchBtn=document.createElement('button');
-    srchBtn.id='vizSearchBtn';
-    srchBtn.innerHTML='<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> Search Cards';
-    srchBtn.title='Search viz cards (Ctrl+K)';
-    srchBtn.onclick=openVizSearch;
-  }
+  // Search Cards now lives on the Plan scenario row (see planControlsHTML) — drop any old top-bar copy.
+  var oldSr=document.getElementById('vizSearchBtn');
+  if(oldSr) oldSr.remove();
 
-  // Insert search button into controls bar
+  // Preview Codes — admin only, placed ABOVE the four tabs (top of the controls bar), right-aligned.
   var ctrls=document.querySelector('.ctrls');
-  if(ctrls && srchBtn && !ctrls.contains(srchBtn)){
-    ctrls.appendChild(srchBtn);
-  }
-
-  // Preview Codes button now lives at the right of the Plan scenario row (see planControlsHTML).
   var oldPc=document.getElementById('previewCodesBtn');
-  if(oldPc) oldPc.remove();
+  var deskAdmin = admin && !window.matchMedia('(max-width:760px)').matches;
+  if(deskAdmin && ctrls){
+    var pcBtn=oldPc;
+    if(!pcBtn){
+      pcBtn=document.createElement('button');
+      pcBtn.id='previewCodesBtn';
+      pcBtn.className='sb';
+      pcBtn.innerHTML='🔑 Preview Codes';
+      pcBtn.onclick=openPreviewCodesModal;
+    }
+    pcBtn.style.cssText='align-self:flex-end;font-size:10px;padding:5px 10px;background:var(--bg2);color:var(--gold);border:1px solid var(--gold);margin-bottom:2px';
+    if(ctrls.firstChild!==pcBtn) ctrls.insertBefore(pcBtn, ctrls.firstChild);
+  } else if(oldPc){ oldPc.remove(); }
+
   if(state.view==='pillars') renderPillars();
 }
 
