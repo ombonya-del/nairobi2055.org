@@ -645,6 +645,10 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
 .vc-video-link{display:inline-flex;align-items:center;gap:6px;margin:8px 0;padding:7px 14px;background:rgba(139,121,232,0.12);border:1px solid rgba(139,121,232,0.3);border-radius:16px;color:#8B79E8;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s}
 .vc-video-link:hover{background:rgba(139,121,232,0.25)}
 /* ── Modal: photo previews ──────────────────────────── */
+/* Live X/TikTok embed inside a voice card */
+.vc-embed-card{border-left:3px solid var(--vc);padding:10px}
+.vc-embed{min-height:60px;margin:0 0 8px}
+.vc-embed .twitter-tweet,.vc-embed .tiktok-embed{margin:0 auto !important}
 .vc-media-section{margin-bottom:12px}
 .vc-media-label{font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px}
 .vc-media-hint{font-weight:400;color:var(--text3);font-size:11px;margin-left:4px}
@@ -4082,6 +4086,60 @@ function buildMediaHtml(v) {
 }
 
 // ── Card renderer ─────────────────────────────────────────────────────────────
+// ── Live social embeds for Voices (X / TikTok) ────────────────────────────────
+// Cards render a lightweight placeholder; the real X/TikTok post is hydrated only
+// when the card scrolls near the viewport (IntersectionObserver), so 40+ embeds
+// don't all load at once.
+var _twttrReady = null;
+function loadTwttr(){
+  if (window.twttr && window.twttr.widgets) return Promise.resolve(window.twttr);
+  if (_twttrReady) return _twttrReady;
+  _twttrReady = new Promise(function(res){
+    var s = document.createElement('script');
+    s.src = 'https://platform.twitter.com/widgets.js'; s.async = true; s.charset = 'utf-8';
+    s.onload = function(){ res(window.twttr); }; s.onerror = function(){ res(null); };
+    document.head.appendChild(s);
+  });
+  return _twttrReady;
+}
+function loadTiktok(){
+  var prev = document.getElementById('tiktok-embed-script'); if (prev) prev.remove();
+  var s = document.createElement('script');
+  s.id = 'tiktok-embed-script'; s.src = 'https://www.tiktok.com/embed.js'; s.async = true;
+  document.body.appendChild(s);
+}
+function tweetIdFrom(url){ var m = String(url||'').match(/(?:twitter\.com|x\.com)\/[^/]+\/status\/(\d+)/i); return m ? m[1] : null; }
+function tiktokIdFrom(url){ var m = String(url||'').match(/tiktok\.com\/@[^/]+\/video\/(\d+)/i); return m ? m[1] : null; }
+
+var _voiceEmbedObserver = null;
+function hydrateVoiceEmbeds(root){
+  if (_voiceEmbedObserver){ _voiceEmbedObserver.disconnect(); _voiceEmbedObserver = null; }
+  var nodes = root.querySelectorAll('.vc-embed[data-embed-pending]');
+  if (!nodes.length || typeof IntersectionObserver === 'undefined') return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (!e.isIntersecting) return;
+      var el = e.target; io.unobserve(el); el.removeAttribute('data-embed-pending');
+      var twId = el.getAttribute('data-tweet-id');
+      var ttId = el.getAttribute('data-tiktok-id');
+      var url  = el.getAttribute('data-url');
+      if (twId){
+        loadTwttr().then(function(tw){
+          if (tw && tw.widgets){
+            tw.widgets.createTweet(twId, el, { theme:'dark', dnt:true, conversation:'none', align:'center' })
+              .then(function(node){ if (!node) el.innerHTML = '<a class="vc-source-link" href="'+url+'" target="_blank" rel="noopener">↗ View on X</a>'; });
+          } else { el.innerHTML = '<a class="vc-source-link" href="'+url+'" target="_blank" rel="noopener">↗ View on X</a>'; }
+        });
+      } else if (ttId){
+        el.innerHTML = '<blockquote class="tiktok-embed" cite="'+url+'" data-video-id="'+ttId+'" style="max-width:605px;min-width:280px;margin:0"><section><a href="'+url+'" target="_blank" rel="noopener">View on TikTok</a></section></blockquote>';
+        loadTiktok();
+      }
+    });
+  }, { rootMargin: '600px 0px' });
+  nodes.forEach(function(n){ io.observe(n); });
+  _voiceEmbedObserver = io;
+}
+
 function renderVoiceCard(v) {
   var admin     = isAdmin();
   var pc        = PLATFORM_CONFIG[v.platform] || PLATFORM_CONFIG.other;
@@ -4107,8 +4165,14 @@ function renderVoiceCard(v) {
       hopeHtml + '</div>';
   }
 
-  // Twitter / X
+  // Twitter / X — embed the live post when we have a status URL; else custom card.
   if (v.platform === 'twitter') {
+    var _twId = tweetIdFrom(v.source);
+    if (_twId) {
+      return '<div class="voice-card vc-embed-card"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+        '<div class="vc-embed" data-embed-pending data-tweet-id="' + _twId + '" data-url="' + v.source + '"><a class="vc-source-link" href="' + v.source + '" target="_blank" rel="noopener">Loading post…</a></div>' +
+        metaLine + hopeHtml + '</div>';
+    }
     return '<div class="voice-card vc-twitter"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
       '<div class="vc-tw-header"><div class="vc-tw-avatar">' + initials + '</div><div class="vc-tw-meta"><div class="vc-tw-name">' + v.role + '</div><div class="vc-tw-handle">' + v.handle + '</div></div><div class="vc-tw-x">\u2715</div></div>' +
       '<div class="vc-tw-body">' + v.text + '</div>' +
@@ -4150,6 +4214,16 @@ function renderVoiceCard(v) {
       mediaHtml +
       (v.likes ? '<div class="vc-ig-likes">\u2665 ' + fmtNum(v.likes) + ' likes \u00b7 ' + (v.timestamp||'') + '</div>' : '') +
       metaLine + hopeHtml + '</div>';
+  }
+
+  // TikTok — embed the live video
+  if (v.platform === 'tiktok' || tiktokIdFrom(v.source)) {
+    var _ttId = tiktokIdFrom(v.source);
+    if (_ttId) {
+      return '<div class="voice-card vc-embed-card"' + cardId + ' style="--vc:' + moodColor + '">' + adminBtns +
+        '<div class="vc-embed" data-embed-pending data-tiktok-id="' + _ttId + '" data-url="' + v.source + '"><a class="vc-source-link" href="' + v.source + '" target="_blank" rel="noopener">Loading TikTok…</a></div>' +
+        metaLine + hopeHtml + '</div>';
+    }
   }
 
   // Documented / other
@@ -4375,6 +4449,9 @@ function renderVoices() {
     }).join('') + '</div>';
 
     main.innerHTML = '<div class="voices-wrap">' + hdrHtml + naiHtml + harvestHtml + chipsHtml + lanesHtml + '</div>';
+
+    // Hydrate live X/TikTok embeds lazily as cards scroll into view
+    hydrateVoiceEmbeds(main);
 
     // Wire theme filter chips
     main.querySelectorAll('[data-theme-filter]').forEach(function(b){
