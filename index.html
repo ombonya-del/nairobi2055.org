@@ -925,8 +925,8 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   <span>Nairobi 2055 Transformation Master Plan · 2025</span>
   <span id="ftxt">Progress auto-saved to browser</span>
   <span>10 Pillars · 4 Scenarios · 3 Phases</span>
-  <span style="letter-spacing:.06em">hello@nairobi2055.org &nbsp;·&nbsp; info@nairobi2055.org &nbsp;·&nbsp; projects@nairobi2055.org</span>
-  <span><a href="/privacy.html" style="color:inherit;text-decoration:none;opacity:.75">Privacy</a></span>
+  <span style="text-transform:none;letter-spacing:normal">hello@nairobi2055.org &nbsp;·&nbsp; info@nairobi2055.org &nbsp;·&nbsp; projects@nairobi2055.org</span>
+  <span style="flex-basis:100%;text-align:center;text-transform:none;letter-spacing:normal;margin-top:2px"><a href="/privacy.html" style="color:inherit;text-decoration:none;opacity:.75">Privacy</a></span>
 </div>
 <div id="toast" style="display:none" class="toast"><div class="tdt" id="tdt"></div><span id="tmsg"></span></div>
 <template id="viz-tpl-brt-map"><svg viewBox="0 0 544 430" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px">
@@ -4131,6 +4131,7 @@ function hydrateVoiceEmbeds(root){
       if (twId){
         loadTwttr().then(function(tw){
           if (tw && tw.widgets){
+            el.innerHTML = '';   // clear the "Loading post…" placeholder before rendering
             tw.widgets.createTweet(twId, el, { theme:'dark', dnt:true, conversation:'none', align:'center' })
               .then(function(node){ if (!node) el.innerHTML = '<a class="vc-source-link" href="'+url+'" target="_blank" rel="noopener">↗ View on X</a>'; });
           } else { el.innerHTML = '<a class="vc-source-link" href="'+url+'" target="_blank" rel="noopener">↗ View on X</a>'; }
