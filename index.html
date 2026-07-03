@@ -63,7 +63,11 @@ body{background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,
 .hstat{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 13px;min-width:88px}
 .hstat .v{font-family:Georgia,serif;font-size:20px;font-weight:700;color:var(--gold);line-height:1}
 .hstat .l{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
-.ctrls{padding:11px 22px;display:flex;gap:7px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg);align-items:center;overflow-x:auto}
+.ctrls{padding:11px 22px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--border);background:var(--bg);align-items:stretch}
+.navrow{display:flex;gap:8px}
+.navrow .vb{flex:1;justify-content:center;text-align:center;padding:11px 12px;font-size:13px;border-radius:8px}
+.planfilters{display:flex;flex-direction:column;gap:8px;padding-top:9px;border-top:1px solid var(--border)}
+.planfilters .cg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .clbl{font-size:9px;color:var(--text4);text-transform:uppercase;letter-spacing:.12em;margin-right:2px;white-space:nowrap;font-weight:700}
 .plan-ctrls{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;padding:12px 13px;background:var(--bg2);border:1px solid var(--border);border-radius:12px}
 .plan-cg{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
@@ -927,12 +931,13 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
   </div>
 </div>
 <div class="ctrls">
-  <div class="cg"><span class="clbl">View</span>
+  <div class="navrow">
     <button class="vb vo" id="v-pillars" onclick="setView('pillars')">⬡ Plan</button>
     <button class="vb" id="v-tracker" onclick="setView('tracker')">◎ Tracker</button>
+    <button class="vb" id="v-partners" onclick="setView('partners')">🤝 Partners</button>
+    <button class="vb" id="v-voices" onclick="setView('voices')">🗣 Voices</button>
   </div>
-  <div id="planFilters" style="display:contents">
-    <div class="cdiv"></div>
+  <div id="planFilters" class="planfilters">
     <div class="cg"><span class="clbl">Scenario</span>
       <button class="sb so" id="sc-opt" onclick="setSc('opt')" style="background:#3DBF78">🚀 Optimistic</button>
       <button class="sb" id="sc-rea" onclick="setSc('rea')">📊 Realistic</button>
@@ -945,9 +950,6 @@ button.vb.vo{background:var(--bg3);color:var(--text);border-color:var(--border2)
       <button class="pb" id="ph-3" onclick="setPh(3)">Phase 3 · 2045–55</button>
     </div>
   </div>
-  <div class="cdiv"></div>
-  <button class="vb partners-vb" id="v-partners" onclick="setView('partners')">🤝 Partners &amp; Investors</button>
-  <button class="vb partners-vb" id="v-voices" onclick="setView('voices')" style="background:linear-gradient(135deg,rgba(139,121,232,0.15),rgba(93,191,122,0.1));border-color:rgba(139,121,232,0.4)">🗣 Voices</button>
 </div>
 <div id="banner" class="banner"></div>
 <div id="kbar" class="kbar"></div>
@@ -2591,7 +2593,7 @@ function updateControls(){
   [1,2,3].forEach(p=>{const b=document.getElementById('ph-'+p);if(b){p===state.ph?b.classList.add('po'):b.classList.remove('po');}});
   ['pillars','tracker','partners','voices'].forEach(v=>{const b=document.getElementById('v-'+v);if(b){v===state.view?b.classList.add('vo'):b.classList.remove('vo');}});
   const pf=document.getElementById('planFilters');   // scenario/phase expand in the top bar only on Plan
-  if(pf) pf.style.display = state.view==='pillars' ? 'contents' : 'none';
+  if(pf) pf.style.display = state.view==='pillars' ? 'flex' : 'none';
 }
 
 // ─── PHASE PROGRESS BAR ──────────────────────────────────────────────────────
