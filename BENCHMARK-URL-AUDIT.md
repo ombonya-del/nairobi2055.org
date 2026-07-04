@@ -24,7 +24,38 @@ Wikipedia links remaining: **0**.
 
 ---
 
-## PART 2 — full sweep: findings + limitation
+## PART 2 — link-checker sweep: COMPLETE
+
+Ran `check-benchmark-links.sh` (real HTTP from an unrestricted machine) over all 142
+benchmark URLs. Result: 57 flagged. Triage + fixes:
+
+**Fixed (~38 links, relevance-matched live replacements found via web search):**
+Perry Preschool→highscope /project/; UN-Habitat Nairobi Profile PDF; BDRCS CPP (slug
+fix); Tokyo J-Alert/Jichikai→TMG bosai; ILO green-jobs cards→WRI Ruhr / Ajira Digital /
+ILO green-jobs-initiative; JICA Dhaka→JICA Bangladesh; JTC→juronginnovationdistrict &
+one-north estate; ready.gov NRF→FEMA; WIEGO waste-pickers (working slug); CcHUB→
+cchubnigeria.com; Kenya Vision2030 legal→vision2030.go.ke; LA UAM→Urban Movement Labs;
+Singapore LTP→URA; NParks Community-in-Bloom→gardeningsg; Kallang River→PUB Bishan;
+HOT→hotosm.org; scrap-to-rail→DB Cargo; Rotterdam→C40; Seoul→seoulsolution 2030 plan /
+english.seoul.go.kr; SEWA→Mahila Housing Trust; Addis Renewal→Arup; Entoto Park→
+entoto-natural-park.org; Rwanda sport (typo minispot→minisports.gov.rw); AP RTGS→
+rtgs.ap.gov.in; UK creative→gov.uk; Istanbul Metrobüs→C40; Lamu→UNESCO WHC 1055;
+Mumbai drains→FPJ; Ibirapuera→parquedoibirapuera.org; GoDown→thegodown.org; Accra EV→
+electrive; Douta Seck→culture.gouv.sn; SPLUMA→gov.za; Thailand UHC→TDRI; Medellín
+Metro→metrodemedellin, transformation→ArchDaily, Metrocable→CPI; Ghana/Tern/kaptis/
+silafrica/parliament.go.rw→relevant live sources.
+
+**Left as-is — false positives (live sites that block bots, verified by inspection):**
+All 403s (UNESCO WHC, FEMA, IFRC, London.gov, UNEP, UNDRR, PreventionWeb, Amsterdam,
+si.edu, Curitiba, NDRRMC, elbil) + `jumia.com.ke` and `whimapp.com` (both returned 000
+to curl but render fine in a browser; whimapp.com is the correct Whim MaaS target).
+
+Re-run `./check-benchmark-links.sh` any time to re-verify. Remaining `>>>` lines after
+this will be the bot-block false positives above.
+
+---
+
+## PART 2 (original) — full sweep: findings + limitation
 
 ### Relevance (all 278, by inspection)
 139 links point at a bare homepage/portal. **Most are legitimately the official site**
