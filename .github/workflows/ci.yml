@@ -1,0 +1,50 @@
+name: CI
+
+# Nairobi 2055 is a static site (GitHub Pages). Two safeguards:
+#  1. On every push/PR: confirm the required static files exist and are non-empty
+#     (catches an accidental deletion or an emptied file before it deploys).
+#  2. Weekly: run the benchmark link-checker (informational — external links flake,
+#     so this never blocks a deploy; it just surfaces dead links).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 1'   # Mondays 06:00 UTC — weekly link sweep
+  workflow_dispatch:
+
+jobs:
+  file-integrity:
+    name: required files present
+    if: github.event_name == 'push' || github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check core files exist and are non-empty
+        run: |
+          set -e
+          required="index.html privacy.html manifest.json sw.js CNAME"
+          fail=0
+          for f in $required; do
+            if [ ! -s "$f" ]; then
+              echo "MISSING or EMPTY: $f"; fail=1
+            else
+              echo "OK: $f ($(wc -c < "$f") bytes)"
+            fi
+          done
+          # privacy.html must be precached by the service worker (house style)
+          if ! grep -q "/privacy.html" sw.js; then
+            echo "WARN: privacy.html not in sw.js precache — it can be shadowed by the app shell offline"; fail=1
+          fi
+          exit $fail
+
+  link-check:
+    name: benchmark links (informational)
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run link checker
+        run: bash check-benchmark-links.sh || true
