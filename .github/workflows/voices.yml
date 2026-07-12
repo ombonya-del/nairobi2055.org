@@ -4,9 +4,10 @@ name: Voices generator
 # shape, append to voices-auto.json, and commit it (which redeploys the site).
 # Auto-published — no review step. Requires repo secret X_BEARER_TOKEN.
 
+# NOTE: the X API path is disabled (credits depleted / 402). Voices are now
+# refreshed by a weekly browser-based scheduled task instead (no X API). This
+# workflow is kept for manual use only if you ever fund the X API again.
 on:
-  schedule:
-    - cron: '0 5 * * 1'   # Mondays 05:00 UTC
   workflow_dispatch:
 
 permissions:
