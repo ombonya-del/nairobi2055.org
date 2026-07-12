@@ -4068,6 +4068,17 @@ const VOICE_THEMES = {
   culture:     {label:'Pride & Culture',          icon:'🎨'},
 };
 
+// Auto-published Voices from the weekly X-List generator (voices-auto.json).
+// Merged into the curated seed at load; safe if the file is missing/empty.
+fetch('voices-auto.json', {cache:'no-store'})
+  .then(function(r){ return r.ok ? r.json() : []; })
+  .then(function(a){
+    if(!Array.isArray(a) || !a.length) return;
+    a.forEach(function(v){ if(v && v.source && !VOICE_SEED.some(function(s){return s.source===v.source;})) VOICE_SEED.push(v); });
+    if(typeof renderVoices==='function' && typeof state==='object' && state && state.view==='voices') renderVoices();
+  })
+  .catch(function(){});
+
 const PLATFORM_CONFIG = {
   twitter:   {label:'X (Twitter)',       icon:'✕', color:'#1DA1F2', bg:'#15202B'},
   facebook:  {label:'Facebook',          icon:'f', color:'#1877F2', bg:'#1C1E21'},

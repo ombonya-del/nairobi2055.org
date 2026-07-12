@@ -1,0 +1,38 @@
+name: Voices generator
+
+# Weekly: pull the "Nairobi 2055" X List, classify each new post into the Voices
+# shape, append to voices-auto.json, and commit it (which redeploys the site).
+# Auto-published — no review step. Requires repo secret X_BEARER_TOKEN.
+
+on:
+  schedule:
+    - cron: '0 5 * * 1'   # Mondays 05:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Generate Voices from the X List
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          NAIROBI_LIST_ID: '2076339026177785915'
+        run: node scripts/gen-voices.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "voices-bot"
+          git config user.email "voices-bot@users.noreply.github.com"
+          git add voices-auto.json
+          if git diff --staged --quiet; then
+            echo "No new voices."
+          else
+            git commit -m "voices: weekly auto-update from X List"
+            git push
+          fi
