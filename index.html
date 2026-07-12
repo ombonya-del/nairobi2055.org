@@ -4070,7 +4070,7 @@ const VOICE_THEMES = {
 
 // Auto-published Voices from the weekly X-List generator (voices-auto.json).
 // Merged into the curated seed at load; safe if the file is missing/empty.
-fetch('voices-auto.json', {cache:'no-store'})
+fetch('voices-auto.json?v=' + Date.now(), {cache:'no-store'})
   .then(function(r){ return r.ok ? r.json() : []; })
   .then(function(a){
     if(!Array.isArray(a) || !a.length) return;
