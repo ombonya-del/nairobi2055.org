@@ -1,1 +1,19 @@
-[]
+[
+  {
+    "id": "va1",
+    "platform": "twitter",
+    "handle": "@zablonorina1",
+    "area": "Nairobi CBD",
+    "role": "The Blood Pressure Champion",
+    "theme": "governance",
+    "mood": "mixed",
+    "likes": 2,
+    "retweets": 1,
+    "views": 82,
+    "timestamp": "Jul 12, 2026",
+    "text": "The real question shouldn't be, \"Who is financing the goons?\" The question should be: Who are these goons, and how do we neutralize them within the law? Whether they are financed by politicians, businesses, or anyone else is secondary. The government's primary responsibility is to identify violent criminals, arrest them, and prosecute them.",
+    "hope": "Kenyans deserve a government that acts against organized violence regardless of who is behind it.",
+    "source": "https://x.com/zablonorina1/status/2076397129845682431",
+    "auto": true
+  }
+]
