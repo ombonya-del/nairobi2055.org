@@ -202,5 +202,39 @@
     "hope": null,
     "source": "https://x.com/ianmbunde/status/2092942358320992456",
     "auto": true
+  },
+  {
+    "id": "va13",
+    "platform": "twitter",
+    "handle": "@MwangoCapital",
+    "area": "Nairobi — mass transit",
+    "role": "Mwango Capital",
+    "theme": "transport",
+    "mood": "mixed",
+    "likes": 19,
+    "retweets": 6,
+    "views": 5691,
+    "timestamp": "Sep 3, 2026",
+    "text": "How come Nairobi doesn't have an underground network?",
+    "hope": "Quote-tweeting London's Mayor on full 4G/5G across the Underground — a metro / underground rail backbone is exactly the mass-transit vision Nairobi 2055 should be planning for now.",
+    "source": "https://x.com/MwangoCapital/status/2095615145468719560",
+    "auto": true
+  },
+  {
+    "id": "va14",
+    "platform": "twitter",
+    "handle": "@martfintan",
+    "area": "Nairobi — sewerage & drainage",
+    "role": "Martfintan",
+    "theme": "flooding",
+    "mood": "frustration",
+    "likes": 2,
+    "retweets": 1,
+    "views": 749,
+    "timestamp": "Sep 2, 2026",
+    "text": "#ReclaimNairobi #ElNiño And just like clockwork the sewerage flow continues @NairobiWater please share with us a timetable, especially during this period of expected rains",
+    "hope": null,
+    "source": "https://x.com/martfintan/status/2095020563257266540",
+    "auto": true
   }
 ]
