@@ -1,0 +1,46 @@
+name: health-check
+# Static-site health monitor for Nairobi 2055 — every 6h.
+# Checks the live site is up and the Voices feed is still being refreshed,
+# and emails an alert to transform2055@gmail.com ONLY when something is wrong.
+#
+# ONE-TIME SETUP (repo → Settings → Secrets and variables → Actions):
+#   • RESEND_API_KEY  — a Resend API key (you already use Resend on the other projects)
+# Also: the FROM below (alerts@nairobi2055.org) must be a Resend-VERIFIED sender.
+#   Verify nairobi2055.org in Resend, OR change FROM to a domain you've already
+#   verified (e.g. alerts@imaarishasrhr.org) — the recipient stays transform2055@gmail.com.
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://nairobi2055.org
+      VOICES: voices-auto.json
+      STALE_DAYS: '7'          # alert if the Voices feed hasn't changed in this many days
+      TO: transform2055@gmail.com
+      FROM: 'Nairobi 2055 Health <alerts@nairobi2055.org>'
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - name: Run checks + alert on failure
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+        run: |
+          fails=""
+          # 1) site reachable
+          code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 15 "$SITE" || echo 000)
+          case "$code" in 200|301|302) : ;; *) fails="$fails<tr><td>❌</td><td>Site reachable</td><td>HTTP $code for $SITE</td></tr>";; esac
+          # 2) Voices feed freshness (last commit that touched voices-auto.json)
+          last=$(git log -1 --format=%ct -- "$VOICES" 2>/dev/null || echo 0)
+          now=$(date +%s); age_days=$(( (now - last) / 86400 ))
+          if [ "$last" = "0" ]; then fails="$fails<tr><td>❌</td><td>Voices feed</td><td>$VOICES not found in git history</td></tr>";
+          elif [ "$age_days" -gt "$STALE_DAYS" ]; then fails="$fails<tr><td>❌</td><td>Voices feed freshness</td><td>last updated ${age_days}d ago (alert > ${STALE_DAYS}d)</td></tr>"; fi
+          if [ -z "$fails" ]; then echo "All checks passed (site HTTP $code, Voices ${age_days}d old) — no email."; exit 0; fi
+          echo "Issues detected — emailing $TO"
+          if [ -z "$RESEND_API_KEY" ]; then echo "::warning::RESEND_API_KEY secret not set; cannot email"; exit 1; fi
+          html="<div style='font-family:system-ui,Arial,sans-serif;max-width:560px'><h2 style='font-size:18px'>Nairobi 2055 — health alert</h2><p style='font-size:12px;color:#888'>$(date -u '+%Y-%m-%d %H:%M') UTC</p><table style='width:100%;border-collapse:collapse'>$fails</table><p style='font-size:12px;color:#B3261E;font-weight:600'>Action needed on the ❌ items.</p></div>"
+          payload=$(printf '{"from":"%s","to":["%s"],"subject":"⚠️ Nairobi 2055 health: issues detected","html":%s}' "$FROM" "$TO" "$(printf '%s' "$html" | python3 -c 'import json,sys;print(json.dumps(sys.stdin.read()))')")
+          curl -sS -X POST https://api.resend.com/emails -H "Authorization: Bearer $RESEND_API_KEY" -H 'Content-Type: application/json' -d "$payload"
+          echo; echo "alert sent"
