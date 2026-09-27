@@ -865,5 +865,39 @@
     "hope": null,
     "source": "https://x.com/Sapayian/status/2102087031450931437",
     "auto": true
+  },
+  {
+    "id": "va52",
+    "platform": "twitter",
+    "handle": "@JesseKenya",
+    "area": "Nairobi",
+    "role": "Jesse Ndurumo",
+    "theme": "housing",
+    "mood": "frustration",
+    "likes": 559,
+    "retweets": 172,
+    "views": 22462,
+    "timestamp": "Sep 21, 2026",
+    "text": "F1 is what museum Hill roundabout used to look like.\nBoomers experienced a different Nairobi than what's there today.\nNairobi used to be The Green City Under the Sun but today it's just a city under the scorching sun.",
+    "hope": null,
+    "source": "https://x.com/JesseKenya/status/2102284624189645288",
+    "auto": true
+  },
+  {
+    "id": "va53",
+    "platform": "twitter",
+    "handle": "@Alfayaz11",
+    "area": "Nairobi — CBD",
+    "role": "Alfayaz 11",
+    "theme": "governance",
+    "mood": "frustration",
+    "likes": 20,
+    "retweets": 9,
+    "views": 974,
+    "timestamp": "Sep 25, 2026",
+    "text": "The city under Denzel’s leadership. Apparently a top student from TEAMS UNIVERSITY.\n\n#ReclaimNairobi",
+    "hope": null,
+    "source": "https://x.com/Alfayaz11/status/2103397171328594374",
+    "auto": true
   }
 ]
