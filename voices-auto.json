@@ -2395,5 +2395,39 @@
     "hope": null,
     "source": "https://x.com/dnahinga/status/2077098089433751690",
     "auto": true
+  },
+  {
+    "id": "va142",
+    "platform": "twitter",
+    "handle": "@farhiyaabass",
+    "area": "Lavington",
+    "role": "Farhiya Abass",
+    "theme": "governance",
+    "mood": "frustration",
+    "likes": 3364,
+    "retweets": 838,
+    "views": 104014,
+    "timestamp": "Oct 6, 2026",
+    "text": "Lavington used to look like this. Now it's just fuel stations and billboards.",
+    "hope": null,
+    "source": "https://x.com/farhiyaabass/status/2107362998444818452",
+    "auto": true
+  },
+  {
+    "id": "va143",
+    "platform": "twitter",
+    "handle": "@chriskost",
+    "area": "Nairobi",
+    "role": "Chris Kost",
+    "theme": "flooding",
+    "mood": "mixed",
+    "likes": 2043,
+    "retweets": 884,
+    "views": 77444,
+    "timestamp": "Oct 4, 2026",
+    "text": "Returning to Nairobi after a year and a half, it saddens me to see how much the walking environment has deteriorated: broken pavements, streets without lighting, and overflowing drainage. City residents deserve better.",
+    "hope": null,
+    "source": "https://x.com/chriskost/status/2106822077294473537",
+    "auto": true
   }
 ]
