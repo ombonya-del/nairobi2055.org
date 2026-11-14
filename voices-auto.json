@@ -3381,5 +3381,39 @@
     "hope": null,
     "source": "https://x.com/Mitz_KE/status/2120393726052724899",
     "auto": true
+  },
+  {
+    "id": "va200",
+    "platform": "twitter",
+    "handle": "@ayagamax",
+    "area": "CBD Nairobi",
+    "role": "Max",
+    "theme": "transport",
+    "mood": "mixed",
+    "likes": 2524,
+    "retweets": 595,
+    "views": 54356,
+    "timestamp": "Nov 11, 2026",
+    "text": "We have to be honest about Nairobi on the following things:\n\n1. Get matatus and Nduthis out of CBD.\n2. We need to move away from the traditional train/underground tunnel thinking and introduce trams. More cheaper.\n3. The trams will move around CBD. \n4. Get hawkers out of CBD!!!",
+    "hope": "Pull matatus and hawkers out of the CBD and run cheap trams through the core — a cleaner, walkable city centre is within reach.",
+    "source": "https://x.com/ayagamax/status/2120397281518067867",
+    "auto": true
+  },
+  {
+    "id": "va201",
+    "platform": "twitter",
+    "handle": "@chriskost",
+    "area": "Nairobi",
+    "role": "Chris Kost",
+    "theme": "transport",
+    "mood": "hope",
+    "likes": 0,
+    "retweets": 0,
+    "views": 0,
+    "timestamp": "Nov 12, 2026",
+    "text": "Dar es Salaam’s 20.3 km BRT phase 2 runs from the city centre to Mbagala, with dedicated lanes, split flyovers, and express buses averaging ≈ 30 km/h.\n\nThree fixes would improve service:\n✅ Enforce the BRT lanes\n✅ Charge fares by distance\n✅ Pay the operator per kilometre",
+    "hope": "Dar es Salaam’s enforced BRT lanes, distance-based fares, and per-kilometre operator pay are a working template Nairobi could adopt for fast, affordable mass transit.",
+    "source": "https://x.com/chriskost/status/2120804710789632206",
+    "auto": true
   }
 ]
